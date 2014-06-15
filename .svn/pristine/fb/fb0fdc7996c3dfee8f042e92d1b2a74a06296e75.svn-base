@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "爱心接力-百家衣(www.360baijiayi.com)";
+    ViewBag.Description = "百家衣(www.360baijiayi.com)是一个专注婴儿闲置衣物买卖的网站，在这里妈妈们可以在线买卖宝宝闲置的衣服、玩具。“百家衣”是婴儿服的一种，由一百个家庭收集到布片做成，故名“百家衣”";
+    ViewBag.KeyWords = "百家衣,买卖,旧衣服,二手,二手衣服,闲置,宝宝,婴儿,儿童,孩子,衣服,小孩衣服,婴儿衣服,寄售,玩具,同城置换,同城交易,四川二手,成都二手衣服";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ResourceHelper.RegisterCss(this, "loveheart.css");
+}
+
+@Html.Partial("_Header_Partial")
+
+<div class="mainblock love_content">
+  <div class="lovebg"></div>
+  <div class="huodong">
+    <h1 class="pink-font font-size20">活动流程</h1>
+    <div class="hd_lc">
+      <div class="bz">
+        <img src="../../images/jt1.png" />
+        <h3 class="blue-font">1.发布闲置物品，凡是价格为&nbsp;<strong class="pink-font">0</strong>&nbsp;元的，我们均认为您自动参加本次活动</h3>
+      </div>
+      <div class="bz">
+        <img src="../../images/jt2.png" />
+        <h3 class="blue-font">2.留下你的联系方式，我们会主动联系您</h3>
+      </div>
+      <div class="bz">
+        <h3 class="blue-font">3.12月7日我们将会把所有衣物统一送到“成都室内捐助物资接收点”。你也可以点击&nbsp;<br /><a class="gray-font" target="_blank" href="http://sc.sina.com.cn/z/lsnd2th/index.shtml">http://sc.sina.com.cn/z/lsnd2th/index.shtml</a>&nbsp;参与活动</h3>
+        <a class="bz_btn button-green " href="@Url.Action("AddGoods", "User")">立即参与</a>
+            <div style="margin-top:10px;margin-left:20px;">
+                <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+                    <a class="bds_qzone"></a>
+                    <a class="bds_tsina"></a>
+                    <a class="bds_tqq"></a>
+                    <a class="bds_renren"></a>
+                    <span class="bds_more">更多</span>
+		            <a class="shareCount"></a>
+                </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>  
+@Html.Partial("_Footer_Partial")   
+@section Js_InFoot{
+    <script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+    <script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    var bds_config = {
+        'bdText': '#让山区孩子冬天不再冷#百家衣网，爱心接力，让四川山区孩子的冬天不再寒冷活动开始了，大家可以进入 http://www.360baijiayi.com/loveheart 参加活动。也可以私信我们。我们每个人的爱心，会温暖灾区所有的孩子。',
+        'bdDesc': "#让山区孩子冬天不再冷#百家衣网，爱心接力，让四川山区孩子的冬天不再寒冷活动开始了，大家可以进入 http://www.360baijiayi.com/loveheart 参加活动。也可以私信我们。我们每个人的爱心，会温暖灾区所有的孩子。",
+        'bdPic': "http://www.360baijiayi.com/images/loveHeart.jpg",
+        'bdComment': ""
+    };
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>
+}

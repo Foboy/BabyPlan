@@ -1,0 +1,344 @@
+﻿@{
+    ViewBag.Title = "AddGoods";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+@model BabyPlan.mvcApp.Model.ProductModel
+@section Js_InHeader{
+    @Content.Script("jquery.form.js",Url)
+<style type="text/css">
+    .right_block_title{height:50px;}
+    .right_block_title .title{line-height:50px;}
+    .goods_input_outer{display:inline-block;padding:20px 0;}
+    .goods_input_item{width:620px;margin:10px 40px;display:inline-block;}
+    .goods_input_item > dt{float:left;width:100px;line-height:30px;}
+    .goods_input_item > dd{float:left;}
+    .goods_input_item .add_btn_box{width:140px;height:40px;}
+    .goods_input_item .add_btn_box .button-blue{padding:0;}
+    
+    .goods_box_outer{width:620px;margin:10px auto;}
+    .goods_box_outer .goods_box_item{width:620px;height:130px;display:inline-block;position:relative;}
+    .goods_box_outer .goods_box_item .goods_no{font-size:72px;line-height:130px;width:60px;}
+    .goods_box_outer .goods_box_item .goods_pic{width:126px;height:126px;border:solid 1px #2A8FC4;margin:2px;float:left;}
+    .goods_box_outer .goods_box_item .upload_box{width:126px;height:126px;}
+    .goods_box_outer .goods_box_item .goods_info{width:360px;height:126px;margin:2px 10px;}
+    .goods_box_outer .goods_box_item .goods_info > dl{display:inline-block;height:30px;width:360px;}
+    .goods_box_outer .goods_box_item .goods_info > dl > dt{float:left;}
+    .goods_box_outer .goods_box_item .goods_info > dl > dd{float:left;}
+    .bb_upload_btn{padding:0;width:100px;}
+    
+    .submit_btn{padding:0;width:120px;height:40px;line-height:40px;margin:10px auto; font-weight:normal;}
+
+</style>
+}
+
+<div class="right_block_title user_right_block grayblock">
+    <span class="title margin10 font-size16 black-font">发布我的宝贝</span>
+</div>
+<div class="goods_input_outer user_right_block whiteblock">
+    <dl class="goods_input_item">
+        <dt class="font-size16 black-font">宝贝标题：&nbsp;&nbsp;<span class="red-font" name="errortag">*</span></dt>
+        <dd>
+            <input type="text" class="input_box" id="gtitle" name="gtitle" value="@Model.Title" style="width:460px;" />
+            <input type="hidden" id="h_goods_id" name="h_goods_id" value="@Model.Id" />
+            <br />
+            <span class="gray-font">&nbsp;&nbsp;宝贝标题最多输入30个字符</span>
+        </dd>
+    </dl>
+    <dl class="goods_input_item">
+        <dt class="font-size16 black-font">联系方式：&nbsp;&nbsp;<span class="red-font" name="errortag">*</span></dt>
+        <dd>
+            <input type="text" class="input_box" name="gqq" id="gqq" style="width:200px;" value="@Model.QQ"
+             onclick="if(this.value=='QQ')this.value='';"
+             onblur="if(this.value=='')this.value='QQ';"
+              />
+            <span class="font-size16 black-font" style="text-align:center;padding:0 16px;">或</span>
+            <input type="text" class="input_box" name="gphone" id="gphone" style="width:200px;" value="@Model.Phone"
+             onclick="if(this.value=='手机号')this.value='';"
+             onblur="if(this.value=='')this.value='手机号';"
+              />
+            <br />
+            <span class="gray-font">&nbsp;&nbsp;最少留下其中一种联系方式，方便买家能及时联系到您，增加您出售宝贝的几率</span>
+        </dd>
+    </dl>
+    <dl class="goods_input_item">
+        <dt class="font-size16 black-font">宝贝描述：&nbsp;&nbsp;<span class="red-font" name="errortag">*</span></dt>
+        <dd>
+            <textarea class="input_box fl" name="gdescription" id="gdescription" style="width:460px;height:100px;" >@Model.Description</textarea>
+        </dd>
+    </dl>
+    <div class="goods_box_outer" id="goods_box_outer">
+        @if (Model.Id > 0 && Model.Items != null && Model.Items.Count > 0)
+        {
+            var seq = 1;
+            foreach (var pi in Model.Items)
+            {
+                var item_id = string.Format("h_goods_item_id{0}", seq);
+                var pic_id = string.Format("h_goods_item_pic{0}", seq);
+                var seq_id = string.Format("displayseq{0}", seq);
+                var upbox_id = string.Format("upload_box{0}", seq);
+                var price_id = string.Format("h_goods_item_price{0}", seq);
+                var age_id = string.Format("h_goods_item_age{0}", seq);
+                var sex_id = string.Format("h_goods_item_sex{0}", seq);
+                var itemType_id = string.Format("h_goods_item_type{0}", seq);
+        <div class="goods_box_item">
+            <input type="hidden" name="gno" value="@seq" />
+            <input type="hidden" id="@item_id" name="@item_id" value="@pi.Id" />
+            <input type="hidden" id="@pic_id" name="@pic_id" value="@pi.PicId" />
+            <div class="goods_no green-font fl" name="@seq_id">@seq</div>
+            <div class="goods_pic fl">
+                <div id="@upbox_id" class="upload_box">
+                    <img alt="" name="pic" src="@pi.Pic.PicUrl" style="width:@pi.Pic.DisplayWidth(126, 126)px;height:@pi.Pic.DisplayHeight(126, 126)px;margin:@pi.Pic.DisplayMargin(126, 126)" />
+                </div>
+            </div>
+            <div class="goods_info fl">
+                <dl>
+                    <dt>价钱：&nbsp;&nbsp;<span class="red-font" name="errortag">*</span></dt>
+                    <dd>
+                        <input type="text" id="@price_id" name="@price_id" value="@pi.Price" />元
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>年龄：&nbsp;&nbsp;<span class="red-font" name="errortag">*</span></dt>
+                    <dd>
+                        <input type="text" id="@age_id" name="@age_id" value="@pi.Age" />岁
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>性别：&nbsp;&nbsp;<span class="red-font">&nbsp;</span></dt>
+                    <dd>
+                        <input name="@sex_id" type="radio" @Html.Raw(pi.CheckedBind(pi.Sex, 1)) value="1" />男
+                        <input name="@sex_id" type="radio" @Html.Raw(pi.CheckedBind(pi.Sex, 2)) value="2" />女
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>类型：&nbsp;&nbsp;<span class="red-font">&nbsp;</span></dt>
+                    <dd>
+                        <input name="@itemType_id" type="radio" @Html.Raw(pi.CheckedBind(pi.ItemType, 1)) value="1" />衣服/裤子/鞋子
+                        <input name="@itemType_id" type="radio" @Html.Raw(pi.CheckedBind(pi.ItemType, 2)) value="2" />玩具
+                        <input name="@itemType_id" type="radio" @Html.Raw(pi.CheckedBind(pi.ItemType, 3)) value="3" />其他
+                    </dd>
+                </dl>
+            </div>
+        </div>
+                  seq++;
+            }
+        }
+    </div>
+    <dl class="goods_input_item" id="item_pic_uploader">
+        <dt>&nbsp;</dt>
+        <dd>
+            <div class="add_btn_box fl">
+                <div id="addGoodsItemBtn" class="button-green bb_upload_btn">上传宝贝</div>
+            </div>
+            <span class="gray-font fl line-height40">您最多能上传6张图片，如果超过6张，您可以在新开一个帖子。</span>
+        </dd>
+    </dl>
+    <a href="javascript:void(0);" id="submit_btn" class="button-green submit_btn font-size18">
+    @if (@Model.Id > 0)
+    {
+        <text>提交</text>
+    }
+    else
+    {
+        <text>发布</text>
+    }
+    </a>
+    <input type='file' id='cuplsoad_file' style="width:100px;height:100px;border:none;background:#fff;color:#fff;" />
+</div>
+<div style="display:none">
+<textarea id="goods_item_model" cols="0" rows="0">
+        <!--
+        <div class="goods_box_item">
+            <input type="hidden" name="gno" value="{@@gno}" />
+            <input type="hidden" id="h_goods_item_id{@@gno}" name="h_goods_item_id{@@gno}" value="0" />
+            <input type="hidden" id="h_goods_item_pic{@@gno}" name="h_goods_item_pic{@@gno}" value="0" />
+            <div class="goods_no green-font fl" name="displayseq{@@gno}">{@@gno}</div>
+            <div class="goods_pic fl">
+                <div id="upload_box{@@gno}" class="upload_box"></div>
+            </div>
+            <div class="goods_info fl">
+                <dl>
+                    <dt>价钱：&nbsp;&nbsp;<span class="red-font" name="errortag">*</span></dt>
+                    <dd>
+                        <input type="text" id="h_goods_item_price{@@gno}" name="h_goods_item_price{@@gno}" />元
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>年龄：&nbsp;&nbsp;<span class="red-font" name="errortag">*</span></dt>
+                    <dd>
+                        <input type="text" id="h_goods_item_age{@@gno}" name="h_goods_item_age{@@gno}" />岁
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>性别：&nbsp;&nbsp;<span class="red-font">&nbsp;</span></dt>
+                    <dd>
+                        <input name="h_goods_item_sex{@@gno}" type="radio" checked="checked" value="1" />男
+                        <input name="h_goods_item_sex{@@gno}" type="radio" value="2" />女
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>类型：&nbsp;&nbsp;<span class="red-font">&nbsp;</span></dt>
+                    <dd>
+                        <input name="h_goods_item_type{@@gno}" type="radio" checked="checked" value="1" />衣服/裤子/鞋子
+                        <input name="h_goods_item_type{@@gno}" type="radio" value="2" />玩具
+                        <input name="h_goods_item_type{@@gno}" type="radio" value="3" />其他
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        -->
+</textarea>
+</div>
+@section Js_InFoot{
+    @Content.Script("cLoading.js", Url)
+    @Content.Script("cUpload.js", Url)
+    @Content.Script("cTemplate.js", Url)
+    @Content.Script("cvalid.js", Url)
+    @Content.Script("json2.js", Url)
+<script type="text/javascript">
+    $(document).ready(function () {
+        var uploader = '@Url.Action("Uploader", "Upload")?type=g';
+
+        var item_tmp = $("#goods_item_model").cTemplate();
+
+        var productItems = [];
+
+        var currentGNo = function () { return $("#goods_box_outer .goods_box_item").length + 1; };
+
+        if (currentGNo() >= 6) {
+            $("#item_pic_uploader").hide();
+        }
+
+        var initGItem = function (gitem, pic) {
+
+            var ubox = gitem.find(".upload_box");
+            var picbox = ubox.find("img[name='pic']");
+            var pvalue = gitem.find('[name^="h_goods_item_pic"]');
+            var pprice = gitem.find('[name^="h_goods_item_price"]');
+            var page = gitem.find('[name^="h_goods_item_age"]');
+            var pbox = ubox.parent();
+
+            var bindPic = function (gpic) {
+                pvalue.val(gpic.Pic.PicId);
+                if (picbox.length == 0) {
+                    picbox = $("<img name='pic' />");
+                    ubox.append(picbox);
+                }
+                picbox.attr("src", gpic.Pic.PicUrl);
+                picbox.css({ 'width': gpic.Pic.DisWidth + "px", 'height': gpic.Pic.DisHeight + "px", margin: gpic.Pic.DisMargin });
+            };
+
+            if (pic) {
+                bindPic(pic);
+            }
+            pprice.AutoValidation("blur", cvalid.required(), cvalid.numeric());
+
+            page.AutoValidation("blur", cvalid.required(), cvalid.numeric());
+
+            ubox.cUpload({
+                size: { width: 126, height: 126 },
+                url: uploader,
+                uploaded: function (response) {
+                    if (!response.Saved) {
+                        alert(response.Msg);
+                    }
+                    else {
+                        bindPic(response);
+                    }
+                }
+            });
+        };
+        $("#addGoodsItemBtn").cUpload({
+            size: { width: 126, height: 126 },
+            url: uploader,
+            beforeUpload: function () { return true; },
+            uploaded: function (response) {
+                response.Saved = true;
+                if (!response.Saved) {
+                    alert(response.Msg);
+                }
+                else {
+                    var curNo = currentGNo();
+                    if (curNo == 6) {
+                        $("#item_pic_uploader").hide();
+                    }
+                    else if (curNo > 6) {
+                        alert("您最多能上传6张图片，如果超过6张，您可以在新开一个帖子!");
+                        $("#item_pic_uploader").hide();
+                        return;
+                    }
+                    var newItemHtml = item_tmp.DataBind({ gno: curNo });
+                    var newItem = $(newItemHtml);
+                    $("#goods_box_outer").append(newItem);
+                    initGItem(newItem, response);
+                }
+            }
+        });
+        $("#goods_box_outer .goods_box_item").each(function () {
+            initGItem($(this));
+        });
+
+        //添加验证
+        $("#gtitle").AutoValidation("blur", cvalid.required(), cvalid.maxlength(30));
+        $("#gqq").AutoValidation("blur", function () {
+            var qqvalid = cvalid.numeric().call(this);
+            var pvalid = cvalid.numeric().call($("#gphone"));
+            return cvalid.CreateVR(qqvalid.valid || pvalid.valid, "QQ和手机至少需填写一项!");
+        });
+        $("#gphone").AutoValidation("blur", function () {
+            var qqvalid = cvalid.numeric().call(this);
+            var pvalid = cvalid.numeric().call($("#gqq"));
+            return cvalid.CreateVR(qqvalid.valid || pvalid.valid, "QQ和手机至少需填写一项!");
+        });
+        $("#gdescription").AutoValidation("blur", cvalid.required(), cvalid.maxlength(200));
+
+        cvalid.ValidationAll();
+
+        $("#submit_btn").bind("click", function () {
+            var valid = cvalid.ValidationAll();
+            if (!valid.valid) {
+                alert("请将信息填写完整再发布!");
+                $(valid.avalids[0].elt).focus();
+                return false;
+            }
+            var goods = {
+                Id: $("#h_goods_id").val(),
+                Title: $("#gtitle").val(),
+                QQ: $("#gqq").val(),
+                Phone: $("#gphone").val(),
+                Description: $("#gdescription").val(),
+                Items: new Array()
+            };
+            var itemNos = $("#goods_box_outer [name^='gno']");
+            for (var i = 0; i < itemNos.length; i++) {
+                var gno = $(itemNos[i]).val();
+                goods.Items.push({
+                    Id: $("#h_goods_item_id" + gno).val(),
+                    PicId: $("#h_goods_item_pic" + gno).val(),
+                    Price: $("#h_goods_item_price" + gno).val(),
+                    Age: $("#h_goods_item_age" + gno).val(),
+                    Sex: $('input[name="h_goods_item_sex' + gno + '"]:checked').val(),
+                    ItemType: $('input[name="h_goods_item_type' + gno + '"]:checked').val()
+                });
+            }
+            if (goods.Items.length == 0) {
+                alert("必须至少上传一张图片!");
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AjaxAddGoods", "User")',
+                data: { goods: JSON.stringify(goods) }
+            }).done(function (response) {
+                if (response.Error == 0) {
+                    if (response.ExMessage && response.ExMessage.length > 0)
+                        alert(response.ExMessage);
+                    window.location = '@Url.Action("Goods","User")';
+                } else {
+                    alert(response.ExMessage);
+                }
+            });
+        });
+    });
+</script>
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  	android:layout_width="fill_parent"
+  	android:layout_height="fill_parent"
+  	android:orientation="vertical"
+  	android:background="@color/white">
+  	
+    <include layout="@layout/frame_main_header" /> 
+
+		<TextView 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:autoLink="web|email"
+           	android:textSize="@dimen/text_size_16"
+            android:textColorLink="@color/blue"
+			android:textColor="@color/black"
+			android:paddingLeft="10dip"
+			android:paddingRight="10dip"
+			android:paddingTop="20dip"
+			android:text="@string/about_us_text"/>
+
+</LinearLayout>

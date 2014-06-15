@@ -1,0 +1,18 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error</title>
+</head>
+<body>
+    <h2>
+        @foreach (var e in HttpContext.Current.AllErrors)
+        { 
+            @e.Message<br />
+        }
+    </h2>
+</body>
+</html>

@@ -1,0 +1,87 @@
+﻿/**
+ * @author yangchao
+ * @email:aaronyangchao@gmail.com
+ * @date: 2012/7/9 23:16:46
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using BabyPlan.Common;
+using BabyPlan.DataStructure;
+
+namespace BabyPlan.Meta
+{
+    [Serializable]
+    public class ProProductItem
+    {
+        /// <summary>
+        /// 宝贝ID
+        /// </summary>
+        public Int32 ProItemId
+        { get; set; }
+
+       
+        /// <summary>
+        /// 
+        /// </summary>
+        public String ItemInfo
+        { get; set; }
+
+        /// <summary>
+        /// 宝贝所在帖子ID
+        /// </summary>
+        public Int32 ProId
+        { get; set; }
+
+  
+
+        /// <summary>
+        /// 添加时间
+        /// </summary>
+        public DateTime CreateTime
+        { get; set; }
+
+        /// <summary>
+        /// 1: 启用 2：禁用
+        /// </summary>
+        public StateType State
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public LevelType Level
+        { get; set; }
+
+        public string PicUrl
+        { get; set; }
+        public int PicHeight
+        { get; set; }
+        public int PicWidth
+        { get; set; }
+        public int PicId
+        { get; set; }
+
+
+        /// <summary>
+        /// 从读取器向完整实例对象赋值
+        /// </summary>/// <param name="reader">数据读取器</param>
+        /// <returns>返回本对象实例</returns>
+        public ProProductItem BuildSampleEntity(IDataReader reader)
+        {
+            this.ProItemId = DBConvert.ToInt32(reader["pro_item_id"]);
+            this.ItemInfo = DBConvert.ToString(reader["item_info"]);
+            this.ProId = DBConvert.ToInt32(reader["pro_id"]);
+            this.CreateTime = DBConvert.ToDateTime(reader["create_time"]);
+            this.State = (StateType)DBConvert.ToInt32(reader["state"]);
+            this.Level = (LevelType)DBConvert.ToInt32(reader["level"]);
+            //this.PicUrl = DBConvert.ToString(reader["pic_url"]);
+            //this.PicHeight = DBConvert.ToInt32(reader["pic_height"]);
+            //this.PicWidth = DBConvert.ToInt32(reader["pic_width"]);
+            //this.PicId = DBConvert.ToInt32(reader["pic_id"]);
+            return this;
+        }
+    }
+}

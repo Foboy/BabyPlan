@@ -1,0 +1,30 @@
+* html .u2_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="user_files/u2_normal.png");
+}
+
+* html .u11_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="register_files/u11_normal.png");
+}
+
+* html .u29_line {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="register_files/u29_line.png");
+}
+
+* html .u31_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="register_files/u31_normal.png");
+}
+
+* html .u33_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="register_files/u31_normal.png");
+}
+
+* html .u36_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="register_files/u36_normal.png");
+}
+

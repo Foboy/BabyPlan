@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bd739faa-102f-4a23-8c8d-69565059eaab" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1937/BabyPlan.WcfService/UserService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UserService.disco" MetadataType="Disco" ID="78fd38fb-73e4-4a18-aec4-ed9bd19982db" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/UserService.svc?disco" />
+    <MetadataFile FileName="UserService.xsd" MetadataType="Schema" ID="6f0f435b-8d4b-40a9-90a8-af17b9c41648" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/UserService.svc?xsd=xsd2" />
+    <MetadataFile FileName="UserService1.xsd" MetadataType="Schema" ID="fe351ae4-f327-465b-ba61-2a5a4f806a31" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/UserService.svc?xsd=xsd3" />
+    <MetadataFile FileName="UserService2.xsd" MetadataType="Schema" ID="790aa0c6-8976-4b41-a3e6-0a45364d1c0a" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/UserService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UserService3.xsd" MetadataType="Schema" ID="d8d5ac39-fe69-40ab-a277-7d065fefcbc1" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/UserService.svc?xsd=xsd4" />
+    <MetadataFile FileName="UserService.wsdl" MetadataType="Wsdl" ID="cafb30eb-b6ce-4bca-9882-17a3ec56ca04" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/UserService.svc?wsdl" />
+    <MetadataFile FileName="UserService4.xsd" MetadataType="Schema" ID="9b0a898b-173d-4089-9850-d724d8152cd7" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/UserService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

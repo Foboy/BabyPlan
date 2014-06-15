@@ -1,0 +1,136 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+using System.IO;
+using BabyPlan.Common;
+using System.ServiceModel.Activation;
+using System.ServiceModel.Web;
+using System.Drawing;
+using System.Diagnostics;
+using BabyPlan.Common.Cache;
+using BabyPlan.DataStructure;
+using BabyPlan.DataAccess;
+using BabyPlan.Meta;
+using BabyPlan.Meta.Enum;
+
+namespace BabyPlan.WcfService
+{
+    // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码、svc 和配置文件中的类名“FileService”。
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
+    public class FileService : IFileService
+    {
+
+        #region IFileService 成员
+
+        public string AddVoteTypeImg(string voteTypeID, byte[] fileByte)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string EditVoteType(int voteTypeID, string title, string description, byte[] fileByte)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string EditVoteTypeImg(int voteTypeID, byte[] fileByte)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string UploadVoteImage(int voteTypeID, byte[] fileByte)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdvancedResult<string> UploadBBPic(byte[] fileByte,int picHeight,int picWidth,  string token)
+        {
+            AdvancedResult<string> result = new AdvancedResult<string>();
+
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.Error = AppError.ERROR_PERSON_NOT_LOGIN;
+            }
+            else
+            {
+                int userid = Convert.ToInt32(CacheManagerFactory.GetMemoryManager().Contains(token));
+                string fileUrl = string.Empty;
+                fileUrl = FileHelper.UploadFile(userid, fileByte, "png", UploadFileType.BBPicture);
+
+                ResPic pic = new ResPic();
+                pic.ObjId = userid;
+                pic.ObjType = 0;
+                pic.PicUrl = fileUrl;
+                pic.PicHeight = picHeight;
+                pic.PicWidth = picWidth;
+                pic.State = 1;
+
+                int picid = ResPicAccessor.Instance.Insert(pic);
+
+                result.Data = fileUrl;
+                result.Error = AppError.ERROR_SUCCESS;
+            }
+            return result;
+        }
+
+        public AdvancedResult<string> UploadUserImage(byte[] fileByte,int picHeight,int picWidth,  string token)
+        {
+            AdvancedResult<string> result = new AdvancedResult<string>();
+
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.Error = AppError.ERROR_PERSON_NOT_LOGIN;
+            }
+            else
+            {
+                int userid = Convert.ToInt32(CacheManagerFactory.GetMemoryManager().Contains(token));
+                string fileUrl = string.Empty;
+                fileUrl = FileHelper.UploadFile(userid, fileByte, "png", UploadFileType.UserHeadPic);
+                AdUser user = UserAccessor.Instance.Get(userid, string.Empty, string.Empty, (int)StateType.All);
+                ResPic pic=new ResPic();
+                pic.ObjId=userid;
+                pic.ObjType=1;
+                pic.PicUrl=fileUrl;
+                pic.PicHeight = picHeight;
+                pic.PicWidth = picWidth;
+                pic.State = 1;
+                if (user.PicId > 0)
+                {
+                    ResPicAccessor.Instance.Delete(user.PicId);
+                }
+
+                int picid = ResPicAccessor.Instance.Insert(pic);
+
+
+                user.PicId = picid;
+                user.PicHeight = picHeight;
+                user.PicWidth = picWidth;
+                user.HeadImgUrl = fileUrl;
+                UserAccessor.Instance.Update(user);
+
+                result.Data = fileUrl;
+                result.Error = AppError.ERROR_SUCCESS;
+            }
+
+            return result;
+        }
+        public RespResult DeleteBBPic(int picId, string token)
+        {
+            RespResult result = new RespResult();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.Error = AppError.ERROR_PERSON_NOT_LOGIN;
+            }
+            else
+            {
+                ResPicAccessor.Instance.Delete(picId);
+                result.Error = AppError.ERROR_SUCCESS;
+            }
+            return result;
+        }
+
+        #endregion
+    }
+}

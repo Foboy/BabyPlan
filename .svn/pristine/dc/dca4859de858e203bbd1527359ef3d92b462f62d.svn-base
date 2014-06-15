@@ -1,0 +1,15 @@
+﻿(function ($) {
+    $.fn.uploadifyeasy = function (options) {
+        var option = $.extend({
+            multi: false,
+            queueSizeLimit: 1,
+            removeTimeout: 0,
+        }, options);
+        var id = $(this).attr('id');
+        $(this).uploadify(option);
+        //解决ie8点不到flash问题
+//        $this = $('#'+id);
+//        var swfuploadify = $this.data("uploadify");
+//        $this.css({'cursor':'pointer'});
+    }
+})(jQuery);

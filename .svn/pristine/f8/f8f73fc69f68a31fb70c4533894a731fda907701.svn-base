@@ -1,0 +1,100 @@
+﻿/**
+ * @author yangchao
+ * @email:aaronyangchao@gmail.com
+ * @date: 2012/6/21 0:44:48
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using BabyPlan.Common;
+
+namespace BabyPlan.Meta
+{
+    [Serializable]
+    public class AdUser
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public Int32 AdUserId
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String UserAccount
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String Pwd
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime BabyBirthday
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String HeadImgUrl
+        { get; set; }
+        public int PicHeight
+        { get; set; }
+        public int PicWidth
+        { get; set; }
+        public int PicId
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Int32 Sex
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String Qq
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String Mobile
+        { get; set; }
+
+        /// <summary>
+        /// 1:启用 2：禁用
+        /// </summary>
+        public Int32 State
+        { get; set; } 
+
+
+        /// <summary>
+        /// 从读取器向完整实例对象赋值
+        /// </summary>/// <param name="reader">数据读取器</param>
+        /// <returns>返回本对象实例</returns>
+        public AdUser BuildSampleEntity(IDataReader reader)
+        {
+            this.AdUserId = DBConvert.ToInt32(reader["ad_user_id"]);
+            this.UserAccount = DBConvert.ToString(reader["user_account"]);
+            this.Pwd = DBConvert.ToString(reader["pwd"]);
+            this.BabyBirthday = DBConvert.ToDateTime(reader["baby_birthday"]);
+            //this.HeadImgUrl = DBConvert.ToString(reader["head_img_url"]);
+            this.Sex = DBConvert.ToInt32(reader["sex"]);
+            this.Qq = DBConvert.ToString(reader["qq"]);
+            this.Mobile = DBConvert.ToString(reader["mobile"]);
+            this.State = DBConvert.ToInt32(reader["state"]);
+            this.PicHeight = DBConvert.ToInt32(reader["pic_height"]);
+            this.PicWidth = DBConvert.ToInt32(reader["pic_width"]);
+            this.PicId = DBConvert.ToInt32(reader["pic_id"]);
+            return this;
+        }
+    }
+}

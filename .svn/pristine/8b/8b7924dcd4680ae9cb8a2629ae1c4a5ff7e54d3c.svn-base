@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "ViewPage1";
+    Layout = "~/Views/shared/_Layout.cshtml";
+}  
+@Html.Partial("_header_no_signform") 
+<div class="pMain body_bg"> 
+    <div class="container">  
+        <div id="pLogin">
+           <div class="roof"></div>     
+            <div class="room">
+                <div class="room-in-nor dj-login-mod clearfix">
+                    <div class="social-login-box">
+                        <div class="hd"><h3>使用以下帐号登录</h3></div>
+                        <ul class="social-login-list">
+                            <li class="login-weibo-link"><a href='@Url.Action("sina_login", "a")' title="微博帐号登录" stat="7025">微博帐号登录</a></li>
+                            <li class="login-qqweibo-link"><a href='@Url.Action("qq_wb_login", "a")' title="腾讯微博登录">腾讯微博登录</a></li> 
+                        </ul>
+                        <div class="g9">让我们不再被信息淹没 让微博营销更加简单</div>
+                    </div>
+                    <div class="dj-login-box">
+                        <div class="hd"><h3>使用微博营销平台账户登录</h3></div> 
+                        <form action='@Url.Action("dologin", "a")' method="post" id="signin-form">
+                        <dl class="formset">
+                            <dt>用户名或邮箱:</dt>
+                            <dd><input name="signin-email" id="signin-email" type="text"  class="reg-input-wrap" ></dd>
+                            <dt>密码:</dt>
+                            <dd><input name="signin-pw" id="signin-pw" type="password"  class="reg-input-wrap" ></dd> 
+                            <dd><a href='@Url.Action("forgot","a")'>忘记密码</a></dd>
+                            <dd class="button"><button type="submit" class="submit">登 录</button><a href='@Url.Action("reg","a")'>注册新帐户</a></dd>
+                        </dl> 
+                        </form>
+                    </div>
+            </div>
+        </div>
+           </div>               
+            <div class="floor"></div>
+        </div>
+    </div>
+</div> 
+@Html.Partial("_footer_after_login")
+@section Js_InFoot{
+    <!--页面尚加载完后的Js-->
+    @Content.Script("jquery-cycle.min.js", Url)
+    @Content.Script("home-index.js", Url) 
+    <script type="text/javascript">
+        $('#signin-form').submit(function (event) {
+            event.preventDefault();
+            if (!/^[a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test($('#signin-email').val())) {
+                alert('请输入正确的Email');
+                $('#signin-email').focus();
+                return;
+            };
+            if (!$('#signin-pw').val()) {
+                alert('请输入密码');
+                $('#signin-pw').focus();
+                return;
+            };
+            var login_param = {
+                username: $('#signin-email').val(),
+                password: $("#signin-pw").val()
+                //$.md5($("#signin-pw").val())
+            };
+            $.ajax({
+                type: "POST",
+                dataType: "Json",
+                data: login_param,
+                url: '@Url.Action("dologin","a")',
+                success: function (ret_msg) {
+                    if (ret_msg.Error == 0) {
+                        //跳转到个人中心
+                        window.location.href = '@Url.Action("dashboard","cen")';
+                    }
+                    else if (ret_msg.Error == 2) {
+                        //该平台账号没有和任何社交账号绑定               
+                        window.location.href = '@Url.Action("sel_social_user","a")';
+                    }
+                    else
+                        alert(ret_msg.RetMsg);
+                }
+            });
+        });
+    </script>
+}

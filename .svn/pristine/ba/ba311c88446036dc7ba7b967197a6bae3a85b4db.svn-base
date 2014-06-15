@@ -1,0 +1,174 @@
+body
+{    
+    font: 12px/1.5 Arial,Tahoma,Helvetica,sans-serif; 
+    word-wrap: break-word;
+    background:#000000; 
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+a,a:link, a:visited {
+     text-decoration: none;
+}
+a {
+    color: #1357A2;
+    text-decoration: none;
+}
+ol, ul {
+    list-style: none outside none;
+}
+.fl
+{
+    float:left;
+}
+.fr
+{
+    float:right;
+}
+.text-right
+{
+    text-align:right;
+}
+.text-center
+{
+    text-align:center;
+}
+.text-left
+{
+    text-align:left;
+}
+.white-font
+{
+    color:#fff;
+}
+.gray-font
+{
+    color:#ccc;
+}
+.red-font
+{
+    color:Red;
+}
+.padding-lr10
+{
+    padding:0 10px;
+}
+.dotline
+{ 
+    background: url("images/dot-line.gif") repeat-x scroll 0 bottom transparent;
+    padding-bottom: 5px;    
+}
+.clearfix:after
+{
+    clear: both;
+    content: ".";
+    display: block;    
+    visibility: hidden;
+    height:0;  
+}
+.clear {
+    background: none repeat scroll 0 0 transparent !important;
+    clear: both;
+    font-size: 1px;
+    line-height: 0; 
+    min-height: 1px;
+}
+.body_bg
+{
+    background:url("images/bg.jpg") repeat scroll 0 0 transparent;  
+} 
+.container {
+    margin: 0 auto;   
+    width: 980px;
+}   
+.relative
+{
+    position:relative;
+}
+.absolute
+{
+    position:absolute
+}
+.fixed
+{
+    position: fixed;
+    
+}
+.top51
+{
+    top:51px;
+}
+.bottom5
+{
+    bottom:5px;
+}
+.top84
+{
+    top:84px;
+}
+.displaynone
+{
+    display:none;
+}
+.displayblock
+{
+    display:block;
+} 
+.small {
+    font-size: 12px;
+} 
+ a.ok-btn, a.cancel-btn, a.reg-btn, a.goto-login-btn {
+    height: 30px;
+    overflow: hidden;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+ a.cancel-btn b, a.cancel-btn:hover b, a.goto-login-btn b {
+      background: url("images/bg_reg_btn.png") no-repeat scroll 100% -183px transparent;
+}
+a.goto-login-btn:hover
+{
+    background-position:0 -223px;
+}
+a.ok-btn b, a.cancel-btn b, a.reg-btn span, a.goto-login-btn b {
+    height: 24px;
+    line-height: 24px;
+    padding: 3px 16px 3px 11px;
+    width: auto;
+}
+ 
+a.goto-login-btn{
+    background: url("images/bg_reg_btn.png") no-repeat scroll 0 -183px transparent;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+}
+.yahei {
+    font-size: 18px;
+}  
+.sina_icon
+{
+    background:url("images/sina_icon.png") no-repeat;
+}
+.qq_icon
+{
+   background:url("images/qq.png") no-repeat;
+}
+.margin-auto
+{
+    margin:0 auto;
+}
+.userform p
+{
+    padding:10px 0;    
+}
+textarea
+{
+    resize:none;
+}

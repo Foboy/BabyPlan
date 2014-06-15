@@ -1,0 +1,188 @@
+﻿@{
+    ViewBag.Title = "登录 - 百家衣(www.360baijiayi.com)";
+    ViewBag.Description = "百家衣(www.360baijiayi.com)是一个专注婴儿闲置衣物买卖的网站，在这里妈妈们可以在线买卖宝宝闲置的衣服、玩具。“百家衣”是婴儿服的一种，由一百个家庭收集到布片做成，故名“百家衣”";
+    ViewBag.KeyWords = "百家衣,买卖,旧衣服,二手,二手衣服,闲置,宝宝,婴儿,儿童,孩子,衣服,小孩衣服,婴儿衣服,寄售,玩具,同城置换,同城交易,四川二手,成都二手衣服";
+    Layout = "~/Views/Shared/_Layout_Nested.cshtml";
+    ResourceHelper.RegisterCss(this, "account.css");
+}
+@section Js_InHeader{
+    @Content.Script("jquery.form.js",Url)
+}
+
+<div class="mainblock">
+   <div class="mainblock whiteblock">
+      <div class="reg_title title_top"><span class="font-size20 green-font font-weight4">HI, @ViewBag.SocialName，欢迎来到百家衣网</span></div>
+      <div class="reg_title"><span class="green-font">拥有百家衣帐号后，您可以发布宝宝闲置物品、评论等，和我们一起关注宝宝的健康！</span></div>
+      <div class="reg_content">
+
+        <div class="reg_left_outer">
+          <div class="option">
+            <h4 class="font-size16 blue-font soical_title"><label><input type="radio" name="r1" value="register" data-bind="checked: operation">开通百家衣帐号</label></h4>
+            <form id="register_form" action="@Url.Action("AjaxRegister", "Account")" method="post" class="soical_form" data-bind="visible: operation()=='register'">
+                <p>
+                  <label>用户名：</label>
+                  <input type="text" name="username" class="input_box" validate="{required:true,minlength:4,maxlength:16}" />
+                  <span class="tip gray-font">用户名，由4-16位字符组成，可以是字母、数字或汉字</span>
+                </p>
+                 <p>
+                  <label>性别：</label>
+                  <input name="sex" type="radio" value="0" checked="checked"/><span>男</span>
+                        &nbsp;&nbsp;
+                  <input name="sex" type="radio" value="1" /><span>女</span>
+                </p>
+                 <p>
+                  <label>密码：</label>
+                  <input type="password" id="reg_password" name="password" class="input_box"  validate="{required:true,minlength:6,maxlength:18}" />
+                  <span class="tip gray-font">6-18位，可包含字母、数字或特殊字符 </span>
+                </p>
+                <p>
+                  <label>确认密码：</label>
+                  <input type="password" class="input_box"   validate="{equalTo:'#reg_password'}" />
+                  <span class="tip gray-font">重复输入上面的密码，确保输入的密码一致</span>
+                </p>
+                 <p>
+                  <input type="submit" class="button-green register_submit button_pointer" id="register_btn" value="注册" />
+                </p>
+               
+                
+                <div class="clear"></div>
+            </form>
+           </div>
+
+           <div class="option">
+             <h4 class="font-size16 blue-font soical_title"><label><input type="radio" name="r1" value="login" data-bind="checked: operation">已有百家衣帐号</label></h4>
+             <form id="login_form" action="@Url.Action("AjaxLogin","Account")" method="post" class="soical_form" data-bind="visible: operation()=='login'">
+                <p>
+                  <label>用户名：</label>
+                  <input type="text" name="username" class="input_box" validate="{required:true,minlength:4,maxlength:16}" />
+                  <span class="tip gray-font">用户名，由4-16位字符组成，可以是字母、数字或汉字</span>
+                </p>
+                <p>
+                  <label>密码：</label>
+                  <input type="password" name="password" class="input_box" validate="{required:true,minlength:6,maxlength:18}" />
+                  <span class="tip gray-font">6-18位，可包含字母、数字或特殊字符 </span>
+                </p> 
+                <p>
+                  <input type="submit" class="button-green register_submit button_pointer" id="login_btn" value="登录" />
+                </p>
+                <div class="clear"></div>
+            </form>
+           </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+    </div>
+</div>
+@section Js_InFoot{
+    @Content.Css("fancybox/jquery.fancybox-1.3.4.css",  Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)  
+    @Content.Script("fancybox/jquery.fancybox-1.3.4.js",Url)
+    @Content.Script("fancybox.msgbox.js", Url)
+    @Content.Script("knockout-2.1.0.js", Url)
+    @Content.Script("jquery-validation-1.9.0/jquery.validate.min.js", Url)
+    @Content.Script("jquery-validation-1.9.0/lib/jquery.metadata.js", Url)
+    <script type="text/javascript">
+        (function () {
+            function queryString(key) {
+                return (document.location.search.match(new RegExp("(?:^\\?|&)" + key + "=(.*?)(?=&|$)")) || ['', null])[1];
+            }
+
+            $.metadata.setType("attr", "validate");
+            var viewModel = {
+                operation: ko.observable("register")
+            };
+            ko.applyBindings(viewModel);
+
+            var highlight = function (element, errorClass, validClass) {
+                $(element).css("border", "solid 2px #f00");
+                $(element).next("span").attr("class", "tip red-font");
+            };
+            var unhighlight = function (element, errorClass, validClass) {
+                $(element).css("border", "solid 2px #8CBF26");
+                $(element).next("span").attr("class", "tip gray-font");
+            };
+
+            var loginValidator = $("#login_form").validate({ errorElement: "",
+                highlight: highlight,
+                unhighlight: unhighlight
+            });
+
+            var registerValidator = $("#register_form").validate({ errorElement: "",
+                highlight: highlight,
+                unhighlight: unhighlight
+            });
+
+            var loginOptions = {
+                dataType: 'json',
+                beforeSubmit: beforeLogin,
+                success: loginSuccess
+            };
+            $("#login_form").ajaxForm(loginOptions);
+            function beforeLogin() {
+                var valid = loginValidator.checkForm();
+                if (!valid && loginValidator.errorList.length > 0) {
+                    $(loginValidator.errorList[0].element).focus();
+                    return false;
+                }
+                $("#login_btn").val("登录中...").attr("disabled", "false");
+                return true;
+            }
+
+            function loginSuccess(response) {
+                if (response.Error == 0) {
+                    var timeout = 0;
+                    if (response.ExMessage) {
+                        $.showMsg(response.ExMessage, "success");
+                        timeout = 2000;
+                    }
+                    setTimeout(function () {
+                        var returnUrl = queryString("ReturnUrl");
+                        if (returnUrl) {
+                            window.location = decodeURIComponent(returnUrl);
+                        }
+                        else
+                            window.location = '@Url.Action("Index","User")';
+                    }, timeout);
+                } else {
+                    $("#login_btn").val("登录").attr("disabled", "");
+                    $.showMsg(response.ExMessage || response.ErrorMessage, "error");
+                }
+            }
+
+            var registerOptions = {
+                dataType: 'json',
+                beforeSubmit: beforeRegister,
+                success: registerSuccess
+            };
+            $("#register_form").ajaxForm(registerOptions);
+
+            function beforeRegister() {
+                var valid = registerValidator.checkForm();
+                if (!valid && registerValidator.errorList.length > 0) {
+                    $(registerValidator.errorList[0].element).focus();
+                    return false;
+                }
+                $("#register_btn").val("注册中...").attr("disabled", "false");
+                return true;
+            }
+
+            function registerSuccess(response) {
+
+                if (response.Error == 0) {
+                    $.showMsg(response.ExMessage || "注册成功！", "success");
+                    setTimeout(function () {
+                        var returnUrl = queryString("ReturnUrl");
+                        if (returnUrl)
+                            window.location = decodeURIComponent(returnUrl);
+                        else
+                            window.location = '@Url.Action("Index","User")';
+                    }, 1000);
+                }
+                else {
+                    $("#register_btn").val("立即注册").attr("disabled", "");
+                    $.showMsg(response.ExMessage || response.ErrorMessage, "error");
+                }
+            }
+        })();
+    </script>
+}

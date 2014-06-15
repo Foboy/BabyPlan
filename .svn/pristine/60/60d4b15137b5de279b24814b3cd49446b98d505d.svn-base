@@ -1,0 +1,191 @@
+﻿@{
+    ViewBag.Title = "bookdetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model BabyPlan.mvcApp.ViewModel.BookModel
+@section Js_InHeader{
+@Content.Script("jquery.min.1.7.js", Url)
+@Content.Script("modernizr.2.5.3.min.js", Url)
+@Content.Script("jquery.mousewheel.min.js", Url)
+@Content.Script("turnjs/hash.js", Url)
+@Content.Css("turnjs/bookview.css", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)
+@Content.Css("public.book.css", Url)
+}
+<div class="bookview-viewport">
+<a href="/info/babybook.html" class="backHome"><img src="../../images/backHome.png" /></a>
+  <div class="bookviewcon">
+	<div class="bookview" id="bookview">
+        @switch (Model.BookCover)
+        { 
+            case BookCoverType.A:
+                <div class="pages" page-index="1">
+                    <div class="page Ptitle">
+                        <p class="ptbaby_p">@(Model.Name)</p>   
+                        <div class="ptbaby"></div>       	
+                        <div class="pNumber"></div>
+                    </div>
+                </div>
+             break;
+             case BookCoverType.B:
+                <div class="pages" page-index="1">
+                    <div class="page Ptitle">
+                        <div class="ptyoung"></div>     	
+                        <p class="ptyoung_p">@(Model.Name)</p>
+                        <div class="pNumber"></div>
+                    </div>
+                </div>
+              break;
+              case BookCoverType.C:
+                <div class="pages" page-index="1">
+                    <div class="page Ptitle">
+                        <div class="ptold"></div>       	
+                        <p class="ptold_p">@(Model.Name)</p>
+                        <div class="pNumber"></div>
+                    </div>
+                </div>
+              break;
+        }
+                <div class="pages" page-index="2">
+                    <div class="page Pcontent"> 
+                    </div>
+                </div>
+                <div class="pages" page-index="3">
+                    <div class="page Ptitle">
+                        <div class="ptold"></div>       	
+                        <p class="ptold_p">@(Model.Introduction)</p>
+                        <div class="pNumber"></div>
+                    </div>
+                </div>
+        @if (Model.PicsCount > 0)
+        {
+            var title = Model.Pics[0];
+            title.DisplaySeting(380, 380);
+            for (int i = 0, p = 1; i < Model.PicsCount; i += 3, p++)
+            {
+                var right = "";
+                var pagecss = "pageleft";
+                if (p % 2 == 0)
+                {
+                    right = "text-right";
+                    pagecss = "pageright";
+                }
+        <div class="pages" page-index="@(p+3)">
+            <div class="page Pcontent @pagecss">
+                <div class="contentShow">
+        	        <h1 class="@right">@Model.Name</h1>
+                    @for (int j = i, c = i + 3; j < Model.PicsCount && j < c; j++)
+                    {
+                        var item = Model.Pics[j];
+                        item.DisplaySeting(100, 100);
+                    <div class="imgShow clearfix">
+            	        <div class="imgHead fl"><img src="@item.PicUrl" style="width:@item.DisWidth.ToString()px;height:@item.DisHeight.ToString()px;margin:@item.DisMargin"/></div> 
+                        <div class="textDes fr">
+                            @(item.Description)
+                        </div>
+                    </div>
+                    }
+                </div>    
+                <div class="pNumber">@p</div>    
+            </div>
+        </div>
+                if ((i+ 3) >= Model.PicsCount && p % 2 == 1)
+                {
+        <div class="pages" page-index="@(p+4)">
+            <div class="page Pcontent pageright"> 
+            </div>
+        </div>
+                }
+            }
+        }
+	</div>
+  </div>
+</div>
+<script type="text/javascript">
+    function isChrome() {
+        return navigator.userAgent.indexOf('Chrome') != -1;
+    }
+    function loadApp() {
+        $('#bookview').turn({
+            width: 840,
+            height: 590,
+            elevation: 50,
+            acceleration: !isChrome(),
+            gradients: true,
+            autoCenter: true,
+            when: {
+                turning: function (event, page, view) {
+                    var book = $(this),
+				    currentPage = book.turn('page'),
+				    pages = book.turn('pages');
+                    Hash.go('page/' + page).update();
+                },
+                turned: function (event, page, view) {
+                    $(this).turn('center');
+                    if (page == 1) {
+                        $(this).turn('peel', 'br');
+                    }
+                },
+
+                missing: function (event, pages) {
+                }
+            }
+
+        });
+
+        $(document).keydown(function (e) {
+            var previous = 37, next = 39, esc = 27;
+            switch (e.keyCode) {
+                case previous:
+                    // left arrow
+                    $('#bookview').turn('previous');
+                    e.preventDefault();
+                    break;
+                case next:
+                    //right arrow
+                    $('#bookview').turn('next');
+                    e.preventDefault();
+                    break;
+            }
+        });
+
+        // URIs - Format #/page/1 
+        Hash.on('^page\/([0-9]*)$', {
+            yep: function (path, parts) {
+                var page = parts[1];
+                if (page !== undefined) {
+                    if ($('#bookview').turn('is'))
+                        $('#bookview').turn('page', page);
+                }
+            },
+            nop: function (path) {
+                if ($('#bookview').turn('is'))
+                    $('#bookview').turn('page', 1);
+            }
+        });
+        $("#bookview").turn("disable", true);
+        $(".pages").unbind("click").click(function (event) {
+            $("#bookview").turn("disable", false);
+            var pageIndex = Number($(this).attr("page-index"));
+            if (!isNaN(pageIndex)) {
+                if (pageIndex % 2 == 1) {
+                    
+                    $('#bookview').turn('next');
+                }
+                else {
+                    $('#bookview').turn('previous');
+                }
+            }
+            $("#bookview").turn("disable", true);
+            event.stopPropagation();
+        });
+    }
+    yepnope({
+        test: Modernizr.csstransforms,
+        yep: ['@Content.SourceSrc("turnjs/turn.min.js", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)'],
+        nope: ['@Content.SourceSrc("turnjs/turn.html4.min.js", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)'],
+        complete: loadApp
+    });
+
+</script>
+
+

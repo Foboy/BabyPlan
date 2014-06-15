@@ -1,0 +1,8 @@
+﻿@{
+    Layout = null;
+} 
+<div id="header-outter">
+   <div id="header">
+      <h1><a href='@Url.Action("index","home")' class="white-font">BabyPlan母婴用品平台<sup>Beta</sup></a><span>让微博营销更加简单&reg;</span></h1>      
+  </div>
+</div>

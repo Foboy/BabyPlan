@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using BabyPlan.Common;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class TradeController : BaseController
+    {
+        //
+        // GET: /Trade/
+
+        public ActionResult Index()
+        {
+            return View("~/Views/Trade/Index.cshtml");
+        }
+
+        public ActionResult Detail(int id)
+        {
+            ViewBag.Paging = HtmlFormatHelper.GeneratePagingHtml(1, 20, 400, Url.Action("Detail", "Trade") + "/{0}", "下一页", "上一页", null, null, null);
+            return View("~/Views/Trade/Detail.cshtml");
+        }
+    }
+}

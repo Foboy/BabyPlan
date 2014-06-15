@@ -1,0 +1,65 @@
+* html .u0_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="user_files/u0_normal.png");
+}
+
+* html .u9_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="user_files/u9_normal.png");
+}
+
+* html .u15_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="发布宝贝_files/u15_normal.png");
+}
+
+* html .u17_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="发布宝贝_files/u17_normal.png");
+}
+
+* html .u25_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="发布宝贝_files/u25_normal.png");
+}
+
+* html .u30_line {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="发布宝贝_files/u30_line.png");
+}
+
+* html .u53_line {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="发布宝贝_files/u53_line.png");
+}
+
+* html .u54_line {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="发布宝贝_files/u54_line.png");
+}
+
+* html .u55_line {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="发布宝贝_files/u55_line.png");
+}
+
+* html .u59_line {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="发布宝贝_files/u59_line.png");
+}
+
+* html .u60_line {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="发布宝贝_files/u60_line.png");
+}
+
+* html .u61_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="发布宝贝_files/u61_normal.png");
+}
+
+* html .u66_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="发布宝贝_files/u66_normal.png");
+}
+

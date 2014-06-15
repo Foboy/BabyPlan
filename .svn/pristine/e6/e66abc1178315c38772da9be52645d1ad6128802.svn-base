@@ -1,0 +1,31 @@
+for(var i = 0; i < 93; i++) { var scriptId = 'u' + i; window[scriptId] = document.getElementById(scriptId); }
+
+$axure.eventManager.pageLoad(
+function (e) {
+
+});
+gv_vAlignTable['u86'] = 'center';gv_vAlignTable['u55'] = 'top';gv_vAlignTable['u46'] = 'center';gv_vAlignTable['u76'] = 'center';gv_vAlignTable['u31'] = 'top';gv_vAlignTable['u38'] = 'top';gv_vAlignTable['u32'] = 'top';gv_vAlignTable['u62'] = 'center';gv_vAlignTable['u87'] = 'top';gv_vAlignTable['u1'] = 'center';gv_vAlignTable['u7'] = 'center';gv_vAlignTable['u66'] = 'center';gv_vAlignTable['u30'] = 'center';gv_vAlignTable['u8'] = 'top';gv_vAlignTable['u60'] = 'center';gv_vAlignTable['u17'] = 'center';gv_vAlignTable['u64'] = 'top';gv_vAlignTable['u79'] = 'top';gv_vAlignTable['u11'] = 'top';gv_vAlignTable['u71'] = 'top';gv_vAlignTable['u15'] = 'center';gv_vAlignTable['u58'] = 'center';gv_vAlignTable['u37'] = 'center';HookHover('u2', false);
+gv_vAlignTable['u92'] = 'center';gv_vAlignTable['u22'] = 'center';gv_vAlignTable['u13'] = 'top';gv_vAlignTable['u52'] = 'center';gv_vAlignTable['u3'] = 'center';gv_vAlignTable['u47'] = 'top';gv_vAlignTable['u68'] = 'center';gv_vAlignTable['u90'] = 'center';gv_vAlignTable['u84'] = 'center';gv_vAlignTable['u20'] = 'center';gv_vAlignTable['u50'] = 'center';gv_vAlignTable['u28'] = 'center';gv_vAlignTable['u24'] = 'center';gv_vAlignTable['u54'] = 'center';gv_vAlignTable['u39'] = 'top';gv_vAlignTable['u78'] = 'center';HookHover('u4', false);
+document.getElementById('u6_img').tabIndex = 0;
+HookHover('u6', false);
+HookClick('u6', false);
+
+u6.style.cursor = 'pointer';
+$axure.eventManager.click('u6', function(e) {
+
+if (true) {
+
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('妈妈帮.html');
+
+}
+});
+document.getElementById('u91_img').tabIndex = 0;
+
+u91.style.cursor = 'pointer';
+$axure.eventManager.click('u91', function(e) {
+
+if (true) {
+
+}
+});
+gv_vAlignTable['u35'] = 'center';gv_vAlignTable['u26'] = 'center';gv_vAlignTable['u56'] = 'top';gv_vAlignTable['u82'] = 'center';gv_vAlignTable['u5'] = 'center';gv_vAlignTable['u42'] = 'center';gv_vAlignTable['u72'] = 'top';gv_vAlignTable['u63'] = 'top';gv_vAlignTable['u18'] = 'top';gv_vAlignTable['u48'] = 'top';gv_vAlignTable['u88'] = 'top';gv_vAlignTable['u10'] = 'center';gv_vAlignTable['u70'] = 'center';gv_vAlignTable['u44'] = 'center';gv_vAlignTable['u74'] = 'center';gv_vAlignTable['u80'] = 'top';

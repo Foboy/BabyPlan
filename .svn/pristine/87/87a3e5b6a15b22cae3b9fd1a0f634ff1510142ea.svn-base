@@ -1,0 +1,426 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Trade.cshtml";
+    var Product = ViewBag.Product as ProductModel;
+    var Interests = ViewBag.Interests as IList<ProductModel>;
+    Product = Product ?? new ProductModel();
+    ViewBag.Title = Product.Title;
+    var ProductJson = BabyPlan.Common.JsonHelper.Serialize(new { Title = Product.Title, Description = Product.Description });
+    ResourceHelper.RegisterCss(this, "trade.detail.css");
+    string SharePic = "";
+}
+@model BabyPlan.mvcApp.ViewModel.UserModel
+@section Js_InHeader{
+    @Content.Script("cImageLoader.js",Url)
+}
+
+<div class="mainblock whiteblock detailblock">
+    <div class="goods_title">
+        <h1>@Product.Title</h1>
+    </div>
+    <div class="goods_detail"> 
+        <div class="left_block fl">
+            <div class="pic_outer left_content">
+                <div class="fl pic_box">
+                  <span class="pic_seq pink-font" id="pic_seq">1</span>
+                  <div class="img_content">
+                    
+                    <img id="big_pic" />
+                  </div>
+@*                    <div class="price_bg"></div>
+                    <div class="price_box white-font font-size20" id="pro_price"></div>*@
+                  <div class="price_bg price_box white-font font-size20" id="pro_price"></div>
+                </div>
+                <div class="fr pic_list_outer">
+                    <div class="pic_list_box" id="pic_list_box">
+                        <ul>
+                        @{
+                            if (Product.Pics != null)
+                            {
+                                int itemId = ViewBag.ItemId ?? 0;
+                                for (int i = 0, c = Product.Pics.Count; i < c; i++)
+                                {
+                                    var item = Product.Pics[i];
+                                    item.DisplaySeting(75, 75);
+                                    var itemClass = itemId == item.PicId ? "act" : "";
+                                    var spicUrl = new Uri(Request.Url, item.PicUrl).AbsoluteUri;
+                                    if (itemId == item.PicId)
+                                    {
+                                        SharePic = spicUrl;
+                                    }
+                                    
+                            <li bpic="@item.BPicUrl" spic="@spicUrl" price="@Product.Price" class="@itemClass">
+                                <img alt="点击查看大图" src="@item.PicUrl" style="width:@item.DisWidth.ToString()px;height:@item.DisHeight.ToString()px;margin:@item.DisMargin"></img>
+                            </li>
+                                }
+                            }
+                         }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="share left_content">
+                <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+                    <a class="bds_qzone"></a>
+                    <a class="bds_tsina"></a>
+                    <a class="bds_tqq"></a>
+                    <a class="bds_renren"></a>
+                    <span class="bds_more">更多</span>
+		            <a class="shareCount"></a>
+                </div>
+            </div>
+            <div class="discription left_content">
+                <h3 class="label16 title-font margin_title">听听老板怎么描述的：</h3>
+                <div class="discription-outer left_content grayblock">
+                    <span class="mark blue-font">”</span>
+                    <p class="title-font">
+                        @Product.Description
+                    </p>
+                </div>
+            </div>
+            <div class="comments_header left_content">
+                <span class="label16 fl title-font">回复（<span data-bind="text:comments_count">@Product.ReplyNum</span>）</span>
+                <a href="javascript:void(0)" class="button-green fr" title="咨询老板" id="comment_link" name="comment_link">咨询老板</a>
+            </div>
+            <div class="comments_outer left_content" id="comments_box"  data-bind="template: { name: 'comments-template',foreach:comments }">
+
+            </div>
+            <div class="paging left_content text-right" data-bind="html:comments_paging">
+@*                <span class="black-font">1</span>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <span class="gray-font">…</span>
+                <a href="#">8</a>
+                <a href="#">下一页</a>*@
+            </div>
+            <form id="replay_form" action="@Url.Action("AjaxReplay", "Trade", new { pid = @Product.Id })" method="post">
+            <div class="comments_outer left_content" data-bind="template: { name: 'refcomment-template',foreach:refcomment }">
+            </div>
+            <a name="comment_anchor"></a>
+            <div class="comment_outer left_content">
+                @if (Request.IsAuthenticated)
+                {
+                <div class="comment_shade text-center blue-font" id="logined_comment">
+                    有疑问，就给老板留言吧
+                </div>
+                }
+                else
+                {
+                <div class="comment_shade text-center" id="unlogin_comment">
+                    请 <a href="@Url.Action("Login", "Account")?ReturnUrl=@Url.Encode(Request.RawUrl + "#comment_anchor")">登录</a> 或 <a href="@Url.Action("Register", "Account")?ReturnUrl=@Url.Encode(Request.RawUrl + "#comment_anchor")">注册</a> 后在发表回复
+                </div>
+                }
+                <textarea class="comment_input" id="comment_input" name="comment_input"></textarea>
+            </div>
+            <input type="submit" id="replay_submit" class="comment_submit button-green" value="发表回复" />
+            </form>
+        </div>
+        <div class="right_block fr">
+            <div class="seller_head right_content">
+                <div class="head_pic fl">
+                @if (Product.Author.HeadPic != null)
+                {
+                    Product.Author.HeadPic.DisplaySeting(100, 100);
+                <img name='pic' src="@Product.Author.HeadPic.PicUrl" style="width:@Product.Author.HeadPic.DisWidth.ToString()px;height;@Product.Author.HeadPic.DisHeight.ToString()px;margin:@Product.Author.HeadPic.DisMargin;" />
+                }
+                </div>
+                <div class="info fr">
+                    <p class="blue-font label14">@Product.Author.Name</p>
+                    <p class="gray-font">共发布 &nbsp;(<strong class="pink-font">@Product.Author.PostProductNum</strong>)&nbsp;帖子</p>
+                    @if (Product.IsWash)
+                    {
+                    <p class="grayblock blue-font p_info">老板承诺宝贝均清洗过，请放心购买</p>
+                    }
+                </div>
+            </div>
+            <div class="seller_counting right_content">
+                <a class="button-pink fl" title="浏览">浏览(@Product.ViewNum)</a>
+                <a class="button-blue fr" title="回复">回复(<span data-bind="text:comments_count">@Product.ReplyNum</span>)</a>
+            </div>
+            <div class="seller_contact right_content grayblock">
+                <p class="font-size14  title-font">施主，看中了就call我</p>
+                <p class="font-size18 green-font call_p font-weight4"><i class="call_qq"></i>@Product.QQ</p>
+                <p class="font-size18 green-font call_p font-weight4"><i class="call_mobile"></i>@Product.Phone</p>
+
+            </div>
+            @*<div class="seller_distance right_content grayblock text-center">
+                <span class="label18 green-font line-height30">该宝贝距离您大约  3.6km</span>
+                <br />
+                <a href="#" class="blue-font underline">点击查看地图</a>
+                <span class="block-font">，方便您选择最近的路线和他交易</span>
+            </div>*@
+            <dl class="recommend right_content">
+                <dt><h3 class="font-size18 title-font">您可能感兴趣的宝贝</h3></dt>
+                @{
+                    if (Interests != null)
+                    {
+                        var floatValue = "fl";
+                        foreach (var item in Interests)
+                        {
+                            item.Pics[0].DisplaySeting(130, 130, 2, 2);
+                            <dd class="@floatValue"><a href="@Url.Action("Detail", "Trade", new { id = item.Id })"><img alt="1" src="@item.Pics[0].PicUrl" style="width:@item.Pics[0].DisWidth.ToString()px;height:@item.Pics[0].DisHeight.ToString()px;margin:@item.Pics[0].DisMargin"></img></a> </dd>
+                                                                                                                                                                                                                                                              floatValue = floatValue == "fl" ? "fr" : "fl";
+                        }
+                    }
+                    }
+            </dl>
+            <div class="seller_contact right_content grayblock">
+                <p class="label16 title-font">如果选择你们同城快递，下面的内容也许能能给您一点点帮助</p>
+                <p class="blue-font font-size14 call_kd">
+                  <a class="call_a" href="http://www.ckd8.com/NetWork.asp?Action=go" target="_blank">成都申通快递</a>
+                  <a class="call_a" href="http://www.chakd.com/d.php?id=25&areacode=028" target="_blank">成都圆通快递</a>
+                </p>
+                 <p class="blue-font font-size14 call_kd">
+                  <a class="call_a" href="http://www.express-sf.cn/sfadd/sichuan.html" target="_blank">成都顺风快递</a>
+                  <a class="call_a" href="http://www.zto.cn/SiteInfo/city.aspx?province=%CB%C4%B4%A8%CA%A1&city=%B3%C9%B6%BC" target="_blank">成都中通快递</a>
+                </p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script type="text/html" id="comments-template">
+    <div class="comment_item left_content">
+        <div class="head_pic fl">
+            <img data-bind="attr:{src:author_pic,alt:author_name},style:{width:pic_width,height:pic_height,margin:pic_margin}" />
+        </div>
+        <div class="content grayblock fr">
+            <div class="cmt_info clearfix"><span class="fl blue-font" data-bind="text:author_name"></span><span class="fr gray-font" data-bind="text:time"></span></div>
+            <div data-bind="template: { name: 'refcontent-template',foreach:ref_coments }">
+            </div>
+            <p class="cmt_content clearfix" data-bind="text:content" style="margin:0 5px;">
+            </p>
+            <div class="text-right"><a href="javascript:;" data-bind="click:$parent.commentRef">引用回复</a></div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="refcontent-template">
+    <div class="comment_item left_content">
+        <div class="yinyong grayblock gray-font fl" style="width:480px;margin:0 5px;">
+            <div class="cmt_info clearfix">
+                <span class="fl">引用&nbsp;<span class="blue-font" data-bind="text:author_name"></span><span class="span_jl">:</span></span>
+            </div>
+            <span class="mark mark_position blue-font">”</span>
+            <p class="yinyong_content clearfix" data-bind="text:content">
+            </p>
+            &nbsp;&nbsp;<span class="blue-font">发表于</span>:&nbsp;&nbsp;<span data-bind="text:time"></span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="refcomment-template">
+    <input type="hidden" name="ref_id" data-bind="value:comment_id" />
+    <div class="comment_item left_content">
+        <div class="yinyong grayblock gray-font fl">
+            <div class="cmt_info clearfix">
+                <span class="fl">引用&nbsp;<span class="blue-font" data-bind="text:author_name"></span><span class="span_jl">:</span></span>
+                <span class="fr gray-font">
+                    <a href="javascript:;" data-bind="click:$parent.cancelRef">取消引用</a>
+                </span>
+            </div>
+            <span class="mark mark_position blue-font">”</span>
+            <p class="yinyong_content clearfix" data-bind="text:content"></p>
+        </div>
+    </div>
+</script>
+@section Js_InFoot{
+@Content.Css("fancybox/jquery.fancybox-1.3.4.css", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)  
+@Content.Script("fancybox/jquery.fancybox-1.3.4.js", Url)
+@Content.Script("fancybox.msgbox.js", Url)
+@Content.Script("knockout-2.1.0.js", Url)
+@Content.Script("jquery-validation-1.9.0/jquery.validate.min.js", Url)
+@Content.Script("jquery-validation-1.9.0/lib/jquery.metadata.js", Url)
+    <script type="text/javascript">
+        var product = @Html.Raw(ProductJson);;
+        var bds_config = { 
+            'bdText': '在 百家衣 发现这个宝贝，很喜欢，分享给大家 :' + product.Title,
+            'bdDesc': product.Description,
+            'bdPic': "@SharePic",
+            'bdComment': ""
+        };
+        $(document).ready(function () {
+            var proitems = [];
+            var box = $("#pic_list_box");
+            var items = $("#pic_list_box li");
+            var boxHeight = box.height();
+            var itemHeight = 80;
+            var showItemCount = Math.floor(boxHeight / itemHeight);
+            var halfItemCount = showItemCount / 2;
+            var topStep = Math.floor(halfItemCount);
+            var bottomStep = Math.ceil(halfItemCount);
+            var count = items.length;
+            var hideCount = 0;
+            var index = 0;
+            var lock = false;
+
+            var hideCount = function (idx) {
+                var minHide = idx - topStep;
+                if (index - hideCount >= bottomStep) {
+                    minHide = idx - bottomStep;
+                }
+                return minHide;
+            }
+
+            var actItem = function (idx, elt) {
+                $(items[index]).removeClass("act");
+                $(elt).addClass("act");
+                $("#pic_seq").html(idx + 1);
+                index = idx;
+            }
+
+            items.each(function (idx, elt) {
+                proitems.push({
+                    img: $(this).attr("bpic"),
+                    simg: $(this).attr("spic"),
+                    price: $(this).attr("price")
+                });
+                if ($(this).attr("class") == "act") {
+                    index = idx;
+                }
+                $(this).bind("click", function () {
+                    if (lock)
+                        return;
+                    actItem(idx, $(this));
+                    bds_config.bdPic = proitems[idx].simg;
+                    $("#big_pic").attr("src", proitems[idx].img);
+                    $("#pro_price").html("￥" + proitems[idx].price);
+                    $("#big_pic").cImageLoader({ width: 470, height: 470 });
+                    lock = true;
+                    box.animate({ scrollTop: hideCount(idx) * itemHeight }, 100, function () { lock = false; });
+                    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+                });
+            });
+            if (index >= items.length)
+                index = 0;
+            $(items[index]).click();
+        });
+    </script>
+    <script type="text/javascript">
+        var detailViewModel = {
+            comments_count: ko.observable(0),
+            comments_paging: ko.observable(),
+            comments: ko.observableArray([]),
+            refcomment: ko.observableArray([]),
+            commentRef: function () {
+                detailViewModel.refcomment([this]);
+                window.location.hash = "#comment_anchor";
+                $("#logined_comment").trigger("click");
+            },
+            cancelRef: function () {
+                detailViewModel.refcomment([]);
+            }
+        };
+        ko.applyBindings(detailViewModel);
+        function LoadComments(pageIndex) {
+            var bindData = function (data) {
+                detailViewModel.comments_count(data.count);
+                detailViewModel.comments_paging(data.paging);
+                detailViewModel.comments([]);
+                data = data.data;
+                var i = 0, length = data.length, item, html;
+                for (; i < length; i++) {
+                    item = data[i];
+                    var refItem = [];
+                    if (item.RefReply) {
+                        refItem.push({
+                            comment_id: ko.observable(item.RefReply.Id),
+                            author_name: ko.observable(item.RefReply.Author.Name),
+                            author_pic: ko.observable(item.RefReply.Author.HeadPic.PicUrl),
+                            pic_width: ko.observable(item.RefReply.Author.HeadPic.DisWidth + "px"),
+                            pic_height: ko.observable(item.RefReply.Author.HeadPic.DisHeight + "px"),
+                            pic_margin: ko.observable(item.RefReply.Author.HeadPic.DisMargin),
+                            time: ko.observable(item.RefReply.FriendlyCreateTime),
+                            content: ko.observable(item.RefReply.Content)
+                        });
+                    }
+                    detailViewModel.comments.push(
+                    {
+                        comment_id: ko.observable(item.Id),
+                        author_name: ko.observable(item.Author.Name),
+                        author_pic: ko.observable(item.Author.HeadPic.PicUrl),
+                        pic_width: ko.observable(item.Author.HeadPic.DisWidth + "px"),
+                        pic_height: ko.observable(item.Author.HeadPic.DisHeight + "px"),
+                        pic_margin: ko.observable(item.Author.HeadPic.DisMargin),
+                        time: ko.observable(item.FriendlyCreateTime),
+                        content: ko.observable(item.Content),
+                        ref_coments: ko.observableArray(refItem)
+                    }
+                    );
+                }
+            }
+            $.ajax({
+                url: '@Url.Content("~/Trade/GetReplys/"+Product.Id)?rn=' + Math.random(),
+                data: { page: pageIndex },
+                success: bindData
+            });
+        }
+        LoadComments(0);
+
+        $(document).ready(function () {
+            $("#logined_comment").bind("click", function () {
+                $(this).hide();
+                $("#comment_input").show().focus();
+            });
+            $("#comment_input").bind("blur", function () {
+                if ($.trim($(this).val()).length == 0) {
+                    $(this).hide();
+                    $("#logined_comment").show();
+                }
+            });
+
+            $("#comment_link").bind("click", function () {
+                location.hash = "#comment_anchor";
+                $("#logined_comment").trigger("click");
+            });
+
+            var options = {
+                dataType: 'json',
+                beforeSubmit: beforeSubmit,
+                success: submitSuccess
+            };
+            $("#replay_form").ajaxForm(options);
+
+            function beforeSubmit() {
+                $("#logined_comment").trigger("click");
+                var replayChk = ReplayChk();
+                if (!replayChk.pass) {
+                    replayChk.elt.focus();
+                    return false;
+                }
+                $("#replay_submit").val("提交中...").attr("disabled", "false");
+                return true;
+            }
+
+            function submitSuccess(response) {
+                $("#replay_submit").val("发表回复").attr("disabled", "");
+                if (response.Error == 0) {
+                    detailViewModel.refcomment([]);
+                    $.showMsg("发表成功！", "success");
+                    $("#comment_input").val("");
+                    LoadComments(0);
+                    location.hash = "#comment_link";
+                } else {
+                    $.showMsg(response.ExMessage || response.ErrorMessage, "error");
+                }
+            }
+
+            function ReplayChk() {
+                var me = $("#comment_input");
+                var val = me.val();
+                if (val.length >= 2 && val.length <= 300) {
+                    me.css("border", "solid 2px #fff");
+                    return { pass: true, elt: me };
+                }
+                else {
+                    me.css("border", "solid 2px #f00");
+                    return { pass: false, elt: me };
+                }
+            }
+
+        });
+
+    </script>
+    <script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+    <script type="text/javascript" id="bdshell_js"></script>
+@*    <script type="text/javascript">
+        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+    </script>*@
+}

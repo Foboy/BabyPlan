@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+using System.Drawing;
+
+namespace BabyPlan.Common
+{
+    public class FileHelper
+    {
+        /// <summary>
+        /// 上传文件，图片或声音
+        /// 病例图片有三类图，原始大图，缩略中图，缩略小图。
+        ///  url命名原则：大图是原始url，中图url后缀名之前为_m,中图url后缀名之前为_s
+        /// 上传类型：1-病例图片；2-提问图片；3-回复图片；4-声音；0-其他
+        /// </summary>
+        /// <param name="account">登录用户ID</param>
+        /// <param name="FileByte">文件</param>
+        /// <param name="FileExtention">文件后缀名（扩展名）</param>
+        /// <param name="type">上传类型：1-病例图片；2-提问图片；3-回复图片；4-声音；0-其他</param>
+        /// <returns></returns>
+        public static string UploadFile(string account, byte[] fileByte, string fileExtention, int type)
+        {
+            string fileSaveUrl = string.Empty;
+            if (type == 1)
+            {
+                fileSaveUrl = string.Format("..\\{0}", account, DateTime.Now.ToShortTimeString(), fileExtention);
+            }
+            else
+            {
+
+            }
+            string dir = Path.GetDirectoryName(fileSaveUrl);
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+
+            string fileName = string.Format("..\\{0}{1}.{2}", account, DateTime.Now.ToShortTimeString(), fileExtention);
+            FileStream stream = new FileStream(fileName, FileMode.CreateNew);
+            //stream.Write(fileByte, 0, fileByte.Length);
+            //stream.Close();
+
+
+
+            //System.IO.MemoryStream stream1 = new System.IO.MemoryStream(fileByte, true);
+            stream.Write(fileByte, 0, fileByte.Length);
+            Bitmap bmp = new Bitmap(stream);
+            System.Drawing.Image image = bmp;//得到原图
+            bmp.Save(fileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            //创建中图
+            System.Drawing.Image newImage1 = image.GetThumbnailImage(112, 136, null, new IntPtr());
+            newImage1.Save(fileName + "_m", System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            //创建小图
+            System.Drawing.Image newImage2 = image.GetThumbnailImage(112, 136, null, new IntPtr());
+            newImage2.Save(fileName + "_s", System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            stream.Close();
+
+            return fileName;
+        }
+    }
+}

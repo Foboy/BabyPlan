@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Js_InHeader{
+    @Content.Script("jquery-1.5.1.min.js", Url)
+    @RenderSection("Js_InHeader", false)
+}
+@Html.Partial("_Header_Partial")
+@RenderBody()
+@Html.Partial("_Footer_Partial")
+@section Js_InFoot{
+    @RenderSection("Js_InFoot", false)
+}

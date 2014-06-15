@@ -1,0 +1,489 @@
+body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../登录_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:120px;
+    top:20px;
+    width:386px;
+    height:786px;
+}
+
+#u0_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:386px;
+    height:786px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:385px;
+    width:382px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../登录_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:153px;
+    top:124px;
+    width:320px;
+    height:66px;
+}
+
+#u2_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:66px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:25px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../登录_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:153px;
+    top:124px;
+    width:320px;
+    height:26px;
+}
+
+#u4_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:26px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:5px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_normal {
+    background-image: url('../登录_files/u6_normal.png');
+}
+
+.u6_container {
+    position:absolute;
+    left:327px;
+    top:126px;
+    width:21px;
+    height:21px;
+}
+
+#u6_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:21px;
+    height:21px;
+}
+
+.u7 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:17px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8_normal {
+    background-image: url('../登录_files/u8_normal.png');
+}
+
+.u8_container {
+    position:absolute;
+    left:352px;
+    top:126px;
+    width:22px;
+    height:21px;
+}
+
+#u8_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:22px;
+    height:21px;
+}
+
+.u9 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:18px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u10_normal {
+    background-image: url('../登录_files/u10_normal.png');
+}
+
+.u10_container {
+    position:absolute;
+    left:377px;
+    top:128px;
+    width:21px;
+    height:16px;
+}
+
+#u10_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:21px;
+    height:16px;
+}
+
+.u11 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:17px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u12 {
+    position:absolute;
+    left:407px;
+    top:126px;
+    width:60px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u13 {
+    position:absolute;
+    left:283px;
+    top:157px;
+    width:122px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u14_normal {
+    background-image: url('../登录_files/u14_normal.png');
+}
+
+.u14_container {
+    position:absolute;
+    left:153px;
+    top:190px;
+    width:320px;
+    height:420px;
+}
+
+#u14_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:426px;
+}
+
+.u15 {
+    position:absolute;
+    left:2px;
+    top:202px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u16_normal {
+    background-image: url('../登录_files/u16_normal.png');
+}
+
+.u16_container {
+    position:absolute;
+    left:154px;
+    top:191px;
+    width:318px;
+    height:419px;
+}
+
+#u16_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:324px;
+    height:425px;
+}
+
+.u17 {
+    position:absolute;
+    left:2px;
+    top:202px;
+    width:314px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u18_normal {
+    background-image: url('../登录_files/u18_normal.png');
+}
+
+.u18_container {
+    position:absolute;
+    left:162px;
+    top:211px;
+    width:299px;
+    height:90px;
+}
+
+#u18_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:305px;
+    height:96px;
+}
+
+.u19 {
+    position:absolute;
+    left:2px;
+    top:37px;
+    width:295px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u20 {
+    position:absolute;
+    left:180px;
+    top:225px;
+    width:100px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u21_line {
+    background-image: url('../登录_files/u21_line.png');
+}
+
+.u21_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:299px;
+    height:3px;
+}
+
+.u21 {
+    position:absolute;
+    left:162px;
+    top:250px;
+    width:299px;
+    height:10px;
+    
+}
+
+.u22 {
+    position:absolute;
+    left:194px;
+    top:270px;
+    width:59px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u23_normal {
+    background-image: url('../登录_files/u23_normal.png');
+}
+
+.u23_container {
+    position:absolute;
+    left:327px;
+    top:331px;
+    width:125px;
+    height:35px;
+}
+
+#u23_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:131px;
+    height:41px;
+}
+
+.u24 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:121px;
+    height:22px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u25_normal {
+    background-image: url('../登录_files/u25_normal.png');
+}
+
+.u25_container {
+    position:absolute;
+    left:162px;
+    top:331px;
+    width:125px;
+    height:35px;
+}
+
+#u25_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:131px;
+    height:41px;
+}
+
+.u26 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:121px;
+    height:22px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u27 {
+    position:absolute;
+    left:161px;
+    top:163px;
+    width:39px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

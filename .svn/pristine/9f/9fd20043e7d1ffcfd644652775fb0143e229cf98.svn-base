@@ -1,0 +1,123 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.IO;
+using BabyPlan.mvcApp.FileService;
+using BabyPlan.Common;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class UploadController : BaseController
+    {
+        //
+        // GET: /Upload/
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult Uploader(string type,string etoken)
+        {
+            HttpPostedFileBase file = Request.Files["Filedata"];
+            string uploadPath = Server.MapPath("~/UploadFiles/");
+
+            UploadFileItem uploadItem = new UploadFileItem();
+
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    uploadItem.Saved = false;
+            //    uploadItem.Msg = "登录后方可上传文件!";
+            //}
+            //else 
+            if (file != null)
+            {
+                uploadItem.FileMuid = Guid.NewGuid().ToString().Replace("-", "");
+
+                uploadItem.Extention = file.FileName.Substring(file.FileName.LastIndexOf('.')).ToLower();
+
+                uploadItem.Saved = true;
+
+                if (file.ContentLength > 1024 * 2 * 1024)
+                {
+                    uploadItem.Saved = false;
+                    uploadItem.Msg = "请上传2M以下大小图片!";
+                }
+                if (".jpg;.bmp;.gif;.png;.jpeg".IndexOf(uploadItem.Extention) < 0)
+                {
+                    uploadItem.Saved = false;
+                    uploadItem.Msg = "上传图片格式必须为.jpg;.bmp;.gif;.png;.jpeg!";
+                }
+
+                System.Drawing.Image upImage = null;
+                try
+                {
+                    upImage = System.Drawing.Image.FromStream(file.InputStream);
+                }
+                catch (Exception ex)
+                {
+                    uploadItem.Saved = false;
+                    uploadItem.Msg = "图片识别失败!" + ex.Message;
+                }
+
+                if (uploadItem.Saved)
+                {
+
+                    try
+                    {
+
+                        Byte[] fileByteArray = new byte[file.ContentLength];
+                        file.InputStream.Read(fileByteArray, 0, file.ContentLength);
+
+                        FileServiceClient client = new FileServiceClient();
+                        AdvancedResult<string> response = client.UploadBBPic(fileByteArray, upImage.Height, upImage.Width, etoken);
+
+                        if (response.Error == DataStructure.AppError.ERROR_SUCCESS)
+                        {
+                            uploadItem.UploadDate = DateTime.Now;
+                            uploadItem.FileName = file.FileName;
+                            uploadItem.FileType = type;
+                            uploadItem.Url = response.Data;
+                        }
+                        else
+                        {
+                            uploadItem.Saved = false;
+                            uploadItem.Msg = "保存图片失败!请稍后再试！";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        uploadItem.Saved = false;
+                        uploadItem.Msg = "保存图片失败!" + ex.Message;
+                    }
+                }
+            }
+            else
+            {
+                uploadItem.Saved = false;
+                uploadItem.Msg = "上传文件为空!";
+            }
+            return Json(uploadItem);
+        }
+
+        public class UploadFileItem
+        {
+            public string FileMuid { get; set; }
+            public int SaveId { get; set; }
+            public string SaveName { get; set; }
+            public string Extention { get; set; }
+            public string Url { get; set; }
+            public string Author { get; set; }
+            public string FileName { get; set; }
+            public string FileType { get; set; }
+            public DateTime UploadDate { get; set; }
+            public bool Saved { get; set; }
+            public string Msg { get; set; }
+
+        }
+
+    }
+}

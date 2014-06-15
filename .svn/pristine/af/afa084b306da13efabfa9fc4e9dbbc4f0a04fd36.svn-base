@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta name="description" content="百家衣" />
+    <meta name="keywords" content="百家衣,二手婴儿衣服" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" /> 
+    <meta name="baidu-site-verification" content="AIb9dYOVf0AGViEy" />
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="../../images/favicon.ico" mce_href="/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../images/favicon.ico" mce_href="/images/favicon.ico" type="image/x-icon">
+    @Content.Css("main.css", Url) 
+    @Content.Css("layout.css", Url) 
+    @Content.Script("jquery-1.5.1.min.js", Url)   
+    @RenderSection("Js_InHeader", false)
+</head> 
+<body>
+    @RenderBody()
+    @RenderSection("Js_InFoot", false) 
+</body>
+</html>

@@ -1,0 +1,10 @@
+E:\Work\其他\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.TaoBao\bin\BabyPlan.TaoBao.dll
+E:\Work\其他\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.TaoBao\bin\BabyPlan.TaoBao.pdb
+E:\Work\其他\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.TaoBao\obj\Debug\ResolveAssemblyReference.cache
+E:\Work\其他\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.TaoBao\obj\Debug\BabyPlan.TaoBao.dll
+E:\Work\其他\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.TaoBao\obj\Debug\BabyPlan.TaoBao.pdb
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.TaoBao\bin\BabyPlan.TaoBao.dll
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.TaoBao\bin\BabyPlan.TaoBao.pdb
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.TaoBao\obj\Debug\ResolveAssemblyReference.cache
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.TaoBao\obj\Debug\BabyPlan.TaoBao.dll
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.TaoBao\obj\Debug\BabyPlan.TaoBao.pdb

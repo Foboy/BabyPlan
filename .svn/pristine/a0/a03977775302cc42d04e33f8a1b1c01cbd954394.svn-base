@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "关于我们-百家衣(www.360baijiayi.com)";
+    ViewBag.Description = "百家衣(www.360baijiayi.com)是一个专注婴儿闲置衣物买卖的网站，在这里妈妈们可以在线买卖宝宝闲置的衣服、玩具。“百家衣”是婴儿服的一种，由一百个家庭收集到布片做成，故名“百家衣”";
+    ViewBag.KeyWords = "百家衣,买卖,旧衣服,二手,二手衣服,闲置,宝宝,婴儿,儿童,孩子,衣服,小孩衣服,婴儿衣服,寄售,玩具,同城置换,同城交易,四川二手,成都二手衣服";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ResourceHelper.RegisterCss(this, "addbook.css");
+}
+@model BabyPlan.mvcApp.ViewModel.BookModel
+@Html.Partial("_Header_Partial")
+<div class="mainblock">
+	<div class="clearfix"><p class="fl font-size28 gray-font">制作宝贝的成长纪念册</p><p class="fr"><a href="#" target="_blank" class="">试试把宝宝的成长记录印出来</a></p></div>
+    <div class="bookName clearfix"><label>成长纪念册名称：</label><input type="text" class="input_box" value=""/></div>
+	<div class="bookStep clearfix">
+    	<dl>
+        	<dt class="none"><b class="white-font">1</b>选择纪念册<span class="green-font">尺寸</span></dt>
+            <dd class="pageSize clearfix">
+            	<div><p>A5</p></div>
+                <div><p>A6</p></div>
+            </dd>
+            <dt><b class="white-font">2</b>选择纪念册<span>模版</span></dt>
+            <dd class="clearfix">
+            	<div class="formworkL fl"></div>
+                <div class="formworkM fl">
+                    <ul class="clearfix">
+                        <li class="cur"><img src="../images/Thumbnail.jpg" alt="模版一" /></li>
+                        <li><img src="../images/Thumbnail.jpg" alt="模版一" /></li>
+                        <li><img src="../images/Thumbnail.jpg" alt="模版一" /></li>
+                        <li><img src="../images/Thumbnail.jpg" alt="模版一" /></li>
+                        <li><img src="../images/Thumbnail.jpg" alt="模版一" /></li>                        
+                    </ul>
+                </div>
+                <div class="formworkR fl"></div>
+            </dd>
+            <dt><b class="white-font">3</b>选择纪念册<span>来源</span></dt>
+            <dd class="clearfix imgList">
+            <div class="contentIntro clearfix">
+            		<div class="font-size16 black-font fl">简介：</div>
+                    <div class="fl">
+                	<textarea data-bind="value:product_des" style="width:550px;height:100px;" validate="{required:true,minlength:6,maxlength:300}" name="gdescription" class="input_box"></textarea></br>
+                    <span rel="tip" class="gray-font">&nbsp;&nbsp;宝贝描述最少不低于6个字符最多输入500个字符</span>
+                    </div>
+                    <div class="example fl gray-font">
+                    	示例：这是我家宝贝从出生到一岁的成长历程，记录了他的第一次哭泣，第一次欢笑，第一次行走，第一次。。。。。。
+                    </div>
+                
+            </div>
+            <div class="update">
+            	<a href="#" class="button-green">本地上传</a>
+            </div>
+            <div class="clearfix">
+            <div class="imgShow fl clearfix">
+            	<img src="../images/u43_normal.jpg" alt="照片"/>
+                <div class="textDes">
+                <textarea></textarea>
+                </div>
+            </div>
+            <div class="imgShow fl clearfix">
+            	<img src="../images/u43_normal.jpg" alt="照片"/>
+                <div class="textDes">
+                	<h2 class="gray-font">140个字描述场景，建议：</h2>
+                    <p>时间：2012/02/12</p>
+                    <p>地点：成都武侯区天府广场</p>
+                    <p>事件：小明今天生日，我和老公带她来市区Happy</p>
+                </div>
+            </div>
+            <div class="imgShow fl clearfix">
+            	<img src="../images/u43_normal.jpg" alt="照片"/>
+                <div class="textDes">
+                	<h2 class="gray-font">140个字描述场景，建议：</h2>
+                    <p>时间：2012/02/12</p>
+                    <p>地点：成都武侯区天府广场</p>
+                    <p>事件：小明今天生日，我和老公带她来市区Happy</p>
+                </div>
+            </div>
+            <div class="imgShow fl clearfix">
+            	<img src="../images/u43_normal.jpg" alt="照片"/>
+                <div class="textDes">
+                	<h2 class="gray-font">140个字描述场景，建议：</h2>
+                    <p>时间：2012/02/12</p>
+                    <p>地点：成都武侯区天府广场</p>
+                    <p>事件：小明今天生日，我和老公带她来市区Happy</p>
+                </div>
+            </div>
+            <div class="imgShow fl clearfix">
+            	<img src="../images/u43_normal.jpg" alt="照片"/>
+                <div class="textDes">
+                	<h2 class="gray-font">140个字描述场景，建议：</h2>
+                    <p>时间：2012/02/12</p>
+                    <p>地点：成都武侯区天府广场</p>
+                    <p>事件：小明今天生日，我和老公带她来市区Happy</p>
+                </div>
+            </div>
+            <div class="imgShow fl clearfix">
+            	<img src="../images/u43_normal.jpg" alt="照片"/>
+                <div class="textDes">
+                	<h2 class="gray-font">140个字描述场景，建议：</h2>
+                    <p>时间：2012/02/12</p>
+                    <p>地点：成都武侯区天府广场</p>
+                    <p>事件：小明今天生日，我和老公带她来市区Happy</p>
+                </div>
+            </div>
+            </div>
+            </dd>
+        </dl>
+    </div>
+   <a href="/User/AddGoods" class="button-green margin10 makeBook font-size28 button_pointer">生成预览</a>
+</div>
+
+@Html.Partial("_Footer_Partial")
+
+@section Js_InFoot{
+    @Content.Script("cLoading.js", Url)
+    @Content.Script("cUpload.js", Url)
+    @Content.Script("json2.js", Url)
+    @Content.Css("fancybox/jquery.fancybox-1.3.4.css",  Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)  
+    @Content.Script("fancybox/jquery.fancybox-1.3.4.js",Url)
+    @Content.Script("fancybox.msgbox.js", Url)
+    @Content.Script("knockout-2.1.0.js", Url)
+    @Content.Script("jquery-validation-1.9.0/jquery.validate.js", Url)
+    @Content.Script("jquery-validation-1.9.0/lib/jquery.metadata.js", Url)
+    @Content.Script("cSwfUpload/cSwfUpload.js", Url)
+<script type="text/javascript">
+    $(document).ready(function () {
+
+       
+        
+    });
+ </script>
+
+ }
+

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baijiayi>
+  <update>
+    <android>
+      <versionCode>2</versionCode>
+      <versionName>1.0.1</versionName>
+      <downloadUrl>http://www.360baijiayi.com/apps/baijiayi.apk</downloadUrl>
+      <updateLog><![CDATA[版本信息：
+百家衣 for Android v1.0.1
+]]></updateLog>
+    </android>
+  </update>
+</baijiayi>

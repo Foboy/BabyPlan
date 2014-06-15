@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "百家衣-个人中心";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var CurrentUser = ViewBag.LoginUser as BabyPlan.mvcApp.Model.UserModel;
+}
+@section Js_InHeader{
+    @Content.Script("jquery.form.js",Url)
+<style type="text/css">
+    .head_outer{height:50px;}
+    .head_outer .logo_outer{height:50px;width:960px; margin:0 auto;}
+    .head_outer .logo_center{ float:left; width:150px; height:50px;}
+    .head_outer .nav_outer{ margin-left:30px;}
+    .head_outer .nav_outer ul{width:400px; padding:0px; margin-top:15px;}
+    .head_outer .nav_outer ul li{height:25px;line-height:25px;float:left; width:50px; margin-left:10px; width:90px; padding:0px; margin:0px;}
+    .head_outer .nav_outer ul li a{color:#fff;font-size:16px;height:25px;display:block; text-align:center;}
+    .head_outer .nav_outer ul li a:active,.head_outer .nav_outer ul li a:hover,.head_outer .nav_outer ul li a.selected{ color:#2A8FC4; height:25px; width:90px; background-color:#fff;}
+    .head_outer .logoutnav{ float:right; width:300px; height:50px;text-align:right;color:#fff;}
+    .head_outer .logoutnav a{ margin:0 5px; cursor:pointer; color:#fff;}
+    .age_tip{ margin-left:20px;}
+    .age_line{ line-height:25px;}
+    .user_panel_outer{margin:30px auto;}
+    .panel_left_outer{width:240px;}
+    .panel_left_outer .user_left_block{width:240px;}
+    .panel_left_outer .user_profile{height:128px;width:238px;}
+    .panel_left_outer .user_profile .head_pic{width:100px;height:100px;margin:10px;position:relative;overflow:hidden;border:solid 1px #ddd;}
+    .panel_left_outer .user_profile .head_pic .upload_head_bg{width:100px;height:20px;line-height:20px;top:100px;background:#333;position:absolute;}
+    .panel_left_outer .user_profile .profile{margin:10px 0;}
+    .panel_left_outer .user_link_out {margin:20px 0;}
+    .panel_left_outer .user_link_out .user_link{width:188px;height:48px;display:block;line-height:48px;padding-left:50px;position:relative;}
+    .panel_left_outer .user_link_out .user_link:hover{background-color:#2A8FC4;color:#fff;}
+    .panel_left_outer .user_link_out .user_link .count{width:18px;height:18px;display:block;margin:15px;line-height:18px;text-align:center;}
+    .panel_left_outer .user_with_outer{width:220px;padding:10px;}
+    .panel_left_outer .user_with_outer .heart{width:110px;height:100px;padding-left:110px;margin:5px 0;}
+    
+    .panel_right_outer{width:710px;}
+    .panel_right_outer .user_right_block{width:710px;}
+</style>
+<style type="text/css">
+    .panel_left_outer .user_link_out .user_link1{background:url(@Content.SourceSrc("list.png", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.Images)) 8px 15px no-repeat;}
+    .panel_left_outer .user_link_out .user_link2{background:url(@Content.SourceSrc("ywxg.png", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.Images)) 8px 15px no-repeat;}
+    .panel_left_outer .user_with_outer .heart{background:url(@Content.SourceSrc("user_heart.png", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.Images)) 1px 1px no-repeat;}
+</style>
+    @RenderSection("Js_InHeader", false)
+}
+<div class="head_outer blueblock">
+  <div class="logo_outer">
+    <div class="logo_center"><img src="/images/logocenter.png" title="百家衣" /></div>
+    <div class="nav_outer fl">
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")">首页</a></li>
+            <li><a href="@Url.Action("Index", "User")" class="act">个人中心</a></li>
+        </ul>
+    </div>
+    <div class="logoutnav">
+      <a>@CurrentUser.Name，欢迎您来到百家衣</a>
+      [<a href="@Url.Action("Logout", "Account")" title="退出登录">退出登录</a>]
+    </div>
+   </div>
+</div>
+<div class="user_panel_outer mainblock">
+    <div class="panel_left_outer fl">
+        <div class="user_profile grayblock user_left_block grayborder">
+            <div class="head_pic fl" name="head_pic_box" id="head_pic_upload_box">
+                @if (CurrentUser.HeadPic != null)
+                {
+                    CurrentUser.HeadPic.DisplaySeting(100, 100);
+                <img name='pic' src="@CurrentUser.HeadPic.PicUrl" style="width:@CurrentUser.HeadPic.DisWidth.ToString()px;height;@CurrentUser.HeadPic.DisHeight.ToString()px;margin:@CurrentUser.HeadPic.DisMargin;" />
+                }
+                else
+                { 
+                <img name='pic' src="@Content.SourceSrc("tx.png", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.Images)" style="width:100px;height;100px;" />
+                }
+                <div class="upload_head_bg text-center" id="head_upload_box">
+                    <a href="javascript:void(0)" class="white-font">上传头像</a>
+                </div>
+            </div>
+            <div class="profile fl">
+                <span class="blue-font font-size14">@CurrentUser.Name</span>
+                <br />
+                <a href="@Url.Action("Profile", "User")" class="black-font">账户设置</a>
+            </div>
+        </div>
+        <div class="user_link_out user_left_block">
+             <a href="@Url.Action("Goods", "User")" class="user_link user_link1 grayborder grayblock font-size16 black-font">我的宝贝清单</a>
+             <a href="@Url.Action("Info", "User")" class="user_link user_link2 grayborder grayblock font-size16 black-font">与我相关的</a>
+        </div>
+        <div class="user_with_outer grayblock">
+            <div class="heart">
+                <span class="green-font font-size20">心愿单</span>
+                <br />
+                <span class="black-font font-size16">让你如愿以偿</span>
+            </div>
+            <p class="blue-font font-size14">在心愿单中填写您近期想购买的闲置用品、您想发起的挑战和投票。我们将接近全力，如您所愿。</p>
+            <p class="text-center">
+                <a  href="#bless_box" id="bless_link" class="pink-font underline font-size16 line-height40" style="text-decoration:underline;">发布心愿单</a>
+            </p>
+        </div>
+    </div>
+    <div class="panel_right_outer fr">
+        @RenderBody()
+    </div>
+    <div class="clear"></div>
+</div>
+@Html.Partial("_Bless_Partial")
+@section Js_InFoot{
+    @Content.Script("cLoading.js", Url)
+    @Content.Script("cUpload.js", Url)
+    @Content.Script("cvalid.js", Url)
+    @Content.Script("json2.js", Url)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var timer;
+            var picbox = $("[name='head_pic_box']");
+            $("#head_upload_box").cUpload({
+                size: { width: 100, height: 100 },
+                url: '@Url.Action("Uploader", "Upload")?type=h',
+                loadingbox: picbox,
+                uploaded: function (response) {
+                    if (!response.Saved) {
+                        alert(response.Msg);
+                    }
+                    else {
+                        picbox.each(function () {
+                            var picitem= $(this).find("img[name='pic']")
+                            if (picitem.length == 0) {
+                                picitem = $("<img name='pic' />");
+                                picbox.append(picitem);
+                            }
+                            picitem.attr("src", response.Pic.PicUrl);
+                            picitem.css({ 'width': response.Pic.DisWidth + "px", 'height': response.Pic.DisHeight + "px", margin: response.Pic.DisMargin });
+                        });
+                    }
+                }
+            });
+            $("#head_pic_upload_box").bind("mouseover", function () {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    $("#head_upload_box").animate({ 'top': 80 }, 300);
+                }, 300);
+            });
+            $("#head_pic_upload_box").bind("mouseout", function () {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    $("#head_upload_box").animate({ 'top': 100 }, 300);
+                }, 300);
+            });
+        });
+    </script>
+    @RenderSection("Js_InFoot", false)
+}
+

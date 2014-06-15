@@ -1,0 +1,18 @@
+﻿@{
+    Layout = null;
+}
+<style type="text/css">
+    .footer{height:60px; margin-top:30px;}
+    .footer_bg{background:url(/images/bg-footer-top.png) repeat-x scroll left bottom transparent; height:13px; min-width:960px;}
+    .footer_content{line-height: 40px;overflow: hidden;text-align: center; width: 960px; margin:0 auto;}
+</style>
+<div class="footer">
+ <div class="footer_bg"></div>
+ <div class="footer_content">
+   <a>关于百家衣</a>
+ </div>
+</div>
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F295614f342f1fbc0f2d947b513293142' type='text/javascript'%3E%3C/script%3E"));
+</script>

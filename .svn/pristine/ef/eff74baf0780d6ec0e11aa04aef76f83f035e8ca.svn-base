@@ -1,0 +1,10 @@
+﻿(function ($) {
+    $.addcTemplateMethod({
+        ScalePicWidth: function (picWidth, picHeight, height, offset) {
+            return Math.floor((height == 0 ? 1 : height) / picHeight * picWidth + offset);
+        },
+        ScalePicHeight: function (picWidth, picHeight, width, offset) {
+            return Math.floor((width == 0 ? 1 : width) / picWidth * picHeight + offset);
+        }
+    });
+})(jQuery);

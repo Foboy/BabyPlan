@@ -1,0 +1,10 @@
+﻿@{
+    Layout = null;
+    ResourceHelper.RegisterCss(this, "partial.footer.css");
+}
+
+<div class="footer">
+ <div class="footer_content">
+   Copyright &copy 2012 百家衣网  蜀ICP备12021394号<a href="@Url.Action("Index", "AboutMe")">关于我们</a>
+ </div>
+</div>

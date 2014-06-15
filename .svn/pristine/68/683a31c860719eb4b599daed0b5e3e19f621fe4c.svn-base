@@ -1,0 +1,116 @@
+﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace BabyPlan.Common
+{
+    /// <summary>
+    /// 多个单例对象管理容器
+    /// </summary>
+    public sealed class MultiSingletonObject
+    {
+        #region 线程安全延迟加载单例
+        MultiSingletonObject() { }
+        public static MultiSingletonObject Instance {
+            get {
+                return Nested.instance;
+            }
+        }
+        class Nested
+        {
+            static Nested() {  }
+            internal static readonly MultiSingletonObject instance = new MultiSingletonObject();
+        }
+        #endregion
+
+        /// <summary>
+        /// 单例对象容器
+        /// </summary>
+        private Dictionary<Type, Object> m_singletonObjectDict = new Dictionary<Type, object>();
+        /// <summary>
+        /// 安全锁
+        /// </summary>
+        private System.Threading.ReaderWriterLockSlim _locker = new System.Threading.ReaderWriterLockSlim();
+
+        /// <summary>
+        /// 获取单例对象
+        /// </summary>
+        /// <typeparam name="T">返回类型</typeparam>
+        /// <param name="type">类型对象</param>
+        /// <returns></returns>
+        public T GetObject<T>(Type type)
+        {
+            if (m_singletonObjectDict.ContainsKey(type))
+            {
+                return (T)m_singletonObjectDict[type];
+            }
+            else {
+                return default(T);
+            }
+        }
+
+        /// <summary>
+        /// 获取单例对象
+        /// </summary>
+        /// <typeparam name="T">返回类型</typeparam>
+        /// <param name="typeName">类型对象名</param>
+        /// <returns></returns>
+        public T GetObject<T>(string typeName)
+        {
+            Type type = Type.GetType(typeName);
+            return GetObject<T>(type);
+        }
+        /// <summary>
+        /// 确定 是否包含指定的类型的单例对象。
+        /// </summary>
+        /// <param name="typeName"></param>
+        /// <returns></returns>
+        public bool Contain(string typeName)
+        {
+            Type type = Type.GetType(typeName);
+            return Contain(type);
+        }
+        /// <summary>
+        /// 确定 是否包含指定的类型的单例对象。
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public bool Contain(Type type)
+        {
+            return m_singletonObjectDict.ContainsKey(type);
+        }
+
+        /// <summary>
+        /// 注册单例类型
+        /// </summary>
+        /// <param name="type">类型对象</param>
+        public void RegisterSingletonType(Type type)
+        {
+            RegisterSingletonType(type, Activator.CreateInstance(type));
+           
+        }
+
+        /// <summary>
+        /// 注册单例类型
+        /// </summary>
+        /// <param name="type">类型对象</param>
+        /// <param name="obj">对象</param>
+        public void RegisterSingletonType(Type type, Object obj)
+        {
+            _locker.EnterWriteLock();
+            try
+            {
+                if (!m_singletonObjectDict.ContainsKey(type))
+                {
+                    m_singletonObjectDict.Add(type, obj);
+                }
+            }
+            finally
+            {
+                _locker.ExitWriteLock();
+            }
+        }
+    }
+}

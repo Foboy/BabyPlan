@@ -1,0 +1,26 @@
+.publicBook{position:relative;}
+.turnPage{position:absolute; width:1044px; top:50%; left:-42px; z-index:1;}
+.prev a,.next a{background:#2a8fc5; display:inline-block; width:22px; height:60px; line-height:60px; text-align:center; color:#FFFFFF;}
+.prev a.disble{background:#c4c4c4;cursor: not-allowed;}
+.pages .Snone,.pages .Fcover,.pages .Ptitle,.pages .Pcontent{height:590px; width:420px;box-shadow:0 0 6px #CCCCCC;}
+.pages .page{  position:relative; background-color:#f6f6f6;}
+.pages .pNumber{height:30px; line-height:30px; width:420px; text-align:center; color:#2a8fc5; position:absolute; bottom:10px; font-weight:bold;}
+.pages .Snone{box-shadow:none;}
+.pages .Fcover{position:relative; width:420px; height:590px; background:url(../images/frontCover.jpg) no-repeat center center;}
+.pages .Fcover b{position:absolute; top:80px; right:30px; color:#99dcff; font-size:38px}
+.pages .Ptitle .ptbaby{width:390px; padding:50px 50px 0 50px; height:380px; background-image:url(../images/baby.jpg);}
+.pages .Ptitle .ptyoung{width:390px; padding:50px 50px 0 50px; height:340px; background-image:url(../images/young.jpg);}
+.pages .Ptitle .ptold{width:420px; height:380px; background-image:url(../images/old.jpg);}
+.ptbaby_p{ height:130px; padding:30px 0 0 20px; font-size:24px;}
+.ptyoung_p{ padding:30px 0 0 20px; font-size:24px;}
+.ptold_p{ padding:30px 0 0 20px; font-size:24px;}
+.pages .contentShow{padding:10px 30px 0 30px;}
+.pages .contentShow h1{border-bottom:1px solid #DEDEDE; color:#2a8fc5; line-height:30px; font-size:20px;}
+.pages .contentShow .imgShow {padding:30px 0; height:100px; border-bottom:1px dashed #DEDEDE;}
+.contentShow .imgShow .imgHead{width:100px; height:100px;}
+.contentShow .imgShow .textDes{width:240px; font-size:14px; color:#666;}
+.pageleft{border-top-right-radius:15px;background-image:url(../images/bookGap.png);background-position: 390px 0;background-repeat: repeat-y;}
+.pageright{border-top-left-radius:15px;background-image:url(../images/bookGap.png);background-position: -30px 0;background-repeat: repeat-y;}
+.userinfo{ width:270px;border-top-left-radius:15px; background-color:#2A8FC4; height:220px;padding:60px 0 0 150px;}
+.userinfo_tx{ padding:2px; width:120px; height:120px; border:1px solid #ccc; background-color:#fff; margin-bottom:10px;}
+.intro{padding:30px 0 0 20px; font-size:16px;}

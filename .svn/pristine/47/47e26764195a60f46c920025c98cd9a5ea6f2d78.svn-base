@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
+using BabyPlan.DataStructure;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace BabyPlan.mvcApp.UrlRoutes
+{
+    /// <summary>
+    /// 宝贝详情路由规则解析，重写
+    /// </summary>
+    public class TradeDetailRoute : RouteBase
+    {
+        public override RouteData GetRouteData(HttpContextBase httpContext)
+        {
+            var virtualPath = httpContext.Request.AppRelativeCurrentExecutionFilePath + httpContext.Request.PathInfo;
+            virtualPath = virtualPath.Substring(2).Trim('/');
+
+            if (!virtualPath.StartsWith("二手宝贝"))
+                return null;
+
+            Regex detailRegex = new Regex(@"/\d+/?$");
+            if (!detailRegex.IsMatch(virtualPath))
+                return null;
+
+            string[] paramsList = virtualPath.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+            int pid = 0;
+            int id = 0;
+
+            for (int i = 0; i < paramsList.Length; i++)
+            {
+                if (pid > 0)
+                {
+                    int.TryParse(paramsList[i], out id);
+                }
+                else
+                {
+                    int.TryParse(paramsList[i], out pid);
+                }
+            }
+
+            var data = new RouteData(this, new MvcRouteHandler());
+            data.Values.Add("controller", "Trade");
+            data.Values.Add("action", "Detail");
+            data.Values.Add("pid", pid);
+            data.Values.Add("id", id);
+            return data;
+        }
+
+        public override VirtualPathData GetVirtualPath(RequestContext requestContext, RouteValueDictionary values)
+        {
+            return null;
+        }
+    }
+}

@@ -1,0 +1,69 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using BabyPlan.Common;
+using BabyPlan.Meta;
+using BabyPlan.WcfService;
+using BabyPlan.mvcApp.ViewModel;
+using BabyPlan.DataStructure;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class BabybookController : BaseController
+    {
+        //
+        // GET: /Babybook/
+
+        public ActionResult Index()
+        {
+            BookService client = new BookService();
+            AdvancedResult<List<ProBook>> response = client.SearchBooks(CurrentToken);
+
+            List<BookModel> items = new List<BookModel>();
+
+            if (response.Error == DataStructure.AppError.ERROR_SUCCESS)
+            {
+                ViewModelBindOption bindOptions = ViewModelBindOption.DefalutBindOption;
+                bindOptions.BookBindType = bindOptions.BookBindType | BookBindType.None;
+
+                response.Data = response.Data ?? new List<ProBook>();
+                foreach (var p in response.Data)
+                {
+                    items.Add(new BookModel().Bind(p, bindOptions));
+                }
+            }
+            return View("~/Views/info/babybook.cshtml",items);
+        }
+
+        public ActionResult BookList()
+        {
+            BookService client = new BookService();
+            AdvancedResult<List<ProBook>> response = client.SearchBooks(CurrentToken);
+
+            List<BookModel> items = new List<BookModel>();
+
+            if (response.Error == DataStructure.AppError.ERROR_SUCCESS)
+            {
+                ViewModelBindOption bindOptions = ViewModelBindOption.DefalutBindOption;
+                bindOptions.BookBindType = bindOptions.BookBindType | BookBindType.Author;
+
+                response.Data = response.Data ?? new List<ProBook>();
+                foreach (var p in response.Data)
+                {
+                    items.Add(new BookModel().Bind(p, bindOptions));
+                }
+            }
+            return View("~/Views/user/BookList.cshtml", items);
+        }
+
+        public ActionResult AddBook(int? id)
+        {
+            int pid = id ?? 0;
+            
+
+            return View("~/Views/info/addbook.cshtml");
+        }
+    }
+}

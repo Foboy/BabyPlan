@@ -1,0 +1,208 @@
+<html>
+<head>
+    <title>game</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="imagetoolbar" content="no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet">
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet">
+    <link href="game_files/axurerp_pagespecificstyles.css" type="text/css" rel="stylesheet">
+<!--[if IE 6]>
+    <link href="game_files/axurerp_pagespecificstyles_ie6.css" type="text/css" rel="stylesheet">
+<![endif]-->
+    <script src="data/sitemap.js"></script>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/axurerp_beforepagescript.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+<script src='game_files/data.js'></script>
+</head>
+<body>
+<div id="main_container">
+
+<div id="u0" class="u0_container"   >
+<div id="u0_img" class="u0_normal detectCanvas"></div>
+<div id="u1" class="u1" style="visibility:hidden;"  >
+<div id="u1_rtf"></div>
+</div>
+</div>
+<div id="u2" class="u2_container"   >
+<div id="u2_img" class="u2_normal detectCanvas"></div>
+<div id="u3" class="u3"  >
+<div id="u3_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Logo及口号</span></p></div>
+</div>
+</div>
+<div id="u4" class="u4_container"   >
+<div id="u4_img" class="u4_normal detectCanvas"></div>
+<div id="u5" class="u5"  >
+<div id="u5_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">首页</span></p></div>
+</div>
+</div>
+<div id="u6" class="u6_container"   >
+<div id="u6_img" class="u6_normal detectCanvas"></div>
+<div id="u7" class="u7"  >
+<div id="u7_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">同城置换</span></p></div>
+</div>
+</div>
+<div id="u8" class="u8_container"   >
+<div id="u8_img" class="u8_normal detectCanvas"></div>
+<div id="u9" class="u9"  >
+<div id="u9_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">挑战/活动</span></p></div>
+</div>
+</div>
+<div id="u10" class="u10"  >
+<div id="u10_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">登录</span></p></div>
+</div>
+<div id="u11" class="u11"  >
+<div id="u11_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">注册</span></p></div>
+</div>
+<div id="u12" class="u12"  >
+<div id="u12_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#666666;">|</span></p></div>
+</div>
+<DIV id="u13" style="visibility:hidden;" data-label="登录">
+<DIV id="pd0u13" style="" data-label="状态1">
+<div id="u14" class="u14_container"   >
+<div id="u14_img" class="u14_normal detectCanvas"></div>
+<div id="u15" class="u15" style="visibility:hidden;"  >
+<div id="u15_rtf"></div>
+</div>
+</div>
+<div id="u16" class="u16_container"   >
+<div id="u16_img" class="u16_normal detectCanvas"></div>
+<div id="u17" class="u17" style="visibility:hidden;"  >
+<div id="u17_rtf"></div>
+</div>
+</div>
+<div id="u18" class="u18"  >
+<div id="u18_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">登录</span></p></div>
+</div>
+<div id="u19" class="u19"  >
+<div id="u19_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#000000;">还没有账号？</span></p></div>
+</div>
+<div id="u20" class="u20_container"   >
+<div id="u20_img" class="u20_normal detectCanvas"></div>
+<div id="u21" class="u21"  >
+<div id="u21_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:14px;font-weight:bold;font-style:normal;text-decoration:none;color:#FFFFFF;">立即注册</span></p></div>
+</div>
+</div>
+<div id="u22" class="u22"  >
+<div id="u22_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#000000;">使用合作账号登录</span></p></div>
+</div>
+<div id="u23" class="u23_container"   >
+<div id="u23_img" class="u23_normal detectCanvas"></div>
+<div id="u24" class="u24" style="visibility:hidden;"  >
+<div id="u24_rtf"></div>
+</div>
+</div><div id="u25" class="u25" >
+<DIV id="u25_line" class="u25_line" ></DIV>
+</div>
+<div id="u26" class="u26"  >
+<div id="u26_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">用户名</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">：</span></p></div>
+</div>
+<INPUT id="u27" type=text value="yuwojiusi" class="u27"     >
+
+<div id="u28" class="u28"  >
+<div id="u28_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF0000;">*</span></p></div>
+</div>
+<div id="u29" class="u29"  >
+<div id="u29_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">&nbsp; 密码</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">：</span></p></div>
+</div>
+<INPUT id="u30" type=text value="yuwojiusi" class="u30"     >
+
+<div id="u31" class="u31"  >
+<div id="u31_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF0000;">*</span></p></div>
+</div>
+<div id="u32" class="u32_container"   >
+<div id="u32_img" class="u32_normal detectCanvas"></div>
+<div id="u33" class="u33"  >
+<div id="u33_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:14px;font-weight:bold;font-style:normal;text-decoration:none;color:#FFFFFF;">立即注册</span></p></div>
+</div>
+</div>
+<DIV id="u34container" style="position:absolute; left:226px; top:196px; width:100px; height:17px; ; ; ;" >
+<LABEL for="u34">
+<div id="u35" class="u35"  >
+<div id="u35_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">下次自动登录</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u34" style="position:absolute; left:-3px; top:-2px;" type="checkbox" value="checkbox"   >
+</DIV>
+</DIV>
+</DIV>
+<DIV id="u36" style="border-style:dotted; border-color:red; visibility:hidden; position:absolute; left:10px; top:0px; width:960px; height:640px;;" ></div>
+<div id="u37" class="u37_container"   >
+<div id="u37_img" class="u37_normal detectCanvas"></div>
+<div id="u38" class="u38" style="visibility:hidden;"  >
+<div id="u38_rtf"></div>
+</div>
+</div>
+<div id="u39" class="u39"  >
+<div id="u39_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">下面这些投票和挑战</span><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">都</span><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">弱爆了</span><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">，</span><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">快来心愿</span><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">中填写超吊的投票和挑战</span><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">。</span></p></div>
+</div>
+<div id="u40" class="u40_container"   >
+<div id="u40_img" class="u40_normal detectCanvas"></div>
+<div id="u41" class="u41"  >
+<div id="u41_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:14px;font-weight:bold;font-style:normal;text-decoration:none;color:#FFFFFF;">发布</span><span style="font-family:微软雅黑;font-size:14px;font-weight:bold;font-style:normal;text-decoration:none;color:#FFFFFF;">心愿贴</span></p></div>
+</div>
+</div>
+<div id="u42" class="u42_container"   >
+<div id="u42_img" class="u42_normal detectCanvas"></div>
+<div id="u43" class="u43" style="visibility:hidden;"  >
+<div id="u43_rtf"></div>
+</div>
+</div>
+<div id="u44" class="u44_container"   >
+<div id="u44_img" >
+<img src="game_files/u44_normal.jpg"  class="raw_image"></div>
+<div id="u45" class="u45" style="visibility:hidden;"  >
+<div id="u45_rtf"></div>
+</div>
+</div>
+<div id="u46" class="u46"  >
+<div id="u46_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">注重外表只是其</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">一</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">，想要修炼为</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">一</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">代</span></p><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">“潮人辣妈”</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">还需要“秘籍”。</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">快来看看哪种辣妈的装扮，你最喜欢，最想拥有</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">。</span></p></div>
+</div>
+<div id="u47" class="u47_container"   >
+<div id="u47_img" class="u47_normal detectCanvas"></div>
+<div id="u48" class="u48" style="visibility:hidden;"  >
+<div id="u48_rtf"></div>
+</div>
+</div>
+<div id="u49" class="u49"  >
+<div id="u49_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#8CBF26;">那么潮的辣妈你扶得住吗？</span></p></div>
+</div>
+<div id="u50" class="u50"  >
+<div id="u50_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">4563</span><span style="font-family:微软雅黑;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">&nbsp; </span><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">人投票</span></p></div>
+</div>
+<div id="u51" class="u51_container"   >
+<div id="u51_img" class="u51_normal detectCanvas"></div>
+<div id="u52" class="u52"  >
+<div id="u52_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:14px;font-weight:bold;font-style:normal;text-decoration:none;color:#FFFFFF;">立即去投票</span></p></div>
+</div>
+</div>
+<div id="u53" class="u53_container"   >
+<div id="u53_img" >
+<img src="game_files/u53_normal.jpg"  class="raw_image"></div>
+<div id="u54" class="u54" style="visibility:hidden;"  >
+<div id="u54_rtf"></div>
+</div>
+</div>
+<div id="u55" class="u55"  >
+<div id="u55_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#8CBF26;">你以为好男人只需要上得了厅堂下得了厨房吗？</span></p></div>
+</div>
+<div id="u56" class="u56"  >
+<div id="u56_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">新时</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">代的</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">老公，高富帅占了一小部分，矮矬穷占了一部分，屌丝男又占了一部分，剩下</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">还能争取做个潮人奶爸。</span></p></div>
+</div>
+<div id="u57" class="u57"  >
+<div id="u57_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">4563</span><span style="font-family:微软雅黑;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">&nbsp; </span><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">人投票</span></p></div>
+</div>
+<div id="u58" class="u58_container"   >
+<div id="u58_img" class="u58_normal detectCanvas"></div>
+<div id="u59" class="u59"  >
+<div id="u59_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:14px;font-weight:bold;font-style:normal;text-decoration:none;color:#FFFFFF;">立即去投票</span></p></div>
+</div>
+</div>
+</div>
+<div class="preload"><img src="user_files/u2_normal.png" width="1" height="1"/><img src="user_files/u14_normal.png" width="1" height="1"/><img src="user_files/u16_normal.png" width="1" height="1"/><img src="user_files/u20_normal.png" width="1" height="1"/><img src="user_files/u23_normal.png" width="1" height="1"/><img src="user_files/u25_line.png" width="1" height="1"/><img src="game_files/u37_normal.png" width="1" height="1"/><img src="game_files/u40_normal.png" width="1" height="1"/><img src="game_files/u42_normal.png" width="1" height="1"/><img src="game_files/u44_normal.jpg" width="1" height="1"/><img src="game_files/u51_normal.png" width="1" height="1"/><img src="game_files/u53_normal.jpg" width="1" height="1"/></div>
+</body>
+<script src="resources/scripts/axurerp_pagescript.js"></script>
+<script src="game_files/axurerp_pagespecificscript.js" charset="utf-8"></script>

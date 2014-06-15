@@ -1,0 +1,162 @@
+Sina_AccessToken 
+Sina_UID
+QQ_TokenKey
+QQ_TokenSecret
+
+注册   
+ Register(string account,string pwd)
+
+根据账号查询用户
+ CheckAccout(string account)
+
+ 判断是否登录
+ CheckLogin(string token)
+
+登录
+ Login(string account,string pwd)
+
+退出
+LoginOut(string token)
+ 
+修改baby年龄
+UpdateBabyAge(int bbage,string token)
+
+获取用户信息
+GetUserInfo(string token)
+
+上传用户头像
+UploadUserImage(byte[] str,string token)
+
+table:
+ad_user_id,user_account,pwd,baby_birthday,head_img_url,sina_accesstoken,sina_uid,qq_tokenkey,qq_tokensecret,sex,qq,mobile 
+
+-------------------------------------------------------------------------------------------
+pro_product
+pid title  bb_info product_type min_age max_age price state(上架下架) level creat_time create_id view_num
+
+
+
+发布宝贝
+publishBB(string title,string qq,string mobile,string bbinfo, string token)
+
+上传单个宝贝图片
+UploadBBPic(btys[])
+
+获取单个宝贝信息
+GetBBInfo(int bbID)
+
+编辑单个宝贝信息
+EditBBInfo(string title,string qq,string mobile,string bbinfo, string token)
+
+获取用户宝贝清单数量
+GetBBNum(string token)
+
+获取我发布的宝贝列表
+GetBBList(string token)
+
+关闭宝贝
+CloseBB(int bbID,string token)
+
+获取所有宝贝列表
+LoadBBList(int type)
+
+获取感兴趣宝贝
+LoadInterestingBB(string token)
+
+设置感兴趣宝贝
+
+获取单个宝贝浏览数
+GetBBViewNum(int bbID)
+
+设置单个宝贝浏览数
+SetBBViewNum(int bbID)
+
+---------------------------------------------------------------------------------
+
+gen_reply
+
+rid obj_id obj_type content create_id state create_time ref_user_id
+
+gen_bless
+
+bid content create_time create_id
+
+获取与我相关的回复数量
+GetReplyNum(string token)
+
+获取单个宝贝的回复数量
+GetBBReplyNum(int bbID)
+
+获取与我相关的回复列表（包括卖过的）
+LoadReplyList(string token)
+
+分页获取单个宝贝的回复列表
+LoadReplyList(int bbID)
+
+回复评论
+ReplyBB(int bbID,string Content,string token)
+
+发布心愿单
+Bless(string content)
+
+-------------------------------------------------------------------------------
+
+gen_vote_type
+vt_id vt_title vt_description total_vote_num  img_url create_time create_id state
+
+gen_vote
+
+vid vtitle v_des obj_id obj_type up_num down_num create_time create_id  state 
+
+gen_vote_user
+
+vid user_id vote create_time v_ip
+
+获取投票分类列表（辣妈，奶爸）
+LoadVoteTypeList()
+
+添加投票分类
+AddVoteType(string title,string description)
+
+添加投票分类图片
+AddVoteTypeImg(int voteTypeID,byte[] str)
+
+修改投票分类
+EditVoteType(int voteTypeID,string title,string description)
+
+获取单个投票类型的用户投票数
+GetVoteNum(int voteTypeID)
+
+添加投票结果类型
+AddVoteResult(int votid,int min,int max,string result)
+
+编辑投票结果类型
+EditVoteResult(int votid,int min,int max,string result)
+
+上传投票图片
+UploadVoteImage(int voteID,byte[] str)
+
+获取投票列表
+LoadVoteList(int voteTypeID)
+
+投票，返回投票结果
+Vote(int votid,string ip)
+
+获取用户投票现有投票数
+GetCurrentVoteNum(string ip)
+
+-------------------------------------------------------
+
+challenge
+
+
+
+
+
+
+
+
+
+
+
+

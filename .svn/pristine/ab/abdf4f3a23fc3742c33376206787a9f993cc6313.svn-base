@@ -1,0 +1,364 @@
+﻿@{
+    ViewBag.Title = "bookdetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_Header_Partial")
+@section Js_InHeader{
+@Content.Script("jquery-1.5.1.min.js", Url)
+@Content.Script("modernizr.2.5.3.min.js", Url)
+@Content.Script("jquery.mousewheel.min.js", Url)
+@Content.Script("turnjs/hash.js", Url)
+@Content.Script("turnjs/bookview.js", Url)
+@Content.Css("turnjs/bookview.css", Url,BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)
+@Content.Css("public.book.css", Url)
+
+<script type="text/javascript" src="/jslib/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="/jslib/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="/jslib/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="/jslib/turnjs/hash.js"></script>
+<script type="text/javascript" src="/jslib/turnjs/bookview.js"></script>
+<link type="text/css" rel="stylesheet" href="/jslib/turnjs/bookview.css"></link>
+@Content.Script("cTemplate.js", Url)
+@Content.Script("cTemplate.method.js", Url)
+}
+<div class="bookview-viewport">
+	<div class="container">
+		<div class="bookview">
+			<!-- Next button -->
+			<div ignore="1" class="next-button"><a href="javascript:;" class="font-size16 font-weight6"  style="display:none;">></a></div>
+			<!-- Previous button -->
+			<div ignore="1" class="previous-button"><a href="javascript:;" class="font-size16 font-weight6"  style="display:none;"><</a></div>
+		</div>
+	</div>
+</div>
+<script type="text/html" id="page-template">
+    <div class="pages">
+    <div class="page Pcontent">
+        <div class="contentShow">
+        	<h1>{@@name}</h1>
+            {$BindPics(@@pics)}
+        </div>    
+        <div class="pNumber">{@@page}</div>    
+    </div>
+    </div>
+</script>
+<script type="text/html" id="item-template">
+            <div class="imgShow clearfix">
+            	<div class="imgHead fl"><img alt="照片" src="{@@PicUrl}" style="{$PicZoom(@@PicWidth,@@PicHeight,140,140,0)}"/></div> 
+                <div class="textDes fl">
+                    {@@Description}
+                </div>
+            </div>
+</script>
+<script type="text/javascript">
+    var bookJson = @Html.Raw(ViewBag.BookJson);
+</script>
+<script type="text/javascript">
+    $.addcTemplateMethod({
+        BindPics: function (pics) { 
+            var result = "";
+            if(pics && pics.length) {
+                for(var i=0;i<pics.length;i++)
+                {
+                    result += itemTempate.DataBind(pics[i]);
+                }
+            }
+            return result;
+        }
+    });
+
+    var pageTemplate = $("#page-template").cTemplate();
+    var itemTempate = $("#item-template").cTemplate();
+
+    function loadApp() {
+
+
+
+        $('#all').fadeIn(1000);
+
+        // Create the flipbook
+
+        $('.bookview').turn({
+
+            // bookview width
+
+            width: 960,
+
+            // bookview height
+
+            height: 700,
+
+            // Elevation will move the peeling corner this number of pixels by default
+
+            elevation: 50,
+
+            // Hardware acceleration
+
+            acceleration: !isChrome(),
+
+            // Enables gradients
+
+            gradients: true,
+
+            // Auto center this flipbook
+
+            autoCenter: true,
+
+            // The number of pages
+
+            pages: 20,//bookJson.PicsCount,
+
+            // Events
+            when: {
+
+                turning: function (event, page, view) {
+
+                    var book = $(this),
+				currentPage = book.turn('page'),
+				pages = book.turn('pages');
+
+                    // Update the current URI
+
+                    Hash.go('page/' + page).update();
+
+
+                    // Show and hide navigation buttons
+
+                    disableControls(page);
+
+
+                    $('.thumbnails .page-' + currentPage).
+					parent().
+					removeClass('current');
+
+                    $('.thumbnails .page-' + page).
+					parent().
+					addClass('current');
+
+                },
+
+                turned: function (event, page, view) {
+
+                    disableControls(page);
+
+                    $(this).turn('center');
+
+                    if (page == 1) {
+                        $(this).turn('peel', 'br');
+                    }
+
+                },
+
+                missing: function (event, pages) {
+
+                    // Add pages that aren't in the bookview
+
+                    for (var i = 0; i < pages.length; i++)
+                    {
+                        //addPage(pages[i], $(this), bookJson.Pics);
+                        	var id, mpages = $(this).turn('pages');
+                            var idx = i;
+
+	// Create a new element for this page
+	var element = $('<div />', {});
+
+	// Add the page to the flipbook
+	if ($(this).turn('addPage', element, pages[i])) {
+
+		// Add the initial HTML
+		// It will contain a loader indicator and a gradient
+	    element.html('<div class="zgradient" page-index="' + idx + '">' + pageTemplate.DataBind({ name: bookJson.Name, page: i, pics: bookJson.Pics }) + '</div>');
+        
+
+	}
+                    }
+                }
+            }
+
+        });
+
+        // Using arrow keys to turn the page
+
+        $(document).keydown(function (e) {
+
+            var previous = 37, next = 39, esc = 27;
+
+            switch (e.keyCode) {
+                case previous:
+
+                    // left arrow
+                    $('.bookview').turn('previous');
+                    e.preventDefault();
+
+                    break;
+                case next:
+
+                    //right arrow
+                    $('.bookview').turn('next');
+                    e.preventDefault();
+
+                    break;
+            }
+        });
+
+        // URIs - Format #/page/1 
+
+        Hash.on('^page\/([0-9]*)$', {
+            yep: function (path, parts) {
+                var page = parts[1];
+
+                if (page !== undefined) {
+                    if ($('.bookview').turn('is'))
+                        $('.bookview').turn('page', page);
+                }
+
+            },
+            nop: function (path) {
+
+                if ($('.bookview').turn('is'))
+                    $('.bookview').turn('page', 1);
+            }
+        });
+
+
+//        $(window).resize(function () {
+//            resizeViewport();
+//        }).bind('orientationchange', function () {
+//            resizeViewport();
+//        });
+
+        // Events for thumbnails
+
+        $('.zgradient').click(function (event) {
+            var page = $(this).attr('page-index');
+            $('.bookview').turn('page', page);
+            return false;
+        });
+
+        $('.thumbnails').click(function (event) {
+
+            var page;
+
+            if (event.target && (page = /page-([0-9]+)/.exec($(event.target).attr('class')))) {
+
+                $('.bookview').turn('page', page[1]);
+            }
+        });
+
+        $('.thumbnails li').
+		bind($.mouseEvents.over, function () {
+
+		    $(this).addClass('thumb-hover');
+
+		}).bind($.mouseEvents.out, function () {
+
+		    $(this).removeClass('thumb-hover');
+
+		});
+
+        if ($.isTouch) {
+
+            $('.thumbnails').
+			addClass('thumbanils-touch').
+			bind($.mouseEvents.move, function (event) {
+			    event.preventDefault();
+			});
+
+        } else {
+
+            $('.thumbnails ul').mouseover(function () {
+
+                $('.thumbnails').addClass('thumbnails-hover');
+
+            }).mousedown(function () {
+
+                return false;
+
+            }).mouseout(function () {
+
+                $('.thumbnails').removeClass('thumbnails-hover');
+
+            });
+
+        }
+
+
+        // Regions
+
+        if ($.isTouch) {
+            $('.bookview').bind('touchstart', regionClick);
+        } else {
+            $('.bookview').click(regionClick);
+        }
+
+        // Events for the next button
+
+        $('.next-button').bind($.mouseEvents.over, function () {
+
+            $(this).addClass('next-button-hover');
+
+        }).bind($.mouseEvents.out, function () {
+
+            $(this).removeClass('next-button-hover');
+
+        }).bind($.mouseEvents.down, function () {
+
+            $(this).addClass('next-button-down');
+
+        }).bind($.mouseEvents.up, function () {
+
+            $(this).removeClass('next-button-down');
+
+        }).click(function () {
+
+            $('.bookview').turn('next');
+
+        });
+
+        // Events for the next button
+
+        $('.previous-button').bind($.mouseEvents.over, function () {
+
+            $(this).addClass('previous-button-hover');
+
+        }).bind($.mouseEvents.out, function () {
+
+            $(this).removeClass('previous-button-hover');
+
+        }).bind($.mouseEvents.down, function () {
+
+            $(this).addClass('previous-button-down');
+
+        }).bind($.mouseEvents.up, function () {
+
+            $(this).removeClass('previous-button-down');
+
+        }).click(function () {
+
+            $('.bookview').turn('previous');
+
+        });
+
+
+        //resizeViewport();
+
+        $('.bookview').addClass('animated');
+
+    }
+
+
+    $('#all').hide();
+
+
+    // Load the HTML4 version if there's not CSS transform
+
+    yepnope({
+        test: Modernizr.csstransforms,
+        yep: ['@Content.SourceSrc("turnjs/turn.min.js", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)'],
+        nope: ['@Content.SourceSrc("turnjs/turn.html4.min.js",Url,BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)'],
+        complete: loadApp
+    });
+
+</script>
+
+

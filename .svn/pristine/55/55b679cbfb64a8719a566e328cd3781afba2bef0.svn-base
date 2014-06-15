@@ -1,0 +1,4 @@
+﻿    .footer{height:60px; margin-top:30px;}
+    .footer_bg{background:url(/images/bg-footer-top.png) repeat-x scroll left bottom transparent; height:13px; min-width:960px;}
+    .footer_content{line-height: 40px;overflow: hidden;width: 960px; margin:0 auto;}
+    .footer_content a{ margin-left:10px;}

@@ -1,0 +1,209 @@
+﻿@{
+    ViewBag.Title = "detail";
+    Layout = "~/Views/Shared/_Layout_Trade.cshtml";
+}
+<style type="text/css">
+    .detailblock{margin-top:10px;}
+    .goods_title{width:920px;margin:0 auto;line-height:68px;}
+    .goods_detail{width:920px;border-top:solid 1px #E1E1E1;margin:0 auto;padding-top:24px;}
+    .left_block{width:564px;}
+    .left_block .left_content{width:564px;}
+    .left_block .pic_outer{height:470px;background:#999;}
+    .left_block .share{margin-top:10px;margin-bottom:10px;text-align:right;}
+    .left_block .discription{}
+    .left_block .discription .mark{font-size:72px;line-height:72px;float:left;display:block;width:30px; margin-left:5px;}
+    .left_block .discription p{padding:15px 10px;width:544px;line-height:20px;}
+    .margin_title{ margin-bottom:10px;}
+    .left_block .comments_header{height:40px;border-bottom:solid 3px #FF6666; margin-top:10px;}
+    .left_block .comments_header span{margin-top:14px;}
+    .left_block .comments_header a{margin-top:5px;}
+    .left_block .comments_outer{}
+    .left_block .comments_outer .comment_item{margin:10px auto;display:inline-block;}
+    .left_block .comments_outer .comment_item .head_pic{width:50px;height:50px;}
+    .left_block .comments_outer .comment_item .content{width:500px;min-height:50px;line-height:20px;padding:5px; position:relative; overflow:hidden; margin:0px;}
+    .left_block .comments_outer .comment_item .cmt_info{ height:18px; line-height:18px;}
+    .left_block .comments_outer .comment_item .cmt_content{word-wrap:break-word; color:#666;}
+    .left_block .paging{border-bottom:dotted 1px #999;padding:10px 0;}
+    .left_block .comment_outer{width:560px;height:110px;border:solid 1px #999;}
+    .left_block .comment_outer .comment_shade{line-height:110px;}
+    .left_block .comment_outer .comment_input{width:560px;height:108px;border:none;display:none;}
+    .left_block .comment_submit{margin:10px auto;width:84px;padding:0 0;text-align:center;}
+    .right_block{width:312px; position:relative;}
+    .right_block .right_content{width:312px;}
+    .right_block .seller_head{display:inline-block;}
+    .right_block .seller_head .head_pic{border:solid 1px #E1E1E1;width:102px;height:102px;}
+    .right_block .seller_head .info{width:200px;}
+    .right_block .seller_counting{margin:20px auto;display:inline-block;}
+    .right_block .seller_counting a{line-height:52px;padding:0 38px;font-size:16px;font-weight:normal;}
+    .right_block .seller_contact{line-height:20px;padding:10px;width:292px;}
+    .call_margin{ margin:10px 0 10px 80px;}
+    .call_qq{ background:url(/images/qq_num.png) no-repeat scroll 0 0 transparent; float:left;height: 16px;margin: 4px 16px 0 0;overflow: hidden;vertical-align: middle;width: 16px;}
+    .call_mobile{ background:url(/images/mobile.png) no-repeat scroll 0 0 transparent;float: left;height: 16px;margin: 4px 16px 0 0;overflow: hidden;vertical-align: middle;width: 16px;}
+    .call_p{ margin:10px 0 10px 50px;}
+    .call_kd{ margin:10px 0 0 20px;}
+    .call_a{ margin-left:20px;}
+    .call_a:hover{ text-decoration:underline;}
+    .right_block .seller_contact .contact_item dt{width:104px;}
+    .right_block .seller_distance{margin:20px auto;padding:20px 0;}
+    .right_block .recommend{ margin:20px 0px; overflow:hidden;}
+    .right_block .recommend dd{border:solid 1px #999;width:134px;height:134px;margin:5px 0 10px 0;}
+    .right_block .recommend dd img{width:130px;height:130px;margin:2px;}
+    .right_block .express{padding:10px;width:292px;}
+    .
+</style>
+<div class="mainblock whiteblock detailblock">
+    <div class="goods_title">
+        <h1>我家乖乖1岁时的衣服，8成新，想要的快来了，价格便宜！</h1>
+    </div>
+    <div class="goods_detail"> 
+        <div class="left_block fl">
+            <div class="pic_outer left_content">
+                
+            </div>
+            <div class="share left_content">
+                <script type="text/javascript" charset="utf-8">
+                    (function () {
+                        var _w = 24, _h = 24;
+                        var param = {
+                            url: location.href,
+                            type: '2',
+                            count: '', /**是否显示分享数，1显示(可选)*/
+                            appkey: '', /**您申请的应用appkey,显示分享来源(可选)*/
+                            title: '', /**分享的文字内容(可选，默认为所在页面的title)*/
+                            pic: '', /**分享图片的路径(可选)*/
+                            ralateUid: '', /**关联用户的UID，分享微博会@该用户(可选)*/
+                            language: 'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+                            rnd: new Date().valueOf()
+                        }
+                        var temp = [];
+                        for (var p in param) {
+                            temp.push(p + '=' + encodeURIComponent(param[p] || ''))
+                        }
+                        document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://hits.sinajs.cn/A1/weiboshare.html?' + temp.join('&') + '" width="' + _w + '" height="' + _h + '"></iframe>')
+                    })()
+                </script>
+            </div>
+            <div class="discription left_content">
+                <h3 class="label16 title-font margin_title">听听老板怎么描述的：</h3>
+                <div class="discription-outer left_content grayblock">
+                    <span class="mark blue-font">”</span>
+                    <p class="title-font">
+                        这些宝贝都是我家崽儿1岁时穿的，都很新，放着可惜。价钱便宜，多买多送。如果您选中合适的请在网站给我留言，或者短信、QQ米我。我会及时回复。支持当面交易，或快递，2件包邮哦。
+                    </p>
+                </div>
+            </div>
+            <div class="comments_header left_content">
+                <span class="label16 fl title-font">回复（23）</span>
+                <a href="#" class="button-green fr" title="咨询老板">咨询老板</a>
+            </div>
+            <div class="comments_outer left_content">
+                <div class="comment_item left_content">
+                    <div class="head_pic fl" style='background:url(@Content.SourceSrc("anonymous_head_small.jpg", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.Images)) no-repeat;'></div>
+                    <div class="content grayblock fr">
+                        <div class="cmt_info clearfix"><span class="fl blue-font">王晓</span><span class="fr gray-font">今天 13::14</span></div>
+                        <p class="cmt_content clearfix">
+                            不错啊，老板，我看重第一件和第三件，两件一起买能便宜点吗？不错啊，老板，我看重第一件和第三件，两件一起买能便宜点吗？不错啊，老板，我看重第一件和第三件，两件一起买能便宜点吗？
+                        </p>
+                        <div class="text-right"><a href="#">引用回复</a></div>
+                    </div>
+                </div>
+               
+                <div class="comment_item left_content">
+                    <div class="head_pic fl" style='background:url(@Content.SourceSrc("anonymous_head_small.jpg", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.Images)) no-repeat;'></div>
+                    <div class="content grayblock fr">
+                        <div class="cmt_info clearfix"><span class="fl blue-font">王晓</span><span class="fr gray-font">今天 13::14</span></div>
+                        <p class="cmt_content clearfix">
+                            不错啊，老板，我看重第一件和第三件，两件一起买能便宜点吗？不错啊，老板，我看重第一件和第三件，两件一起买能便宜点吗？不错啊，老板，我看重第一件和第三件，两件一起买能便宜点吗？
+                        </p>
+                        <div class="text-right"><a href="#">引用回复</a></div>
+                    </div>
+                </div>
+                 <div class="comment_item left_content">
+                    <div class="head_pic fl" style='background:url(@Content.SourceSrc("anonymous_head_small.jpg", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.Images)) no-repeat;'></div>
+                    <div class="content grayblock fr">
+                        <div class="cmt_info clearfix"><span class="fl blue-font">王晓</span><span class="fr gray-font">今天 13::14</span></div>
+                        <p class="cmt_content clearfix">
+                            不错啊，老板，我看重第一件和第三件，两件一起买能便宜点吗？不错啊，老板，我看重第一件和第三件，两件一起买能便宜点吗？不错啊，老板，我看重第一件和第三件，两件一起买能便宜点吗？
+                        </p>
+                        <div class="text-right"><a href="#">引用回复</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="paging left_content text-right">
+                <span class="black-font">1</span>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <span class="gray-font">…</span>
+                <a href="#">8</a>
+                <a href="#">下一页</a>
+            </div>
+            <div class="comment_outer left_content">
+                <div class="comment_shade text-center blue-font hide" id="logined_comment">
+                    有疑问，就给老板留言吧
+                </div>
+                <div class="comment_shade text-center" id="unlogin_comment">
+                    请 <a href="#">登录</a> 或 <a href="#">注册</a> 后在发表回复
+                </div>
+                <textarea class="comment_input" id="comment_input" name="comment_input"></textarea>
+            </div>
+            <a href="#" class="comment_submit button-green">发表回复</a>
+            <script type="text/javascript">
+                $("#logined_comment").bind("click", function () {
+                    $(this).hide();
+                    $("#comment_input").show().focus();
+                });
+                $("#comment_input").bind("blur", function () {
+                    if ($.trim($(this).val()).length == 0) {
+                        $(this).hide();
+                        $("#logined_comment").show();
+                    }
+                });
+            </script>
+        </div>
+        <div class="right_block fr">
+            <div class="seller_head right_content">
+                <div class="head_pic fl" style='background:url(@Content.SourceSrc("anonymous_head.jpg",Url,BabyPlan.mvcApp.Infras.SourceRootEnums.Images)) 1px 1px no-repeat;'></div>
+                <div class="info fr">
+                    <p class="blue-font label14">张三</p>
+                    <p class="gray-font">共发布 &nbsp;(<strong class="pink-font">5</strong>)&nbsp;帖子</p>
+                </div>
+            </div>
+            <div class="seller_counting right_content">
+                <a href="#" class="button-pink fl" title="浏览(345)">浏览(345)</a>
+                <a href="#" class="button-blue fr" title="回复(32)">回复(32)</a>
+            </div>
+            <div class="seller_contact right_content grayblock">
+                <p class="font-size14  title-font">施主，看中了就call我</p>
+                <p class="font-size18 green-font call_p font-weight6"><i class="call_qq"></i>249238908</p>
+                <p class="font-size18 green-font call_p font-weight6"><i class="call_mobile"></i>13880639761</p>
+
+            </div>
+            @*<div class="seller_distance right_content grayblock text-center">
+                <span class="label18 green-font line-height30">该宝贝距离您大约  3.6km</span>
+                <br />
+                <a href="#" class="blue-font underline">点击查看地图</a>
+                <span class="block-font">，方便您选择最近的路线和他交易</span>
+            </div>*@
+            <div class="recommend right_content">
+                <h3 class="font-size18 title-font">您可能感兴趣的宝贝</h3>
+                <dd class="fl"><a href="#"><img alt="1"></img></a> </dd>
+                <dd class="fr"><a href="#"><img alt="2"></img></a></dd>
+                <dd class="fl"><a href="#"><img alt="3"></img></a></dd>
+                <dd class="fr"><a href="#"><img alt="4"></img></a></dd>
+            </div>
+            <div class="seller_contact right_content grayblock">
+                <p class="label16 title-font">如果选择你们同城快递，下面的内容也许能能给您一点点帮助</p>
+                <p class="blue-font font-size14 call_kd">
+                  <a class="call_a" href="http://www.ckd8.com/NetWork.asp?Action=go" target="_blank">成都申通快递</a>
+                  <a class="call_a" href="http://www.chakd.com/d.php?id=25&areacode=028" target="_blank">成都圆通快递</a>
+                </p>
+                 <p class="blue-font font-size14 call_kd">
+                  <a class="call_a" href="http://www.express-sf.cn/sfadd/sichuan.html" target="_blank">成都顺风快递</a>
+                  <a class="call_a" href="http://www.zto.cn/SiteInfo/city.aspx?province=%CB%C4%B4%A8%CA%A1&city=%B3%C9%B6%BC" target="_blank">成都中通快递</a>
+                </p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+

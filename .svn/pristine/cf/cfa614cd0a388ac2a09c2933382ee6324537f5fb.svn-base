@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using BabyPlan.Meta;
+
+namespace BabyPlan.mvcApp.Model
+{
+    [Serializable]
+    public class ProductModel : BaseModel
+    {
+        public int? Id { get; set; }
+
+        public string Title { get; set; }
+
+        public string QQ { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Description { get; set; }
+
+        public DateTime? CreateTime { get; set; }
+
+        public int? CommentsCount { get; set; }
+
+        public PicModel Pic { get; set; }
+
+        public IList<ProductItemModel> Items { get; set; }
+
+        public ProductModel Bind(ProProduct product)
+        {
+            return this;
+        }
+    }
+}

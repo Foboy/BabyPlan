@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta name="description" content="百家衣(www.360baijiayi.com)是一个专注婴儿闲置衣物买卖的网站，在这里妈妈们可以在线买卖宝宝闲置的衣服、玩具。“百家衣”是婴儿服的一种，由一百个家庭收集到布片做成，故名“百家衣”.@ViewBag.Description" />
+    <meta name="keywords" content="百家衣,买卖,旧衣服,二手,二手衣服,闲置,宝宝,婴儿,儿童,孩子,衣服,小孩衣服,婴儿衣服,寄售,玩具,同城置换,同城交易,四川二手,成都二手衣服,@ViewBag.KeyWords" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" /> 
+    <meta name="baidu-site-verification" content="AIb9dYOVf0AGViEy" />
+    <title>百家衣-@ViewBag.Title</title>
+    <link rel="icon" href="../../images/favicon.ico" mce_href="/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../images/favicon.ico" mce_href="/images/favicon.ico" type="image/x-icon">
+    @{
+        ResourceHelper.RegisterCss(this, "layout.css");
+        ResourceHelper.RegisterCss(this, "main.css");
+        <text>
+    @Html.Raw(ResourceHelper.CreateCssLink(this))
+        </text>
+    }
+    @RenderSection("Js_InHeader", false)
+</head> 
+<body>
+
+    @RenderBody()
+    @RenderSection("Js_InFoot", false) 
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F295614f342f1fbc0f2d947b513293142' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

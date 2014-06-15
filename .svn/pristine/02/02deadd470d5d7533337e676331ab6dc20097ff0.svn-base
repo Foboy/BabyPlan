@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "ViewPage1";
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+@section Js_InHeader{
+   <!--页面尚未加载完的Js-->   
+}
+ @Html.Partial("_header_before_login")
+ <div class="body_bg"> 
+     <div class="container relative height630"> 
+          <div class="wrap">
+		        <div id="banner">
+			        <img src='@Url.Content("~/css/images/banner_brand.jpg")' data-class="btn_brand" width="615px" height="525px" alt="使用蜜蜂系统，您可以快速地在 iPhone, iPad, Android, 以及其他智能手机上建立自己的 app 应用，向客户展示各种信息。" />
+			        <img src='@Url.Content("~/css/images/banner_anytime.jpg")' data-class="btn_quickly" width="615px" height="525px" alt="蜜蜂系统制作速度极快，您可以在短时间内迅速获得 iPhone, iPad, Android, 以及各个智能手机平台上的专属 app 应用。" />
+			        <img src='@Url.Content("~/css/images/banner_push.jpg")' data-class="btn_push" width="615px" height="525px" alt="蜜蜂系统支持推送功能，可以将各种资讯迅速推送到您的客户的智能手机。" />
+			        <img src='@Url.Content("~/css/images/banner_anytime.jpg")' data-class="btn_anytime" width="615px" height="525px" alt="通过蜜蜂系统，客户可以随时随地查看您的联系信息，更快地与您联系。" />
+			        <img src='@Url.Content("~/css/images/banner_share.jpg")' data-class="btn_share" width="615px" height="525px" alt="快捷的微博分享功能，通过蜜蜂系统，让您的营销手段更为多样化。" />
+			        <img src='@Url.Content("~/css/images/banner_anytime.jpg")' data-class="btn_cover" width="615px" height="525px" alt="蜜蜂系统覆盖几近所有智能手机平台：iPhone, iPad, Android, Windows Mobile 7, 乃至 Web。" />
+		        </div> 
+            </div>
+     </div><!--end container-->
+ </div> 
+@Html.Partial("_footer")
+@section Js_InFoot{
+    <!--页面尚加载完后的Js-->
+    @Content.Script("jquery-cycle.min.js", Url)
+    @Content.Script("home-index.js", Url) 
+    <script type="text/javascript">
+        $('#signin-form').submit(function (event) {
+            event.preventDefault();
+            if (!/^[a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test($('#signin-email').val())) {
+                alert('请输入正确的Email');
+                $('#signin-email').focus();
+                return;
+            };
+            if (!$('#signin-pw').val()) {
+                alert('请输入密码');
+                $('#signin-pw').focus();
+                return;
+            };
+            var login_param = {
+                username: $('#signin-email').val(),
+                password: $("#signin-pw").val()
+                //$.md5($("#signin-pw").val())
+            };
+            $.ajax({
+                type: "POST",
+                dataType: "Json",
+                data: login_param,
+                url: '@Url.Action("dologin","a")',
+                success: function (ret_msg) {
+                    if (ret_msg.Error == 0) {
+                        //跳转到个人中心
+                        window.location.href = '@Url.Action("dashboard","cen")';
+                    }
+                    else if (ret_msg.Error == 2) {
+                        //该平台账号没有和任何社交账号绑定               
+                        window.location.href = '@Url.Action("sel_social_user","a")';
+                    }
+                    else
+                        alert(ret_msg.RetMsg);
+                }
+            });
+        });
+    </script>
+}

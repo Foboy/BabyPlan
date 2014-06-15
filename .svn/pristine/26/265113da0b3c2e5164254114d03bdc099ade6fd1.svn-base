@@ -1,0 +1,3 @@
+﻿  .main_content{ width:100%; margin-bottom:20px; overflow:hidden;}
+  .main_bg{ background:url(../images/jx.png) no-repeat;width:100%; height:160px; }
+  .last_title{ margin-bottom:10px;}

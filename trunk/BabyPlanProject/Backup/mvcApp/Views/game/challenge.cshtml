@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "challenge";
+    Layout = "~/Views/Shared/_Layout_Nested.cshtml";
+}
+<style type="text/css">
+    .challenge_top{padding:10px 0;}
+    .challenge_top .challenge_label{width:460px;height:248px;border:solid 1px #999;margin:0 10px;}
+    .challenge_top .challenge_label p{padding:0 30px;}
+    .challenge_top .challenge_label p.ctitle{padding:20px 40px;}
+    .challenge_top .challenge_outer{width:400px;margin:0 20px;}
+    .challenge_top .challenge_outer .input_item_outer{width:400px;display:inline-block;margin:15px 0;line-height:30px;}
+    .challenge_top .challenge_outer .input_item_outer dt{width:140px;}
+    .challenge_top .challenge_outer .challenge_submit{width:110px;margin:10px auto;padding:0;}
+</style>
+<div class="challenge_top mainblock whiteblock">
+    <div class="challenge_label fl">
+        <p class="ctitle blue-font font-size18 line-height40">
+            你还记得《小蝌蚪找妈妈》这篇课文吗？
+            <br />
+            如果你正打算要小孩，你敢在这挑战吗？
+            <br />
+            挑战多久能怀孕，让其他人羡慕死你吧！
+        </p>
+        <p class="gray-font line-height20 font-size13">
+            据统计，年轻人，长时间使用避孕套，导致80%的夫妻在准备要小孩的一年内都很难怀上 。只有20%的夫妻能幸运的怀上。快来接受挑战，看看是不是那20%的人。
+        </p>
+    </div>
+    <div class="challenge_outer fl">
+        <p class="blue-font font-size18 line-height40">开始挑战吧！</p>
+        <dl class="input_item_outer">
+            <dt class="black-font font-size16 text-right fl">开始时间：</dt>
+            <dd class="fl">
+                <span class="red-font">*</span>
+                <input type="text" class="Wdate" style="height:30px;" onclick="WdatePicker()" />
+            </dd>
+        </dl>
+        <dl class="input_item_outer">
+            <dt class="black-font font-size16 text-right fl">预计时间：</dt>
+            <dd class="fl">
+                <span class="red-font">*</span>
+                <input type="text" class="input_box width100" />
+                <span class="blue-font font-size18">&nbsp;&nbsp;周</span>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <a href="#" class="button-green challenge_submit">开始</a>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="challenge_list_outer mainblock whiteblock">
+</div>
+@Content.Script("My97DatePicker/WdatePicker.js",Url)
+

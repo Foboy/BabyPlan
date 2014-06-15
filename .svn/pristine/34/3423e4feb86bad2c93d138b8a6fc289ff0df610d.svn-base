@@ -1,0 +1,83 @@
+﻿/**
+ * @author yangchao
+ * @email:aaronyangchao@gmail.com
+ * @date: 2012/7/7 21:39:12
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+
+namespace BabyPlan.Meta
+{
+    [Serializable]
+    public class ResPic
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public Int32 PicId
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String PicDescription
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Int32 ObjId
+        { get; set; }
+
+        /// <summary>
+        /// 0：产品 1：用户头像 2：投票
+        /// </summary>
+        public Int32 ObjType
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String PicUrl
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Int32 PicHeight
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Int32 PicWidth
+        { get; set; }
+
+        /// <summary>
+        /// 2:禁止 1：可用
+        /// </summary>
+        public Int32 State
+        { get; set; }
+
+
+        /// <summary>
+        /// 从读取器向完整实例对象赋值
+        /// </summary>/// <param name="reader">数据读取器</param>
+        /// <returns>返回本对象实例</returns>
+        public ResPic BuildSampleEntity(IDataReader reader)
+        {
+            this.PicId = Convert.ToInt32(reader["pic_id"]);
+            this.PicDescription = Convert.ToString(reader["pic_description"]);
+            this.ObjId = Convert.ToInt32(reader["obj_id"]);
+            this.ObjType = Convert.ToInt32(reader["obj_type"]);
+            this.PicUrl = Convert.ToString(reader["pic_url"]);
+            this.PicHeight = Convert.ToInt32(reader["pic_height"]);
+            this.PicWidth = Convert.ToInt32(reader["pic_width"]);
+            this.State = Convert.ToInt32(reader["state"]);
+            return this;
+        }
+    }
+}

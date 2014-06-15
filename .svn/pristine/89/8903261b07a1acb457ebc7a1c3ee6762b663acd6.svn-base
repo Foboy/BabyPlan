@@ -1,0 +1,96 @@
+﻿/*
+ * 创建者: yangchao   创建时间:2011-10-11
+ * 文件描述:内存缓存数据存储器
+ * 修改历史:
+ * 2011-10-11 author  description
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Runtime.Caching;
+
+namespace BabyPlan.Common.Cache
+{
+    /// <summary>
+    /// 内存缓存数据存储器
+    /// </summary>
+    public class MemoryCacheDepository :ICacheDepository
+    {
+        private Dictionary<string, object> _depository = new Dictionary<string, object>();
+
+        //private MemoryCache _depository = MemoryCache.Default;
+
+        /// <summary>
+        /// 存储数据
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="value">数据</param>
+        /// <remarks></remarks>
+        public void Add(string key, object value)
+        {
+            _depository.Add(key, value);
+        }
+
+        /// <summary>
+        /// 是否包含某个键
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <returns><c>true</c> if [contains] [the specified key]; otherwise, <c>false</c>.</returns>
+        /// <remarks></remarks>
+        public bool Contains(string key)
+        {
+            return _depository.ContainsKey(key);
+        }
+
+        /// <summary>
+        /// 移除数据
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <remarks></remarks>
+        public void Remove(string key)
+        {
+            _depository.Remove(key);
+        }
+
+        /// <summary>
+        /// 获取数据
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        public object Get(string key)
+        {
+            return _depository[key];
+        }
+
+        /// <summary>
+        /// 清除数据
+        /// </summary>
+        /// <remarks></remarks>
+        public void Clear()
+        {
+            _depository.Clear();
+        }
+
+        /// <summary>
+        /// Gets the enumerator.
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
+        {
+            return _depository.GetEnumerator();
+        }
+
+        /// <summary>
+        /// 返回一个循环访问集合的枚举器。
+        /// </summary>
+        /// <returns>可用于循环访问集合的 <see cref="T:System.Collections.IEnumerator"/> 对象。</returns>
+        /// <remarks></remarks>
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+    }
+}

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  	android:layout_width="fill_parent"
+  	android:layout_height="fill_parent"
+  	android:orientation="vertical"
+  	android:background="@color/white">
+  	
+    <include layout="@layout/frame_main_header" /> 
+    
+    <LinearLayout
+        android:id="@+id/user_set_save_message"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/review_bg_blue"
+            android:padding="5.0dip" >
+
+            <ProgressBar style="@style/loading_small" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dip"
+                android:text="设置保存中···"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+    
+	<LinearLayout 
+	    xmlns:baijiayi="http://360baijiayi.com"
+	    android:id="@+id/user_set_form"
+	    android:orientation="horizontal" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:paddingLeft="6dip"
+	    android:paddingRight="6dip"
+	    android:paddingTop="8dip"
+	    android:paddingBottom="7dip">   
+	
+	        <com.baijiayi.app.widget.ImageViewBorder
+	            android:id="@+id/user_setting_pic"
+	            baijiayi:BorderColor="GRAY"
+	            style="@style/goods_image" />
+		<LinearLayout
+	    	android:layout_width="fill_parent" 
+	    	android:layout_height="wrap_content"
+	    	android:orientation="vertical"
+	    	android:layout_marginLeft="6dip">
+
+			<Button
+			    android:id="@+id/user_setting_update_head"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:background="#ffffff"
+			    android:gravity="left"
+			    android:paddingLeft="10dip"
+			    android:textSize="20dip"
+			    android:text="修改头像" />
+	
+		</LinearLayout>
+	
+	</LinearLayout> 
+                <View style="@style/detail_cut_line" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7.0dip" >
+
+                <TextView
+                    android:layout_width="60dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8.0dip"
+                    android:text="手机："
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/user_setting_phone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="12"
+                    android:selectAllOnFocus="true"
+                    android:hint="请输入手机号码"
+                    android:inputType="phone"
+                    style="@style/goods_pub_editbox">
+                </EditText>
+            </LinearLayout>
+                <View style="@style/detail_cut_line" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7.0dip" >
+
+                <TextView
+                    android:layout_width="60dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8.0dip"
+                    android:text="QQ："
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/user_setting_qq"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:selectAllOnFocus="true"
+                    android:hint="请输入QQ号码"
+                    android:inputType="number"
+                    style="@style/goods_pub_editbox">
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="20dip"
+                android:layout_marginTop="7.0dip" >
+                        <Button 
+	                        android:id="@+id/user_setting_save"
+	                        android:layout_width="120dip" 
+	                        android:layout_height="40dip" 
+							android:layout_marginRight="20dip"
+	                        android:textSize="@dimen/text_size_16"
+	                        android:textColor="#ffffff"
+	                        android:text="保存设置" 
+                    		android:layout_gravity="center_horizontal"
+	                        android:background="@drawable/login_btn_selector" />
+                        <Button 
+	                        android:id="@+id/user_setting_logout"
+	                        android:layout_width="120dip" 
+	                        android:layout_height="40dip" 
+	                        android:textSize="@dimen/text_size_16"
+	                        android:textColor="#ffffff"
+	                        android:text="退出登录" 
+                    		android:layout_gravity="center_horizontal"
+	                        android:background="@drawable/login_btn_selector" />
+            </LinearLayout>
+</LinearLayout>

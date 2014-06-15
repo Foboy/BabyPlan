@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BabyPlan.Meta" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BabyPlan.Meta" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/UserService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/BabyPlan.DataStructure" />
+  <xs:complexType name="AdUser">
+    <xs:sequence>
+      <xs:element name="_x003C_AdUserId_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_BabyBirthday_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_HeadImgUrl_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Mobile_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_PicHeight_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_PicId_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_PicWidth_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Pwd_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Qq_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Sex_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_State_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_UserAccount_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdUser" nillable="true" type="tns:AdUser" />
+  <xs:complexType name="SocialUser">
+    <xs:sequence>
+      <xs:element name="_x003C_AccessTokenSecret_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AccessToken_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BabyPlan.DataStructure" name="_x003C_SocialUserType_x003E_k__BackingField" type="q1:SocialUserTypeEnum" />
+      <xs:element name="_x003C_Uid_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_UserId_x003E_k__BackingField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SocialUser" nillable="true" type="tns:SocialUser" />
+</xs:schema>

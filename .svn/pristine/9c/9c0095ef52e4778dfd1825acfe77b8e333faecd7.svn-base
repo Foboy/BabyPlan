@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="02e6bae8-fde2-4111-8a62-673ba02874dc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1937/BabyPlan.WcfService/FileService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FileService.disco" MetadataType="Disco" ID="4c065d40-562c-4c30-97f4-a0882e8c08f2" SourceId="1" SourceUrl="http://localhost:1937/BabyPlan.WcfService/FileService.svc?disco" />
+    <MetadataFile FileName="FileService.xsd" MetadataType="Schema" ID="42c11468-a0de-42ae-9a9b-095ace27c65e" SourceId="1" SourceUrl="http://localhost:1937/BabyPlan.WcfService/FileService.svc?xsd=xsd3" />
+    <MetadataFile FileName="FileService1.xsd" MetadataType="Schema" ID="7ba2307d-a0e6-4200-a212-20fcdd097956" SourceId="1" SourceUrl="http://localhost:1937/BabyPlan.WcfService/FileService.svc?xsd=xsd2" />
+    <MetadataFile FileName="FileService2.xsd" MetadataType="Schema" ID="05fa3826-6e5f-4d61-acd8-b52ada32e5d9" SourceId="1" SourceUrl="http://localhost:1937/BabyPlan.WcfService/FileService.svc?xsd=xsd1" />
+    <MetadataFile FileName="FileService3.xsd" MetadataType="Schema" ID="2676ff1e-ad22-4d16-a8d7-cf02fabbc045" SourceId="1" SourceUrl="http://localhost:1937/BabyPlan.WcfService/FileService.svc?xsd=xsd0" />
+    <MetadataFile FileName="FileService.wsdl" MetadataType="Wsdl" ID="f9f87015-98ef-4513-bbdf-81542ab45bb2" SourceId="1" SourceUrl="http://localhost:1937/BabyPlan.WcfService/FileService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

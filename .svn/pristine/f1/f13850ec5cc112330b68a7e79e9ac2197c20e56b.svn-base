@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout_Trade.cshtml";
+}
+@section Js_InHeader{
+<style type="text/css">
+    .goods_header{height:40px;border-top:solid 3px #FF6666;line-height:40px;margin-top:10px;}
+    .goods_header .sort{width:200px;height:40px;font-size:13px;margin-left:10px;}
+    .goods_header .style{width:100px;height:40px;}
+    .goods_outer{padding-top:10px;}
+    .goods_outer .goodsbox{list-style-type: none;position: relative;}
+    .goods_outer .goodsbox li{width:210px;border:solid 1px #ccc;display: none;}
+    .goods_outer .goodsbox li .itembox{width:190px;margin:10px;position:relative;}
+    .goods_outer .goodsbox li .itembox .price{height:20px;line-height:20px;padding:0 5px;background:#FF6666;color:#fff;position:absolute;display:block;}
+    .goods_outer .goodsbox li .itembox .comment{width:190px;height:14px;line-height:14px;margin-top:10px;}
+    .goods_outer .goodsbox li img {display: block;}
+    .goods_outer .goodsbox li p {color: #999;line-height: 16px;margin: 6px 0;}
+    #loader {height: 16px;text-align: center;padding: 25px 0 25px 0;}
+    #loaderCircle {width: 16px;height: 16px;margin: 0 auto;background-image: url('../images/loader.gif');}
+</style>
+}
+
+<div class="goods_header mainblock whiteblock">
+    <div class="sort fl">
+        <span class="gray-font">排序：</span>
+        <span class="black-font">最新</span>
+    </div>
+    <div class="style fr">
+    </div>
+</div>
+<div class="goods_outer mainblock whiteblock">
+    <ul id="goodsbox" class="goodsbox mainblock">
+    </ul>
+    <div id="loader">
+    <div id="loaderCircle"></div>
+    </div>
+</div>
+<div style="display:none">
+<textarea id="goods_item_model" cols="0" rows="0">
+    <!--
+    <li>
+        <div class="itembox">
+            <a title="详细信息" href="/Trade/Detail/{@@pid}" target="_blank">
+                <img src="{@@picUrl}" width="190" height="{$ScalePicHeight(@@width,@@height,190,0)}" />
+            </a>
+            <span style="top: {$ScalePicHeight(@@width,@@height,190,-20)}px; right: 0px;" class="price">￥{@@price}</span>
+            <a title="详细信息" href="/Trade/Detail/{@@pid}" target="_blank">
+                <p>{@@description}</p>
+            </a>
+            <div class="comment">
+                <span class="fl blue-font">评论：{@@comment}</span>
+                <span class="fr black-font">{@@date}</span>
+            </div>
+        </div>
+    </li>
+    -->
+</textarea>
+</div>
+@section Js_InFoot{
+@Content.Script("cTemplate.js", Url)
+@Content.Script("cTemplate.method.js", Url)
+@Content.Script("jquery.wookmark.min.js", "wookmark", Url)  
+ <script type="text/javascript">
+
+     var gtemplate = $("#goods_item_model").cTemplate();
+     var handler = null;
+     var page = 0;
+     var isLoading = false;
+     //var apiURL = 'http://www.wookmark.com/api/json?type=user&userId=10';
+     var apiURL = '@Url.Action("AjaxGetGoods", "Trade")';
+     var detailURL = '@Url.Action("Detail", "Trade")/';
+
+     var options = {
+         autoResize: true,
+         container: $('#goodsbox'),
+         offset: 16,
+         itemWidth: 220
+     };
+
+     function onScroll(event) {
+         if (!isLoading) {
+             var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
+             if (closeToBottom) {
+                 loadData();
+             }
+         }
+     };
+
+     function applyLayout() {
+         if (handler)
+             handler.wookmarkClear();
+         handler = $('#goodsbox li');
+         handler.wookmark(options);
+     };
+
+     function loadData() {
+         isLoading = true;
+         $('#loaderCircle').show();
+
+         $.ajax({
+             url: apiURL,
+             dataType: 'jsonp',
+             data: { page: page, age: 0, itemType: 0, sexType: 0 },
+             success: onLoadData
+         });
+     };
+
+     function onLoadData(data) {
+         isLoading = false;
+         $('#loaderCircle').hide();
+         if (data.Error != 0) {
+             alert(data.ErrorMessage);
+             return;
+         }
+         data = data.Data;
+         page++;
+
+         var html = '';
+         var picHeight = 0;
+         var i = 0, length = data.length, item;
+         for (; i < length; i++) {
+             item = data[i];
+             html += gtemplate.DataBind({
+                 pid: i,
+                 picUrl: item.Pic.PicUrl,
+                 width: item.Pic.PicWidth,
+                 height: item.Pic.PicHeight,
+                 description: item.Description,
+                 comment: i * 10,
+                 date: "昨天",
+                 price: i
+             });
+         }
+         $('#goodsbox').append(html);
+
+         applyLayout();
+     };
+
+     $(document).ready(new function () {
+         $(document).bind('scroll', onScroll);
+
+         loadData();
+     });
+  </script>
+}
+
+

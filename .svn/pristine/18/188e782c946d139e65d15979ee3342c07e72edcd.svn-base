@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "宝宝会长大，衣服不会长大。百家衣(www.360baijiayi.com)";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ResourceHelper.RegisterCss(this, "home.index.css");
+}
+
+@Html.Partial("_Header_Partial")
+
+<div class="mainblock">
+  <div class="main_content">
+     <div class="main_s1"></div>
+     <div class="main_s2"></div>
+  </div>
+  <h4 class="blue-font last_title">即将发布以下内容，尽请期待</h4>
+  <div class="main_content main_bg"></div>
+</div>
+
+@Html.Partial("_Footer_Partial")
+

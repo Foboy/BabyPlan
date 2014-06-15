@@ -1,0 +1,18 @@
+.publicBook{position:relative;}
+.turnPage{position:absolute; width:1044px; top:50%; left:-42px; z-index:1;}
+.prev a,.next a{background:#2a8fc5; display:inline-block; width:22px; height:60px; line-height:60px; text-align:center; color:#FFFFFF;}
+.prev a.disble{background:#c4c4c4;cursor: not-allowed;}
+.pages .Snone,.pages .Fcover,.pages .Ptitle,.pages .Pcontent{height:697px; width:480px;box-shadow:0 0 6px #CCCCCC;}
+.pages .page{background:#FFFFFF; position:relative;}
+.pages .pNumber{height:30px; line-height:30px; width:480px; text-align:center; color:#2a8fc5; position:absolute; bottom:10px; font-weight:bold;}
+.pages .Snone{box-shadow:none;}
+.pages .Fcover{position:relative; width:480px; height:697px; background:url(../images/frontCover.jpg) no-repeat center center;}
+.pages .Fcover b{position:absolute; top:80px; right:30px; color:#99dcff; font-size:38px}
+.pages .Ptitle .ptTop{width:380px; padding:50px 50px 0 50px;}
+.pages .Ptitle .ptTop img{width:380px; height:300px;}
+.pages .Ptitle .ptTop p{margin-top:40px; font-size:14px; text-indent:2em;}
+.pages .contentShow{padding:10px 30px 0 30px;}
+.pages .contentShow h1{border-bottom:1px solid #DEDEDE; color:#2a8fc5; line-height:30px; font-size:14px;}
+.pages .contentShow .imgShow {padding:30px 0; height:150px;}
+.contentShow .imgShow img{width:140px; height:90px;}
+.contentShow .imgShow .textDes{margin:-4px 0 0 10px; width:270px;}

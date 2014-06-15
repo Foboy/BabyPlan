@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ReplyService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ReplyService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ReplyService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ReplyService.svc?xsd=xsd2" namespace="http://babyplan.com/services" />
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ReplyService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/BabyPlan.DataStructure" />
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ReplyService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/BabyPlan.Common" />
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ReplyService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/BabyPlan.Meta" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IReplyService_Bless_InputMessage">
+    <wsdl:part name="parameters" element="tns:Bless" />
+  </wsdl:message>
+  <wsdl:message name="IReplyService_Bless_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BlessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReplyService_GetBBPostReplyNum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBBPostReplyNum" />
+  </wsdl:message>
+  <wsdl:message name="IReplyService_GetBBPostReplyNum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBBPostReplyNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReplyService_GetReplyNum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReplyNum" />
+  </wsdl:message>
+  <wsdl:message name="IReplyService_GetReplyNum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReplyNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReplyService_LoadReplyListByBBPostID_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadReplyListByBBPostID" />
+  </wsdl:message>
+  <wsdl:message name="IReplyService_LoadReplyListByBBPostID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadReplyListByBBPostIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReplyService_LoadReplyList_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadReplyList" />
+  </wsdl:message>
+  <wsdl:message name="IReplyService_LoadReplyList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadReplyListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReplyService_ReplyBBPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReplyBBPost" />
+  </wsdl:message>
+  <wsdl:message name="IReplyService_ReplyBBPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReplyBBPostResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IReplyService">
+    <wsdl:operation name="Bless">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReplyService/Bless" message="tns:IReplyService_Bless_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReplyService/BlessResponse" message="tns:IReplyService_Bless_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBBPostReplyNum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReplyService/GetBBPostReplyNum" message="tns:IReplyService_GetBBPostReplyNum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReplyService/GetBBPostReplyNumResponse" message="tns:IReplyService_GetBBPostReplyNum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReplyNum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReplyService/GetReplyNum" message="tns:IReplyService_GetReplyNum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReplyService/GetReplyNumResponse" message="tns:IReplyService_GetReplyNum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadReplyListByBBPostID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReplyService/LoadReplyListByBBPostID" message="tns:IReplyService_LoadReplyListByBBPostID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReplyService/LoadReplyListByBBPostIDResponse" message="tns:IReplyService_LoadReplyListByBBPostID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadReplyList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReplyService/LoadReplyList" message="tns:IReplyService_LoadReplyList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReplyService/LoadReplyListResponse" message="tns:IReplyService_LoadReplyList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReplyBBPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReplyService/ReplyBBPost" message="tns:IReplyService_ReplyBBPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReplyService/ReplyBBPostResponse" message="tns:IReplyService_ReplyBBPost_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IReplyService" type="tns:IReplyService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Bless">
+      <soap:operation soapAction="http://tempuri.org/IReplyService/Bless" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBBPostReplyNum">
+      <soap:operation soapAction="http://tempuri.org/IReplyService/GetBBPostReplyNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReplyNum">
+      <soap:operation soapAction="http://tempuri.org/IReplyService/GetReplyNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadReplyListByBBPostID">
+      <soap:operation soapAction="http://tempuri.org/IReplyService/LoadReplyListByBBPostID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadReplyList">
+      <soap:operation soapAction="http://tempuri.org/IReplyService/LoadReplyList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReplyBBPost">
+      <soap:operation soapAction="http://tempuri.org/IReplyService/ReplyBBPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReplyService">
+    <wsdl:port name="BasicHttpBinding_IReplyService" binding="tns:BasicHttpBinding_IReplyService">
+      <soap:address location="http://aaronpc:1937/BabyPlan.WcfService/ReplyService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace BabyPlan.mvcApp.Model
+{
+    public struct BindOption
+    {
+        public static BindOption DefalutBindOption
+        {
+            get
+            {
+                BindOption bindOptions = new BindOption();
+                bindOptions.ProductBindNum = -1;
+                bindOptions.ProductItemsBindNum = -1;
+                bindOptions.ReplyBindNum = -1;
+                return bindOptions;
+            }
+        }
+
+        public ProductBindType ProductBindType { get; set; }
+
+        public ReplayBindType ReplayBindType { get; set; }
+
+        public UserBindType UserBindType { get; set; }
+
+        public int ProductBindNum { get; set; }
+
+        public int ProductItemsBindNum { get; set; }
+
+        public int ReplyBindNum { get; set; }
+
+    }
+}

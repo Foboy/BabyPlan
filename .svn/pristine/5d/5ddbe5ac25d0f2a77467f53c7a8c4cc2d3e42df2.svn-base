@@ -1,0 +1,8 @@
+﻿    .trade_top_bar{height:54px;}
+    .trade_top_bar .category{width:600px;height:54px;line-height:54px;font-size:16px;}
+    .trade_top_bar .category ul{margin:0 10px;}
+    .trade_top_bar .category ul li{float:left;}
+    .trade_top_bar .category ul li.sp{margin:0 5px;}
+    .trade_top_bar .category ul li a{padding:5px;}
+    .trade_top_bar .category ul li a:hover{background:#2A8FC4;color:#fff;}
+    .trade_top_bar .post .postbtn{margin:12px 5px;}

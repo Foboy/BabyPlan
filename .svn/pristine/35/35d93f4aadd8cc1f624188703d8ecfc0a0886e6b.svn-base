@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using BabyPlan.Common.Cache;
+using System.Windows.Forms;
+
+
+
+namespace BabyPlanTest
+{
+    class Program
+    {
+        [STAThreadAttribute]
+        static void Main(string[] args)
+        {
+            //Console.WriteLine("缓存测试 获取缓存 get:key  设置缓存 set:key:value  删除缓存 delete:key ");
+            
+            //string com = Console.ReadLine();
+
+            //if (com.StartsWith("get:"))
+            //{
+            //    string key = com.Split(':')[1];
+            //    Console.WriteLine(CacheManagerFactory.GetMemoryManager().Get(key).ToString());
+            //}
+            //if (com.StartsWith("set:"))
+            //{
+            //    string key = com.Split(':')[1];
+            //    string value = com.Split(':')[2];
+            //    CacheManagerFactory.GetMemoryManager().Add(key, value);
+            //}
+            //if (com.StartsWith("delete:"))
+            //{
+            //     string key = com.Split(':')[1];
+            //     CacheManagerFactory.GetMemoryManager().Remove(key);
+            //}
+
+            //Console.ReadLine();
+
+        
+                //Application.Run(new Form1());
+
+        }
+    }
+}

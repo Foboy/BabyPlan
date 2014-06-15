@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace BabyPlan.DataStructure
+{
+    public enum StateType
+    {
+        /// <summary>
+        /// 不管状态
+        /// </summary>
+        All=0,
+        /// <summary>
+        /// 启用
+        /// </summary>
+        Active = 1,
+        /// <summary>
+        /// 禁用
+        /// </summary>
+        UnActive = 2
+    }
+}

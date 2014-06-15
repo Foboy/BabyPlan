@@ -1,0 +1,88 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace BabyPlan.mvcApp.ViewModel
+{
+    [Serializable]
+    public class BaseModel
+    {
+        public string SubString(string source, int length, string ellipsis = "...", string defaultValue = "")
+        {
+            string result = (source ?? defaultValue).PadRight(length, ' ');
+            if (result.Length > length)
+            {
+                return result.Substring(0, length) + ellipsis;
+            }
+            else
+            {
+                return result.Substring(0, length);
+            }
+
+        }
+
+        public string DateFormat(DateTime? date,string format)
+        {
+            DateTime d = date ?? DateTime.Now;
+            return d.ToString(format);
+        }
+
+        public string FriendlyDate(DateTime? date, string format)
+        {
+            DateTime curDate = DateTime.Now;
+            DateTime d = date ?? DateTime.Now;
+
+            String ftime = "";
+
+            //判断是否是同一天
+            int days = new TimeSpan(curDate.Ticks - d.Ticks).Days;
+            if (days == 0)
+            {
+                int hour = Math.Abs(curDate.Hour - d.Hour);
+                if (hour == 0)
+                    ftime = Math.Max(curDate.Minute - d.Minute, 1).ToString() + "分钟前";
+                else
+                    ftime = hour.ToString() + "小时前";
+            }
+            else if (days == 1)
+            {
+                ftime = "昨天";
+            }
+            else if (days == 2)
+            {
+                ftime = "前天";
+            }
+            else if (days > 2 && days <= 10)
+            {
+                ftime = days + "天前";
+            }
+            else if (days > 10)
+            {
+                ftime = d.ToString(format);
+            }
+            return ftime;
+        }
+
+        public string CheckedBind(object value, int targetValue)
+        {
+            if (Convert.ToInt32(value) == targetValue)
+            {
+                return "checked='checked'";
+            }
+            return "";
+        }
+
+        protected bool ContainEnumType<T>(T source, T value)
+        {
+            if ((Convert.ToInt32(source) & Convert.ToInt32(value)) == Convert.ToInt32(value))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+}

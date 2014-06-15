@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace BabyPlan.DataStructure
+{
+    public enum LevelType
+    {
+        All=0,
+        /// <summary>
+        /// 普通
+        /// </summary>
+        Common=1,
+        /// <summary>
+        /// 高级
+        /// </summary>
+        Vip=2
+    }
+}

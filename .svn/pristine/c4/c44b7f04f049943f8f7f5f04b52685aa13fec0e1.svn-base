@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc; 
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using BabyPlan.DataStructure;
+using BabyPlan.mvcApp.Infras;
+
+
+namespace WepApp.Controllers
+{
+    public class cenController : Controller
+    {
+        #region 变量定义
+
+        //用户名(Session)Key
+        private string sKey_User_Name = "UserName";
+
+        #endregion
+        public ActionResult index(string type)
+        {
+            return View("~/Views/cen/index.cshtml");
+        }
+
+        /// <summary>
+        /// 验证Social账户是否和平台绑定
+        /// </summary>
+        /// <returns></returns>
+        public void check_code()
+        {
+            //没有绑定 则转到绑定界面
+            //已经绑定 则跳转到个人中心
+        }
+    }
+}
+      

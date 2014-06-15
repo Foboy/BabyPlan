@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:baijiayi="http://360baijiayi.com"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:id="@+id/pub_photo_wrap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="14.0dip"
+        android:paddingTop="14.0dip" >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+        <com.baijiayi.app.widget.ImageViewBorder
+            android:id="@+id/photo_image"
+            baijiayi:BorderColor="GRAY"
+            style="@style/goods_pub_image" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/photo_remove_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/pub_photo_wrap"
+        android:layout_alignTop="@+id/pub_photo_wrap"
+        android:background="@drawable/login_close_button" />
+
+</RelativeLayout>

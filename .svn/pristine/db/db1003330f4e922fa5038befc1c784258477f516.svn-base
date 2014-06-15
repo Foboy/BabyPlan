@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "Goods";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+@model IList<BabyPlan.mvcApp.Model.ProductModel>
+@section Js_InHeader{
+<style type="text/css">
+    .right_block_title{height:50px;}
+    .right-block_content{ min-height:400px;}
+    .right_block_title .title{}
+    .goods_item_outer{margin:0;}
+    .add_goods{ text-decoration:underline;}
+    .prompt_info{ text-align:center; vertical-align:middle; height:400px; line-height:400px;}
+    .goods_item_outer .dot_line{width:680px;height:0;border-top:dotted 1px #666;margin:0 15px;}
+    .goods_item_outer .goods_item{width:680px;margin:10px 15px;display:inline-block;}
+    .goods_item_outer .goods_item .goods_no{font-size:72px;width:60px;}
+    .goods_item_outer .goods_item .goods_info{width:470px;}
+    .goods_item_outer .goods_item .goods_pic{width:102px; border:1px solid #E1E1E1;}
+</style>
+}
+<div class="right_block_title user_right_block grayblock">
+    <span class="title margin10 font-size16 fl black-font">我的宝贝清单</span>
+    <a href="@Url.Action("AddGoods", "User")" class="margin10 button-blue fr">发布闲置物品</a>
+    <div class="clear"></div>
+</div>
+<div class="user_right_block whiteblock right-block_content">
+    <div class="goods_item_outer">
+    @for (int i = 0, c = Model.Count(); i < c; i++)
+    {
+        var item = Model[i];
+        var seq = c - i;
+        BabyPlan.mvcApp.Model.ProductItemModel subItem;
+        if (item.Items != null && item.Items.Count > 0)
+        {
+            subItem = item.Items[0];
+        }
+        else
+        {
+            subItem = new BabyPlan.mvcApp.Model.ProductItemModel();
+        }
+        <div class="goods_item">
+            <div class="goods_no  @(item.State != 2 ? "green-font" : "gray-font") fl"  id="@("goods_seq" + seq)">@seq</div>
+            <div class="goods_info fl">
+                <p class="black-font font-size16 line-height40">
+                    <a href="@Url.Action("All", "Trade", new { pid = item.Id, id = subItem.Id })" target="_blank">@item.Title</a>
+                </p>
+                <p class="ash-font"><span class="blue-font">描述：</span>
+                @item.SubString(item.Description, 120)
+                </p>
+                <div class="line-height40">
+                    <div class="fl ash-font">
+                        <span class="blue-font">发布时间：</span>@item.DateFormat(item.CreateTime, "yyyy-MM-dd") &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="blue-font">回复：</span>(@item.ReplyNum)
+                    </div>
+                    <div class="fr ash-font">
+                        <div  id="@("goods_close" + seq)" class="@(item.State != 2 ? "" : "hide")">
+                        <a href="@Url.Action("AddGoods", "User", new { id=item.Id})" class="green-font">编辑宝贝</a>&nbsp;|
+                        <a href="javascript:void(CloseGoods(@item.Id,@seq))" class="green-font">关闭该宝贝</a>
+                        </div>
+                        <div  id="@("goods_open" + seq)" class="@(item.State != 2 ? "hide" : "")">
+                        <a href="javascript:void(OpenGoods(@item.Id,@seq))" class="green-font">开启宝贝</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="goods_pic fr">
+                @if (subItem.Pic != null)
+                {
+                    subItem.Pic.DisplaySeting(100, 100, 1);
+                <img alt="" name="pic" src="@subItem.Pic.PicUrl" style="width:@(subItem.Pic.DisWidth)px;height:@(subItem.Pic.DisHeight)px;margin:@subItem.Pic.DisMargin" />
+                }
+            </div>
+        </div>
+                if (i < c - 1)
+                { 
+        <div class="dot_line"></div>
+                }
+    }
+    @if (Model.Count == 0)
+    { 
+        <div class="prompt_info font-size16 gray-font">您还没有添加任何宝贝，麻烦 &nbsp<a href="@Url.Action("AddGoods", "User")" class="add_goods blue-font">添加宝贝</a> &nbsp。你添加的不是商品是快乐！</div>
+    }
+    </div>
+</div>
+@section Js_InFoot{
+    <script type="text/javascript">
+        function CloseGoods(id, seq) {
+            var url = "@Url.Action("CloseGoods", "User")";
+            var loaded = function(data){
+                if(data.Error == 0)
+                {
+                    $("#goods_seq"+seq).removeClass("green-font").addClass("gray-font");
+                    $("#goods_close"+seq).hide();
+                    $("#goods_open"+seq).show();
+                }
+                else
+                {
+                    alert(data.ExMessage);
+                }
+            }
+            $.ajax({
+             url: url,
+             //dataType: 'jsonp',
+             data: { productId: id },
+             success: loaded
+         });
+        }
+     function OpenGoods(id, seq) {
+            var url = "@Url.Action("OpenGoods", "User")";
+            var loaded = function(data){
+                if(data.Error == 0)
+                {
+                    $("#goods_seq"+seq).addClass("green-font").removeClass("gray-font");
+                    $("#goods_close"+seq).show();
+                    $("#goods_open"+seq).hide();
+                }
+                else
+                {
+                    alert(data.ExMessage);
+                }
+            }
+            $.ajax({
+             url: url,
+             //dataType: 'jsonp',
+             data: { productId: id },
+             success: loaded
+         });
+        }
+    </script>
+}

@@ -1,0 +1,88 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using BabyPlan.DataStructure;
+using BabyPlan.Meta;
+using BabyPlan.WcfService;
+using BabyPlan.Common;
+
+namespace BabyPlan.mvcApp.Model
+{
+    [Serializable]
+    public class ProductItemModel : BaseModel
+    {
+        public int Pid { get; set; }
+
+        public int PicId { get; set; }
+
+        public int Id { get; set; }
+
+        public Double Price { get; set; }
+
+        public int Age { get; set; }
+
+        public SexType Sex { get; set; }
+
+        public ItemType ItemType { get; set; }
+
+        public DateTime CreateTime { get; set; }
+
+        public ProductModel Product { get; set; }
+
+        public string DateLikeYesterday
+        {
+            get
+            {
+                return DateToYesterday(CreateTime, "yyyy-MM-dd");
+            }
+        }
+
+        public PicModel Pic { get; set; }
+
+        public ProductItemModel Bind(ProProductItem item, BindOption bindOption)
+        {
+            this.Id = item.ProItemId;
+            this.Pid = item.ProId;
+            this.Price = item.Price;
+            this.Sex = item.Sex;
+            this.ItemType = item.ItemType;
+            this.Age = (int)((item.MinAge + item.MaxAge) / 2.0);
+            this.PicId = item.PicId;
+            this.Pic = new PicModel();
+            this.Pic.BPicUrl = item.PicUrl;
+            this.Pic.PicWidth = item.PicWidth;
+            this.Pic.PicHeight = item.PicHeight;
+            this.Pic.PicId = item.PicId;
+            this.CreateTime = item.CreateTime;
+
+            if (ContainEnumType<ProductItemBindType>(bindOption.ProductItemBindType, ProductItemBindType.Product))
+            {
+                ProductServiceClient client = new ProductServiceClient();
+                AdvancedResult<ProProduct> product = client.GetBBInfo(item.ProId);
+                if (product.Error == AppError.ERROR_SUCCESS)
+                {
+                    this.Product = new ProductModel().Bind(product.Data, bindOption);
+                }
+            }
+            return this;
+        }
+
+        public static IList<ProductItemModel> BindList(IList<ProProductItem> items, BindOption bindOption)
+        {
+            List<ProductItemModel> models = new List<ProductItemModel>();
+            if (bindOption.ProductItemsBindNum < 0)
+                return models;
+            if (items != null)
+            {
+                for (int i = 0, c = items.Count(); i < c; i++)
+                {
+                    models.Add(new ProductItemModel().Bind(items[i], bindOption));
+                    if (i + 1 == bindOption.ProductItemsBindNum)
+                        break;
+                }
+            }
+            return models;
+        }
+    }
+}

@@ -1,0 +1,77 @@
+package com.baijiayi.app.bean;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+
+import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import com.baijiayi.app.AppException;
+import com.baijiayi.app.common.StringUtils;
+
+import android.util.Xml;
+
+/**
+ * 动弹列表实体类
+ * @author liux 
+ * @version 1.0
+ * @created 2012-3-21
+ */
+public class GoodsItemList extends Entity{
+	
+	public final static int CATALOG_ALL = 0;
+	public final static int CATALOG_CLOTHES = 1;
+	public final static int CATALOG_TOYS = 2;
+	public final static int CATALOG_OHERS = 3;
+
+	private int pageSize;
+	private int goodsCount;
+	private List<GoodsItemModel> goodslist = new ArrayList<GoodsItemModel>();
+	
+	public int getPageSize() {
+		return pageSize;
+	}
+	public int getGoodsCount() {
+		return goodsCount;
+	}
+	public List<GoodsItemModel> getGoodslist() {
+		return goodslist;
+	}
+
+	public static GoodsItemList parse(String goodsResult) throws IOException, AppException {
+		GoodsItemList goodslist = new GoodsItemList();
+        try { 
+        	 JSONObject goodsJSON=new JSONObject(goodsResult);
+             String msg = goodsJSON.optString("ErrorMessage", "获取数据失败!");
+             int success = goodsJSON.optInt("Error", 1);
+             if(success != 0)
+             {
+             	throw new Exception(msg);
+             }
+             
+             org.json.JSONArray  itemsArray = goodsJSON.optJSONArray("Data");
+             if(itemsArray!=null)
+             {
+            	 goodslist.goodsCount=Integer.MAX_VALUE;
+            	 goodslist.pageSize = itemsArray.length();
+             	for(int i=0,c=itemsArray.length();i<c;i++)
+             	{
+             		JSONObject item = (JSONObject)itemsArray.get(i);
+             		GoodsItemModel goods = GoodsItemModel.parse(item);
+             		if(goods!=null)
+             		{
+             			goodslist.getGoodslist().add(goods);
+             		}
+             	}
+             }
+        } catch (Exception e) {
+			throw AppException.xml(e);
+        }    
+        return goodslist;       
+	}
+}

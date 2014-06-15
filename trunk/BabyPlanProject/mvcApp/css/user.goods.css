@@ -1,0 +1,11 @@
+﻿    .right_block_title{height:50px;}
+    .right-block_content{ height:auto!important; height:400px;  min-height:400px; }
+    .right_block_title .title{}
+    .goods_item_outer{margin:0;}
+    .add_goods{ text-decoration:underline;}
+    .prompt_info{ text-align:center; vertical-align:middle; height:400px; line-height:400px;}
+    .goods_item_outer .dot_line{width:680px;height:0;border-top:dotted 1px #666;margin:0 15px;}
+    .goods_item_outer .goods_item{width:680px;margin:10px 15px;display:inline-block;}
+    .goods_item_outer .goods_item .goods_no{font-size:72px;width:60px;}
+    .goods_item_outer .goods_item .goods_info{width:470px;}
+    .goods_item_outer .goods_item .goods_pic{width:102px;height:102px; border:1px solid #E1E1E1; padding:1px;}

@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace BabyPlan.mvcApp.Model
+{
+    public enum UserBindType
+    {
+        None = 0,
+        ProductNum = 1,
+    }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>百家衣-妈妈帮</title>
+<link media="screen" href="css/main.css" type="text/css" rel="stylesheet">
+<link media="screen" href="css/partial.header.css" type="text/css" rel="stylesheet">
+<link media="screen" href="css/partial.footer.css" type="text/css" rel="stylesheet">
+<link media="screen" href="css/public.book.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="pages">
+    <div class="page Pcontent">
+        <div class="contentShow">
+        	<h1 class="text-right">宝贝的业余生活</h1>
+            <div class="imgShow clearfix">
+            	<div class="imgHead fl"><img alt="照片" src="images/u43_normal.jpg"/></div> 
+                <div class="textDes fl">
+                    <p>时间：2012/02/12</p>
+                    <p>地点：成都武侯区天府广场</p>
+                    <p>事件：小明今天生日，我和老公带她来市区Happy小明今天生日，我和老公带她来市区Happy小明今天生日，我和老公带她来市区Happy小明今天生日，我和老公带她来市区Happy</p>
+                </div>
+            </div>
+            <div class="imgShow clearfix">
+            	<div class="imgHead fl"><img alt="照片" src="images/u43_normal.jpg"/></div> 
+                <div class="textDes fl">
+                    <p>时间：2012/02/12</p>
+                    <p>地点：成都武侯区天府广场</p>
+                    <p>事件：小明今天生日，我和老公带她来市区Happy</p>
+                </div>
+            </div>
+            <div class="imgShow clearfix">
+            	<div class="imgHead fl"><img alt="照片" src="images/u43_normal.jpg"/></div> 
+                <div class="textDes fl">
+                    <p>时间：2012/02/12</p>
+                    <p>地点：成都武侯区天府广场</p>
+                    <p>事件：小明今天生日，我和老公带她来市区Happy</p>
+                </div>
+            </div>
+        </div>    
+        <div class="pNumber">2</div>    
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+} 
+<div class="footer" id="footer"> 
+
+@*<div class="f-intro">
+<h3>微博营销是什么？</h3>
+   微博营销是一款微博管理软件，一键发布多个微博，一键同步多个微博，强大的文章编辑器，轻松创作、插入图片、表格、视频、超链接，生成图片倒影，轻松方便。微博营销平台帮助你挖掘有效客户资源、实时监控敏感词汇，成倍提高微博营销效率。
+</div>*@
+<h2>2012&copy;</h2>
+<ul id="nav_footer">
+		<li>
+            <span>微博营销平台</span>
+            <a title="" href="/gyxkwmdcp.jhtml">联系我们</a>
+            <a title="联系我们" href="/gyxklxwm.jhtml">加入我们</a>
+            <a title="" href="/mzsm.jhtml">建议反馈</a>
+		</li>
+        <li>
+            <span>关注官方微博</span>
+            <a title="" href="/gyxkwmdcp.jhtml">新浪微博</a>
+            <a title="联系我们" href="/gyxklxwm.jhtml">腾讯微博</a>
+            <a title="" href="/mzsm.jhtml">人人网</a>
+             <a title="" href="/mzsm.jhtml">搜狐网</a>
+		</li>
+        <li>
+            <span>软件下载</span>
+            <a title="" href="/gyxkwmdcp.jhtml">舆情分析桌面客户端V1.0</a>             
+		</li> 
+	</ul>
+    <a id="reg_footer" title="" href='@Url.Action("reg","a")'>立即注册 &gt;</a>     
+</div>

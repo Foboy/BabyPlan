@@ -1,0 +1,153 @@
+package com.baijiayi.app.bean;
+
+import java.io.IOException;
+import java.util.Date;
+
+import org.json.JSONObject;
+
+import com.baijiayi.app.AppException;
+
+public class UserModel extends Entity {
+	// JSON字段名
+
+	public final static String NODE_ID = "Id";
+
+	public final static String NODE_NAME = "Name";
+
+	public final static String NODE_ACCOUNT = "Account";
+
+	public final static String NODE_BABYBIRTHDAY = "BabyBirthday";
+
+	public final static String NODE_POSTPRODUCTNUM = "PostProductNum";
+
+	public final static String NODE_QQ = "QQ";
+
+	public final static String NODE_PHONE = "Phone";
+
+	public final static String NODE_SEX = "Sex";
+	
+	public final static String SUB_NODE_PIC = "HeadPic";
+
+	// 对象字段名
+
+	private String Name;
+
+	private String Account;
+
+	private Date BabyBirthday;
+
+	private int PostProductNum;
+
+	private String QQ;
+
+	private String Phone;
+
+	private int Sex;
+	
+	private PicModel Pic;
+	
+	public PicModel getPic() {
+		return Pic;
+	}
+
+	public void setPic(PicModel value) {
+		this.Pic = value;
+	}
+
+	// get,set方法
+
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String value) {
+		this.Name = value;
+	}
+
+	public String getAccount() {
+		return Account;
+	}
+
+	public void setAccount(String value) {
+		this.Account = value;
+	}
+
+	public Date getBabyBirthday() {
+		return BabyBirthday;
+	}
+
+	public void setBabyBirthday(String value) {
+		value = value.replace("/Date(", "");
+		value = value.replace(")/", "");
+		this.BabyBirthday = new Date(Long.parseLong(value));
+	}
+
+	public int getPostProductNum() {
+		return PostProductNum;
+	}
+
+	public void setPostProductNum(int value) {
+		this.PostProductNum = value;
+	}
+
+	public String getQQ() {
+		return QQ;
+	}
+
+	public void setQQ(String value) {
+		this.QQ = value;
+	}
+
+	public String getPhone() {
+		return Phone;
+	}
+
+	public void setPhone(String value) {
+		this.Phone = value;
+	}
+
+	public int getSex() {
+		return Sex;
+	}
+
+	public void setSex(int value) {
+		this.Sex = value;
+	}
+
+	public static UserModel parse(JSONObject itemJSON) throws IOException,
+			AppException {
+		UserModel item = null;
+		try {
+			if (itemJSON != null) {
+				item = new UserModel();
+				// 解析JSON
+
+				item.id =itemJSON.optInt(NODE_ID,0);
+
+				item.setName(itemJSON.optString(NODE_NAME));
+
+				item.setAccount(itemJSON.optString(NODE_ACCOUNT));
+
+				item.setBabyBirthday(itemJSON.optString(NODE_BABYBIRTHDAY));
+
+				item.setPostProductNum(itemJSON.optInt(NODE_POSTPRODUCTNUM));
+
+				item.setQQ(itemJSON.optString(NODE_QQ));
+
+				item.setPhone(itemJSON.optString(NODE_PHONE));
+
+				item.setSex(itemJSON.optInt(NODE_SEX));
+				
+				JSONObject picJSON = itemJSON.optJSONObject(SUB_NODE_PIC);
+				if(picJSON!=null)
+				{
+					item.setPic(PicModel.parse(picJSON));
+				}
+			}
+
+		} catch (Exception e) {
+			throw AppException.xml(e);
+		}
+		return item;
+	}
+}

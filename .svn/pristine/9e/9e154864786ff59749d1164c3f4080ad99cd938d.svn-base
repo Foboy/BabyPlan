@@ -1,0 +1,346 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using BabyPlan.Meta;
+using MySql.Data.MySqlClient;
+using System.Data;
+using BabyPlan.Common;
+using BabyPlan.DataStructure;
+
+namespace BabyPlan.DataAccess
+{
+    public class ProBookAccessor
+    {
+        private MySqlCommand cmdInsertProBook;
+        private MySqlCommand cmdDeleteProBook;
+        private MySqlCommand cmdUpdateProBook;
+        private MySqlCommand cmdLoadProBook;
+        private MySqlCommand cmdLoadAllProBook;
+        private MySqlCommand cmdGetProBookCount;
+        private MySqlCommand cmdGetProBook;
+
+        private ProBookAccessor()
+        {
+            #region cmdInsertProBook
+
+            cmdInsertProBook = new MySqlCommand("insert into pro_book(book_name,book_size,book_type,ad_user_id,introduction) values (@BookName,@BookSize,@BookType,@AdUserId,@Introduction)");
+
+            cmdInsertProBook.Parameters.Add("@BookName", MySqlDbType.String);
+            cmdInsertProBook.Parameters.Add("@BookSize", MySqlDbType.Int32);
+            cmdInsertProBook.Parameters.Add("@BookType", MySqlDbType.Int32);
+            cmdInsertProBook.Parameters.Add("@AdUserId", MySqlDbType.Int32);
+            cmdInsertProBook.Parameters.Add("@Introduction", MySqlDbType.String);
+            #endregion
+
+
+
+            #region cmdUpdateProBook
+
+            cmdUpdateProBook = new MySqlCommand(" update pro_book set book_name = @BookName,book_size = @BookSize,book_type = @BookType,introduction = @Introduction,state=@State where book_id = @BookId");
+            cmdUpdateProBook.Parameters.Add("@BookId", MySqlDbType.Int32);
+            cmdUpdateProBook.Parameters.Add("@BookName", MySqlDbType.String);
+            cmdUpdateProBook.Parameters.Add("@BookSize", MySqlDbType.Int32);
+            cmdUpdateProBook.Parameters.Add("@BookType", MySqlDbType.Int32);
+            cmdUpdateProBook.Parameters.Add("@Introduction", MySqlDbType.String);
+            cmdUpdateProBook.Parameters.Add("@State", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdDeleteProBook
+
+            cmdDeleteProBook = new MySqlCommand(" update pro_book set state=0 where book_id = @BookId");
+            cmdDeleteProBook.Parameters.Add("@BookId", MySqlDbType.Int32);
+            #endregion
+
+            #region cmdLoadProBook
+
+            cmdLoadProBook = new MySqlCommand(@" select book_id,book_name,book_size,book_type,create_time,ad_user_id,introduction,state from pro_book where state=@State and (@AdUserId = 0 or ad_user_id = @AdUserId) limit @PageIndex,@PageSize");
+
+            cmdLoadProBook.Parameters.Add("@AdUserId", MySqlDbType.Int32);
+            cmdLoadProBook.Parameters.Add("@pageIndex", MySqlDbType.Int32);
+            cmdLoadProBook.Parameters.Add("@pageSize", MySqlDbType.Int32);
+            cmdLoadProBook.Parameters.Add("@State", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdGetProBookCount
+
+            cmdGetProBookCount = new MySqlCommand(" select count(*)  from pro_book where state=@State and (@AdUserId = 0 or ad_user_id = @AdUserId) ");
+            cmdGetProBookCount.Parameters.Add("@AdUserId", MySqlDbType.Int32);
+            cmdGetProBookCount.Parameters.Add("@State", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdLoadAllProBook
+
+            cmdLoadAllProBook = new MySqlCommand(" select book_id,book_name,book_size,book_type,create_time,ad_user_id,introduction,state from pro_book");
+
+            #endregion
+
+            #region cmdGetProBook
+
+            cmdGetProBook = new MySqlCommand(" select book_id,book_name,book_size,book_type,create_time,ad_user_id,introduction,state from pro_book where state=@State and book_id = @BookId");
+            cmdGetProBook.Parameters.Add("@BookId", MySqlDbType.Int32);
+            cmdGetProBook.Parameters.Add("@State", MySqlDbType.Int32);
+
+            #endregion
+        }
+
+        /// <summary>
+        /// 添加数据
+        /// <param name="es">数据实体对象数组</param>
+        /// <returns></returns>
+        /// </summary>
+        public int Insert(ProBook e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdInsertProBook = cmdInsertProBook.Clone() as MySqlCommand;
+            int returnValue = 0;
+            _cmdInsertProBook.Connection = oc;
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                _cmdInsertProBook.Parameters["@BookName"].Value = e.BookName;
+                _cmdInsertProBook.Parameters["@BookSize"].Value = e.BookSize;
+                _cmdInsertProBook.Parameters["@BookType"].Value = e.BookType;
+                _cmdInsertProBook.Parameters["@AdUserId"].Value = e.AdUserId;
+                _cmdInsertProBook.Parameters["@Introduction"].Value = e.Introduction;
+
+                _cmdInsertProBook.ExecuteNonQuery();
+                returnValue = Convert.ToInt32(_cmdInsertProBook.LastInsertedId);
+
+                return returnValue;
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdInsertProBook.Dispose();
+                _cmdInsertProBook = null;
+            }
+        }
+
+        /// <summary>
+        /// 删除数据
+        /// <param name="es">数据实体对象数组</param>
+        /// <returns></returns>
+        /// </summary>
+        public bool Delete(ProBook e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdDeleteProBook = cmdDeleteProBook.Clone() as MySqlCommand;
+            bool returnValue = false;
+            _cmdDeleteProBook.Connection = oc;
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+                _cmdDeleteProBook.Parameters["@BookId"].Value = e.BookId;
+
+
+                _cmdDeleteProBook.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdDeleteProBook.Dispose();
+                _cmdDeleteProBook = null;
+            }
+        }
+
+        /// <summary>
+        /// 修改指定的数据
+        /// <param name="e">修改后的数据实体对象</param>
+        /// <para>数据对应的主键必须在实例中设置</para>
+        /// </summary>
+        public void Update(ProBook e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdUpdateProBook = cmdUpdateProBook.Clone() as MySqlCommand;
+            _cmdUpdateProBook.Connection = oc;
+
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                _cmdUpdateProBook.Parameters["@BookId"].Value = e.BookId;
+                _cmdUpdateProBook.Parameters["@BookName"].Value = e.BookName;
+                _cmdUpdateProBook.Parameters["@BookSize"].Value = e.BookSize;
+                _cmdUpdateProBook.Parameters["@BookType"].Value = e.BookType;
+                _cmdUpdateProBook.Parameters["@Introduction"].Value = e.Introduction;
+                _cmdUpdateProBook.Parameters["@State"].Value = (int)e.State;
+
+                _cmdUpdateProBook.ExecuteNonQuery();
+
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdUpdateProBook.Dispose();
+                _cmdUpdateProBook = null;
+                GC.Collect();
+            }
+        }
+
+        /// <summary>
+        /// 根据条件分页获取指定数据
+        /// <param name="pageIndex">当前页</param>
+        /// <para>索引从0开始</para>
+        /// <param name="pageSize">每页记录条数</param>
+        /// <para>记录数必须大于0</para>
+        /// </summary>
+        public PageEntity<ProBook> Search(Int32 AdUserId,StateType state, int pageIndex, int pageSize)
+        {
+            PageEntity<ProBook> returnValue = new PageEntity<ProBook>();
+            List<ProBook> booklist = new List<ProBook>();
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadProBook = cmdLoadProBook.Clone() as MySqlCommand;
+            MySqlCommand _cmdGetProBookCount = cmdGetProBookCount.Clone() as MySqlCommand;
+            _cmdLoadProBook.Connection = oc;
+            _cmdGetProBookCount.Connection = oc;
+
+            try
+            {
+                _cmdLoadProBook.Parameters["@PageIndex"].Value = pageIndex;
+                _cmdLoadProBook.Parameters["@PageSize"].Value = pageSize;
+                _cmdLoadProBook.Parameters["@AdUserId"].Value = AdUserId;
+                _cmdLoadProBook.Parameters["@State"].Value = (int)state;
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadProBook.ExecuteReader();
+                while (reader.Read())
+                {
+                    ProBook book = new ProBook();
+                    book = book.BuildSampleEntity(reader);
+                    booklist.Add(book);
+                }
+
+                _cmdGetProBookCount.Parameters["@AdUserId"].Value = AdUserId;
+                _cmdGetProBookCount.Parameters["@State"].Value = (int)state;
+
+
+                reader.Close();
+
+                for (int i = 0; i < booklist.Count; i++)
+                {
+                    List<ResPic> returnValue_item = new List<ResPic>();
+                    returnValue_item = ResPicAccessor.Instance.Search(booklist[i].BookId, PicType.Book);
+                    booklist[i].Pics = returnValue_item;
+                }
+
+                returnValue.Items = booklist;
+                returnValue.PageIndex = pageIndex;
+                returnValue.PageSize = pageSize;
+                returnValue.RecordsCount = Convert.ToInt32(_cmdGetProBookCount.ExecuteScalar());
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadProBook.Dispose();
+                _cmdLoadProBook = null;
+                _cmdGetProBookCount.Dispose();
+                _cmdGetProBookCount = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+
+        /// <summary>
+        /// 获取全部数据
+        /// </summary>
+        public List<ProBook> Search()
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadAllProBook = cmdLoadAllProBook.Clone() as MySqlCommand;
+            _cmdLoadAllProBook.Connection = oc; List<ProBook> returnValue = new List<ProBook>();
+            try
+            {
+                _cmdLoadAllProBook.CommandText = string.Format(_cmdLoadAllProBook.CommandText, string.Empty);
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadAllProBook.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnValue.Add(new ProBook().BuildSampleEntity(reader));
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadAllProBook.Dispose();
+                _cmdLoadAllProBook = null;
+                GC.Collect();
+            }
+            return returnValue;
+        }
+
+        /// <summary>
+        /// 获取指定记录
+        /// <param name="id">Id值</param>
+        /// </summary>
+        public ProBook Get(int BookId,StateType state)
+        {
+            ProBook returnValue = null;
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdGetProBook = cmdGetProBook.Clone() as MySqlCommand;
+
+            _cmdGetProBook.Connection = oc;
+            try
+            {
+                _cmdGetProBook.Parameters["@BookId"].Value = BookId;
+                _cmdGetProBook.Parameters["@State"].Value = (int)state;
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdGetProBook.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    returnValue = new ProBook().BuildSampleEntity(reader);
+                }
+                List<ResPic> returnValue_item = new List<ResPic>();
+                returnValue_item = ResPicAccessor.Instance.Search(BookId, PicType.Book);
+                returnValue.Pics = returnValue_item;
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdGetProBook.Dispose();
+                _cmdGetProBook = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+        private static readonly ProBookAccessor instance = new ProBookAccessor();
+        public static ProBookAccessor Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+    }
+}

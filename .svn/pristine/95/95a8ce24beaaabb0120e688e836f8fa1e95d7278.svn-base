@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class TradeController : BaseController
+    {
+        //
+        // GET: /Trade/
+
+        public ActionResult Index()
+        {
+            return View("~/Views/Trade/Index.cshtml");
+        }
+
+        public ActionResult Detail(int id)
+        {
+            return View("~/Views/Trade/Detail.cshtml");
+        }
+    }
+}

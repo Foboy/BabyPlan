@@ -1,0 +1,176 @@
+﻿body
+{    
+    font: 12px/1.5 Arial,Tahoma,Helvetica,sans-serif; 
+    word-wrap: break-word;
+    background:#F2F0F1; 
+    font-family: 微软雅黑,黑体,宋体; 
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+a {
+    color: #2A8FC4;
+    text-decoration: none;
+}
+ol, ul {
+    list-style: none outside none;
+}
+.fl
+{
+    float:left;
+}
+.fr
+{
+    float:right;
+}
+.text-right
+{
+    text-align:right;
+}
+.text-center
+{
+    text-align:center;
+}
+.text-left
+{
+    text-align:left;
+}
+.white-font
+{
+    color:#fff;
+}
+.gray-font
+{
+    color:#999;
+}
+.title-font{ color:#333333;}
+.black-font
+{
+    color:#333;
+}
+.pink-font
+{
+    color:#FF6666;
+}
+.red-font
+{
+    color:Red;
+}
+.blue-font
+{
+    color:#2A8FC4;
+}
+.green-font
+{
+    color:#8CBF26;
+}
+.ash-font{ color:#888;}
+
+.line-height30{line-height:30px;}
+.line-height20{line-height:20px;}
+.line-height40{line-height:40px;}
+.line-height50{line-height:50px;}
+.line-height60{line-height:60px;}
+.line-height70{line-height:70px;}
+.line-height80{line-height:80px;}
+
+.underline{text-decoration:underline;}
+
+.label13{font-size:13px;}
+.label14{font-size:14px;}
+.label16{font-size:16px;}
+.label18{font-size:18px;}
+.font-size12{font-size:12px;}
+.font-size13{font-size:13px;}
+.font-size14{font-size:14px;}
+.font-size16{font-size:16px;}
+.font-size18{font-size:18px;}
+.font-size20{font-size:20px;}
+.font-size28{font-size:28px;}
+.font-size30{font-size:30px;}
+
+.font-weight4{ font-weight:400;}
+.font-weight6{ font-weight:600;}
+
+.width100{width:100px;}
+
+.bold{font-weight:bold;}
+
+.block{display:block;}
+
+.whiteblock{background-color:#fff;}
+
+.grayblock{background-color:#F3F3F3;}
+
+.blueblock{background-color:#2A8FC4;}
+
+.pinkblock{background-color:#FF6666}
+
+
+.mainblock{width:960px;margin:0 auto; position:relative; overflow:hidden;}
+
+.grayborder{border:solid 1px #E8E8E8;}
+
+.button-blue{background-color:#2A8FC4;color:#fff;line-height:30px;padding:0 20px;font-weight:bold;text-align:center;display:block;}
+
+.button-green{background-color:#8CBF26;color:#fff;line-height:30px;padding:0 20px;font-weight:bold;text-align:center;display:block;}
+
+.button-pink{background-color:#FF6666;color:#fff;line-height:30px;padding:0 20px;font-weight:bold;text-align:center;display:block;}
+
+.bg-blue{background-color:#2A8FC4;}
+
+.paging {font-size:14px;margin:10px auto;}
+.paging *{margin:0 3px;}
+.paging a{border:solid 1px #aaa;line-height:30px;padding:4px 10px;}
+.paging a:hover{background-color:#2A8FC4;color:#fff;}
+
+.hide{display:none;}
+
+.margin10{margin:10px;}
+.margin5{margin:5px;}
+
+.input_box{-moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #FAFAFA;
+    border-color: #C8C8C8 #F6F6F6 #F6F6F6 #C8C8C8;
+    border-style: solid;
+    border-width: 1px;
+    color: #666;
+    font-family: "微软雅黑","microsoft yahei";
+    font-size: 18px;
+    font-weight:400px;
+    height: 28px;
+    line-height: 28px;
+    padding: 6px;
+ }
+ 
+ 
+ /*注册登录*/
+.reg_title{ margin:5px 0 0 20px;}
+.reg_content{ margin:15px 0 20px 0;}
+.reg_left_outer{border-right:solid 1px #EEF0EC; position:relative; overflow:hidden; padding:20px 30px;}
+.reg_left_outer p{margin-bottom:20px;}
+.reg_left_outer p label{display: inline-block;font-size: 16px;width: 80px;}
+.reg_left_outer .tip{display: block;line-height: 24px;padding-left: 83px;}
+.reg_left_outer .input_box{width:320px;}
+.reg_left_outer .register_submit{border:none; width:110px; height:30px; margin-left:100px;}
+.reg_right_outer{width:420px;}
+.reg_right_outer .login_link{display:block;width:110px;padding:0;margin:10px 0;}
+
+/*第三方登陆*/
+.oauth_login{margin:30px 0;} 
+.oautn_login_list{display:inline-block;margin:5px 0;width:420px;}
+.oautn_login_list li{float:left;margin-right:10px;}
+
+.button_pointer{ cursor:pointer;}
+
+.clear{ clear:both;}
+
+.clearfix:after{clear: both;content: ".";display: block;font-size: 0;height: 0;line-height: 0;overflow: hidden;visibility: hidden;}

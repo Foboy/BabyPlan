@@ -1,0 +1,101 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using BabyPlan.Common;
+using BabyPlan.Model.Product;
+using BabyPlan.Meta;
+using BabyPlan.WcfService;
+using BabyPlan.mvcApp.Model;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    [Authorize]
+    public class UserController : BaseController
+    {
+        //
+        // GET: /User/
+        public ActionResult Index()
+        {
+            ProductServiceClient client = new ProductServiceClient();
+            AdvancedResult<PageEntity<ProProduct>> response = client.SearchBBPostList(CurrentToken, 1, 10);
+            PageEntity<ProProduct> data = response.Data;
+
+            List<ProductItemModel> items = new List<ProductItemModel>();
+
+            for (int i = 0; i < 8; i++)
+            {
+                ProductItemModel p = new ProductItemModel();
+                p.Id = i;
+                p.Pid = i + 10;
+                p.Price = 100;
+                p.Description = "我家乖乖1岁时的衣服,很不错的哦！";
+                p.Pic = new PicModel();
+                p.Pic.PicUrl = "http://www.wookmark.com/images/thumbs/104841_29-50-publicites-volkswagen.jpg";
+                p.Pic.PicWidth = 200;
+                p.Pic.PicHeight = 266;
+                items.Add(p);
+            }
+
+            return View("~/Views/User/Index.cshtml", items);
+        }
+
+        public ActionResult Goods()
+        {
+            List<ProductModel> items = new List<ProductModel>();
+            for (int i = 0; i < 6; i++)
+            {
+                ProductModel p = new ProductModel();
+                p.Title = "我家乖乖1岁时的衣服，8成新，想要的快来了，价格便宜！";
+                p.Description = "这些宝贝都是我家崽儿1岁时穿的，都很新，放着可惜。价钱便宜，多买多送。如果您选中合适的请在网站给我留言，或者短信、QQ米我，机会只有一次看重赶紧下手！";
+                p.CreateTime = DateTime.Now.AddDays(-i);
+                p.CommentsCount = i;
+                items.Add(p);
+            }
+            return View("~/Views/User/Goods.cshtml", items);
+        }
+
+        public ActionResult AddGoods()
+        {
+            
+            return View("~/Views/User/AddGoods.cshtml");
+        }
+
+        public JsonResult AjaxAddGoods()
+        {
+            string goods = Request["goods"];
+            RespResult response = new RespResult();
+            if (string.IsNullOrEmpty(goods))
+            {
+                response.Error = DataStructure.AppError.ERROR_INVALID_PARAMETER;
+                response.ErrorMessage = "数据丢失！";
+            }
+            else
+            {
+                Product product = JsonHelper.Deserialize<Product>(goods);
+                if (product == null)
+                {
+                    response.Error = DataStructure.AppError.ERROR_INVALID_PARAMETER;
+                    response.ErrorMessage = "无效数据！";
+                }
+                else
+                {
+                    ProductServiceClient client = new ProductServiceClient();
+                    response = client.publishBBPost(product.Title, product.QQ, product.Phone, product.Description, CurrentToken);
+                    if(response.Error == DataStructure.AppError.ERROR_SUCCESS)
+                    {
+                    foreach (var pitem in product.Items)
+                    { 
+                        
+                    }
+                    }
+                    client.Close();
+                    client = null;
+                }
+            }
+            return Json("post"+goods);
+        }
+
+    }
+}

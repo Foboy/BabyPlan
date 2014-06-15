@@ -1,0 +1,280 @@
+﻿@{
+    ViewBag.Title = "关于我们-百家衣(www.360baijiayi.com)";
+    ViewBag.Description = "百家衣(www.360baijiayi.com)是一个专注婴儿闲置衣物买卖的网站，在这里妈妈们可以在线买卖宝宝闲置的衣服、玩具。“百家衣”是婴儿服的一种，由一百个家庭收集到布片做成，故名“百家衣”";
+    ViewBag.KeyWords = "百家衣,买卖,旧衣服,二手,二手衣服,闲置,宝宝,婴儿,儿童,孩子,衣服,小孩衣服,婴儿衣服,寄售,玩具,同城置换,同城交易,四川二手,成都二手衣服";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ResourceHelper.RegisterCss(this, "addbook.css");
+}
+@model BabyPlan.mvcApp.ViewModel.BookModel
+@Html.Partial("_Header_Partial")
+@section Js_InHeader{
+    @Content.Script("jquery-1.5.1.min.js", Url)
+}
+<div class="mainblock">
+    <form id="bookform" action="" method="post">
+    <input type="hidden" value="0" data-bind="value:book_id" />
+	<div class="clearfix"><p class="fl font-size28 gray-font">制作宝贝的成长纪念册</p><p class="fr"><a href="#" target="_blank" class="">试试把宝宝的成长记录印出来</a></p></div>
+    <div class="bookName clearfix"><label>成长纪念册名称：</label><input type="text" class="input_box" data-bind="value:book_name" validate="{required:true,minlength:4,maxlength:50}" /></div>
+	<div class="bookStep clearfix">
+    	<dl>
+        	<dt class="none"><b class="white-font">1</b>选择纪念册<span class="green-font">尺寸</span></dt>
+            <dd class="pageSize clearfix">
+            	<div data-bind="css: { cur: book_size() == 1 },click:CheckBookSize.bind( $data, 1)"><p>A5</p></div>
+                <div data-bind="css: { cur: book_size() == 2 },click:CheckBookSize.bind( $data, 2)"><p>A6</p></div>
+            </dd>
+            <dt><b class="white-font">2</b>选择纪念册<span>模版</span></dt>
+            <dd class="clearfix">
+            	<div class="formworkL fl"></div>
+                <div class="formworkM fl">
+                    <ul class="clearfix">
+                        <li data-bind="css: { cur: book_type() == 1 },click:CheckBookType.bind( $data, 1)"><img src="/images/Thumbnail.jpg" alt="模版一" /></li>
+                        <li data-bind="css: { cur: book_type() == 2 },click:CheckBookType.bind( $data, 2)"><img src="/images/Thumbnail.jpg" alt="模版一" /></li>
+                        <li data-bind="css: { cur: book_type() == 3 },click:CheckBookType.bind( $data, 3)"><img src="/images/Thumbnail.jpg" alt="模版一" /></li>
+                        <li data-bind="css: { cur: book_type() == 4 },click:CheckBookType.bind( $data, 4)"><img src="/images/Thumbnail.jpg" alt="模版一" /></li>
+                        <li data-bind="css: { cur: book_type() == 5 },click:CheckBookType.bind( $data, 5)"><img src="/images/Thumbnail.jpg" alt="模版一" /></li>                        
+                    </ul>
+                </div>
+                <div class="formworkR fl"></div>
+            </dd>
+            <dt><b class="white-font">3</b>选择纪念册<span>来源</span></dt>
+            <dd class="clearfix imgList">
+            <div class="contentIntro clearfix">
+            		<div class="font-size16 black-font fl">简介：</div>
+                    <div class="fl">
+                	<textarea data-bind="value:book_des" style="width:550px;height:100px;" validate="{required:true,minlength:6,maxlength:300}" name="gdescription" class="input_box"></textarea></br>
+                    <span rel="tip" class="gray-font">&nbsp;&nbsp;宝贝描述最少不低于6个字符最多输入500个字符</span>
+                    </div>
+                    <div class="example fl gray-font">
+                    	示例：这是我家宝贝从出生到一岁的成长历程，记录了他的第一次哭泣，第一次欢笑，第一次行走，第一次。。。。。。
+                    </div>
+                
+            </div>
+            <div class="update" id="item_pic_uploader">
+            	<div id="addBookItemBtn" class="button-green updateLocal">本地上传</div>
+            </div>
+            <div class="clearfix" data-bind="template: { name: 'item-template',foreach:pics }">
+
+            </div>
+            </dd>
+        </dl>
+    </div>
+   <a href="javascript:;" id="submit_btn" class="button-green margin10 makeBook font-size28 button_pointer">生成预览</a>
+   </form>
+</div>
+<script type="text/html" id="item-template">
+            <div class="imgShow fl clearfix">
+                <input type="hidden" value="0" data-bind="value:pic_id" />
+                <div class="upload_box" data-bind="attr:{idx:$index}">
+            	    <img data-bind="attr:{src:item_pic},style:{width:pic_width,height:pic_height,margin:pic_margin}" />
+                </div>
+                <div class="textDes" data-bind="click:edit,visible: !showEditBox()">
+                	<h2 class="gray-font">140个字描述场景，建议：</h2>
+                    <p>时间：2012/02/12</p>
+                    <p>地点：成都武侯区天府广场</p>
+                    <p>事件：小明今天生日，我和老公带她来市区Happy</p>
+                </div>
+                <div class="textDes" data-bind="visible: showEditBox()">
+                <textarea  data-bind="value:pic_des,hasfocus: isEditing" ></textarea>
+                </div>
+            </div>
+</script>
+@Html.Partial("_Footer_Partial")
+
+@section Js_InFoot{
+    @Content.Script("cLoading.js", Url)
+    @Content.Script("cUpload.js", Url)
+    @Content.Script("json2.js", Url)
+    @Content.Css("fancybox/jquery.fancybox-1.3.4.css", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)  
+    @Content.Script("fancybox/jquery.fancybox-1.3.4.js", Url)
+    @Content.Script("fancybox.msgbox.js", Url)
+    @Content.Script("knockout-2.1.0.js", Url)
+    @Content.Script("jquery-validation-1.9.0/jquery.validate.js", Url)
+    @Content.Script("jquery-validation-1.9.0/lib/jquery.metadata.js", Url)
+    @Content.Script("cSwfUpload/cSwfUpload.js", Url)
+<script type="text/javascript">
+    var bookJson = @Html.Raw(ViewBag.BookJson);
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.metadata.setType("attr", "validate");
+        var uploader = '@Url.Action("Uploader", "Upload")';
+        var defaultPicDes = "时间：\n地点：\n事件：";
+        var itemsViewModel = {
+            book_id: ko.observable(0),
+            book_name: ko.observable(),
+            book_size: ko.observable(1),
+            book_type: ko.observable(1),
+            book_des: ko.observable(),
+            pics: ko.observableArray([]),
+            del_pic_id: ko.observable(0),
+            CheckBookSize: function (bookSize) {
+                this.book_size(bookSize);
+            },
+            CheckBookType: function (bookType) {
+                this.book_type(bookType);
+            }
+        };
+        ko.applyBindings(itemsViewModel);
+
+        if (typeof bookJson === "object" && bookJson.Id > 0) {
+            itemsViewModel.book_id(bookJson.Id);
+            itemsViewModel.book_name(bookJson.Name);
+            itemsViewModel.book_size(bookJson.BookSize);
+            itemsViewModel.book_type(bookJson.BookType);
+            itemsViewModel.book_des(bookJson.Introduction);
+            if (bookJson.Pics && bookJson.Pics.length) {
+                for (var i = 0; i < bookJson.Pics.length; i++) {
+                    var item = bookJson.Pics[i];
+                    var gitem = {
+                        pic_id: ko.observable(item.PicId),
+                        pic_des: ko.observable(item.Description),
+                        item_pic: ko.observable(item.PicUrl),
+                        pic_width: ko.observable(item.DisWidth + "px"),
+                        pic_height: ko.observable(item.DisHeight + "px"),
+                        pic_margin: ko.observable(item.DisMargin),
+                        isEditing: ko.observable(true),
+                        showEditBox: function () {
+                            return this.isEditing();
+                        },
+                        edit: function () {
+                            this.isEditing(true);
+                        }
+                    };
+                    itemsViewModel.pics.push(gitem);
+                }
+            }
+        }
+
+        var cUploadInit = function () {
+            $("div.upload_box").cSwfUpload({
+                size: { width: 140, height: 90 },
+                zWidth: 470,
+                url: uploader,
+                beforeUpload: function () { return true; },
+                uploaded: function (response) {
+                    if (!response.Saved) {
+                        $.showMsg(response.Msg, "error");
+                    }
+                    else {
+                        var idx = $(this).attr("idx");
+                        var item = response;
+                        var gitem = itemsViewModel.pics()[idx];
+                        pic_id: ko.observable(item.Pic.PicId),
+                        gitem.item_pic(item.Pic.PicUrl);
+                        gitem.pic_width(item.Pic.DisWidth + "px");
+                        gitem.pic_height(item.Pic.DisHeight + "px");
+                        gitem.pic_margin(item.Pic.DisMargin);
+                    }
+                }
+            });
+        };
+        $("#addBookItemBtn").cSwfUpload({
+            size: { width: 140, height: 90 },
+            zWidth: 470,
+            url: uploader,
+            beforeUpload: function () {
+                return true;
+            },
+            uploaded: function (response) {
+                if (!response.Saved) {
+                    $.showMsg(response.Msg, "error");
+                }
+                else {
+                    var item = response;
+                    var gitem = {
+                        pic_id: ko.observable(item.Pic.PicId),
+                        pic_des: ko.observable(defaultPicDes),
+                        item_pic: ko.observable(item.Pic.PicUrl),
+                        pic_width: ko.observable(item.Pic.DisWidth + "px"),
+                        pic_height: ko.observable(item.Pic.DisHeight + "px"),
+                        pic_margin: ko.observable(item.Pic.DisMargin),
+                        isEditing: ko.observable(false),
+                        showEditBox: function () {
+                            return this.isEditing();
+                        },
+                        edit: function () {
+                            this.isEditing(true);
+                        }
+                    };
+                    itemsViewModel.pics.push(gitem);
+                    cUploadInit();
+                    //                    var curNo = itemsViewModel.pics().length;
+                    //                    if (curNo >= 6) {
+                    //                        $("#item_pic_uploader").hide();
+                    //                    }
+                }
+            }
+        });
+        cUploadInit();
+
+        $("#submit_btn").bind("click", function () {
+            var validator = $("#bookform").validate({ errorElement: "", errorClass: "error" });
+            var valid = validator.checkForm();
+            if (!valid && validator.errorList.length > 0) {
+                //$.showMsg(validator.errorList[0].message, "error");
+                // validator.showErrors();
+                for (elt in validator.errorList) {
+                    $(elt.element).addClass("error");
+                }
+                for (elt in validator.successList) {
+                    $(elt.element).removeClass("error");
+                }
+                $(validator.errorList[0].element).focus();
+                return;
+            }
+
+            var book = {
+                Id: itemsViewModel.book_id(),
+                Name: itemsViewModel.book_name(),
+                BookSize: itemsViewModel.book_size(),
+                BookType: itemsViewModel.book_type(),
+                Introduction: itemsViewModel.book_des(),
+                Pics: new Array()
+            };
+
+
+            for (var i = 0, c = itemsViewModel.pics().length; i < c; i++) {
+                var item = itemsViewModel.pics()[i];
+                var pdes = item.pic_des();
+                //                if (pdes == $.trim(defaultPicDes)) {
+                //                    pdes = "";
+                //                }
+                book.Pics.push({
+                    PicId: item.pic_id(),
+                    Description: pdes
+
+                });
+            }
+            if (book.Pics.length == 0) {
+                $.showMsg("必须至少上传一张图片!", "error");
+                return false;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AjaxAddBook", "Babybook")',
+                data: { book: JSON.stringify(book), del_items: itemsViewModel.del_pic_id() }
+            }).done(function (response) {
+                if (response.Error == 0) {
+                    $.showMsg(response.ExMessage || "保存成功！", "success");
+                    setTimeout(function () {
+//                        var bookId;
+//                        if (typeof bookJson == "object" && bookJson.Id > 0) {
+//                            bookId = bookJson.Id;
+//                        }
+//                        else {
+//                            bookId = response.Data;
+//                        }
+                        window.location = '@Url.Action("BookView","Babybook")' + "/" + response.Data;
+                    }, 2000);
+                } else {
+                    $.showMsg(response.ExMessage, "error");
+                }
+            });
+        });
+
+    });
+ </script>
+
+ }
+

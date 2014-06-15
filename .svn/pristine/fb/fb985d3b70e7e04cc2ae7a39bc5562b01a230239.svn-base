@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fxpProperties abbreviated="false" authoringTool="Flex Builder" compiles="true" parentProject="6e75c321-62c6-40ea-9162-0f28f8d4150f" projectUUID="6e75c321-62c6-40ea-9162-0f28f8d4150f" pureCatalystProject="false" sdkVersion="4.6.0" uuid="69543708-f853-4896-b7e6-a7b42587ed98" version="15">
+  <projects/>
+  <src/>
+  <swc>
+    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="69543708-f853-4896-b7e6-a7b42587ed98"/>
+    <linked location="C:/Users/Administrator/Adobe Flash Builder 4.6/cSwfUploader/libs" path="/libs" position="1" uuid="69543708-f853-4896-b7e6-a7b42587ed98"/>
+  </swc>
+  <misc>
+    <linked location="C:/Users/Administrator/Desktop" path="/bin-release" position="0" uuid="69543708-f853-4896-b7e6-a7b42587ed98"/>
+    <linked location="D:/WebTest/mFileUpload/cSwfUploader" path="/bin-release2" position="0" uuid="69543708-f853-4896-b7e6-a7b42587ed98"/>
+    <linked location="E:/Work/百家衣/BabyPlan/trunk/BabyPlanProject/mvcApp/JsLib/cSwfUpload" path="/bin-release3" position="0" uuid="69543708-f853-4896-b7e6-a7b42587ed98"/>
+  </misc>
+  <theme/>
+  <mxmlFormattingPrefs groupAttributesByState="true" maxLineWidth="100" mxmlAlignAttributes="true" mxmlAttributeOrder="id,userLabel,includeIn,excludeFrom,visible,x,y,z,left,right,top,bottom,width,height,minWidth,minHeight,maxWidth,maxHeight,label" mxmlKeepAttributeValuesOrganized="true"/>
+</fxpProperties>

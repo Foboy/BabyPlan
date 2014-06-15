@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace BabyPlan.mvcApp.Extensions
+{
+    public class ResourceHelper
+    {
+        public static void RegisterCss(WebViewPage page,string css)
+        {
+
+            string registedCss = (HttpContext.Current.Items["RegistedCss"] ?? string.Empty).ToString();
+            HttpContext.Current.Items["RegistedCss"] = (string.IsNullOrEmpty(registedCss) ? string.Empty : (registedCss + ",")) + css;
+        }
+
+        public static string CreateCssLink(WebViewPage page)
+        {
+            if (HttpContext.Current.Items["RegistedCss"] != null)
+            {
+                string href = string.Format("/Content/CssAccessor.css?css={0}&ver={1}", HttpContext.Current.Items["RegistedCss"], "0.1");
+                return string.Format("<link rel=\"stylesheet\" type=\"text/css\" href=\"{0}\" media=\"screen\" />", href);
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+    }
+}

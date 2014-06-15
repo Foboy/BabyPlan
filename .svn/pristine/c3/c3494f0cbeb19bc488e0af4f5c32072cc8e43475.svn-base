@@ -1,0 +1,199 @@
+﻿@{
+    ViewBag.Title = "注册 - 百家衣(www.360baijiayi.com)";
+    ViewBag.Description = "百家衣(www.360baijiayi.com)是一个专注婴儿闲置衣物买卖的网站，在这里妈妈们可以在线买卖宝宝闲置的衣服、玩具。“百家衣”是婴儿服的一种，由一百个家庭收集到布片做成，故名“百家衣”";
+    ViewBag.KeyWords = "百家衣,买卖,旧衣服,二手,二手衣服,闲置,宝宝,婴儿,儿童,孩子,衣服,小孩衣服,婴儿衣服,寄售,玩具,同城置换,同城交易,四川二手,成都二手衣服";
+    Layout = "~/Views/Shared/_Layout_Nested.cshtml";
+}
+@section Js_InHeader{
+    @Content.Script("jquery.form.js",Url)
+    @Content.Script("cvalid.js", Url)
+    <style type="text/css">
+        .reg_title{ margin:5px 0 0 20px;}
+        .reg_content{ margin:15px 0 20px 0;}
+        .reg_left_outer{border-right:solid 1px #EEF0EC; position:relative; overflow:hidden; padding:20px 30px;}
+        .reg_left_outer p{margin-bottom:20px;}
+        .reg_left_outer p label{display: inline-block;font-size: 16px;width: 80px;}
+        .reg_left_outer .input_box{width:320px;}
+        .reg_left_outer .register_submit{border:none; height:30px; margin-left:100px;}
+        .reg_right_outer{width:420px;}
+        .reg_right_outer .login_link{display:block;width:110px;padding:0;margin:10px 0;}
+        .reg_right_outer .oauth_login{margin:30px 0;}
+        .reg_right_outer .oautn_login_list{display:inline-block;margin:5px 0;width:420px;}
+        .reg_right_outer .oautn_login_list li{float:left;margin-right:10px;}
+    </style>
+}
+<div class="mainblock">
+    <div class="mainblock whiteblock">
+      <div class="reg_title line-height40"><span class="font-size20 green-font font-weight4">用户注册</span></div>
+
+      <div class="reg_content">
+        <div class="reg_left_outer fl">
+            <form id="register_form" action="@Url.Action("AjaxRegister", "Account")" method="post">
+                <p>
+                  <label>用户名：</label>
+                  <input type="text" id="username" name="username" class="input_box" />
+                  <span class="tip gray-font">用户名，由4-16位字符组成，可以是字母、数字或汉字</span>
+                </p>
+                 <p>
+                  <label>性别：</label>
+                  <input name="sex" type="radio" value="0" checked="checked"/><span>男</span>
+                        &nbsp;&nbsp;
+                  <input name="sex" type="radio" value="1" /><span>女</span>
+                </p>
+                 <p>
+                  <label>密码：</label>
+                  <input type="password" id="password" name="password" class="input_box" />
+                  <span class="tip gray-font">6-18位，可包含字母、数字或特殊字符 </span>
+                </p>
+                <p>
+                  <label>确认密码：</label>
+                  <input type="password" id="passwordcomfirm" class="input_box" />
+                  <span class="tip gray-font">重复输入上面的密码，确保输入的密码一致</span>
+                </p>
+                 <p>
+                  <input type="submit" class="button-green register_submit button_pointer" id="register_btn" value="立即注册" />
+                </p>
+               
+                
+                <div class="clear"></div>
+            </form>
+        </div>
+        <div class="reg_right_outer fr font-size13">
+            <span>已有账号？请马上登录</span>
+            <a href="@Url.Action("Login","Account")" class="button-green login_link button_pointer">马上登陆</a>
+            @Html.Partial("_OAuth_Partial")
+        </div>
+        <div class="clear"></div>
+      </div>
+
+    </div>
+
+ @* 提示信息*@
+@* <div>
+     <div class="msgbox">
+         <span class="msgbg msgbox_layer">
+           <span class="msgbg gtl_ico_succ"></span>保存成功<span class="msgbg gtl_end"></span>
+         </span>
+     </div>
+
+ </div>*@
+ @Content.Css("jquery.fancybox-1.3.4.css", "fancybox", Url,BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)  
+<style type="text/css">
+#fancybox-left, #fancybox-right {
+	width: 20%;
+}
+</style>
+@Content.Script("jquery.fancybox-1.3.4.js", "fancybox", Url)
+@Content.Script("fancybox.msgbox.js", Url)
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var options = {
+            dataType: 'json',
+            beforeSubmit: beforeSubmit,
+            success: submitSuccess
+        };
+        $("#register_form").ajaxForm(options);
+
+        function queryString(key) {
+            return (document.location.search.match(new RegExp("(?:^\\?|&)" + key + "=(.*?)(?=&|$)")) || ['', null])[1];
+        }
+
+        function beforeSubmit() {
+            var userChk = UserNameChk();
+            var pwChk = PasswordChk();
+            var pcChk = PasswordConfirmChk();
+            if (!userChk.pass) {
+                userChk.elt.next("span").attr("class", "tip red-font");
+                userChk.elt.focus();
+                return false;
+            }
+            if (!pwChk.pass) {
+                pwChk.elt.next("span").attr("class", "tip red-font");
+                pwChk.elt.focus();
+                return false;
+            }
+            if (!pcChk.pass) {
+                pcChk.elt.focus();
+                return false;
+            }
+            $("#register_btn").val("注册中...").attr("disabled", "false");
+            return true;
+        }
+
+        function submitSuccess(response) {
+            $("#register_btn").val("立即注册").attr("disabled", "");
+            if (response.Error == 0) {
+                $.showMsg(response.ExMessage || "注册成功！", "success");
+                setTimeout(function () {
+                    var returnUrl = queryString("ReturnUrl");
+                    if (returnUrl)
+                        window.location = decodeURIComponent(returnUrl);
+                    else
+                        window.location = '@Url.Action("Index","User")';
+                }, 1000);
+            }
+            else {
+                $.showMsg(response.ExMessage || response.ErrorMessage, "error");
+            }
+        }
+
+        function UserNameChk() {
+            var me = $("#username");
+            var val = me.val();
+            if (val.length >= 4 && val.length <= 16) {
+                //me.css("border", "solid 2px #fff");
+                me.next("span").attr("class", "tip gray-font");
+                return { pass: true, elt: me };
+            }
+            else {
+
+                me.css("border", "solid 2px #f00");
+
+                me.css("border", "solid 2px #f00");
+                me.next("span").attr("class", "tip red-font");
+
+                return { pass: false, elt: me };
+            }
+        }
+
+        function PasswordChk() {
+            var me = $("#password");
+            var val = me.val();
+            if (val.length >= 6 && val.length <= 18) {
+                //me.css("border", "solid 2px #fff");
+                me.next("span").attr("class", "tip gray-font");
+                return { pass: true, elt: me };
+            }
+            else {
+                me.css("border", "solid 2px #f00");
+                me.css("border", "solid 2px #f00");
+                me.next("span").attr("class", "tip red-font");
+                return { pass: false, elt: me };
+            }
+        }
+
+        function PasswordConfirmChk() {
+            var me = $("#passwordcomfirm");
+            var pw = $("#password");
+            if (me.val() == pw.val()) {
+                //me.css("border", "solid 2px #fff");
+                me.next("span").attr("class", "tip gray-font");
+                return { pass: true, elt: me };
+            }
+            else {
+                me.css("border", "solid 2px #f00");
+                me.css("border", "solid 2px #f00");
+                me.next("span").attr("class", "tip red-font");
+                return { pass: false, elt: me };
+            }
+        }
+
+        //添加验证
+        $("#username").bind("blur", UserNameChk);
+        $("#password").bind("blur", PasswordChk);
+        $("#passwordcomfirm").bind("blur", PasswordConfirmChk);
+    });
+</script>
+
+

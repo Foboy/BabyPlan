@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7cfe03ef-444c-49b5-82f0-1b3f54de06d9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1937/BabyPlan.WcfService/ProductService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProductService.wsdl" MetadataType="Wsdl" ID="c8c56cff-b1c1-4966-b561-693a48ec89d2" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?wsdl" />
+    <MetadataFile FileName="ProductService.xsd" MetadataType="Schema" ID="89904c30-1007-44cd-8686-7f1bdd23023b" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ProductService1.xsd" MetadataType="Schema" ID="2dd1618d-5828-406f-8948-e80836ecf3a8" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?xsd=xsd5" />
+    <MetadataFile FileName="ProductService2.xsd" MetadataType="Schema" ID="b18b43a2-8f82-4350-abef-5e4b5573b9d2" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ProductService3.xsd" MetadataType="Schema" ID="27b269ab-6a94-4c37-bd25-b91ba8dbe9f7" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ProductService4.xsd" MetadataType="Schema" ID="d12f94fb-3d86-4fd7-884b-2abf144fcc2e" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ProductService.disco" MetadataType="Disco" ID="2cd1cd4b-3fef-4032-96d1-22a0c8f75047" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?disco" />
+    <MetadataFile FileName="ProductService5.xsd" MetadataType="Schema" ID="c7b0f3bc-8472-4e8a-99fa-3d860875183a" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,9 @@
+﻿    .bg_release{ background:url(/images/bg-discover.png) no-repeat  transparent; width:710px; height:120px;}
+    .latest_list_outer .latest_list_box{list-style-type: none;margin:0 10px;}
+    .latest_list_outer .latest_list_box li{width:140px;border:solid 1px #ccc;float:left;margin:8px 15px;}
+    .latest_list_outer .latest_list_box li .itembox{width:120px;height:150px;margin:10px;position:relative;}
+    .latest_list_outer .latest_list_box li .itembox a{ display:block;}
+    .latest_list_outer .latest_list_box li .itembox .price{height:20px;line-height:20px;padding:0 5px;background:#FF6666;color:#fff;position:absolute;display:block;}
+
+    .latest_list_outer .latest_list_box li p {color: #999;line-height: 16px;margin: 6px 0;}
+    .add_link{display:block;width:150px;padding:0; height:40px; line-height:40px; font-size:16px; float:right; margin:40px 40px 0 0;}

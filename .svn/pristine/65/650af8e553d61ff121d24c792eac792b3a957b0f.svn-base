@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace BabyPlan.mvcApp.Model
+{
+    public enum ProductBindType
+    {
+        None = 0,
+        Items = 1,
+        ReplayNum = 2,
+        Author = 4
+    }
+
+
+}

@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+} 
+<style type="text/css">
+    .header{height:110px; margin-bottom:15px;}
+    .header .logo{float:left; width:210px; height:110px;}
+    .nav{position:relative; float:left; width:450px; margin-left:20px;}
+    .nav ul{margin:60px 0 0 0 ; padding:0px; list-style:none outside; height:50px;}
+    .nav ul li{ float:left; margin-left:40px; display:inline;}
+    .nav ul li a{font-size:18px; font-weight:400; color:#666666; text-decoration:none;}
+    .nav ul li a.active,.nav ul li a:hover,nav ul li a.selected{ color:#2A8FC4;}
+    
+    .header_content{float:right; position:relative; width:200px; height:110px;}
+    .login{ color:#888888; margin-top:10px; margin-left:120px;}
+    .login a{ margin:0 5px; cursor:pointer;}
+    .login a:hover{color:#2A8FC4;}
+    .share{background:url(images/inhere.png) no-repeat scroll 0 0 transparent; height:50px; padding:30px 0 0 67px; margin-top:10px;} 
+    .share a{ cursor:pointer; display:block; float:left; height: 36px;width: 36px;margin:0px 10px;}
+    .share .sina{ background:url(images/sina_g.png) no-repeat  transparent;}
+    .share .qq{ background:url(images/qq_g.png) no-repeat transparent;}
+    .share .sina:hover{background:url(images/sina.png) no-repeat  transparent;}
+    .share .qq:hover{ background:url(images/qq.png) no-repeat  transparent;}
+    
+    .clear{ clear:both;}
+</style>
+<div class="header mainblock">
+    <div class="logo"><img src="../../images/logo.png" title="百家衣"></div>
+
+    <div class="nav">
+        <ul>
+            <li><a href="@Url.Action("Index","Home")" title="首页">首页</a></li>
+            <li><a href="@Url.Action("Index","Trade")" title="同城百家衣">同城百家衣</a></li>
+            <li><a href="@Url.Action("Index","Game")" title="挑战/活动">挑战/活动</a></li>
+            <li><a href="@Url.Action("Index","Game")" title="挑战/活动">关于我们</a></li>
+        </ul>
+    </div>
+
+     <div class="header_content">
+        <div class="login">
+           <a>登录</a>
+           <span>|</span>
+           <a>注册</a>
+        </div> 
+        <div class="share">
+           <a class="sina" href="www.qq.com" target="_blank"></a>
+           <a class="qq" href="www.qq.com" target="_blank"></a>
+        </div>
+   </div>
+    
+    <div class=""></div>
+</div>

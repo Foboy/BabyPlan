@@ -1,0 +1,26 @@
+﻿@using System.Web.Mvc;
+@using BabyPlan.mvcApp.Infras;
+@helper Script(string scriptName,UrlHelper url,SourceRootEnums rootType = SourceRootEnums.JsLib)
+{
+    <script src="@url.Content(RootConvertor.RootConvert(rootType) + scriptName)" type="text/javascript"></script>
+}
+@helper Script(string scriptName, string folderName, UrlHelper url,SourceRootEnums rootType = SourceRootEnums.JsLib)
+{
+    <script src="@url.Content(RootConvertor.RootConvert(rootType) + folderName + "/" + scriptName)" type="text/javascript"></script>
+}
+@helper Css(string cssName, UrlHelper url, SourceRootEnums rootType = SourceRootEnums.Css)
+{   
+    <link rel="stylesheet" type="text/css" href="@url.Content(RootConvertor.RootConvert(rootType) + cssName)" media="screen" />
+}
+@helper Css(string cssName, string folderName, UrlHelper url, SourceRootEnums rootType = SourceRootEnums.Css)
+{
+    <link rel="stylesheet" type="text/css" href="@url.Content(RootConvertor.RootConvert(rootType) + folderName + "/" + cssName)" media="screen" />
+}
+@helper SourceSrc(string sourceName, UrlHelper url, SourceRootEnums rootType)
+{
+    @url.Content(RootConvertor.RootConvert(rootType) + sourceName)
+}
+@helper SourceSrc(string sourceName, string folderName, UrlHelper url, SourceRootEnums rootType)
+{
+    @url.Content(RootConvertor.RootConvert(rootType) + folderName + "/" + sourceName)
+}

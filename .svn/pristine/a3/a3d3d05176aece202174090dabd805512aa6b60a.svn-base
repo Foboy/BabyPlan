@@ -1,0 +1,4 @@
+﻿@{
+    Layout = null;
+} 
+<div class="bshare-custom icon-medium"><a class="bshare-qqmb" title="分享到腾讯微博" href="javascript:void(0);"></a><a class="bshare-sinaminiblog" title="分享到新浪微博" href="javascript:void(0);"></a><a class="bshare-qzone" title="分享到QQ空间" href="javascript:void(0);"></a><a class="bshare-renren" title="分享到人人网" href="javascript:void(0);"></a><a class="bshare-douban" title="分享到豆瓣" href="javascript:void(0);"></a><a class="bshare-more bshare-more-icon more-style-addthis" title="更多平台"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=d3b1be2a-ec60-47ef-9c5f-a3f429fe4803&amp;pophcol=1&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>

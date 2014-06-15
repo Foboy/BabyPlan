@@ -1,0 +1,257 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using BabyPlan.DataStructure;
+using SocialServices.Sina.oAuth;
+using BabyPlan.oAuth;
+using BabyPlan.mvcApp.Infras;
+using BabyPlan.Common;
+using System.Web.Security;
+using BabyPlan.Meta;
+using BabyPlan.mvcApp.UserService;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class AccountController : BaseController
+    {
+        //
+        // GET: /Account/
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View("~/Views/Account/Login.cshtml");
+        }
+
+        public ActionResult Register()
+        {
+            return View("~/Views/Account/Register.cshtml");
+        }
+
+        public JsonResult AjaxRegister()
+        {
+            string username = Request["username"];
+            string password = Request["password"];
+            string sex = Request["sex"];
+            RespResult response = null;
+            try
+            {
+                UserServiceClient client = new UserServiceClient();
+                response = client.Register(username, password);
+                client.Close();
+                client = null;
+            }
+            catch (Exception ex)
+            {
+                response = new RespResult();
+                response.Error = AppError.ERROR_FAILED;
+                response.ExMessage = ex.Message;
+            }
+            return this.Json(response);
+        }
+
+        public JsonResult AjaxLogin()
+        {
+            string username = Request["username"];
+            string password = Request["password"];
+            UserServiceClient client = new UserServiceClient();
+            AdvancedResult<string> response = new AdvancedResult<string>();
+            //response = client.Login(username, password);
+            //client.Close();
+            //client=null;
+            response.Data = "mytoken";
+            response.Error = AppError.ERROR_SUCCESS;
+
+            if (response.Error == AppError.ERROR_SUCCESS)
+            {
+                DateTime issueDate = DateTime.Now;
+                DateTime expiration = issueDate.AddHours(1);
+                string userData = response.Data;
+                bool isPersistent = false;
+
+                FormsAuthenticationTicket ticket;
+                ticket = new FormsAuthenticationTicket(
+                    1, username, issueDate, expiration, isPersistent, userData);
+
+                string value = FormsAuthentication.Encrypt(ticket);
+                HttpCookie cookie = FormsAuthentication.GetAuthCookie(username, isPersistent);
+                cookie.Value = value;
+                HttpContext.Response.Cookies.Add(cookie);
+                
+            }
+            return this.Json(response);
+        }
+
+        public JsonResult AjaxLogout()
+        {
+            FormsAuthentication.SignOut();
+            return this.Json(null);
+        }
+
+        public void Logout()
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect(Url.Action("Index", "Home"));
+        }
+
+        public ActionResult QC_Callback()
+        {
+            return View("~/Views/Account/QC_Callback.cshtml");
+        }
+
+        #region 第三方登录
+
+        //QQ微博登录后记录其oAuth信息(Session)Key
+        private string sKey_QQoAuthKey = "oAuthKey";
+        private string sKey_SocialUserKey = "socialUserKey";
+
+        private void oAuth_Sina()
+        {
+            ISinaoAuth oAuthService = new SinaOAuthService();
+            string requestTokenUrl = oAuthService.GetAuthorizeUri();
+            Response.Redirect(requestTokenUrl, true);
+        }
+
+        private void oAuth_TQQ()
+        {
+            IQoAuth oAuthService = new QoAuthService();
+            QoAuthKey oAuthKey = null;
+            string requestTokenUrl = oAuthService.GetAuthorizationUrl(out oAuthKey);
+
+            //用于获取access_token
+            Session[sKey_QQoAuthKey] = oAuthKey;
+            Response.Redirect(requestTokenUrl, true);
+        }
+
+        /// <summary>
+        /// 新浪微博账号登陆
+        /// </summary>
+        public void Sina_Login()
+        {
+            oAuth_Sina();
+        }
+
+        /// <summary>
+        ///腾讯微博账号登陆 
+        /// </summary>
+        public void QQ_Login()
+        {
+            oAuth_TQQ();
+        }
+
+        /// <summary>
+        /// 绑定社交账号后的回调函数，使用场景
+        /// 1.直接采用社交账号登陆
+        /// 2.平台账号登陆后->绑定新的社交账号
+        /// </summary>
+        public ActionResult Social_Callback(string type)
+        {
+            try
+            {
+                //判断登陆的社交账户类型(默认为新浪微博账号)
+                String req_type = (String.IsNullOrEmpty(type)) ? "1" : type;
+                SocialUserTypeEnum socialUserTypeEnum = (SocialUserTypeEnum)Enum.Parse(typeof(SocialUserTypeEnum), req_type);
+
+                //初始化社交账户结构体
+                SocialUser socialUser = new SocialUser();
+                socialUser.SocialUserType = socialUserTypeEnum;
+
+                #region 获取社交账号的access_token及security_key
+                switch (socialUserTypeEnum)
+                {
+                    case SocialUserTypeEnum.Sina:
+                        ISinaoAuth sina_oAuthService = new SinaOAuthService();
+                        string _code = Request["code"];
+                        string access_code = string.Empty;
+                        string sina_uid = string.Empty;
+                        bool _isOk = sina_oAuthService.GetAccessToken(_code, out access_code, out sina_uid);
+                        socialUser.AccessToken = access_code;
+                        socialUser.Uid = sina_uid;
+                        break;
+                    case SocialUserTypeEnum.QQ:
+                        IQoAuth oAuthService = new QoAuthService();
+                        string verifierCode = Request["code"];
+                        QoAuthKey oAuthKey = (QoAuthKey)Session[sKey_QQoAuthKey];
+                        oAuthService.GetAccessToken(verifierCode, ref oAuthKey);
+
+                        socialUser.AccessToken = oAuthKey.Access_Token;
+                        socialUser.AccessTokenSecret = oAuthKey.State;
+                        socialUser.Uid = oAuthKey.OpenId;
+                        break;
+                    default:
+                        break;
+                }
+                #endregion
+
+                Session[sKey_SocialUserKey] = socialUser;
+
+                //用户业务逻辑服务
+                RespResult result = new RespResult();
+
+                #region 社交账号登陆
+
+
+                //社交账号登陆
+                if (socialUserTypeEnum == SocialUserTypeEnum.QQ || socialUserTypeEnum == SocialUserTypeEnum.Sina)
+                {
+                    //检查社交账号是否和平台账号绑定
+                    result = new RespResult();
+                    //UserServiceClient client = new UserServiceClient();
+                    //client.IsBindSocialUser(socialUser);
+                    //client.close();
+                    //client=null;
+
+                    if (result.Error == AppError.ERROR_SUCCESS)
+                    {
+                        //跳转到个人中心
+                        Response.Redirect(Url.Action("Index", "User"), true);
+                    }
+                    else
+                    {
+                        //跳转到帐号绑定
+                        Response.Redirect(Url.Action("Bind", "Account"), true);
+                    }
+                }
+                else
+                {
+                    Response.Redirect(Url.Action("Login", "Account"), true);
+                }
+                #endregion
+                return null;
+            }
+            catch(Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                return View("~/Views/Errors/Error.cshtml");
+            }
+        }
+
+        public ActionResult Bind()
+        {
+            try
+            {
+                SocialUser socialUser = (SocialUser)Session[sKey_SocialUserKey];
+                bool socialLogin = true;
+                if (socialUser == null)
+                {
+                    socialLogin = false;
+                }
+                ViewBag.SocialLogin = socialLogin;
+                return View("~/Views/Account/Bind.cshtml");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                return View("~/Views/Errors/Error.cshtml");
+            }
+        }
+
+        #endregion
+
+    }
+}

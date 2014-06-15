@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using BabyPlan.Meta;
+
+namespace BabyPlan.mvcApp.Model
+{
+    [Serializable]
+    public class UserModel
+    {
+        public string Name { get; set; }
+        public string Account { get; set; }
+        public bool HasBindBabyBirthday { get; set; }
+
+        public int PostGoodsNum { get; set; }
+
+        public string QQ { get; set; }
+
+        public string Phone { get; set; }
+
+        public PicModel HeadPic { get; set; }
+
+        public UserModel Bind(AdUser user)
+        {
+            if (user != null)
+            {
+                if (user.BabyBirthday.Year <= 1900)
+                {
+                    HasBindBabyBirthday = false;
+                }
+                else
+                {
+                    HasBindBabyBirthday = true;
+                }
+                this.Account = user.UserAccount;
+                this.Name = user.UserAccount;
+
+                if (user.PicId > 0 && user.HeadImgUrl != null)
+                {
+                    this.HeadPic = new PicModel();
+                    this.HeadPic.PicUrl = user.HeadImgUrl;
+                    this.HeadPic.PicWidth = user.PicWidth;
+                    this.HeadPic.PicHeight = user.PicHeight;
+                    this.HeadPic.PicId = user.PicId;
+                }
+            }
+            return this;
+        }
+    }
+}

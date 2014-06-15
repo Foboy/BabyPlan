@@ -1,0 +1,211 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using BabyPlan.Common;
+using BabyPlan.Meta;
+using BabyPlan.WcfService;
+using BabyPlan.mvcApp.ViewModel;
+using BabyPlan.DataStructure;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class BabybookController : BaseController
+    {
+        //
+        // GET: /Babybook/
+
+        public ActionResult Index()
+        {
+            BookService client = new BookService();
+            AdvancedResult<List<ProBook>> response = client.SearchBooks(CurrentToken,0,3);
+
+            List<BookModel> items = new List<BookModel>();
+
+            if (response.Error == DataStructure.AppError.ERROR_SUCCESS)
+            {
+                ViewModelBindOption bindOptions = ViewModelBindOption.DefalutBindOption;
+                bindOptions.BookBindType = bindOptions.BookBindType | BookBindType.None;
+
+                response.Data = response.Data ?? new List<ProBook>();
+                foreach (var p in response.Data)
+                {
+                    items.Add(new BookModel().Bind(p, bindOptions));
+                }
+            }
+            return View("~/Views/info/babybook.cshtml",items);
+        }
+
+        public ActionResult BookList()
+        {
+            BookService client = new BookService();
+            AdvancedResult<List<ProBook>> response = client.SearchBooks(CurrentToken,0,100);
+
+            List<BookModel> items = new List<BookModel>();
+
+            if (response.Error == DataStructure.AppError.ERROR_SUCCESS)
+            {
+                ViewModelBindOption bindOptions = ViewModelBindOption.DefalutBindOption;
+                bindOptions.BookBindType = bindOptions.BookBindType | BookBindType.Author;
+
+                response.Data = response.Data ?? new List<ProBook>();
+                foreach (var p in response.Data)
+                {
+                    items.Add(new BookModel().Bind(p, bindOptions));
+                }
+            }
+            return View("~/Views/user/BookList.cshtml", items);
+        }
+
+        [Authorize]
+        public ActionResult AddBook(int? id)
+        {
+            int pid = id ?? 0;
+            BookModel model = new BookModel();
+
+            ViewModelBindOption bindOptions = ViewModelBindOption.DefalutBindOption;
+            bindOptions.BindProductPicsCount = 0;
+            bindOptions.BookBindType = BookBindType.Pics;
+
+            if (pid > 0)
+            {
+                BookService client = new BookService();
+                AdvancedResult<ProBook> product = client.GetBook(pid);
+                if (product.Error == DataStructure.AppError.ERROR_SUCCESS)
+                {
+                    model.Bind(product.Data, bindOptions);
+                    foreach (PicModel pic in model.Pics)
+                    {
+                        pic.DisplaySeting(140, 90);
+                    }
+                }
+            }
+
+            ViewBag.BookJson = JsonHelper.Serialize(model);
+
+            return View("~/Views/info/addbook.cshtml");
+        }
+
+        [Authorize]
+        public ActionResult BookView(int id)
+        {
+            BookModel model = new BookModel();
+
+            ViewModelBindOption bindOptions = ViewModelBindOption.DefalutBindOption;
+            bindOptions.BindProductPicsCount = 0;
+            bindOptions.BookBindType = BookBindType.Pics;
+
+            if (id > 0)
+            {
+                BookService client = new BookService();
+                AdvancedResult<ProBook> product = client.GetBook(id);
+                if (product.Error == DataStructure.AppError.ERROR_SUCCESS)
+                {
+                    model.Bind(product.Data, bindOptions);
+                }
+            }
+
+            ViewBag.BookJson = JsonHelper.Serialize(model);
+            return View("~/Views/babybook/bookview.cshtml",model);
+        }
+
+        public JsonResult AjaxAddBook()
+        {
+            string bookDatas = Request["book"];
+            string del_items = Request["del_items"] ?? "";
+            AdvancedResult<int> response = new AdvancedResult<int>();
+            if (string.IsNullOrEmpty(bookDatas))
+            {
+                response.Error = DataStructure.AppError.ERROR_INVALID_PARAMETER;
+                response.ErrorMessage = "数据丢失！";
+            }
+            else
+            {
+                try
+                {
+                    BookModel book = JsonHelper.Deserialize<BookModel>(bookDatas);
+
+
+                    BookService client = new BookService();
+                    FileServiceClient bookClient = new FileServiceClient();
+                    if (book == null)
+                    {
+                        response.Error = DataStructure.AppError.ERROR_INVALID_PARAMETER;
+                        response.ErrorMessage = "无效数据！";
+                    }
+                    else
+                    {
+                        AdvancedResult<int> productResponse;
+                        if (book.Id > 0)
+                        {
+                            RespResult result = client.EditBook(book.Id, book.Name, book.BookSize,book.BookCover, book.BookType, book.Introduction, CurrentToken);
+                            productResponse = new AdvancedResult<int>();
+                            productResponse.Data = book.Id;
+                            productResponse.Error = result.Error;
+                            productResponse.ErrorMessage = result.ErrorMessage;
+                            productResponse.ExMessage = result.ExMessage;
+                        }
+                        else
+                        {
+                            productResponse = client.AddBook(book.Name, book.BookSize,book.BookCover, book.BookType, book.Introduction, CurrentToken);
+                        }
+
+                        if (productResponse.Error == DataStructure.AppError.ERROR_SUCCESS)
+                        {
+                            foreach (var pitem in book.Pics)
+                            {
+                                //if (pitem.Pid > 0)
+                                //{
+                                //    client.EditeBBPic(pitem.Pid, pitem.PicId, CurrentToken);
+                                //}
+                                //else
+                                //{
+                                client.BindBookPic(productResponse.Data, pitem.PicId, pitem.Description, pitem.CreateTime, CurrentToken);
+                                //}
+                            }
+                        }
+                        response.Data = productResponse.Data;
+                        response.ErrorMessage = productResponse.ErrorMessage;
+                        response.ExMessage = productResponse.ExMessage;
+                        response.Error = productResponse.Error;
+
+                    }
+                    int[] delItemsList = del_items.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(a => Convert.ToInt32(a)).Where(a => a > 0).ToArray();
+                    foreach (int itemId in delItemsList)
+                    {
+                        bookClient.DeleteBBPic(itemId, CurrentToken);
+                    }
+                    client.Close();
+                    client = null;
+                    bookClient.Close();
+                    bookClient = null;
+
+                }
+                catch (Exception ex)
+                {
+                    response.ExMessage = "保存失败！" + ex.Message;
+                    response.Error = DataStructure.AppError.ERROR_FAILED;
+                }
+            }
+            return Json(response);
+        }
+
+
+        public JsonResult AjaxDeleteBook()
+        {
+            RespResult response = new RespResult();
+            if (Request["id"] == null)
+            {
+                response.Error = AppError.ERROR_FAILED;
+                response.ExMessage = "删除失败！";
+                return Json(response);
+            }
+            int bookid = Convert.ToInt32(Request["id"]);
+
+            BookService client = new BookService();
+            response = client.DeleteBook(bookid,CurrentToken);
+            return Json(response);
+        }
+    }
+}

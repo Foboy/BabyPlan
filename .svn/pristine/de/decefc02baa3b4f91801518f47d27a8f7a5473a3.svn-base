@@ -1,0 +1,62 @@
+﻿/*
+ * 创建者: yangchao   创建时间:2011-10-11
+ * 文件描述:缓存项
+ * 修改历史:
+ * 2011-10-11 author  description
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace BabyPlan.Common.Cache
+{
+    /// <summary>
+    /// 缓存项
+    /// </summary>
+    [Serializable]
+    
+    internal class CacheItem
+    {
+        /// <summary>
+        /// 缓存数据
+        /// </summary>
+        private object _cacheData;
+
+        public object CacheData
+        {
+            get { return _cacheData; }
+            set { _cacheData = value; }
+        }
+        /// <summary>
+        /// 失效时间
+        /// </summary>
+        private DateTime _expireTime;
+
+        public DateTime ExpireTime
+        {
+            get { return _expireTime; }
+            set { _expireTime = value; }
+        }
+
+        /// <summary>
+        /// 是否失效
+        /// </summary>
+        public bool IsExpire {
+            get {
+                return ExpireTime < DateTime.Now;
+            }
+        }
+
+        /// <summary>
+        /// 将缓存数转换成Hash类型
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        public override int GetHashCode()
+        {
+            return CacheData.GetHashCode();
+        }
+    }
+}

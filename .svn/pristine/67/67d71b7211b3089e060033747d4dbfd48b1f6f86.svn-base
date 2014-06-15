@@ -1,0 +1,5 @@
+﻿.wrapper{ width:100%; position:relative;}
+.mapholder{overflow: hidden;position: relative;text-align: left; height:300px; left: 0;margin-right: 310px;z-index: 0;}
+.mapInfocon{background: none repeat scroll 0 0 #FFFFFF;border-left: 1px solid #CCCCCC;position: absolute;right: 0;top: 0;
+width: 309px;z-index: 10; height:300px;}
+

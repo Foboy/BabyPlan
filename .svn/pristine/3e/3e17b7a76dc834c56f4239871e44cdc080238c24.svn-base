@@ -1,0 +1,17 @@
+﻿  .main_content{ width:100%; margin-bottom:20px; overflow:hidden;}
+  .main_bg{width:100%; height:160px;background:url(/images/jx.png) no-repeat;  }
+  
+  .last_title{ margin-bottom:10px;}
+  .banner{min-width:960px; width:auto!important; width:960px; height:410px; margin:-15px 0 10px 0; position:relative; overflow:hidden;}
+  .banner a{display:inline-block; width:100%; height:410px;}
+  .banner1{width:100%; height:410px; background:#ed6c4c url(/images/banner1.jpg) no-repeat top center;position:absolute;left:0;top:0;}
+  .banner2{width:100%; height:410px; background:#d4ac3c url(/images/banner2.jpg) no-repeat top center;position:absolute;left:0;top:0;}
+  .banner3{width:100%; height:410px; background:#2a8fc5 url(/images/banner3.jpg) no-repeat top center;position:absolute;left:0;top:0;}
+  .btnSw{position:absolute; bottom:15px; text-align:center; width:100%; height:12px;}
+  .btnSw span{ background:url(/images/btnSw.png) -5px -5px; width:12px; height:12px; display:inline-block; margin:0 5px;}
+  .btnSw span.cur{ background-position:-24px -5px;}
+  .block_comment{padding: 50px 0 0 50px; height:200px;}
+  .block_con{ display: inline;float: left;width: 265px; border-right:1px soild #DBDBDB; margin-right:50px;}
+  .block_con h2{border-left: 10px solid #9ACCE8;font-size: 24px;font-weight: normal;margin: 0;padding-left: 8px;}
+  .block_con p{  color: #7F858A;font-size: 13px;margin-top: 5px;}
+  .block_con img{margin-top:10px;}

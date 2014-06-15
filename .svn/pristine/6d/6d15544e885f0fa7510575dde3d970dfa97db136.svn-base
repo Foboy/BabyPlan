@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "BookList";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+    ResourceHelper.RegisterCss(this, "user.BookList.css");
+}
+@model IList<BabyPlan.mvcApp.ViewModel.BookModel>
+           
+<div class="right_block_title user_right_block grayblock">
+    <span class="title margin10 font-size16 black-font">我的书架</span>
+</div>
+<div class="goods_input_outer user_right_block whiteblock clearfix">
+<ul class="bookList">
+  @for (int i = 0, c = Model.Count(); i < c; i++)
+  {
+      var item = Model[i];
+    <li class="clearfix font-size14">
+        <a href="#" target="_blank" class="fl img"><img src="../../images/3.jpg" /></a>
+        <div class="listContent fl gray-font">
+        <p class="font-size16"><b>@item.Name</b></p>
+        <p class="describe">@item.Introduction</p>
+        <div>
+           <label>最后编辑：</label><span class="dateTime"> @item.EditeTime</span>
+        </div>
+        </div>
+        <div class="makeButton fl clearfix">
+            <a class="button-green  font-size18 fl" href="javascript:void(0);" title="制作纸质书">制作纸质书</a>
+            <a title="下载电子书 fl" href="@Url.Action("AddGoods", "User", new { id=item.Id})" class="download">电子书</a>
+        </div>
+        <a href="javascript:void(deletebook(@item.Id));"  class="delete"></a>
+    </li>
+  }
+            
+        </ul>
+</div>
+
+@section Js_InFoot{
+    @Content.Script("json2.js", Url)
+    @Content.Css("fancybox/jquery.fancybox-1.3.4.css",  Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)  
+    @Content.Script("fancybox/jquery.fancybox-1.3.4.js",Url)
+    @Content.Script("fancybox.msgbox.js", Url)
+    <script type="text/javascript">
+        function deletebook(bookid) {
+            $.showConfirmMsg("您确定要删除您的成长记录？", function (result) {
+                if (result) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("AjaxDeleteBook", "Babybook")',
+                        data: { id: bookid }
+                    }).done(function (response) {
+                        if (response.Error == 0) {
+                            window.location = window.location;
+                        } else {
+                            $.showMsg(response.ExMessage, "error");
+                        }
+                    });
+                }
+            });
+          
+        }
+    </script>
+    }

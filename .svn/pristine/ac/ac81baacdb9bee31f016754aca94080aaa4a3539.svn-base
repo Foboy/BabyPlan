@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using BabyPlan.DataStructure;
+using BabyPlan.Meta;
+using BabyPlan.WcfService;
+using BabyPlan.Common;
+
+namespace BabyPlan.mvcApp.Model
+{
+    [Serializable]
+    public class ProductItemModel : BaseModel
+    {
+        public int Pid { get; set; }
+
+        public int PicId { get; set; }
+
+        public int Id { get; set; }
+
+        public Double Price { get; set; }
+
+        public int Age { get; set; }
+
+        public SexType Sex { get; set; }
+
+        public ItemType ItemType { get; set; }
+
+        public string Description { get; set; }
+
+        public PicModel Pic { get; set; }
+
+        public ProductItemModel Bind(ProProductItem item)
+        {
+            this.Pid = item.ProId;
+            this.Price = item.Price;
+            this.Sex = item.Sex;
+            this.ItemType = item.ItemType;
+            this.Age = (int)((item.MinAge + item.MaxAge) / 2.0);
+            this.PicId = item.PicId;
+            this.Pic = new PicModel();
+            this.Pic.PicUrl = item.PicUrl;
+            this.Pic.PicWidth = item.PicWidth;
+            this.Pic.PicHeight = item.PicHeight;
+            this.Pic.PicId = item.PicId;
+            
+            ProductServiceClient client = new ProductServiceClient();
+            AdvancedResult<ProProduct> product = client.GetBBInfo(item.ProId);
+            if (product.Error == AppError.ERROR_SUCCESS)
+            {
+                this.Description = product.Data.BbInfo;
+            }
+            return this;
+        }
+
+        public static IList<ProductItemModel> BindList(IList<ProProductItem> items, int bindNum = -1)
+        {
+            List<ProductItemModel> models = new List<ProductItemModel>();
+            if (bindNum < 0)
+                return models;
+            if (items != null)
+            {
+                for (int i = 0, c = items.Count(); i < c; i++)
+                {
+                    models.Add(new ProductItemModel().Bind(items[i]));
+                    if (i + 1 == bindNum)
+                        break;
+                }
+            }
+            return models;
+        }
+    }
+}

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{11C44F05-62A4-472C-BC94-8D40F64E1F5A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BabyPlan.oAuth</RootNamespace>
+    <AssemblyName>BabyPlan.oAuth</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QQ\oAuth\IQoAuth.cs" />
+    <Compile Include="QQ\oAuth\QoAuthService.cs" />
+    <Compile Include="Common\OAuthParameter.cs" />
+    <Compile Include="QQ\oAuth\QoAuthKey.cs" />
+    <Compile Include="Sina\ISinaService.cs" />
+    <Compile Include="Sina\oAuth\ISinaoAuth.cs" />
+    <Compile Include="Sina\oAuth\OAuth2Enum.cs" />
+    <Compile Include="Sina\oAuth\SinaConfig.cs" />
+    <Compile Include="Sina\oAuth\SinaOAuthService.cs" />
+    <Compile Include="Sina\oAuth\SinaOAuthUtil.cs" />
+    <Compile Include="Sina\SinaService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sohu\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QConnectSDK\QConnectSDK.csproj">
+      <Project>{DDF84840-7A36-425D-A0A0-ED63DABB78EF}</Project>
+      <Name>QConnectSDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QWeiboSDK\QWeiboSDK.csproj">
+      <Project>{BE11FC58-FB78-4F34-AA85-1D3C7E2E6B3B}</Project>
+      <Name>QWeiboSDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SWeiboSDK\SWeiboSDK.csproj">
+      <Project>{F10FE132-AA9F-49F4-AB7B-4074D1FED1E1}</Project>
+      <Name>SWeiboSDK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,28 @@
+﻿$(function () {
+    $('#main')[0].onscroll = function (event) { event.preventDefault(); this.scrollLeft = 0; }; $('#login-link').click(function (event) { event.preventDefault(); $("#sf_form").validationEngine('hideAll'); $('#reg-box').animate({ left: '480px' }); $('#login-box').animate({ left: '5px' }) })
+    $('#reg-link').click(function (event) { event.preventDefault(); $('#reg-box').animate({ left: '25px' }); $('#login-box').animate({ left: '480px' }) });
+}); $(function () {
+    if ($.cookie('userid') && $.cookie('session')) { window.location.assign('dashboard.shtml') }
+    $("#sf_form").validationEngine(); $("#sf_form #agree").change(function () { if (!this.checked) { $("#agreement").css('color', 'red'); $("#agreece").fadeOut('slow'); $("#agreece").fadeIn(); } else { $("#agreement").css('color', ''); } }); $('#create-btn').click(function (event) {
+        event.preventDefault(); if (!$("#sf_form #agree").attr('checked')) { $("#agreement").css('color', 'red'); $("#agreece").fadeOut('slow'); $("#agreece").fadeIn(); }
+        if ($("#sf_form").validationEngine('validate') && $("#sf_form #agree").attr('checked')) { $("#sf_form").validationEngine('hideAll'); kmreg.subto(); }
+    });
+}); var kmreg = { param: {}, subto: function () {
+    this.param.username = $("#username").val()
+    this.param.password = $.md5($("#password").val())
+    $.jsonp({ type: "GET", dataType: 'jsonp', url: 'http://' + document.location.host + '/p/register/?', data: this.param, callbackParameter: "callback", timeout: 60000, success: function (msg) { if (msg.value) { $('#sf_form').hide(200); $('#platform').show(); } else { alert('注册失败'); } }, error: function (msg) { alert("与服务器通信出错") } });
+}
+}; $(function () {
+    if ($.cookie('userid') && $.cookie('session')) { window.location.assign('dashboard.shtml') }; if ($.cookie('useremail')) { $('#signin-email').val($.cookie('useremail')); }
+    $('#signin-form').submit(function (event) {
+        event.preventDefault(); if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test($('#signin-email').val())) { alert('请输入正确的Email'); $('#signin-email').focus(); return; }; if (!$('#signin-pw').val()) { alert('请输入密码'); $('#signin-pw').focus(); return; }; var login_param = { username: $('#signin-email').val(), password: $.md5($("#signin-pw").val()), rememberme: $('#signin-rememberme:checked').size() }
+        $.jsonp({ type: "GET", dataType: 'jsonp', url: 'http://' + document.location.host + '/p/login/', data: login_param, context: this, callbackParameter: "callback", timeout: 60000, success: function (msg) {
+            if (msg.value) {
+                $('#signinform').hide()
+                $.cookie('useremail', $('#signin-email').val(), { expires: 14, path: '/', domain: document.location.host }); window.location.assign('dashboard.shtml')
+            } else { alert('用户名或密码错误'); }
+        }, error: function (msg) { alert("与服务器通信出错") }
+        });
+    })
+    if ($.browser.msie && $.browser.version == '6.0') { DD_belatedPNG && DD_belatedPNG.fix("#index-box, #header-title img, #site_logo a"); }
+});

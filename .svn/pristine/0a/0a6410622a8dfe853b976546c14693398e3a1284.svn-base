@@ -1,0 +1,43 @@
+﻿/*
+ * 创建者: yangchao   创建时间:2011-10-11
+ * 文件描述:cacheman缓存管理器 
+ * 备注: 约定cacheman缓存配置文件路径为 "应用程序根目录 + Config/CacheMan.config"
+ * 修改历史:
+ * 2011-10-11 author  description
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Net;
+using System.Xml;
+using System.IO;
+
+
+namespace BabyPlan.Cache
+{
+    /// <summary>
+    /// 基于cacheman的缓存管理器
+    /// </summary>
+    public class CacheManManager : CacheManagerBase
+    {
+        public CacheManManager(){
+            CacheManInitialization(servers);                 
+        }
+        
+        /// <summary>
+        /// cacheman初始化
+        /// </summary>
+        /// <param name="servers">网络端点</param>
+        private void CacheManInitialization(IPEndPoint[] servers)
+        {
+            //new MemoryCacheDepository();
+            CacheManDepository cachemanDepository = new CacheManDepository(servers);
+            //var cachemanDepository = new MemoryCacheDepository();
+            base.CacheDepository = cachemanDepository;
+            
+        }
+
+
+    }
+}

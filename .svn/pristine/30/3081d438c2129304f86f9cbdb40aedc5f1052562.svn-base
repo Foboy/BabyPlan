@@ -1,0 +1,131 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using BabyPlan.Common;
+using BabyPlan.WcfService;
+using BabyPlan.Meta;
+using BabyPlan.mvcApp.Model;
+using BabyPlan.DataStructure;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class TradeController : BaseController
+    {
+        //
+        // GET: /Trade/
+
+        public ActionResult Index()
+        {
+            return View("~/Views/Trade/Index.cshtml");
+        }
+
+        public JsonResult AjaxGetGoods()
+        {
+            ItemType itemType = ItemType.Ignore;
+            SexType sexType = SexType.Ignore;
+            int age = 0;
+            int pageSize=10;
+            int pageIndex=0;
+
+            Enum.TryParse<ItemType>(Request["itemType"], out itemType);
+            Enum.TryParse<SexType>(Request["sexType"], out sexType);
+            int.TryParse(Request["age"],out age);
+            int.TryParse(Request["page"], out pageIndex);
+
+            ProductServiceClient client = new ProductServiceClient();
+            AdvancedResult<PageEntity<ProProductItem>> response = client.LoadBBList(itemType, sexType, age, pageSize, pageIndex);
+
+            List<ProductItemModel> items = new List<ProductItemModel>();
+
+            if (response.Error == DataStructure.AppError.ERROR_SUCCESS)
+            {
+                response.Data.Items = response.Data.Items ?? new List<ProProductItem>();
+                foreach (var p in response.Data.Items)
+                {
+                    items.Add(new ProductItemModel().Bind(p));
+                }
+            }
+            AdvancedResult<List<ProductItemModel>> result = new AdvancedResult<List<ProductItemModel>>();
+            result.Error = response.Error;
+            result.ErrorMessage = response.ErrorMessage;
+            result.ExMessage = response.ExMessage;
+            result.Data = items;
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Detail(int id)
+        {
+            ProductServiceClient client = new ProductServiceClient();
+            AdvancedResult<List<ProProductItem>> response = client.LoadInterestingBB(CurrentToken);
+
+            List<ProductItemModel> interestings = new List<ProductItemModel>();
+
+            if (response.Error == DataStructure.AppError.ERROR_SUCCESS)
+            {
+                response.Data = response.Data ?? new List<ProProductItem>();
+                foreach (var p in response.Data)
+                {
+                    interestings.Add(new ProductItemModel().Bind(p));
+                }
+            }
+
+            ProductModel productModel = new ProductModel();
+            AdvancedResult<ProProduct> product = client.GetBBInfo(id);
+            if (product.Error == DataStructure.AppError.ERROR_SUCCESS)
+            {
+                productModel.Bind(product.Data, 0, ProductBindType.Author);
+            }
+
+            ViewBag.Product = productModel;
+            ViewBag.Interests = interestings;
+
+            return View("~/Views/Trade/Detail.cshtml");
+        }
+
+        public JsonResult GetReplys(int id)
+        {
+            int pageIndex = 0;
+            int pageSize = 10;
+            int.TryParse(Request["page"], out pageIndex);
+            ReplyServiceClient client = new ReplyServiceClient();
+            AdvancedResult<PageEntity<GenReply>> response = client.LoadReplyListByBBPostID(id, pageIndex, pageSize);
+            IList<ReplayModel> models = new List<ReplayModel>();
+            string paging = string.Empty; 
+            int count = 0;
+            if (response.Error == AppError.ERROR_SUCCESS)
+            {
+                count = response.Data.RecordsCount;
+                paging = HtmlFormatHelper.GeneratePagingHtml(response.Data.PageIndex, response.Data.PageSize, response.Data.RecordsCount, "javascript:void(LoadComments({0}))", "下一页", "上一页", null, null, null);
+                models = ReplayModel.BindList(response.Data.Items,bindNum:0, bindType: ReplayBindType.Author);
+            }
+            foreach (ReplayModel r in models)
+            {
+                if (r.Author != null && r.Author.HeadPic != null)
+                {
+                    r.Author.HeadPic.DisplaySeting(50, 50);
+                }
+            }
+            return Json(new { data = models, paging = paging },JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult AjaxReplay(int id)
+        {
+            string content = Request["comment_input"];
+
+            RespResult response = new RespResult();
+
+            if (string.IsNullOrEmpty(content) || content.Length < 10 || content.Length > 300)
+            {
+                response.Error = AppError.ERROR_FAILED;
+                response.ExMessage = "回复内容长度不合法！";
+                return Json(response);
+            }
+
+            ReplyServiceClient client = new ReplyServiceClient();
+            response = client.ReplyBBPost(id, content, CurrentToken);
+            return Json(response);
+        }
+    }
+}

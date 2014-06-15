@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BabyPlan.DataStructure" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BabyPlan.DataStructure" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="AppError">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ERROR_SUCCESS" />
+      <xs:enumeration value="ERROR_FAILED" />
+      <xs:enumeration value="ERROR_NOT_BINDWITH_SOCIALUSER" />
+      <xs:enumeration value="ERROR_NOT_BINDWITH_PLATUSER" />
+      <xs:enumeration value="ERROR_LOGIN_FAILED" />
+      <xs:enumeration value="ERROR_PERSON_NOT_FOUND" />
+      <xs:enumeration value="ERROR_MAIL_NOT_EXIST" />
+      <xs:enumeration value="ERROR_DUP_MAIL" />
+      <xs:enumeration value="ERROR_PWD_GET_SUCCESS" />
+      <xs:enumeration value="ERROR_INVALID_PARAMETER" />
+      <xs:enumeration value="ERROR_PERSON_FOUND" />
+      <xs:enumeration value="ERROR_PERSON_NOT_LOGIN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AppError" nillable="true" type="tns:AppError" />
+  <xs:simpleType name="SocialUserTypeEnum">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Sina" />
+          <xs:enumeration value="QQ" />
+          <xs:enumeration value="NetEase" />
+          <xs:enumeration value="Sohu" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
+  </xs:simpleType>
+  <xs:element name="SocialUserTypeEnum" nillable="true" type="tns:SocialUserTypeEnum" />
+</xs:schema>

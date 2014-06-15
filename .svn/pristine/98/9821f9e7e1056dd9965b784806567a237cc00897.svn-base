@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using BabyPlan.Meta;
+
+namespace BabyPlan.mvcApp.Model
+{
+    [Serializable]
+    public class ProductModel : BaseModel
+    {
+        public int Id { get; set; }
+
+        public string Title { get; set; }
+
+        public string QQ { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Description { get; set; }
+
+        public DateTime CreateTime { get; set; }
+
+        public int CommentsNum { get; set; }
+
+        public int ViewNum { get; set; }
+
+        public PicModel Pic { get; set; }
+
+        public IList<ProductItemModel> Items { get; set; }
+
+        public ProductModel Bind(ProProduct product, AdUser user = null, int bindItemsNum = -1)
+        {
+            this.Id = product.Pid;
+            this.Title = product.Title;
+            this.Description = product.BbInfo;
+            this.CreateTime = product.CreateTime;
+            if (user != null)
+            {
+                if (!string.IsNullOrEmpty(user.Qq))
+                    this.QQ = user.Qq;
+                if (!string.IsNullOrEmpty(user.Mobile))
+                    this.Phone = user.Mobile;
+            }
+            if (product.BBList != null)
+            {
+                this.Items = ProductItemModel.BindList(product.BBList, bindItemsNum);
+            }
+            return this;
+        }
+
+        public IList<ProductModel> BindList(IEnumerable<ProProduct> products, AdUser user = null, int bindItemsNum = -1)
+        { 
+            List<ProductModel> models= new List<ProductModel>();
+            if (products != null)
+            {
+                foreach (ProProduct p in products)
+                {
+                    models.Add(new ProductModel().Bind(p, user, bindItemsNum));
+                }
+            }
+            return models;
+        }
+    }
+}

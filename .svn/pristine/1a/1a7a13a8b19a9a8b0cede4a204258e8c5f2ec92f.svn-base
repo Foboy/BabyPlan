@@ -1,0 +1,127 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using BabyPlan.DataStructure;
+using System.Web.Routing;
+using System.Text;
+
+namespace BabyPlan.mvcApp.UrlRoutes
+{
+    public class TradeListParam
+    {
+        public TradeListParam()
+        {
+            this.Category = ItemType.Ignore;
+            this.Sex = SexType.Ignore;
+            this.Age = 0;
+        }
+
+        public ItemType Category { get; set; }
+        public SexType Sex { get; set; }
+        public int Age { get; set; }
+    }
+    public class TradeListParamManager
+    {
+        public static TradeListParam ParamParse(string virtualPath)
+        {
+            TradeListParam param = new TradeListParam();
+
+            if (virtualPath.Contains("宝宝衣服") || virtualPath.Contains("clothes"))
+            {
+                param.Category = ItemType.Clothes;
+            }
+            else if (virtualPath.Contains("宝宝玩具") || virtualPath.Contains("toys"))
+            {
+                param.Category = ItemType.Toys;
+            }
+            else if (virtualPath.Contains("其他") || virtualPath.Contains("others"))
+            {
+                param.Category = ItemType.Others;
+            }
+
+            if (virtualPath.Contains("男孩") || virtualPath.Contains("公子"))
+            {
+                param.Sex = SexType.Man;
+            }
+            else if (virtualPath.Contains("女孩") || virtualPath.Contains("公主"))
+            {
+                param.Sex = SexType.Woman;
+            }
+
+            if (virtualPath.Contains("1岁"))
+            {
+                param.Age = 1;
+            }
+            else if (virtualPath.Contains("2岁"))
+            {
+                param.Age = 2;
+            }
+            else if (virtualPath.Contains("3岁"))
+            {
+                param.Age = 3;
+            }
+            else if (virtualPath.Contains("4岁"))
+            {
+                param.Age = 4;
+            }
+
+            return param;
+        }
+
+        public static string GeneratParamUrl(RouteValueDictionary requestValues, RouteValueDictionary values)
+        {
+            StringBuilder path = new StringBuilder();
+
+            ItemType itemType = ItemType.Ignore;
+            RouteHepler.ParseRouteValue<ItemType>(requestValues, values, "category", out itemType, itemType);
+            switch (itemType)
+            {
+                case ItemType.Clothes:
+                    path.Append("clothes");
+                    break;
+                case ItemType.Toys:
+                    path.Append("toys");
+                    break;
+                case ItemType.Others:
+                    path.Append("others");
+                    break;
+                default:
+                    //path.Append("all");
+                    break;
+            }
+ 
+            SexType sexType = SexType.Ignore;
+            RouteHepler.ParseRouteValue<SexType>(requestValues, values, "sex", out sexType, sexType);
+            switch (sexType)
+            {
+                case SexType.Man:
+                    path.Append("-男孩");
+                    break;
+                case SexType.Woman:
+                    path.Append("-女孩");
+                    break;
+            }
+
+            int age = 0;
+            RouteHepler.ParseRouteValue<int>(requestValues, values, "age", out age, age);
+            switch (age)
+            {
+                case 1:
+                    path.Append("-0-1岁");
+                    break;
+                case 2:
+                    path.Append("-2岁");
+                    break;
+                case 3:
+                    path.Append("-3岁");
+                    break;
+                case 4:
+                    path.Append("-4岁");
+                    break;
+            }
+
+            return path.ToString();
+        }
+    }
+}

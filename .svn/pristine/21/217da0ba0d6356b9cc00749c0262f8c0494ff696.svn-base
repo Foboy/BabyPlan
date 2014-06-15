@@ -1,0 +1,185 @@
+﻿@using DataStructure
+@{
+    Layout = null;
+}
+<link type="text/css" href='@Url.Content("~/css/zxxbox.css")' rel="stylesheet"  />
+@Content.Script("jquery.zxxbox.3.0.js", Url)
+@Content.Script("JsCore.js", Url)
+<div id="header-outter-center" class="header-outer">
+   <div id="header">
+        <h1><a href='@Url.Action("index","home")' class="white-font">BabyPlan母婴用品平台<sup>Beta</sup></a><span>让微博营销更加简单&reg;</span></h1>
+        <div id="header-sec">
+            <!--账号切换信息-->
+            <div id="avatar-menu">
+
+            </div>
+            <a id="pst_updt" href="#"><i title="发微博"> </i><span>发微博</span></a>
+            <span id="system-menu">
+			    <a href="#" title="切换平台" id="switch"><i title="切换平台"> </i><span>切换平台</span></a>
+			    <a href="#" title="设置" id="setting"><i> </i><span>设置</span></a>
+		    </span>
+        </div>  
+  </div>
+</div> 
+<div class="header-outer" id="header2-outter-center"></div>
+<div class="win-box" id="xwb_dlg_ct">
+@*   @Html.Partial("_full_sendbox")
+*@</div>
+ <script type="text/javascript">
+         //结构与数据库结构相同
+         var user_info = {};
+         //结构和微博服务器返回的相同
+         var social_user_info = {};
+                
+        //js事件集合
+        var events_bag = new JsDelegate();
+
+        //账号切换
+        $(function () {
+            GetUserInfo();
+            $("#switch").bind("click", function () {
+                switch_user();
+            });            
+        });
+
+        //微博发送框
+        $("#pst_updt").bind("click", function () {
+            $.zxxbox.content("xwb_dlg_ct",{ drag: true, fix: true, title: "发微博",width:'610'});
+
+        });
+
+        //获取账号信息
+        var GetUserInfo = function () {
+            var url = '@Url.Action("GetUserInfo", "a")';
+
+            //显示所有社交账号,且显示当前微博账号
+            var load_all_socialusers = function (data) {               
+               
+                if (data.Error == 0) {
+                    user_info.id = data.RetData.Id;
+                    user_info.mail = data.RetData.Email;
+                    user_info.sina_user = {};
+                    user_info.qq_user = {};
+                    var icount = 0;
+                    if (data.RetData.Sina_AccessToken) {
+                        user_info.sina_user.access_token = data.RetData.Sina_AccessToken;
+                        user_info.sina_user.uuid = data.RetData.Sina_Uid;
+                        icount++;
+                    };
+
+                    if (data.RetData.QQ_TokenKey) {
+                        user_info.qq_user.access_token = data.RetData.QQ_TokenKey;
+                        user_info.qq_user.TokenSecret = data.RetData.QQ_TokenSecret;
+                        icount++;
+                    };
+                    user_info.current_socialuser = data.RetData.CurrentWeiBo;
+
+                    //同时存在sina微博账号和QQ微博账号则显示切换按钮
+                    if (data.RetData.Sina_AccessToken && data.RetData.QQ_TokenKey) {
+                        $("#switch").show();
+                    }
+                    else
+                        $("#switch").hide();
+
+                    //获取社交账号信息
+                    GetSocialUserInfo(user_info);
+                }
+            };
+            SendAjaxRequest(url, "get", true, null, false, load_all_socialusers);
+        }
+
+        //获取当前选中用户的社交账号信息
+        var GetSocialUserInfo = function (user_info) {
+            var url = '@Url.Action("ShowUserInfo", "cen")';
+            var Show_UserProfile = function (ret) {
+                
+                //微博服务发生错误
+                if (user_info.current_socialuser.toString() == '@SocialUserTypeEnum.QQ.ToString("D")') {
+                    if (ret.ret != 0) {
+                        alert(ret.msg);
+                        return;
+                    }
+                }
+
+                if (user_info.current_socialuser.toString() == '@SocialUserTypeEnum.Sina.ToString("D")') {
+                    if (ret.error_code) {
+                        alert(ret.error);
+                        return;
+                    }
+                }
+
+
+                //将微博服务器返回的社交账号信息保存到全局变量
+                social_user_info = ret;
+
+                var _temp_html = '';
+                if (user_info.current_socialuser.toString() == '@SocialUserTypeEnum.Sina.ToString("D")') {
+                    _temp_html = '<ul class="sina-avatar activeGroup" id="sina">'
+                                 + '<i class="platform-icon"></i>'
+                                 + '<li class="active">';
+                    if (ret.profile_image_url) {
+                        _temp_html += '<a href="javascript:;" class="header-link"><img width="37" height="37" src="' + ret.profile_image_url + '"></a>';
+                    }
+                    else {
+                        _temp_html += '<a href="javascript:;" class="header-link"><img width="37" height="37" src="http://tp2.sinaimg.cn/2020510281/180/0/1"></a>';
+                    }
+
+                    _temp_html += '<p class="profile-detail">'
+                                + '<a href="timeline.shtml?type=my-follow" title="点击查看关注"><span class="profile-num">' + ret.friends_count + '</span><span class="profile-des">关注</span></a>'
+                                + '<a href="timeline.shtml?type=my-fans" title="点击查看粉丝"><span class="profile-num">' + ret.followers_count + '</span><span class="profile-des">粉丝</span></a>'
+                                + '<a style="border:none" href="timeline.shtml?type=my-weibo" title="点击查看微博"><span class="profile-num">' + ret.statuses_count + '</span><span class="profile-des">微博</span></a>'
+                                + '</p>'
+                                + '</li>'
+                                + '</ul>';
+                    //调整界面显示
+                    if ($("#tbody_layout").hasClass("tencent")) {
+                        $("#tbody_layout").removeClass("tencent");
+                    }
+                    $("#tbody_layout").addClass("sina");
+                    $("#span_wb_title").text("我的微博");
+                }
+                else if (user_info.current_socialuser.toString() == '@SocialUserTypeEnum.QQ.ToString("D")') {
+                    _temp_html = '<ul class="tencent-avatar activeGroup" id="tencent">'
+                             + '<i class="platform-icon"></i>'
+                             + '<li id="acc_haha_go" class="active">'
+                             + '<a href="javascript:;" class="header-link" title="切换至：gogo">';
+                    if (ret.data.head) {
+                        _temp_html += '<img width="37" height="37" src="' + ret.data.head + '/100"></a>';
+                    }
+                    else
+                        _temp_html += '<img width="37" height="37" src="http://mat1.gtimg.com/www/mb/images/head_120.jpg"></a>';
+
+                    _temp_html += '<p class="profile-detail">'
+                            + '<a href="timeline.shtml?type=my-follow" title="点击查看关注"><span class="profile-num">' + ret.data.idolnum + '</span><span class="profile-des">收听</span></a>'
+                            + '<a href="timeline.shtml?type=my-fans" title="点击查看粉丝"><span class="profile-num">' + ret.data.fansnum + '</span> <span class="profile-des">听众</span> </a>'
+                            + '<a style="border: none" href="timeline.shtml?type=my-weibo" title="点击查看微博"><span class="profile-num">' + ret.data.tweetnum + '</span> <span class="profile-des">广播</span></a>'
+                            + '</p>'
+                            + '</li>'
+                            + '</ul>';
+                    //调整界面显示
+                    if ($("#tbody_layout").hasClass("sina")) {
+                        $("#tbody_layout").removeClass("sina");
+                    }
+                    $("#tbody_layout").addClass("tencent");
+                    $("#span_wb_title").text("我的广播");
+
+                }
+                $("#avatar-menu").html(_temp_html);
+
+                //账号切换成功调用其委托链上的函数
+                events_bag.Run();
+            };
+            SendAjaxRequest(url, "post", true, user_info, false, Show_UserProfile);
+        }
+
+        //切换账号
+        var switch_user = function () { 
+            if (user_info.current_socialuser.toString() == '@SocialUserTypeEnum.QQ.ToString("D")')
+                user_info.current_socialuser = '@SocialUserTypeEnum.Sina.ToString("D")'
+            else
+                user_info.current_socialuser = '@SocialUserTypeEnum.QQ.ToString("D")'
+
+            //获取社交账号信息
+            GetSocialUserInfo(user_info); 
+        }
+    </script>

@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Routing;
+
+namespace BabyPlan.mvcApp.UrlRoutes
+{
+    public class UrlRequestParameter
+    {
+        public static UrlRequestParameter RequestParameter
+        {
+            get
+            {
+                return new UrlRequestParameter();
+            }
+        }
+    }
+}

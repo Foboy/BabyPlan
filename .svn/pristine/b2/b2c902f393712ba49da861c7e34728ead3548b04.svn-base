@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace BabyPlan.mvcApp.Model
+{
+    [Serializable]
+    public class BaseModel
+    {
+        public string SubString(string source, int length, string ellipsis = "...", string defaultValue = "")
+        {
+            string result = (source ?? defaultValue).PadRight(length, ' ');
+            if (result.Length > length)
+            {
+                return result.Substring(0, length) + ellipsis;
+            }
+            else
+            {
+                return result.Substring(0, length);
+            }
+
+        }
+
+        public string DateFormat(DateTime? date,string format)
+        {
+            DateTime d = date ?? DateTime.Now;
+            return d.ToString(format);
+        }
+    }
+}

@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using QWeiboSDK;
+
+namespace BabyPlan.oAuth
+{
+    /// <summary>
+    /// 实现QQ提供的oAuth认证接口
+    /// </summary>
+    public interface IQoAuth
+    {
+        /*
+         * 完成授权流程Step 1
+         * 1.获取未授权的Request Token(temporary credentials)
+         * 返回结果
+         * 1.类型:字符串
+         * 2.含义:返回授权流程2(请求用户授权Request Token)所需要的URL字符串
+         **/
+        string GetRequestTokenURL(out OauthKey oAuthKey);
+
+        
+        /// <summary>
+        /// 已授权的Request Token换取Access Token
+        /// 返回结果
+        /// Access Token将被用于访问或修改受限资源,如:oauth_token=223b05cf29d447b29fb2b810c4ef533f&oauth_token_secret=4e43e14f855cefb0b521d5943e70029b&name=haha_go
+        /// </summary>
+        /// <param name="oauth_token">认证步骤2返回的token</param>
+        /// <param name="oauth_verifier">认证步骤2返回的verifier</param>
+        /// <param name="access_token">获取到的access_token</param>
+        /// <param name="access_token_secret">获取到的access_token_secret</param>
+        /// <returns></returns>
+        bool GetAccessToken(ref OauthKey authKey);
+
+    }
+}

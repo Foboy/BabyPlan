@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:baijiayi="http://360baijiayi.com"
+    android:orientation="horizontal" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants" 
+    android:paddingLeft="6dip"
+    android:paddingRight="6dip"
+    android:paddingTop="8dip"
+    android:paddingBottom="7dip">   
+
+        <com.baijiayi.app.widget.ImageViewBorder
+            android:id="@+id/goods_listitem_pic"
+            baijiayi:BorderColor="GRAY"
+            style="@style/goods_image" />
+	<LinearLayout
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical"
+    	android:layout_marginLeft="6dip"> 
+	       	
+       	<TextView 
+       		android:id="@+id/goods_listitem_title"  
+    		android:layout_width="wrap_content" 
+           	android:layout_height="wrap_content" 
+       	    android:includeFontPadding="false"
+           	android:textSize="@dimen/text_size_20"
+            android:textColor="@color/listitem_black"/>
+       	
+        <RelativeLayout android:layout_width="wrap_content"
+        	android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true">
+		        
+				<LinearLayout 
+			    	android:orientation="horizontal" 
+			        android:layout_width="wrap_content"  
+			        android:layout_height="wrap_content"
+			        android:layout_marginTop="8dip">
+			           
+	        <TextView android:id="@+id/goods_listitem_price"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textColor="@color/price_red"
+	            android:textSize="@dimen/text_size_16"/>
+				    
+				<LinearLayout 
+			    	android:orientation="horizontal" 
+			        android:layout_width="wrap_content"  
+			        android:layout_height="wrap_content"
+			        android:layout_marginTop="5dip">
+			         	
+				    <ImageView 
+				      	android:layout_width="wrap_content" 
+				        android:layout_height="wrap_content"
+				        android:layout_marginLeft="10dip"
+				        android:layout_gravity="center_vertical"
+				        android:src="@drawable/widget_comment_count_icon"/>
+				        
+			       	<TextView android:id="@+id/goods_listitem_commentCount"  
+			    		android:layout_width="wrap_content" 
+			           	android:layout_height="wrap_content" 
+			           	android:layout_marginLeft="3dip"
+			           	android:textSize="@dimen/text_size_14"
+			            android:textColor="@color/listitem_gray"/>
+		        </LinearLayout>
+		        </LinearLayout>
+		        			       	<TextView
+			       	    android:id="@+id/goods_listitem_date" 
+			    		android:layout_width="wrap_content" 
+			           	android:layout_height="wrap_content" 
+			           	android:layout_marginLeft="10dip"
+			           	android:textSize="@dimen/text_size_14"
+			            android:textColor="@color/listitem_gray"/>
+	        </LinearLayout>
+
+ 		</RelativeLayout>
+
+	</LinearLayout>
+
+</LinearLayout> 

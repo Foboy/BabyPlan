@@ -1,0 +1,314 @@
+﻿/**
+ * @author yangchao
+ * @email:aaronyangchao@gmail.com
+ * @date: 2012/6/21 0:45:26
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Collections;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using BabyPlan.Common;
+using System.Collections;
+using BabyPlan.Meta;
+using BabyPlan.DataStructure;
+
+
+namespace BabyPlan.DataAccess
+{
+    public class UserAccessor
+    {
+        private MySqlCommand cmdInsertAdUser;
+        private MySqlCommand cmdDeleteAdUser;
+        private MySqlCommand cmdUpdateAdUser;
+        private MySqlCommand cmdLoadAdUser;
+        private MySqlCommand cmdLoadAllAdUser;
+        private MySqlCommand cmdGetAdUserCount;
+        private MySqlCommand cmdGetAdUser;
+
+        private UserAccessor()
+        {
+            #region cmdInsertAdUser
+
+            cmdInsertAdUser = new MySqlCommand("INSERT INTO ad_user(user_account,pwd,baby_birthday,sex,qq,mobile) values (@UserAccount,@Pwd,@BabyBirthday,@Sex,@Qq,@Mobile)");
+
+            cmdInsertAdUser.Parameters.Add("@UserAccount", MySqlDbType.String);
+            cmdInsertAdUser.Parameters.Add("@Pwd", MySqlDbType.String);
+            cmdInsertAdUser.Parameters.Add("@BabyBirthday", MySqlDbType.DateTime);
+            cmdInsertAdUser.Parameters.Add("@Sex", MySqlDbType.Int32);
+            cmdInsertAdUser.Parameters.Add("@Qq", MySqlDbType.String);
+            cmdInsertAdUser.Parameters.Add("@Mobile", MySqlDbType.String);
+            #endregion
+
+            #region cmdUpdateAdUser
+
+            cmdUpdateAdUser = new MySqlCommand(" update ad_user set user_account = @UserAccount,pwd = @Pwd,baby_birthday = @BabyBirthday,sex = @Sex,qq = @Qq,mobile = @Mobile,state = @State where ad_user_id = @AdUserId");
+            cmdUpdateAdUser.Parameters.Add("@AdUserId", MySqlDbType.Int32);
+            cmdUpdateAdUser.Parameters.Add("@UserAccount", MySqlDbType.String);
+            cmdUpdateAdUser.Parameters.Add("@Pwd", MySqlDbType.String);
+            cmdUpdateAdUser.Parameters.Add("@BabyBirthday", MySqlDbType.DateTime);
+            cmdUpdateAdUser.Parameters.Add("@Sex", MySqlDbType.Int32);
+            cmdUpdateAdUser.Parameters.Add("@Qq", MySqlDbType.String);
+            cmdUpdateAdUser.Parameters.Add("@Mobile", MySqlDbType.String);
+            cmdUpdateAdUser.Parameters.Add("@State", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdLoadAdUser
+
+            cmdLoadAdUser = new MySqlCommand(@" select ad_user_id,user_account,pwd,baby_birthday,sex,qq,mobile,state from ad_user limit @PageIndex,@PageSize");
+            cmdLoadAdUser.Parameters.Add("@pageIndex", MySqlDbType.Int32);
+            cmdLoadAdUser.Parameters.Add("@pageSize", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdGetAdUserCount
+
+            cmdGetAdUserCount = new MySqlCommand(" select count(*)  from ad_user ");
+
+            #endregion
+
+            #region cmdLoadAllAdUser
+
+            cmdLoadAllAdUser = new MySqlCommand(" select ad_user_id,user_account,pwd,baby_birthday,sex,qq,mobile,state from ad_user");
+
+            #endregion
+
+            #region cmdGetAdUser
+
+            cmdGetAdUser = new MySqlCommand(@" select 
+                                                u.ad_user_id,
+                                                u.user_account,
+                                                u.pwd,
+                                                u.baby_birthday,
+                                                u.sex,
+                                                u.qq,
+                                                u.mobile,
+                                                u.state,
+                                                p.pic_url head_img_url,
+                                                p.pic_height,
+                                                p.pic_width,
+                                                p.pic_id
+                                            from
+                                                ad_user u
+                                                    left join
+                                                (select pp.* from res_pic pp where pp.obj_type = 2) p ON u.ad_user_id = p.obj_id
+                                            where  (@State = 0 or u.state = @State) and (@AdUserId = 0 or ad_user_id = @AdUserId) and (@UserAccount = '' or user_account = @UserAccount) and (@Pwd = '' or pwd = @Pwd) ");
+            cmdGetAdUser.Parameters.Add("@AdUserId", MySqlDbType.Int32);
+            cmdGetAdUser.Parameters.Add("@UserAccount", MySqlDbType.String);
+            cmdGetAdUser.Parameters.Add("@Pwd", MySqlDbType.String);
+            cmdGetAdUser.Parameters.Add("@State", MySqlDbType.Int32);
+
+            #endregion
+        }
+
+        /// <summary>
+        /// 添加数据
+        /// <param name="es">数据实体对象数组</param>
+        /// <returns></returns>
+        /// </summary>
+        public int Insert(AdUser e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdInsertAdUser = cmdInsertAdUser.Clone() as MySqlCommand;
+            int returnValue = 0;
+            _cmdInsertAdUser.Connection = oc;
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+                _cmdInsertAdUser.Parameters["@UserAccount"].Value = e.UserAccount;
+                _cmdInsertAdUser.Parameters["@Pwd"].Value = e.Pwd;
+                _cmdInsertAdUser.Parameters["@BabyBirthday"].Value = e.BabyBirthday;
+                
+                _cmdInsertAdUser.Parameters["@Sex"].Value = e.Sex;
+                _cmdInsertAdUser.Parameters["@Qq"].Value = e.Qq;
+                _cmdInsertAdUser.Parameters["@Mobile"].Value = e.Mobile;
+
+                _cmdInsertAdUser.ExecuteNonQuery();
+                returnValue = (int)_cmdInsertAdUser.LastInsertedId;
+                return returnValue;
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdInsertAdUser.Dispose();
+                _cmdInsertAdUser = null;
+            }
+        }
+
+        /// <summary>
+        /// 修改指定的数据
+        /// <param name="e">修改后的数据实体对象</param>
+        /// <para>数据对应的主键必须在实例中设置</para>
+        /// </summary>
+        public void Update(AdUser e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdUpdateAdUser = cmdUpdateAdUser.Clone() as MySqlCommand;
+            _cmdUpdateAdUser.Connection = oc;
+
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                _cmdUpdateAdUser.Parameters["@AdUserId"].Value = e.AdUserId;
+                _cmdUpdateAdUser.Parameters["@UserAccount"].Value = e.UserAccount;
+                _cmdUpdateAdUser.Parameters["@Pwd"].Value = e.Pwd;
+                _cmdUpdateAdUser.Parameters["@BabyBirthday"].Value = e.BabyBirthday;
+                _cmdUpdateAdUser.Parameters["@Sex"].Value = e.Sex;
+                _cmdUpdateAdUser.Parameters["@Qq"].Value = e.Qq;
+                _cmdUpdateAdUser.Parameters["@Mobile"].Value = e.Mobile;
+                _cmdUpdateAdUser.Parameters["@State"].Value = e.State;
+
+                _cmdUpdateAdUser.ExecuteNonQuery();
+
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdUpdateAdUser.Dispose();
+                _cmdUpdateAdUser = null;
+                GC.Collect();
+            }
+        }
+
+        /// <summary>
+        /// 根据条件分页获取指定数据
+        /// <param name="pageIndex">当前页</param>
+        /// <para>索引从0开始</para>
+        /// <param name="pageSize">每页记录条数</param>
+        /// <para>记录数必须大于0</para>
+        /// </summary>
+        public PageEntity<AdUser> Search(String UserAccount, DateTime BabyBirthday,  int State, int pageIndex, int pageSize)
+        {
+            PageEntity<AdUser> returnValue = new PageEntity<AdUser>();
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadAdUser = cmdLoadAdUser.Clone() as MySqlCommand;
+            MySqlCommand _cmdGetAdUserCount = cmdGetAdUserCount.Clone() as MySqlCommand;
+            _cmdLoadAdUser.Connection = oc;
+            _cmdGetAdUserCount.Connection = oc;
+
+            try
+            {
+                _cmdLoadAdUser.Parameters["@PageIndex"].Value = pageIndex;
+                _cmdLoadAdUser.Parameters["@PageSize"].Value = pageSize;
+                _cmdLoadAdUser.Parameters["@UserAccount"].Value = UserAccount;
+                _cmdLoadAdUser.Parameters["@BabyBirthday"].Value = BabyBirthday;
+                _cmdLoadAdUser.Parameters["@State"].Value = State;
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadAdUser.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnValue.Items.Add(new AdUser().BuildSampleEntity(reader));
+                }
+                returnValue.RecordsCount = (int)_cmdGetAdUserCount.ExecuteScalar();
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadAdUser.Dispose();
+                _cmdLoadAdUser = null;
+                _cmdGetAdUserCount.Dispose();
+                _cmdGetAdUserCount = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+
+        /// <summary>
+        /// 获取全部数据
+        /// </summary>
+        public List<AdUser> Search()
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadAllAdUser = cmdLoadAllAdUser.Clone() as MySqlCommand;
+            _cmdLoadAllAdUser.Connection = oc; List<AdUser> returnValue = new List<AdUser>();
+            try
+            {
+                _cmdLoadAllAdUser.CommandText = string.Format(_cmdLoadAllAdUser.CommandText, string.Empty);
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadAllAdUser.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnValue.Add(new AdUser().BuildSampleEntity(reader));
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadAllAdUser.Dispose();
+                _cmdLoadAllAdUser = null;
+                GC.Collect();
+            }
+            return returnValue;
+        }
+
+        /// <summary>
+        /// 获取指定记录
+        /// <param name="id">Id值</param>
+        /// </summary>
+        public AdUser Get(int AdUserId,string UserAccount,string Pwd,StateType State)
+        {
+            AdUser returnValue = null;
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdGetAdUser = cmdGetAdUser.Clone() as MySqlCommand;
+
+            _cmdGetAdUser.Connection = oc;
+            try
+            {
+                _cmdGetAdUser.Parameters["@AdUserId"].Value = AdUserId;
+                 _cmdGetAdUser.Parameters["@UserAccount"].Value = UserAccount;
+                 _cmdGetAdUser.Parameters["@Pwd"].Value = Pwd;
+                 _cmdGetAdUser.Parameters["@State"].Value = (int)State;
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdGetAdUser.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    returnValue = new AdUser().BuildSampleEntity(reader);
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdGetAdUser.Dispose();
+                _cmdGetAdUser = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+        private static readonly UserAccessor instance = new UserAccessor();
+        public static UserAccessor Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+    }
+}

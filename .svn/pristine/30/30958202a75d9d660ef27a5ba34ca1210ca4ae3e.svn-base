@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout_Nested.cshtml";
+}
+@section Js_InHeader{
+    @Content.Script("jquery.form.js",Url)
+    @Content.Script("cvalid.js", Url)
+    <style type="text/css">
+        .reg_left_outer{width:500px;margin:40px 0;border-right:solid 1px #ddd;}
+        .reg_left_outer .input_item{width:440px;margin:10px 40px;display:inline-block;font-size:16px;line-height:30px;}
+        .reg_left_outer .input_item dt{float:left;width:100px;text-align:right;}
+        .reg_left_outer .input_item dd{float:left;width:330px;}
+        .reg_left_outer .input_item .input_box{width:320px;}
+        .reg_left_outer .register_submit{border:none;}
+        .reg_right_outer{width:420px;margin:40px 0;}
+        .reg_right_outer .login_link{display:block;width:110px;padding:0;margin:10px 0;}
+        .reg_right_outer .oauth_login{margin:30px 0;}
+        .reg_right_outer .oautn_login_list{display:inline-block;margin:5px 0;width:420px;}
+        .reg_right_outer .oautn_login_list li{float:left;margin-right:10px;}
+    </style>
+}
+<div class="mainblock">
+    <span class="font-size20 gray-font line-height40">用户注册</span>
+    <div class="mainblock whiteblock">
+        <div class="reg_left_outer fl">
+            <form id="register_form" action="@Url.Action("AjaxRegister", "Account")" method="post">
+                <dl class="input_item">
+                    <dt>用户名：&nbsp;&nbsp;<span class="red-font" name="errortag">*</span></dt>
+                    <dd>
+                        <input type="text" id="username" name="username" class="input_box" />
+                    </dd>
+                </dl>
+                <dl class="input_item">
+                    <dt>性别：&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+                    <dd>
+                        <input name="sex" type="radio" value="0" checked="checked" /><span>男</span>
+                        &nbsp;&nbsp;
+                        <input name="sex" type="radio" value="1" /><span>女</span>
+                    </dd>
+                </dl>
+                <dl class="input_item">
+                    <dt>密码：&nbsp;&nbsp;<span class="red-font" name="errortag">*</span></dt>
+                    <dd>
+                        <input type="password" id="password" name="password" class="input_box" />
+                    </dd>
+                </dl>
+                <dl class="input_item">
+                    <dt>确认密码：&nbsp;&nbsp;<span class="red-font" name="errortag">*</span></dt>
+                    <dd>
+                        <input type="password" id="passwordcomfirm" class="input_box" />
+                    </dd>
+                </dl>
+                <dl class="input_item">
+                    <dt>&nbsp;</dt>
+                    <dd><input type="submit" class="button-green register_submit" value="立即注册" /></dd>
+                </dl>
+                <div class="clear"></div>
+            </form>
+        </div>
+        <div class="reg_right_outer fr font-size13">
+            <span>已有账号？请马上登录</span>
+            <a href="@Url.Action("Login","Account")" class="button-green login_link">马上登陆</a>
+            <div class="oauth_login">
+                <span>使用合作账号登录</span>
+                <ul class="oautn_login_list">
+                    <li>
+                        <a href="@Url.Action("QQ_Login", "Account")">
+                            <img src="http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_3.png" alt="腾讯QQ账号登陆">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Sina_Login", "Account")">
+                            <img src="http://img.t.sinajs.cn/t4/appstyle/open/images/website/loginbtn/loginbtn_03.png" alt="新浪微博账号登陆">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var options = {
+            dataType: 'json',
+            beforeSubmit: beforeSubmit,
+            success: submitSuccess
+        };
+        $("#register_form").ajaxForm(options);
+
+        function beforeSubmit() {
+            var valid = cvalid.ValidationAll();
+            if (!valid.valid) {
+                $(valid.avalids[0].elt).focus();
+                return false;
+            }
+            return true;
+        }
+
+        function submitSuccess(response) {
+            if (response.Error == 0) {
+                window.location = '@Url.Action("Index","User")';
+            }
+            else {
+                alert(response.ExMessage);
+            }
+        }
+
+        //添加验证
+        $("#username").AutoValidation("blur", cvalid.required(), cvalid.maxlength(30));
+        $("#password").AutoValidation("blur", cvalid.required(), cvalid.maxlength(32));
+        $("#passwordcomfirm").AutoValidation("blur", function () {
+            if ($("#password").val() == $(this).val()) {
+                return cvalid.CreateVR(true);
+            }
+            else {
+                return cvalid.CreateVR(false);
+            }
+        });
+    });
+</script>
+
+

@@ -1,0 +1,170 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Nested.cshtml";
+    var itemType = ItemType.Ignore;
+    Enum.TryParse<ItemType>(string.Format("{0}", ViewBag.ItemType ?? ItemType.Ignore), out itemType);
+    var itemSort = ItemSort.Ignore;
+    Enum.TryParse<ItemSort>(string.Format("{0}", ViewBag.ItemSort ?? ItemSort.Ignore), out itemSort);
+    var priceRange = PriceRange.Ignore;
+    Enum.TryParse<PriceRange>(string.Format("{0}", ViewBag.PriceRange ?? PriceRange.Ignore), out priceRange);
+    ResourceHelper.RegisterCss(this, "trade.css");
+}
+@section Js_InHeader{
+    @Content.Script("jquery.form.js", Url)
+    @RenderSection("Js_InHeader", false)
+}
+@*<div class="bannerlh"><a href="@Url.Action("Index", "loveheart")" title="点击进入活动页面"></a></div>*@
+<div class="trade_top_bar mainblock whiteblock">
+    <div class="clearfix">
+        <div class="category fl">
+            <ul class="sortList">
+                <a  href="@Url.Action("List", "Trade", new { category = ItemType.Ignore, sort = ItemSort.AboutBaby, range = PriceRange.Ignore })" title="宝贝">
+                    <li class="@(itemSort == ItemSort.AboutBaby ? "sortNo1_cur" : "sortNo1")"  id="sort1">
+                        宝宝</li>
+                </a><a  href="@Url.Action("List", "Trade", new { category = ItemType.Ignore, sort = ItemSort.AboutMother, range = PriceRange.Ignore })" title="妈妈">
+                    <li class="@(itemSort == ItemSort.AboutMother ? "sortNo2_cur" : "sortNo2")" id="sort2">
+                        妈妈</li>
+                </a>
+            </ul>
+        </div>
+        <div class="post fr">
+            <a href="#bless_box" id="bless_link" class="postbtn button-green fr">心愿贴</a>
+            <span class="postbtn fl arrowRight">不用注册也能发布</span><a href="@Url.Action("AddGoods", "User")" class="postbtn button-blue fr" title="发布闲置物品">发布闲置物品</a>
+        </div>
+    </div>
+    <div class="sortShow">
+        <ul class="pieceB clearfix" style="@(itemSort == ItemSort.AboutBaby ? "" : "display: none;")">
+            <li class="@(priceRange == PriceRange.Ignore && itemType == ItemType.Ignore && itemSort == ItemSort.AboutBaby ? "cur" : "")">
+                <a  href="@Url.Action("List", "Trade", new { category = ItemType.Ignore, sort = ItemSort.AboutBaby, range = PriceRange.Ignore })" title="全部">
+                    全部</a></li>
+            <li class="@(itemType == ItemType.Clothes && itemSort == ItemSort.AboutBaby ? "cur" : "")">
+                @if (itemType == ItemType.Clothes && itemSort == ItemSort.AboutBaby)
+                {
+                    <span title="衣服">衣服</span>
+                }
+                else
+                { 
+                    <a  href="@Url.Action("List", "Trade", new { category = ItemType.Clothes, sort = ItemSort.AboutBaby, range = PriceRange.Ignore })" title="衣服">
+                        衣服</a>
+                }
+            </li>
+            <li class="@(itemType == ItemType.Toys && itemSort == ItemSort.AboutBaby ? "cur" : "")">
+                @if (itemType == ItemType.Toys && itemSort == ItemSort.AboutBaby)
+                {
+                    <span title="玩具">玩具</span>
+                }
+                else
+                { 
+                    <a  href="@Url.Action("List", "Trade", new { category = ItemType.Toys, sort = ItemSort.AboutBaby, range = PriceRange.Ignore })" title="玩具">
+                        玩具</a>
+                }
+            </li>
+            <li class="@(itemType == ItemType.Cots && itemSort == ItemSort.AboutBaby ? "cur" : "")">
+                @if (itemType == ItemType.Cots && itemSort == ItemSort.AboutBaby)
+                {
+                    <span title="婴儿床">婴儿床</span>
+                }
+                else
+                { 
+                    <a  href="@Url.Action("List", "Trade", new { category = ItemType.Cots, sort = ItemSort.AboutBaby, range = PriceRange.Ignore })" title="婴儿床">
+                        婴儿床</a>
+                }
+            </li>
+            <li class="@(priceRange == PriceRange.TenZone && itemSort == ItemSort.AboutBaby ? "cur" : "")">
+                @if (priceRange == PriceRange.TenZone && itemSort == ItemSort.AboutBaby)
+                {
+                    <span title="十元专区">十元专区</span>
+                }
+                else
+                { 
+                    <a  href="@Url.Action("List", "Trade", new { category = ItemType.Ignore, sort = ItemSort.AboutBaby, range = PriceRange.TenZone })" title="十元专区">
+                        十元专区</a>
+                }
+            </li>
+            <li class="@(priceRange == PriceRange.HundredZone && itemSort == ItemSort.AboutBaby ? "cur" : "")">
+                @if (priceRange == PriceRange.HundredZone && itemSort == ItemSort.AboutBaby)
+                {
+                    <span title="百元专区">百元专区</span>
+                }
+                else
+                { 
+                    <a  href="@Url.Action("List", "Trade", new { category = ItemType.Ignore, sort = ItemSort.AboutBaby, range = PriceRange.HundredZone })" title="百元专区">
+                        百元专区</a>
+                }
+            </li>
+            <li class="@(itemType == ItemType.Others && itemSort == ItemSort.AboutBaby ? "cur" : "")">
+                @if (itemType == ItemType.Others && itemSort == ItemSort.AboutBaby)
+                {
+                    <span title="其他">其他</span>
+                }
+                else
+                { 
+                    <a  href="@Url.Action("List", "Trade", new { category = ItemType.Others, sort = ItemSort.AboutBaby, range = PriceRange.Ignore })" title="其他">
+                        其他</a>
+                }
+            </li>
+        </ul>
+        <ul class="pieceB clearfix"  style="@(itemSort == ItemSort.AboutMother ? "" : "display: none;")">
+            <li class="@(priceRange == PriceRange.Ignore && itemType == ItemType.Ignore && itemSort == ItemSort.AboutMother ? "cur" : "")">
+                <a  href="@Url.Action("List", "Trade", new { category = ItemType.Ignore, sort = ItemSort.AboutMother, range = PriceRange.Ignore })" title="全部">
+                    全部</a> </li>
+            <li class="@(itemType == ItemType.Clothes && itemSort == ItemSort.AboutMother ? "cur" : "")">
+                @if (itemType == ItemType.Clothes && itemSort == ItemSort.AboutMother)
+                {
+                    <span title="衣服">衣服</span>
+                }
+                else
+                { 
+                    <a  href="@Url.Action("List", "Trade", new { category = ItemType.Clothes, sort = ItemSort.AboutMother, range = PriceRange.Ignore })" title="衣服">
+                        衣服</a>
+                }
+            </li>
+            <li class="@(priceRange == PriceRange.TenZone && itemSort == ItemSort.AboutMother ? "cur" : "")">
+                @if (priceRange == PriceRange.TenZone && itemSort == ItemSort.AboutMother)
+                {
+                    <span title="十元">十元</span>
+                }
+                else
+                { 
+                    <a  href="@Url.Action("List", "Trade", new { category = ItemType.Ignore, sort = ItemSort.AboutMother, range = PriceRange.TenZone })" title="十元">
+                        十元</a>
+                }</li>
+            <li class="@(priceRange == PriceRange.HundredZone && itemSort == ItemSort.AboutMother ? "cur" : "")">
+                @if (priceRange == PriceRange.HundredZone && itemSort == ItemSort.AboutMother)
+                {
+                    <span title="百元专区">百元专区</span>
+                }
+                else
+                { 
+                    <a  href="@Url.Action("List", "Trade", new { category = ItemType.Ignore, sort = ItemSort.AboutMother, range = PriceRange.HundredZone })" title="百元专区">
+                        百元专区</a>
+                }</li>
+            <li class="@(itemType == ItemType.Others && itemSort == ItemSort.AboutMother ? "cur" : "")">
+                @if (itemType == ItemType.Others && itemSort == ItemSort.AboutMother)
+                {
+                    <span title="其他">其他</span>
+                }
+                else
+                { 
+                    <a  href="@Url.Action("List", "Trade", new { category = ItemType.Others, sort = ItemSort.AboutMother, range = PriceRange.Ignore })" title="其他">
+                        其他</a>
+                }</li>
+        </ul>
+    </div>
+</div>
+<div class="mainblock">
+    <div class="newGoods clearfix">
+        <div class="introBox">
+        </div>
+        <div class="introBox">
+        </div>
+        <div class="introBox">
+        </div>
+        <div class="introBox">
+        </div>
+    </div>
+</div>
+@RenderBody()
+@Html.Partial("_Bless_Partial")
+@section Js_InFoot{
+    @RenderSection("Js_InFoot", false)
+}

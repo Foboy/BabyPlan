@@ -1,0 +1,6 @@
+.bookShow{width:938px; height:360px; padding-top:100px; background:url(/images/exhibit.png) no-repeat center bottom;}
+.bookShow ul{margin:0 0 0 100px;}
+.bookShow ul li{width:222px; height:228px; text-align:center; float:left; margin-right:35px;background:url(/images/bookShadow.png) no-repeat center bottom;}
+.bookShow ul li .bookTop{background:url(/images/bookStyle.png) no-repeat top center; padding-top:5px;}
+.bookShow ul li .bookTop img{border:1px solid #AAAAAA;}
+.makeBook{width:180px; height:60px; line-height:60px; margin:20px auto; margin-bottom:50px;}

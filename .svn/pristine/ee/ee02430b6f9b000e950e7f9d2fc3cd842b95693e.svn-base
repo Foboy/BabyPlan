@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+} 
+<div class="foot-outer">
+    <div class="footer" id="footer">  
+    <h2>2012&copy;</h2>
+    <ul id="nav_footer">
+		    <li>
+                <span>微博营销平台</span>
+                <a title="" href="/gyxkwmdcp.jhtml">联系我们</a>
+                <a title="联系我们" href="/gyxklxwm.jhtml">加入我们</a>
+                <a title="" href="/mzsm.jhtml">建议反馈</a>
+		    </li>
+            <li>
+                <span>关注官方微博</span>
+                <a title="" href="/gyxkwmdcp.jhtml">新浪微博</a>
+                <a title="联系我们" href="/gyxklxwm.jhtml">腾讯微博</a>
+                <a title="" href="/mzsm.jhtml">人人网</a>
+                 <a title="" href="/mzsm.jhtml">搜狐网</a>
+		    </li>
+            <li>
+                <span>软件下载</span>
+                <a title="" href="/gyxkwmdcp.jhtml">舆情分析桌面客户端V1.0</a>             
+		    </li> 
+	    </ul>      
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+} 
+<style type="text/css">
+    .header{height:102px;}
+    .header .logo{width:250px;height:70px;margin:5px 20px;float:left;border:solid 1px #777;}
+    .header .nav_outter{width:650px;height:102px;float:right;}
+    .header .nav_outter .sign{width:650px;height:20px;line-height:20px;text-align:right;}
+    .header .nav_outter .nav{}
+    .header .nav_outter .nav ul{width:600px;margin-left:50px;}
+    .header .nav_outter .nav ul li{width:120px;height:60px;line-height:60px;text-align:center;float:left;}
+    .header .nav_outter .nav ul li a:link{color:#888;font-size:18px;}
+    .header .nav_outter .nav ul li a:hover{color:#2A8FC4;}
+</style>
+<div class="header mainblock">
+    <div class="logo">LOGO</div>
+    <div class="nav_outter">
+        <div class="sign">
+@if (Request.IsAuthenticated)
+{
+        <text>
+        <a href="@Url.Action("Index","User")" title="个人中心">@Context.User.Identity.Name</a>
+        <span>|</span>
+        <a href="@Url.Action("Logout","Account")" title="退出">退出</a>
+        </text>
+}
+else
+{
+      <text>  
+           <a href="@Url.Action("Login","Account")" title="登录">登录</a>
+           <span>|</span>
+           <a href="@Url.Action("Register","Account")" title="注册">注册</a>
+      </text>
+}
+
+        </div>
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "Home")" title="首页">首页</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Trade")" title="同城置换">同城置换</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Game")" title="挑战/活动">挑战/活动</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

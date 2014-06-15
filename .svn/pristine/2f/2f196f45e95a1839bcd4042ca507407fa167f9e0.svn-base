@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "ViewPage1";
+    Layout = "~/Views/shared/_Layout.cshtml";
+} 
+@Html.Partial("_header_no_signform")
+<div class="pMain body_bg">
+    <div class="container">   
+        <p class="g9"><em class="weibo-icon"></em>@Session["uid"]，欢迎来微博营销管理平台</p>       
+        <div id="pRegister">
+            <div class="roof"></div>
+            <div class="room">
+                <div class="room-in-nor clearfix"> 
+                
+                   <form action='@Url.Action("bind_socialuser_user", "a")' method="post" id="bind-form">
+                    <div class="reg-box">
+                        <h2>已有微博营销平台账号:</h2>
+                        <p>你可以继续使用微博营销管理平台原有的个人信息</p>
+                        <div>
+                            <input type="hidden" value='@Session["access_token"]' name="txt_access_token" id="txt_access_token" />
+                            <input type="hidden" value='@Session["access_token_secret"]' name="txt_access_token_secret" id="txt_access_token_secret" /> 
+                            <input type="hidden" value='@Session["social_user_type"]' name="txt_social_user_type" id="txt_social_user_type"/>
+                            <input type="hidden" value='@Session["uid"]' name="txt_uid" id="txt_uid"/>
+                            <p><label>邮箱:</label><input type="text" name="signin-email" id="signin-email"  class="reg-input-wrap"/></p>
+                            <p><label>密码:</label><input type="password" name="signin-pw" id="signin-pw" class="reg-input-wrap"/></p>
+                            <p><button type="submit" class="submit">登陆并绑定</button></p>
+                        </div>
+                    </div>
+                    </form>
+                    <div class="login-box">
+                        <div class="has-account">
+                            <h4>第一次来微博管理平台？</h4>
+                            <br />
+                            <p><a  href='@Url.Action("create_systemuser", "a")' class="submit">创建微博营销管理平台账户</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="floor"></div>
+        </div>
+    </div>
+</div> 
+@Html.Partial("_footer_after_login")
+@section Js_InFoot{
+    <script type="text/javascript">
+        $('#bind-form').submit(function (event) {
+            event.preventDefault();
+            if (!/^[a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test($('#signin-email').val())) {
+                alert('请输入正确的Email');
+                $('#signin-email').focus();
+                return;
+            };
+            if (!$('#signin-pw').val()) {
+                alert('请输入密码');
+                $('#signin-pw').focus();
+                return;
+            };
+            var login_param = {
+                username: $('#signin-email').val(),
+                password: $("#signin-pw").val(),
+                access_token: $("#txt_access_token").val(),
+                access_token_secret: $("#txt_access_token_secret").val(),
+                social_user_type: $("#txt_social_user_type").val(),
+                uid:$("#txt_uid").val(),
+                bind_type:"exsiting"
+                //$.md5($("#signin-pw").val())
+            };
+            $.ajax({
+                type: "POST",
+                dataType: "Json",
+                data: login_param,
+                url: '@Url.Action("bind_system_user","a")',
+                success: function (ret_msg) {
+                    if (ret_msg.Error == 0) {
+                        //跳转到个人中心                              
+                        window.location.href = '@Url.Action("dashboard", "cen")';
+                    }
+                    else
+                        alert(ret_msg.RetMsg);
+                }
+            });
+        });
+    </script>
+}
+

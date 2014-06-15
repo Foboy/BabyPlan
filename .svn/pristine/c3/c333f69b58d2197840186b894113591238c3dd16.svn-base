@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c6e1a579-d6cc-4d4f-af8a-ab2208535508" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1937/BabyPlan.WcfService/VoteService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="VoteService.wsdl" MetadataType="Wsdl" ID="e83d503e-24bc-4c02-a274-e9550c30f069" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/VoteService.svc?wsdl" />
+    <MetadataFile FileName="VoteService.xsd" MetadataType="Schema" ID="ed25d72d-8e0e-45b2-b5bb-57fe20d964dd" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/VoteService.svc?xsd=xsd1" />
+    <MetadataFile FileName="VoteService.disco" MetadataType="Disco" ID="86b4ac4b-4ddf-4a44-823b-ce6e4a502c20" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/VoteService.svc?disco" />
+    <MetadataFile FileName="VoteService1.xsd" MetadataType="Schema" ID="1f265b08-fc5b-46b0-89d1-a0327c80558b" SourceId="1" SourceUrl="http://aaronpc:1937/BabyPlan.WcfService/VoteService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

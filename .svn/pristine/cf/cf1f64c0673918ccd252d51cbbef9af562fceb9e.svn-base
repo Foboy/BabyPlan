@@ -1,0 +1,1526 @@
+body {
+    margin: 0px;
+    background-color: #F4F4F4;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../user_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:960px;
+    height:60px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:966px;
+    height:66px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:22px;
+    width:956px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_mouseOver {
+    background-image: url('../resources/images/transparent.gif');
+}
+
+.u2_normal {
+    background-image: url('../resources/images/transparent.gif');
+}
+
+.u2_container {
+    position:absolute;
+    left:309px;
+    top:22px;
+    width:90px;
+    height:25px;
+}
+
+#u2_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:31px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:86px;
+    height:24px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_mouseOver {
+    background-image: url('../resources/images/transparent.gif');
+}
+
+.u4_normal {
+    background-image: url('../resources/images/transparent.gif');
+}
+
+.u4_container {
+    position:absolute;
+    left:409px;
+    top:22px;
+    width:101px;
+    height:25px;
+}
+
+#u4_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:107px;
+    height:31px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:97px;
+    height:24px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_mouseOver {
+    background-image: url('../resources/images/transparent.gif');
+}
+
+.u6_mouseDown {
+    background-image: url('../resources/images/transparent.gif');
+}
+
+.u6_normal {
+    background-image: url('../resources/images/transparent.gif');
+}
+
+.u6_container {
+    position:absolute;
+    left:532px;
+    top:22px;
+    width:90px;
+    height:25px;
+}
+
+#u6_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:31px;
+}
+
+.u7 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:86px;
+    height:24px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8 {
+    position:absolute;
+    left:20px;
+    top:17px;
+    width:150px;
+    height:27px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u9_normal {
+    background-image: url('../user_files/u9_normal.png');
+}
+
+.u9_container {
+    position:absolute;
+    left:601px;
+    top:11px;
+    width:23px;
+    height:15px;
+}
+
+#u9_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:23px;
+    height:15px;
+}
+
+.u10 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:19px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u11 {
+    position:absolute;
+    left:855px;
+    top:6px;
+    width:90px;
+    height:17px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u13 {
+    position:absolute;
+    left:5px;
+    top:90px;
+    width:210px;
+    height:27px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u14_normal {
+    background-image: url('../制作纪念册_files/u14_normal.png');
+}
+
+.u14_container {
+    position:absolute;
+    left:10px;
+    top:189px;
+    width:950px;
+    height:329px;
+}
+
+#u14_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:956px;
+    height:335px;
+}
+
+.u15 {
+    position:absolute;
+    left:2px;
+    top:156px;
+    width:946px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u16_normal {
+    background-image: url('../制作纪念册_files/u16_normal.png');
+}
+
+.u16_container {
+    position:absolute;
+    left:30px;
+    top:207px;
+    width:30px;
+    height:30px;
+}
+
+#u16_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:36px;
+    height:36px;
+}
+
+.u17 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:26px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u18 {
+    position:absolute;
+    left:70px;
+    top:207px;
+    width:210px;
+    height:27px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u19_normal {
+    background-image: url('../制作纪念册_files/u19_normal.png');
+}
+
+.u19_container {
+    position:absolute;
+    left:90px;
+    top:244px;
+    width:220px;
+    height:253px;
+}
+
+#u19_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:226px;
+    height:259px;
+}
+
+.u20 {
+    position:absolute;
+    left:2px;
+    top:118px;
+    width:216px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u21_normal {
+    background-image: url('../制作纪念册_files/u21_normal.png');
+}
+
+.u21_container {
+    position:absolute;
+    left:100px;
+    top:254px;
+    width:200px;
+    height:230px;
+}
+
+#u21_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:206px;
+    height:236px;
+}
+
+.u22 {
+    position:absolute;
+    left:2px;
+    top:84px;
+    width:196px;
+    height:62px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u23_normal {
+    background-image: url('../制作纪念册_files/u19_normal.png');
+}
+
+.u23_container {
+    position:absolute;
+    left:375px;
+    top:244px;
+    width:220px;
+    height:253px;
+}
+
+#u23_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:226px;
+    height:259px;
+}
+
+.u24 {
+    position:absolute;
+    left:2px;
+    top:118px;
+    width:216px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u25_normal {
+    background-image: url('../制作纪念册_files/u21_normal.png');
+}
+
+.u25_container {
+    position:absolute;
+    left:385px;
+    top:254px;
+    width:200px;
+    height:230px;
+}
+
+#u25_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:206px;
+    height:236px;
+}
+
+.u26 {
+    position:absolute;
+    left:2px;
+    top:84px;
+    width:196px;
+    height:62px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u27_normal {
+    background-image: url('../制作纪念册_files/u27_normal.png');
+}
+
+.u27_container {
+    position:absolute;
+    left:10px;
+    top:542px;
+    width:950px;
+    height:50px;
+}
+
+#u27_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:956px;
+    height:56px;
+}
+
+.u28 {
+    position:absolute;
+    left:2px;
+    top:17px;
+    width:946px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u29_normal {
+    background-image: url('../制作纪念册_files/u16_normal.png');
+}
+
+.u29_container {
+    position:absolute;
+    left:29px;
+    top:552px;
+    width:30px;
+    height:30px;
+}
+
+#u29_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:36px;
+    height:36px;
+}
+
+.u30 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:26px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u31 {
+    position:absolute;
+    left:70px;
+    top:555px;
+    width:210px;
+    height:27px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u32 {
+    position:absolute;
+    left:10px;
+    top:146px;
+    width:170px;
+    height:20px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u33 {
+    position:absolute;
+    left:140px;
+    top:138px;
+    width:320px;
+    height:35px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'微软雅黑';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u34_normal {
+    background-image: url('../制作纪念册_files/u34_normal.png');
+}
+
+.u34_container {
+    position:absolute;
+    left:10px;
+    top:610px;
+    width:950px;
+    height:560px;
+}
+
+#u34_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:956px;
+    height:566px;
+}
+
+.u35 {
+    position:absolute;
+    left:2px;
+    top:272px;
+    width:946px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u36_normal {
+    background-image: url('../制作纪念册_files/u16_normal.png');
+}
+
+.u36_container {
+    position:absolute;
+    left:30px;
+    top:639px;
+    width:30px;
+    height:30px;
+}
+
+#u36_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:36px;
+    height:36px;
+}
+
+.u37 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:26px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u38 {
+    position:absolute;
+    left:70px;
+    top:639px;
+    width:210px;
+    height:27px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u39 {
+    position:absolute;
+    left:770px;
+    top:94px;
+    width:190px;
+    height:19px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u40_line {
+    background-image: url('../制作纪念册_files/u40_line.png');
+}
+
+.u40_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:935px;
+    height:3px;
+}
+
+.u40 {
+    position:absolute;
+    left:15px;
+    top:730px;
+    width:935px;
+    height:10px;
+    
+}
+
+.u41_normal {
+    background-image: url('../制作纪念册_files/u41_normal.png');
+}
+
+.u41_container {
+    position:absolute;
+    left:59px;
+    top:760px;
+    width:134px;
+    height:98px;
+}
+
+#u41_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:140px;
+    height:104px;
+}
+
+.u42 {
+    position:absolute;
+    left:2px;
+    top:41px;
+    width:130px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u43_container {
+    position:absolute;
+    left:64px;
+    top:764px;
+    width:126px;
+    height:90px;
+}
+
+#u43_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:126px;
+    height:90px;
+}
+
+.u44 {
+    position:absolute;
+    left:2px;
+    top:37px;
+    width:122px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u45_normal {
+    background-image: url('../制作纪念册_files/u45_normal.png');
+}
+
+.u45_container {
+    position:absolute;
+    left:203px;
+    top:760px;
+    width:257px;
+    height:98px;
+}
+
+#u45_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:263px;
+    height:104px;
+}
+
+.u46 {
+    position:absolute;
+    left:2px;
+    top:41px;
+    width:253px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u47 {
+    position:absolute;
+    left:210px;
+    top:767px;
+    width:190px;
+    height:17px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u48 {
+    position:absolute;
+    left:210px;
+    top:787px;
+    width:250px;
+    height:68px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u49_normal {
+    background-image: url('../制作纪念册_files/u41_normal.png');
+}
+
+.u49_container {
+    position:absolute;
+    left:519px;
+    top:760px;
+    width:134px;
+    height:98px;
+}
+
+#u49_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:140px;
+    height:104px;
+}
+
+.u50 {
+    position:absolute;
+    left:2px;
+    top:41px;
+    width:130px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u51_container {
+    position:absolute;
+    left:524px;
+    top:764px;
+    width:126px;
+    height:90px;
+}
+
+#u51_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:126px;
+    height:90px;
+}
+
+.u52 {
+    position:absolute;
+    left:2px;
+    top:37px;
+    width:122px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u53_normal {
+    background-image: url('../制作纪念册_files/u45_normal.png');
+}
+
+.u53_container {
+    position:absolute;
+    left:663px;
+    top:760px;
+    width:257px;
+    height:98px;
+}
+
+#u53_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:263px;
+    height:104px;
+}
+
+.u54 {
+    position:absolute;
+    left:2px;
+    top:41px;
+    width:253px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u55 {
+    position:absolute;
+    left:670px;
+    top:767px;
+    width:190px;
+    height:17px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u56 {
+    position:absolute;
+    left:670px;
+    top:787px;
+    width:250px;
+    height:68px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u57_normal {
+    background-image: url('../制作纪念册_files/u41_normal.png');
+}
+
+.u57_container {
+    position:absolute;
+    left:54px;
+    top:882px;
+    width:134px;
+    height:98px;
+}
+
+#u57_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:140px;
+    height:104px;
+}
+
+.u58 {
+    position:absolute;
+    left:2px;
+    top:41px;
+    width:130px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u59_container {
+    position:absolute;
+    left:60px;
+    top:886px;
+    width:126px;
+    height:90px;
+}
+
+#u59_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:126px;
+    height:90px;
+}
+
+.u60 {
+    position:absolute;
+    left:2px;
+    top:37px;
+    width:122px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u61_normal {
+    background-image: url('../制作纪念册_files/u45_normal.png');
+}
+
+.u61_container {
+    position:absolute;
+    left:198px;
+    top:882px;
+    width:257px;
+    height:98px;
+}
+
+#u61_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:263px;
+    height:104px;
+}
+
+.u62 {
+    position:absolute;
+    left:2px;
+    top:41px;
+    width:253px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u63 {
+    position:absolute;
+    left:206px;
+    top:889px;
+    width:190px;
+    height:17px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u64 {
+    position:absolute;
+    left:206px;
+    top:909px;
+    width:250px;
+    height:68px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u65_normal {
+    background-image: url('../制作纪念册_files/u41_normal.png');
+}
+
+.u65_container {
+    position:absolute;
+    left:514px;
+    top:882px;
+    width:134px;
+    height:98px;
+}
+
+#u65_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:140px;
+    height:104px;
+}
+
+.u66 {
+    position:absolute;
+    left:2px;
+    top:41px;
+    width:130px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u67_container {
+    position:absolute;
+    left:520px;
+    top:886px;
+    width:126px;
+    height:90px;
+}
+
+#u67_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:126px;
+    height:90px;
+}
+
+.u68 {
+    position:absolute;
+    left:2px;
+    top:37px;
+    width:122px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u69_normal {
+    background-image: url('../制作纪念册_files/u45_normal.png');
+}
+
+.u69_container {
+    position:absolute;
+    left:658px;
+    top:882px;
+    width:257px;
+    height:98px;
+}
+
+#u69_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:263px;
+    height:104px;
+}
+
+.u70 {
+    position:absolute;
+    left:2px;
+    top:41px;
+    width:253px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u71 {
+    position:absolute;
+    left:666px;
+    top:889px;
+    width:190px;
+    height:17px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u72 {
+    position:absolute;
+    left:666px;
+    top:909px;
+    width:250px;
+    height:68px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u73_normal {
+    background-image: url('../制作纪念册_files/u41_normal.png');
+}
+
+.u73_container {
+    position:absolute;
+    left:54px;
+    top:1022px;
+    width:134px;
+    height:98px;
+}
+
+#u73_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:140px;
+    height:104px;
+}
+
+.u74 {
+    position:absolute;
+    left:2px;
+    top:41px;
+    width:130px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u75_container {
+    position:absolute;
+    left:59px;
+    top:1026px;
+    width:126px;
+    height:90px;
+}
+
+#u75_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:126px;
+    height:90px;
+}
+
+.u76 {
+    position:absolute;
+    left:2px;
+    top:37px;
+    width:122px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u77_normal {
+    background-image: url('../制作纪念册_files/u45_normal.png');
+}
+
+.u77_container {
+    position:absolute;
+    left:198px;
+    top:1022px;
+    width:257px;
+    height:98px;
+}
+
+#u77_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:263px;
+    height:104px;
+}
+
+.u78 {
+    position:absolute;
+    left:2px;
+    top:41px;
+    width:253px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u79 {
+    position:absolute;
+    left:205px;
+    top:1029px;
+    width:190px;
+    height:17px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u80 {
+    position:absolute;
+    left:205px;
+    top:1049px;
+    width:250px;
+    height:68px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u81_normal {
+    background-image: url('../制作纪念册_files/u41_normal.png');
+}
+
+.u81_container {
+    position:absolute;
+    left:514px;
+    top:1022px;
+    width:134px;
+    height:98px;
+}
+
+#u81_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:140px;
+    height:104px;
+}
+
+.u82 {
+    position:absolute;
+    left:2px;
+    top:41px;
+    width:130px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u83_container {
+    position:absolute;
+    left:519px;
+    top:1026px;
+    width:126px;
+    height:90px;
+}
+
+#u83_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:126px;
+    height:90px;
+}
+
+.u84 {
+    position:absolute;
+    left:2px;
+    top:37px;
+    width:122px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u85_normal {
+    background-image: url('../制作纪念册_files/u45_normal.png');
+}
+
+.u85_container {
+    position:absolute;
+    left:658px;
+    top:1022px;
+    width:257px;
+    height:98px;
+}
+
+#u85_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:263px;
+    height:104px;
+}
+
+.u86 {
+    position:absolute;
+    left:2px;
+    top:41px;
+    width:253px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u87 {
+    position:absolute;
+    left:665px;
+    top:1029px;
+    width:190px;
+    height:17px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u88 {
+    position:absolute;
+    left:665px;
+    top:1049px;
+    width:250px;
+    height:68px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u89_normal {
+    background-image: url('../制作纪念册_files/u89_normal.png');
+}
+
+.u89_container {
+    position:absolute;
+    left:375px;
+    top:1200px;
+    width:160px;
+    height:60px;
+}
+
+#u89_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:166px;
+    height:66px;
+}
+
+.u90 {
+    position:absolute;
+    left:2px;
+    top:18px;
+    width:156px;
+    height:24px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u91_normal {
+    background-image: url('../制作纪念册_files/u91_normal.png');
+}
+
+.u91_container {
+    position:absolute;
+    left:72px;
+    top:676px;
+    width:120px;
+    height:30px;
+}
+
+#u91_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:126px;
+    height:36px;
+}
+
+.u92 {
+    position:absolute;
+    left:2px;
+    top:5px;
+    width:116px;
+    height:20px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

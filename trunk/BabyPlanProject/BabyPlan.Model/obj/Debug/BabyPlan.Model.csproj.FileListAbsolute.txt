@@ -1,0 +1,10 @@
+E:\Cray\BabyPlan\trunk\BabyPlanProject\BabyPlan.Model\bin\Debug\BabyPlan.Model.dll
+E:\Cray\BabyPlan\trunk\BabyPlanProject\BabyPlan.Model\bin\Debug\BabyPlan.Model.pdb
+E:\Cray\BabyPlan\trunk\BabyPlanProject\BabyPlan.Model\obj\Debug\ResolveAssemblyReference.cache
+E:\Cray\BabyPlan\trunk\BabyPlanProject\BabyPlan.Model\obj\Debug\BabyPlan.Model.dll
+E:\Cray\BabyPlan\trunk\BabyPlanProject\BabyPlan.Model\obj\Debug\BabyPlan.Model.pdb
+E:\Work\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Model\bin\Debug\BabyPlan.Model.dll
+E:\Work\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Model\bin\Debug\BabyPlan.Model.pdb
+E:\Work\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Model\obj\Debug\ResolveAssemblyReference.cache
+E:\Work\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Model\obj\Debug\BabyPlan.Model.dll
+E:\Work\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Model\obj\Debug\BabyPlan.Model.pdb

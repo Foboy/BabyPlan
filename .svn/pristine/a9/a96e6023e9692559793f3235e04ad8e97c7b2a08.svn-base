@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_Partial_Header")
+<div class="mainblock">
+body
+</div>
+

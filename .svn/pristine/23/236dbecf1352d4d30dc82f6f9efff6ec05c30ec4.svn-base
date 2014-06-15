@@ -1,0 +1,16 @@
+    .right_block_title{height:50px;}
+    .right-block_content{ height:auto!important; height:400px;  min-height:400px; }
+    .right_block_title .title{line-height:50px;}
+    .bookList{}
+    .bookList li{padding:10px; border-bottom:1px solid #DEDEDE; position:relative;}
+    .bookList li:hover{background:#e5e5e5;}
+    .bookList li img{width:110px; height:150px;padding: 3px;}
+    .bookList li .img{display:block; float:left;background: none repeat scroll 0 0 #F5F5F5;cursor: pointer; width:118px; height:158px; border:1px solid #DEDEDE; text-align:center;}
+    .bookList li .img:hover{background:#2a8fc5;}
+    .listContent{width:360px; height:160px; margin-left:10px;}
+    .listContent .describe{height:120px;}
+    .prompt_info{ text-align:center; vertical-align:middle; height:400px; line-height:400px;}
+    .makeButton{padding-top:60px;}
+    .makeButton .button-green{width:100px; height:40px; line-height:40px; margin-right:10px;}
+    .makeButton .download{margin-top:8px; display:inline-block;}
+    .delete{display:block; background:url(/images/delBtn.gif); width:19px; height:19px; position:absolute; top:5px; right:5px;}

@@ -1,0 +1,15 @@
+﻿@{
+    Layout = null;
+}
+<style type="text/css">
+    .footer{height:60px; margin-top:30px;}
+    .footer_bg{background:url(/images/bg-footer-top.png) repeat-x scroll left bottom transparent; height:13px; min-width:960px;}
+    .footer_content{line-height: 40px;overflow: hidden;width: 960px; margin:0 auto;}
+    .footer_content a{ margin-left:10px;}
+</style>
+<div class="footer">
+ <div class="footer_bg"></div>
+ <div class="footer_content">
+   &copy 2012百家衣<a href="@Url.Action("aboutme", "Home")">关于我们</a>
+ </div>
+</div>

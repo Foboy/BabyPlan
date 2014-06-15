@@ -1,0 +1,84 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using BabyPlan.DataStructure;
+using BabyPlan.Meta;
+using BabyPlan.WcfService;
+using BabyPlan.Common;
+
+namespace BabyPlan.mvcApp.ViewModel
+{
+    [Serializable]
+    public class BookModel : BaseModel
+    {
+        public int Id
+        { get; set; }
+        public string Name
+        { get; set; }
+
+        public String Introduction
+        { get; set; }
+
+        public BookSize BookSize
+        { get; set; }
+
+        public Int32 BookType
+        { get; set; }
+
+        public IList<PicModel> Pics { get; set; }
+
+        public UserModel Author { get; set; }
+
+        public DateTime CreateTime { get; set; }
+        public DateTime EditeTime { get; set; }
+        public BookCoverType BookCover { get; set; }
+
+
+        public BookModel Bind(ProBook book, ViewModelBindOption bindOptions)
+        {
+            this.Id = book.BookId;
+            this.Name = book.BookName;
+            this.BookSize = book.BookSize;
+            this.BookType = book.BookType;
+            this.Introduction = book.Introduction;
+            this.CreateTime = book.CreateTime;
+            this.EditeTime = book.EditeTime;
+            this.BookCover = book.BookCover;
+
+            if (ContainEnumType<BookBindType>(bindOptions.BookBindType, BookBindType.Pics))
+            {
+                this.Pics = PicModel.BindList(book.Pics, bindOptions);
+            }
+            if (ContainEnumType<BookBindType>(bindOptions.BookBindType, BookBindType.Author))
+            {
+                UserServiceClient client = new UserServiceClient();
+                AdvancedResult<AdUser> userRes = client.GetUserInfoByID(book.AdUserId);
+                if (userRes.Error == DataStructure.AppError.ERROR_SUCCESS && userRes.Data != null)
+                {
+                    this.Author = new UserModel().Bind(userRes.Data, bindOptions);
+                }
+            }
+
+            return this;
+        }
+
+        public IList<BookModel> BindList(IEnumerable<ProBook> products, ViewModelBindOption bindOptions)
+        {
+            List<BookModel> models = new List<BookModel>();
+            if (products != null)
+            {
+                foreach (ProBook p in products)
+                {
+                    models.Add(new BookModel().Bind(p, bindOptions));
+                }
+            }
+            return models;
+        }
+
+
+
+
+
+    }
+}

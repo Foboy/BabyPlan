@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "_Layout_User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .head_outer{height:62px;}
+    .head_outer .logo_outer{height:62px;width:250px;}
+    .head_outer .nav_outer{}
+    .head_outer .nav_outer ul{width:600px;height:62px;}
+    .head_outer .nav_outer ul li{height:62px;line-height:62px;float:left;}
+    .head_outer .nav_outer ul li a{color:#fff;font-size:18px;height:62px;padding:0 16px;display:block;}
+    
+    .user_panel_outer{margin:30px auto;}
+    .panel_left_outer{width:240px;}
+    .panel_left_outer .user_left_block{width:240px;}
+    .panel_left_outer .user_profile{height:128px;width:238px;}
+    .panel_left_outer .user_profile .head_pic{width:100px;height:100px;margin:10px;position:relative;}
+    .panel_left_outer .user_profile .head_pic .upload_head_bg{width:100px;height:22px;line-height:22px;top:80px;background:#333;position:absolute;}
+    .panel_left_outer .user_profile .profile{margin:10px 0;}
+    .panel_left_outer .user_link_out {margin:20px 0;}
+    .panel_left_outer .user_link_out .user_link{width:188px;height:48px;display:block;line-height:48px;padding-left:50px;position:relative;}
+    .panel_left_outer .user_link_out .user_link:hover{background-color:#2A8FC4;color:#fff;}
+    .panel_left_outer .user_link_out .user_link .count{width:18px;height:18px;display:block;margin:15px;line-height:18px;text-align:center;}
+    .panel_left_outer .user_with_outer{width:220px;padding:10px;}
+    .panel_left_outer .user_with_outer .heart{width:110px;height:100px;padding-left:110px;margin:5px 0;}
+    
+    .panel_right_outer{width:710px;}
+    .panel_right_outer .user_right_block{width:710px;}
+</style>
+<style type="text/css">
+    .head_outer .nav_outer ul li a.act{background:url(@Content.SourceSrc("user_nav_act_bg.gif", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.Images)) center 46px no-repeat;}
+    .panel_left_outer .user_profile .head_pic{background:url(@Content.SourceSrc("anonymous_head.jpg", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.Images)) 1px 1px no-repeat;}
+    .panel_left_outer .user_link_out .user_link{background:url(@Content.SourceSrc("user_link_bg.gif", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.Images)) 8px 15px no-repeat;}
+    .panel_left_outer .user_with_outer .heart{background:url(@Content.SourceSrc("user_heart.png", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.Images)) 1px 1px no-repeat;}
+</style>
+<div class="head_outer mainblock blueblock">
+    <div class="logo_outer white-font fl">LOGO</div>
+    <div class="nav_outer fl">
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")">首页</a></li>
+            <li><a href="@Url.Action("Index", "User")" class="act">个人中心</a></li>
+        </ul>
+    </div>
+    <div class="logout_outer fr">Exit</div>
+</div>
+<div class="user_panel_outer mainblock">
+    <div class="panel_left_outer fl">
+        <div class="user_profile grayblock user_left_block grayborder">
+            <div class="head_pic fl">
+                <div class="upload_head_bg text-center"><a href="#" class="white-font">上传头像</a></div>
+            </div>
+            <div class="profile fl">
+                <span class="blue-font font-size14">王晓</span>
+                <br />
+                <a href="#" class="black-font">账户设置</a>
+            </div>
+        </div>
+        <div class="user_link_out user_left_block">
+             <a href="@Url.Action("Goods","User")" class="user_link grayborder grayblock font-size16 black-font">
+                我的宝贝清单
+                <span class="count pinkblock white-font fr font-size12">9</span>
+             </a>
+             <a href="@Url.Action("News","User")" class="user_link grayborder grayblock font-size16 black-font">
+                与我相关的
+                <span class="count pinkblock white-font fr font-size12">9</span>
+             </a>
+        </div>
+        <div class="user_with_outer grayblock">
+            <div class="heart">
+                <span class="green-font font-size20">心愿单</span>
+                <br />
+                <span class="black-font font-size16">让你如愿以偿</span>
+            </div>
+            <p class="blue-font font-size14">在心愿单中填写您近期想购买的闲置用品、您想发起的挑战和投票。我们将接近全力，如您所愿。</p>
+            <p class="text-center">
+                <a href="#" class="pink-font underline font-size16 line-height40" style="text-decoration:underline;">发布心愿单</a>
+            </p>
+        </div>
+    </div>
+    <div class="panel_right_outer fr">
+        @RenderBody()
+    </div>
+    <div class="clear"></div>
+</div>
+

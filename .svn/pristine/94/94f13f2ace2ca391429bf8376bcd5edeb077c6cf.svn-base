@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace BabyPlan.DataStructure
+{
+    /// <summary>
+    /// 宝贝类别
+    /// </summary>
+    public enum ItemType
+    {
+        /// <summary>
+        /// 其他
+        /// </summary>
+        Other=0,
+        /// <summary>
+        /// 衣服
+        /// </summary>
+        Clothes=1,
+        /// <summary>
+        /// 玩具
+        /// </summary>
+        Toys=2
+    }
+}

@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+using System.IO;
+using BabyPlan.Common;
+using System.ServiceModel.Activation;
+using System.ServiceModel.Web;
+using System.Drawing;
+using System.Diagnostics;
+
+namespace BabyPlan.WcfService
+{
+    // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码、svc 和配置文件中的类名“FileService”。
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
+    public class FileService : IFileService
+    {
+
+        [WebInvoke(Method = "*", BodyStyle = WebMessageBodyStyle.WrappedRequest,
+UriTemplate = "ReadImg")]
+        public System.IO.Stream ReadImg()
+        {
+            string runDir = System.Environment.CurrentDirectory;
+            string imgFilePath = System.IO.Path.Combine(runDir, "jillzhanglogo.jpg");
+            System.IO.FileStream fs = new System.IO.FileStream(imgFilePath, System.IO.FileMode.Open);
+            System.Threading.Thread.Sleep(2000);
+            WebOperationContext.Current.OutgoingResponse.ContentType = "image/jpeg";
+            return fs;
+        }
+        [WebInvoke(Method = "*", UriTemplate = "ReceiveImg")]
+        public void ReceiveImg(System.IO.Stream stream)
+        {
+            Debug.WriteLine(WebOperationContext.Current.IncomingRequest.ContentType);
+            System.Threading.Thread.Sleep(3000);
+            string runDir = System.Environment.CurrentDirectory;
+            string imgFilePath = System.IO.Path.Combine(runDir, "ReceiveImg.jpg");
+            Image bmp = Bitmap.FromStream(stream);
+            bmp.Save(imgFilePath);
+        }
+
+        ////添加投票分类图片
+        //public string AddVoteTypeImg(string voteTypeID, Stream str)
+        //{
+        //    DataResult result = new DataResult();
+        //    
+        //    
+        //    return JsonHelper.Serialize(result);
+        //}
+
+
+        ////修改投票分类
+        //public string EditVoteType(int voteTypeID, string title, string description,  Stream pic)
+        //{
+        //    RespResult result = new RespResult();
+        //    
+        //    
+        //    return JsonHelper.Serialize(result);
+        //}
+        ////修改投票分类图片
+        //public string EditVoteTypeImg(int voteTypeID,  Stream str)
+        //{
+        //    RespResult result = new RespResult();
+        //    
+        //    
+        //    return JsonHelper.Serialize(result);
+        //}
+        ////上传投票图片
+        //public string UploadVoteImage(int voteTypeID,  Stream str)
+        //{
+        //    RespResult result = new RespResult();
+        //    
+        //    
+        //    return JsonHelper.Serialize(result);
+        //}
+        ////上传单个宝贝图片
+        //public string UploadBBPic(Stream sr)
+        //{
+        //    RespResult result = new RespResult();
+        //    
+        //    
+        //    return JsonHelper.Serialize(result);
+        //}
+        ///// <summary>
+        ///// 上传用户图片
+        ///// </summary>
+        ///// <param name="sr"></param>
+        ///// <param name="token"></param>
+        ///// <returns></returns>
+        //public string UploadUserImage(Stream sr, string token)
+        //{
+        //    RespResult result = new RespResult();
+        //    
+        //    
+        //    return JsonHelper.Serialize(result);
+        //}
+    }
+}

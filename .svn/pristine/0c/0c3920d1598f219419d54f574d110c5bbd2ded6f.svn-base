@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Net;
+using System.Xml;
+using System.IO;
+
+namespace BabyPlan.Cache
+{
+    /// <summary>
+    /// 缓存管理器创建工厂
+    /// </summary>
+    public class CacheManagerFactory : CachConfigHandle
+    {
+        private readonly static CacheManagerFactory obj = new CacheManagerFactory();
+        public CacheManagerFactory()
+            : base()
+        { }
+
+        /// <summary>
+        /// 获取T缓存管理器
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        private static ICacheManager GetCacheManager<T>() where T: ICacheManager
+        {
+            if (!MultiSingletonObject.Instance.Contain(typeof(T)))
+            {
+                MultiSingletonObject.Instance.RegisterSingletonType(typeof(T));
+            }
+            return MultiSingletonObject.Instance.GetObject<T>(typeof(T));
+        }
+         
+        /// <summary>
+        /// 获取内存缓存管理器
+        /// </summary>
+        /// <returns></returns>
+        public static ICacheManager GetMemoryManager()
+        {
+            if (OpenCache)
+            {
+                if (UseCacheMan)
+                {
+                    return GetCacheManager<CacheManManager>();
+                }
+                else if (UseMemoryCache)
+                {
+                    return GetCacheManager<MemoryCacheManager>();
+                }
+                else //有待改进
+                {
+                    //GetCacheManager<MemoryCacheManager>().Clear();
+                    return GetCacheManager<MemoryCacheManager>();
+                }
+
+            }
+            else//有待改进
+            {
+                //GetCacheManager<MemoryCacheManager>().Clear();
+                return GetCacheManager<MemoryCacheManager>();
+            }
+        }
+
+    }
+}

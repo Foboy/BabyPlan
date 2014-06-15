@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+    var ReplyList = Model as IList<BabyPlan.mvcApp.Model.ReplayModel>;
+}
+@section Js_InHeader{
+<style type="text/css">
+    .right_block_title{height:50px;}
+    .right-block_content{ min-height:400px;}
+    .right_block_title .title{}
+    .info_item_outer{margin:0;}
+    .info_item_outer .dot_line{width:680px;height:0;border-top:dotted 1px #666;margin:0 15px;}
+    .info_item_outer .info_item{width:680px;height:104px;margin:20px 15px;display:inline-block;}
+    .info_item_outer .info_item .info_no{font-size:72px;line-height:102px;width:60px;}
+    .info_item_outer .info_item .info_content{width:470px;height:102px;}
+    .info_item_outer .info_item .goods_pic{width:102px;height:102px;}
+</style>
+}
+<div class="right_block_title user_right_block grayblock">
+    <span class="title margin10 font-size16 black-font">与我相关</span>
+</div>
+<div class="user_right_block whiteblock right-block_content">
+    <div class="info_item_outer">
+    @for (int i = 0, c = ReplyList.Count(); i < c; i++)
+    {
+        var item = ReplyList[i];
+        var seq = c - i;
+        <div class="info_item">
+            <div class="info_no green-font fl">@seq</div>
+            <div class="info_content fl">
+                <p class="black-font font-size16 line-height40">@item.Product.Title</p>
+                <p class="ash-font">
+                @item.Content
+                </p>
+                <div class="line-height40">
+                    <div class="fl ash-font">
+                        <span class="blue-font">发布时间：</span>@item.DateFormat(item.CreateTime, "yyyy-MM-dd") &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="blue-font">回复：</span>(@item.Product.CommentsNum)
+                    </div>
+                    <div class="fr ash-font">
+                    </div>
+                </div>
+            </div>
+            <div class="goods_pic fr">
+                @if (item.Product.Items != null && item.Product.Items.Count > 0)
+                {
+                    item.Product.Items[0].Pic.DisplaySeting(100, 100, 1);
+                <img alt="" name="pic" src="@item.Product.Items[0].Pic.PicUrl" style="width:@item.Product.Items[0].Pic.DisplayWidth(102, 102)px;height:@item.Product.Items[0].Pic.DisplayHeight(102, 102)px;margin:@item.Product.Items[0].Pic.DisplayMargin(102, 102)" />
+                }
+            </div>
+        </div>
+                if (i < c - 1)
+                { 
+        <div class="dot_line"></div>
+                }
+    }
+    </div>
+</div>
+

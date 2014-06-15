@@ -1,0 +1,10 @@
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Logger\bin\Debug\BabyPlan.Logger.dll.config
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Logger\bin\Debug\BabyPlan.Logger.dll
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Logger\bin\Debug\BabyPlan.Logger.pdb
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Logger\bin\Debug\log4net.dll
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Logger\obj\Debug\ResolveAssemblyReference.cache
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Logger\obj\Debug\BabyPlan.Logger.dll
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Logger\obj\Debug\BabyPlan.Logger.pdb
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Logger\bin\Debug\Common.Logging.dll
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Logger\bin\Debug\Common.Logging.Log4Net.dll
+E:\Work\Others\百家衣\BabyPlan\trunk\BabyPlanProject\BabyPlan.Logger\bin\Debug\log4net.xml

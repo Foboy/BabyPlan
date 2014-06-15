@@ -1,0 +1,606 @@
+body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../宝贝内容页_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:120px;
+    top:20px;
+    width:386px;
+    height:786px;
+}
+
+#u0_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:386px;
+    height:786px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:385px;
+    width:382px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../宝贝内容页_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:153px;
+    top:124px;
+    width:320px;
+    height:66px;
+}
+
+#u2_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:66px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:25px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../宝贝内容页_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:153px;
+    top:124px;
+    width:320px;
+    height:26px;
+}
+
+#u4_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:26px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:5px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_normal {
+    background-image: url('../宝贝内容页_files/u6_normal.png');
+}
+
+.u6_container {
+    position:absolute;
+    left:327px;
+    top:126px;
+    width:21px;
+    height:21px;
+}
+
+#u6_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:21px;
+    height:21px;
+}
+
+.u7 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:17px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8_normal {
+    background-image: url('../宝贝内容页_files/u8_normal.png');
+}
+
+.u8_container {
+    position:absolute;
+    left:352px;
+    top:126px;
+    width:22px;
+    height:21px;
+}
+
+#u8_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:22px;
+    height:21px;
+}
+
+.u9 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:18px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u10_normal {
+    background-image: url('../宝贝内容页_files/u10_normal.png');
+}
+
+.u10_container {
+    position:absolute;
+    left:377px;
+    top:128px;
+    width:21px;
+    height:16px;
+}
+
+#u10_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:21px;
+    height:16px;
+}
+
+.u11 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:17px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u12 {
+    position:absolute;
+    left:407px;
+    top:126px;
+    width:60px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u13_normal {
+    background-image: url('../宝贝内容页_files/u13_normal.png');
+}
+
+.u13_container {
+    position:absolute;
+    left:153px;
+    top:190px;
+    width:320px;
+    height:420px;
+}
+
+#u13_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:426px;
+}
+
+.u14 {
+    position:absolute;
+    left:2px;
+    top:202px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u15_normal {
+    background-image: url('../宝贝内容页_files/u15_normal.png');
+}
+
+.u15_container {
+    position:absolute;
+    left:154px;
+    top:190px;
+    width:318px;
+    height:50px;
+}
+
+#u15_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:324px;
+    height:56px;
+}
+
+.u16 {
+    position:absolute;
+    left:2px;
+    top:17px;
+    width:314px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u17 {
+    position:absolute;
+    left:161px;
+    top:163px;
+    width:39px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u18 {
+    position:absolute;
+    left:221px;
+    top:158px;
+    width:215px;
+    height:22px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u19_container {
+    position:absolute;
+    left:210px;
+    top:250px;
+    width:205px;
+    height:205px;
+}
+
+#u19_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:205px;
+    height:205px;
+}
+
+.u20 {
+    position:absolute;
+    left:2px;
+    top:94px;
+    width:201px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u21_container {
+    position:absolute;
+    left:161px;
+    top:198px;
+    width:35px;
+    height:35px;
+}
+
+#u21_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:35px;
+    height:35px;
+}
+
+.u22 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:31px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u23 {
+    position:absolute;
+    left:204px;
+    top:197px;
+    width:150px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u24 {
+    position:absolute;
+    left:411px;
+    top:204px;
+    width:50px;
+    height:22px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u25 {
+    position:absolute;
+    left:204px;
+    top:216px;
+    width:70px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u26_normal {
+    background-image: url('../宝贝内容页_files/u26_normal.png');
+}
+
+.u26_container {
+    position:absolute;
+    left:154px;
+    top:465px;
+    width:318px;
+    height:105px;
+}
+
+#u26_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:324px;
+    height:111px;
+}
+
+.u27 {
+    position:absolute;
+    left:2px;
+    top:44px;
+    width:314px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u28 {
+    position:absolute;
+    left:166px;
+    top:474px;
+    width:297px;
+    height:80px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u29 {
+    position:absolute;
+    left:356px;
+    top:582px;
+    width:150px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u30_normal {
+    background-image: url('../宝贝内容页_files/u30_normal.png');
+}
+
+.u30_container {
+    position:absolute;
+    left:154px;
+    top:570px;
+    width:319px;
+    height:40px;
+}
+
+#u30_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:325px;
+    height:46px;
+}
+
+.u31 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:315px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u32 {
+    position:absolute;
+    left:377px;
+    top:582px;
+    width:38px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u33 {
+    position:absolute;
+    left:425px;
+    top:582px;
+    width:38px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u34 {
+    position:absolute;
+    left:163px;
+    top:582px;
+    width:64px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u35 {
+    position:absolute;
+    left:237px;
+    top:582px;
+    width:64px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u36 {
+    position:absolute;
+    left:318px;
+    top:582px;
+    width:38px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

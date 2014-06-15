@@ -1,0 +1,62 @@
+﻿@{
+    Layout = null;
+} 
+<style type="text/css">
+    .header{position:relative; height:110px; margin-bottom:15px;}
+    .header .logo{position:relative; float:left; width:250px; height:110px;}
+    .header .nav_outter{width:450px;float:left;}
+    .header .nav_outter .nav{position:relative; float:left; width:450px; margin-left:30px;}
+    .nav ul{margin:60px 0 0 0;padding:0px; list-style:none outside; height:50px;}
+    .nav ul li{float:left; margin-left:40px; display:inline;}
+    .nav ul li a{font-size:18px;  color:#666666; text-decoration:none;}
+    .nav ul li a.active,.nav ul li a:hover,nav ul li a.selected{color:#2A8FC4;}
+    .header .header_sign{float:right; position:relative; width:200px; height:110px;}
+    .header .sign{color:#888888; margin-top:10px; margin-left:30px; float:right;}
+    .header .sign a{ margin:0 5px; cursor:pointer;}
+    .header .sign a:hover{color:#2A8FC4;}
+    .share a{ cursor:pointer; display:block; float:left; height: 36px;width: 36px; margin:0px 10px;}
+    .share{background:url(/images/inhere.png) no-repeat scroll 0 0 transparent; height:50px; padding:30px 0 0 67px; margin-top:5px;} 
+    .share .sina{ background:url(/images/sina_g.png) no-repeat  transparent;}
+    .share .qq{ background:url(/images/qq_g.png) no-repeat transparent;}
+    .share .sina:hover{background:url(/images/sina.png) no-repeat  transparent;}
+    .share .qq:hover{ background:url(/images/qq.png) no-repeat  transparent;}
+</style>
+<div class="header mainblock">
+    <div class="logo"><img src="../../images/logo.png" title="百家衣"/></div>
+    <div class="nav_outter">
+        <div class="nav">
+            <ul>
+                <li><a href="@Url.Action("Index", "Home")" title="首页">首页</a></li>
+                <li><a href="@Url.Action("Index", "Trade")" title="同城置换">同城置换</a></li>
+                <li><a href="@Url.Action("Index","Game")" title="挑战/活动">挑战/活动</a></li>
+                <li><a href="@Url.Action("Index","Game")" title="联系我们">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="header_sign">
+        <div class="sign">
+            @if (Request.IsAuthenticated)
+            {
+                <text>
+                <a href="@Url.Action("Index","User")" title="个人中心">@Context.User.Identity.Name</a>
+                <span>|</span>
+                <a href="@Url.Action("Logout","Account")" title="退出">退出</a>
+                </text>
+            }
+            else
+            {
+                <text>  
+                <a href="@Url.Action("Login","Account")" title="登录">登录</a>
+                <span>|</span>
+                <a href="@Url.Action("Register","Account")" title="注册">注册</a>
+                </text>
+            }
+        </div>
+        <div class="clear"></div>
+        <div class="share">
+           <a class="sina" href="http://weibo.com/360baijiayi" target="_blank"></a>
+           <a class="qq" href="http://t.qq.com/i360baijiayi" target="_blank"></a>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

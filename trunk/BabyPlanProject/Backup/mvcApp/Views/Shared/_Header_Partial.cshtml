@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+    ResourceHelper.RegisterCss(this, "partial.header.css");
+} 
+<div class="header">
+   <div class="header960">
+    @*<div class="logo">
+       <a href="www.360baijiayi.com"><img src="@Content.SourceSrc("logo.png",Url,BabyPlan.mvcApp.Infras.SourceRootEnums.Images)" title="百家衣"/></a>
+     </div>*@
+    <div class="nav_outter">
+        <div class="logo"><img src="../../images/logo.png" /></div>
+        <div class="nav">
+            <ul>
+                <li><a href="@Url.Action("Index", "Home")" title="首页">首页</a></li>
+                <li><a href="@Url.Action("List","Trade")" title="同城置换">同城置换</a></li>
+                <li><a href="@Url.Action("Index", "BabyBook")" title="成长录">成长录</a></li>
+               @* <li><a href="@Url.Action("Index","Game")" title="挑战/活动">挑战/活动</a></li>*@
+                <li><a href="@Url.Action("Index", "AboutMe")" title="联系我们">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="header_sign">
+        <div class="sign">
+            @if (Request.IsAuthenticated)
+            {
+                <text>
+                <a href="@Url.Action("Index","User")" title="个人中心">@ViewBag.LoginUser.Name</a>
+                <span>|</span>
+                <a href="@Url.Action("Logout", "Account")" title="退出">退出</a>
+                </text>
+            }
+            else
+            {
+                <text>  
+                <a href="@Url.Action("Login", "Account")" title="登录">登录</a>
+                <span>|</span>
+                <a href="@Url.Action("Register", "Account")" title="注册">注册</a>
+                </text>
+            }
+        </div>
+        <div class="clear"></div>
+@*        <div class="attention">
+           <a class="sina" href="http://weibo.com/360baijiayi" target="_blank"></a>
+           <a class="qq" href="http://t.qq.com/i360baijiayi" target="_blank"></a>
+        </div>*@
+    </div>  
+   </div>
+</div>

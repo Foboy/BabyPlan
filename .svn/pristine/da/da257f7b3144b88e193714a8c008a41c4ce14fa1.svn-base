@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <urlset>
+   <url>
+     <loc>www.360baijiayi.com</loc>
+	 <lastmod>2012-08-10</lastmod>
+	 <priority>0.0</priority>
+   </url>
+   
+   <url>
+     <loc>www.360baijiayi.com/二手宝贝/所有宝贝</loc>
+	 <lastmod>2012-08-10</lastmod>
+	 <priority>0.0</priority>
+   </url>
+   
+   <url>
+     <loc>www.360baijiayi.com/二手宝贝/宝贝衣服</loc>
+	 <lastmod>2012-08-10</lastmod>
+	 <priority>0.0</priority>
+   </url>
+   
+   <url>
+     <loc>www.360baijiayi.com/二手宝贝/宝贝玩具</loc>
+	 <lastmod>2012-08-10</lastmod>
+	 <priority>0.0</priority>
+   </url>
+   
+    <url>
+     <loc>www.360baijiayi.com/二手宝贝/其他</loc>
+	 <lastmod>2012-08-10</lastmod>
+	 <priority>0.0</priority>
+   </url>
+ </urlset>

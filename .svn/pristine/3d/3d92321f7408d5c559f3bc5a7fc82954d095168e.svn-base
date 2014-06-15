@@ -1,0 +1,129 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.IO;
+
+using BabyPlan.Common;
+using BabyPlan.WcfService;
+using BabyPlan.Meta;
+using BabyPlan.mvcApp.Model;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class UploadController : BaseController
+    {
+        //
+        // GET: /Upload/
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+
+        public void Uploader(string type)
+        {
+            HttpPostedFileBase file = Request.Files["filedata"];
+
+            UploadFileItem uploadItem = new UploadFileItem();
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                uploadItem.Saved = false;
+                uploadItem.Msg = "登录后方可上传文件!";
+            }
+            else if (file != null)
+            {
+
+                string extention = file.FileName.Substring(file.FileName.LastIndexOf('.')).ToLower();
+
+                uploadItem.Saved = true;
+
+                if (file.ContentLength > 1024 * 2 * 1024)
+                {
+                    uploadItem.Saved = false;
+                    uploadItem.Msg = "请上传2M以下大小图片!";
+                }
+                if (".jpg;.bmp;.gif;.png;.jpeg".IndexOf(extention) < 0)
+                {
+                    uploadItem.Saved = false;
+                    uploadItem.Msg = "上传图片格式必须为.jpg;.bmp;.gif;.png;.jpeg!";
+                }
+
+                System.Drawing.Image upImage = null;
+                try
+                {
+                    upImage = System.Drawing.Image.FromStream(file.InputStream);
+                }
+                catch (Exception ex)
+                {
+                    uploadItem.Saved = false;
+                    uploadItem.Msg = "图片识别失败!" + ex.Message;
+                }
+
+                if (uploadItem.Saved)
+                {
+
+                    try
+                    {
+                        MemoryStream ms = new MemoryStream();
+                        byte[] fileByteArray = null;
+                        upImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        fileByteArray = ms.GetBuffer(); 
+
+
+                        //Byte[] fileByteArray = new byte[file.ContentLength];
+                        //file.InputStream.Read(fileByteArray, 0, file.ContentLength);
+
+                        FileServiceClient client = new FileServiceClient();
+                        AdvancedResult<ResPic> response = client.UploadBBPic(fileByteArray, upImage.Height, upImage.Width, CurrentToken);
+
+                        if (response.Error == DataStructure.AppError.ERROR_SUCCESS)
+                        {
+                            uploadItem.PicId = response.Data.PicId;
+                            uploadItem.Pic = new PicModel().Bind(response.Data);
+                            int maxWidth = 0;
+                            int maxHeight = 0;
+                            string width = Request["width"];
+                            string height = Request["height"];
+                            if (int.TryParse(Request["width"], out maxWidth) && int.TryParse(Request["height"], out maxHeight))
+                            {
+                                uploadItem.Pic.DisplaySeting(maxWidth, maxHeight);
+                            }
+                        }
+                        else
+                        {
+                            uploadItem.Saved = false;
+                            uploadItem.Msg = "保存图片失败!请稍后再试！";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        uploadItem.Saved = false;
+                        uploadItem.Msg = "保存图片失败!" + ex.Message;
+                    }
+                }
+            }
+            else
+            {
+                uploadItem.Saved = false;
+                uploadItem.Msg = "上传文件为空!";
+            }
+            Response.ContentType = "text/html; charset=utf-8";
+            Response.AppendHeader("Cache-Control", "no-cache");
+            Response.Write(JsonHelper.Serialize(uploadItem));
+        }
+
+        public class UploadFileItem
+        {
+            public int PicId { get; set; }
+            public PicModel Pic { get; set; }
+            public bool Saved { get; set; }
+            public string Msg { get; set; }
+
+        }
+
+    }
+}

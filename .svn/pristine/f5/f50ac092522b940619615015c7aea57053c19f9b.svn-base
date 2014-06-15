@@ -1,0 +1,77 @@
+for(var i = 0; i < 34; i++) { var scriptId = 'u' + i; window[scriptId] = document.getElementById(scriptId); }
+
+$axure.eventManager.pageLoad(
+function (e) {
+
+});
+gv_vAlignTable['u31'] = 'top';gv_vAlignTable['u17'] = 'center';gv_vAlignTable['u28'] = 'center';u29.tabIndex = 0;
+
+u29.style.cursor = 'pointer';
+$axure.eventManager.click('u29', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('mama.html'), "");
+
+}
+});
+gv_vAlignTable['u29'] = 'top';HookHover('u8', false);
+HookClick('u8', false);
+u30.tabIndex = 0;
+
+u30.style.cursor = 'pointer';
+$axure.eventManager.click('u30', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u30'] = 'top';HookHover('u6', false);
+document.getElementById('u32_img').tabIndex = 0;
+
+u32.style.cursor = 'pointer';
+$axure.eventManager.click('u32', function(e) {
+
+if (true) {
+
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('mama.html');
+
+}
+});
+gv_vAlignTable['u15'] = 'center';gv_vAlignTable['u13'] = 'top';HookHover('u4', false);
+gv_vAlignTable['u1'] = 'center';gv_vAlignTable['u26'] = 'center';gv_vAlignTable['u3'] = 'center';gv_vAlignTable['u12'] = 'center';gv_vAlignTable['u9'] = 'center';gv_vAlignTable['u7'] = 'center';u23.tabIndex = 0;
+
+u23.style.cursor = 'pointer';
+$axure.eventManager.click('u23', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('mama.html'), "");
+
+}
+});
+gv_vAlignTable['u23'] = 'top';gv_vAlignTable['u24'] = 'top';document.getElementById('u25_img').tabIndex = 0;
+
+u25.style.cursor = 'pointer';
+$axure.eventManager.click('u25', function(e) {
+
+if (true) {
+
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('mama.html');
+
+}
+});
+gv_vAlignTable['u19'] = 'center';u20.tabIndex = 0;
+
+u20.style.cursor = 'pointer';
+$axure.eventManager.click('u20', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u20'] = 'top';gv_vAlignTable['u5'] = 'center';gv_vAlignTable['u22'] = 'center';gv_vAlignTable['u33'] = 'center';

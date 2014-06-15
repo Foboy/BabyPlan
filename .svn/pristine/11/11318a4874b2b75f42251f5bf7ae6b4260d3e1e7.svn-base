@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.IO;
+using System.Text;
+using Yahoo.Yui.Compressor;
+using BabyPlan.Common;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class ContentController : Controller
+    {
+        //
+        // GET: /Content/
+
+        public void CssAccessor()
+        {
+            string css = Request["css"];
+            Response.ContentType = "text/css; charset=utf-8";
+            if (!string.IsNullOrEmpty(css))
+            {
+                string cacheFileName = SecurityHelper.MD5(Request.QueryString.ToString());
+                string cacheName = cacheFileName + ".css";
+                string cacheInfo = cacheFileName + ".txt";
+                string cssPath = Server.MapPath("~/css");
+                string cachePath = Path.Combine(cssPath,"cache");
+                string cacheFile = Path.Combine(cachePath, cacheName);
+                string cacheInfoFile = Path.Combine(cachePath, cacheInfo);
+                if (!System.IO.File.Exists(cacheFile))
+                {
+                    string[] cssArr = css.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (cssArr.Length > 0)
+                    {
+                        if (!Directory.Exists(cachePath))
+                        {
+                            Directory.CreateDirectory(cachePath);
+                        }
+                        string cssItemPath;
+                        CssCompressor cc = new CssCompressor();
+                        for (int i = cssArr.Length - 1; i >= 0; i--)
+                        {
+                            cssItemPath = Path.Combine(cssPath, cssArr[i]);
+                            if (System.IO.File.Exists(cssItemPath))
+                            {
+                                string content = System.IO.File.ReadAllText(cssItemPath);
+                                System.IO.File.AppendAllText(cacheFile, cc.Compress(content), Encoding.UTF8);
+
+                                System.IO.File.AppendAllLines(
+                                    cacheInfoFile,
+                                    new string[] { 
+                                        "File:" + cssItemPath,
+                                        "MD5:"+SecurityHelper.MD5(content)
+                                    }, Encoding.UTF8);
+                            }
+                        }
+                        
+                    }
+                }
+                if (System.IO.File.Exists(cacheFile))
+                {
+                    Response.WriteFile(cacheFile);
+                }
+                else
+                {
+                    Response.Write(string.Empty);
+                }
+            }
+            else
+            {
+                Response.Write(string.Empty);
+            }
+        }
+
+    }
+}

@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "ViewPage1";
+    Layout = "~/Views/shared/_Layout.cshtml";
+}  
+@Html.Partial("_header_no_signform")
+<div class="pMain body_bg"> 
+    <div class="container">  
+        <div id="pRegister">
+           <div class="roof"></div>     
+            <div class="room">
+                <div class="room-in-nor  clearfix">   
+                <div class="yahei text-center dj-tips-box">您尚未绑定任何社交账号,请选择社交账号类型然后点击下一步</div>
+                <div class="login-3rd-box text-center ">
+                    <p><input name="socialuser_type" type="radio" id="rd_sina" checked value="sina"/><label class="font14px login-sina-link" for="rd_sina">绑定新浪微博账号:</label></p>  
+                    <p><input name="socialuser_type" type="radio" id="rd_qq" value="qq"/><label class="font14px login-qq-link" for="rd_qq">绑定腾讯微博账号:</label></p>
+                    <p class="login-3rd-box"><a class="submit" id="nextstep_btn">下一步</a></p> 
+                </div>
+            </div>   
+            </div>                  
+            <div class="floor"></div>
+        </div>
+    </div> 
+</div> 
+@Html.Partial("_footer_after_login")
+@section Js_InFoot{
+    <!--页面尚加载完后的Js-->
+    <script type="text/javascript">
+        $(function () {
+            $("#nextstep_btn").bind("click", function () {
+                bind_socialuser();
+            });
+        });
+
+        //绑定社交账号
+        var bind_socialuser = function () {
+            var socialuser_type = $("input[@@name='socialuser_type']:radio:checked").val();
+            var target_url = '@Url.Action("bind_sina_user","a")';
+            if (socialuser_type == "qq")
+                target_url = '@Url.Action("bind_tt_user","a")';
+
+            window.location.href = target_url;           
+        }
+    </script>   
+}

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\Users\aaron\Desktop\发布\BabyPlanManageMent" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Account/Web.config" publishTime="09/02/2012 22:22:41" />
+    <file relUrl="bin/BabyPlan.Common.dll" publishTime="08/31/2012 14:11:27" />
+    <file relUrl="bin/MySql.Data.dll" publishTime="07/02/2012 20:54:05" />
+    <file relUrl="Global.asax" publishTime="09/02/2012 22:22:41" />
+    <file relUrl="Site.Master" publishTime="09/02/2012 22:22:41" />
+    <file relUrl="Styles/Site.css" publishTime="09/02/2012 22:22:41" />
+    <file relUrl="About.aspx" publishTime="09/02/2012 22:22:41" />
+    <file relUrl="Scripts/jquery-1.4.1.js" publishTime="09/02/2012 22:22:41" />
+    <file relUrl="bin/Newtonsoft.Json.pdb" publishTime="07/21/2012 20:47:23" />
+    <file relUrl="bin/BabyPlan.ManageMent.dll" publishTime="09/02/2012 23:50:09" />
+    <file relUrl="bin/Newtonsoft.Json.xml" publishTime="07/16/2012 00:34:00" />
+    <file relUrl="bin/BabyPlan.DataStructure.dll" publishTime="08/31/2012 14:11:22" />
+    <file relUrl="Account/Register.aspx" publishTime="09/02/2012 22:22:41" />
+    <file relUrl="bin/BabyPlan.Common.pdb" publishTime="08/31/2012 14:11:27" />
+    <file relUrl="Account/Login.aspx" publishTime="09/02/2012 22:22:41" />
+    <file relUrl="bin/BabyPlan.DataAccess.pdb" publishTime="09/02/2012 23:50:07" />
+    <file relUrl="bin/BabyPlan.DataStructure.pdb" publishTime="08/31/2012 14:11:22" />
+    <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="09/02/2012 22:22:41" />
+    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="07/16/2012 00:34:00" />
+    <file relUrl="Default.aspx" publishTime="09/02/2012 23:49:45" />
+    <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="09/02/2012 22:22:41" />
+    <file relUrl="bin/BabyPlan.Cache.dll" publishTime="08/31/2012 14:11:21" />
+    <file relUrl="bin/CachemanAPI.dll" publishTime="06/15/2012 15:17:18" />
+    <file relUrl="bin/BabyPlan.WcfService.dll" publishTime="09/02/2012 23:50:08" />
+    <file relUrl="Account/ChangePassword.aspx" publishTime="09/02/2012 22:22:41" />
+    <file relUrl="bin/BabyPlan.DataAccess.dll" publishTime="09/02/2012 23:50:07" />
+    <file relUrl="Web.config" publishTime="09/02/2012 22:34:25" />
+    <file relUrl="bin/BabyPlan.Meta.pdb" publishTime="09/02/2012 23:16:11" />
+    <file relUrl="bin/BabyPlan.WcfService.pdb" publishTime="09/02/2012 23:50:08" />
+    <file relUrl="bin/BabyPlan.ManageMent.pdb" publishTime="09/02/2012 23:50:09" />
+    <file relUrl="bin/BabyPlan.Cache.pdb" publishTime="08/31/2012 14:11:21" />
+    <file relUrl="bin/BabyPlan.Meta.dll" publishTime="09/02/2012 23:16:11" />
+    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="09/02/2012 22:22:41" />
+  </publishProfile>
+</publishData>

@@ -1,0 +1,107 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using BabyPlan.Common;
+using BabyPlan.Meta;
+using BabyPlan.WcfService;
+using BabyPlan.mvcApp.Model;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    [Authorize]
+    public class UserController : BaseController
+    {
+        //
+        // GET: /User/
+        public ActionResult Index()
+        {
+            ProductServiceClient client = new ProductServiceClient();
+            AdvancedResult<List<ProProductItem>> response = client.LoadInterestingBB(CurrentToken);
+
+            List<ProductItemModel> items = new List<ProductItemModel>();
+
+            if (response.Error == DataStructure.AppError.ERROR_SUCCESS)
+            {
+                response.Data = response.Data ?? new List<ProProductItem>();
+                foreach (var p in response.Data)
+                {
+                    items.Add(new ProductItemModel().Bind(p));
+                }
+            }
+            return View("~/Views/User/Index.cshtml", items);
+        }
+
+        public ActionResult Goods(int? id)
+        {
+            ProductServiceClient client = new ProductServiceClient();
+
+            int page = id ?? 0;
+
+            AdvancedResult<PageEntity<ProProduct>> products = client.SearchBBPostList(CurrentToken, page, 6);
+            List<ProductModel> items = new List<ProductModel>();
+            if (products.Error == DataStructure.AppError.ERROR_SUCCESS)
+            {
+                products.Data.Items = products.Data.Items ?? new List<ProProduct>();
+                ViewBag.Paging = BabyPlan.Common.HtmlFormatHelper.GeneratePagingHtml(page, 6, products.Data.RecordsCount, Url.Action("Goods", "User") + "/{0}");
+                foreach(var p in products.Data.Items)
+                {
+                    items.Add(new ProductModel().Bind(p));
+                }
+            }
+            return View("~/Views/User/Goods.cshtml", items);
+        }
+
+        public ActionResult AddGoods()
+        {
+            
+            return View("~/Views/User/AddGoods.cshtml");
+        }
+
+        public JsonResult AjaxAddGoods()
+        {
+            string goods = Request["goods"];
+            RespResult response = new RespResult();
+            if (string.IsNullOrEmpty(goods))
+            {
+                response.Error = DataStructure.AppError.ERROR_INVALID_PARAMETER;
+                response.ErrorMessage = "数据丢失！";
+            }
+            else
+            {
+                try
+                {
+                    ProductModel product = JsonHelper.Deserialize<ProductModel>(goods);
+                    if (product == null)
+                    {
+                        response.Error = DataStructure.AppError.ERROR_INVALID_PARAMETER;
+                        response.ErrorMessage = "无效数据！";
+                    }
+                    else
+                    {
+                        ProductServiceClient client = new ProductServiceClient();
+                        AdvancedResult<int> productResponse = client.publishBBPost(product.Title, product.QQ, product.Phone, product.Description, CurrentToken);
+                        if (productResponse.Error == DataStructure.AppError.ERROR_SUCCESS)
+                        {
+                            foreach (var pitem in product.Items)
+                            {
+                                client.publicBBItem(productResponse.Data, pitem.Price, pitem.Age, pitem.ItemType, pitem.Sex, pitem.PicId, CurrentToken);
+                            }
+                        }
+                        client.Close();
+                        client = null;
+                    }
+                    response.Error = DataStructure.AppError.ERROR_SUCCESS;
+                }
+                catch (Exception ex)
+                {
+                    response.ExMessage = "添加宝贝失败！" + ex.Message;
+                    response.Error = DataStructure.AppError.ERROR_FAILED;
+                }
+            }
+            return Json(response);
+        }
+
+    }
+}

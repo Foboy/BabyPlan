@@ -1,0 +1,27 @@
+-----20121017--------------------------
+ALTER TABLE `babyplan`.`pro_book` ADD COLUMN `edite_time` DATETIME NOT NULL  AFTER `state` ;
+ALTER TABLE `babyplan`.`pro_book` CHANGE COLUMN `create_time` `create_time` DATETIME NOT NULL  ;
+
+
+-----20121013--------------------------
+
+CREATE  TABLE `babyplan`.`pro_book` (
+  `book_id` INT NOT NULL AUTO_INCREMENT ,
+  `book_name` VARCHAR(45) NOT NULL ,
+  `book_size` INT NOT NULL COMMENT '1:A5;2:A6' ,
+  `book_type` INT NOT NULL COMMENT '模板类型' ,
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `ad_user_id` INT NOT NULL COMMENT '用户ID' ,
+  PRIMARY KEY (`book_id`) )
+COMMENT = '打印的书';
+
+
+ALTER TABLE `babyplan`.`res_pic` CHANGE COLUMN `obj_type` `obj_type` INT(11) NOT NULL DEFAULT '0' COMMENT '0：宝贝 1：用户 2：投票 3:微印书'  ;
+
+ALTER TABLE `babyplan`.`pro_book` ADD COLUMN `introduction` VARCHAR(1000) NULL COMMENT '简介' AFTER `ad_user_id`;
+ALTER TABLE `babyplan`.`pro_book` ADD COLUMN `state` INT NOT NULL DEFAULT 1 COMMENT '1:启用 2：禁用'  AFTER `introduction`;
+
+
+------20120915------------------------------
+ALTER TABLE `babyplan`.`pro_product` ADD COLUMN `min_age` INT(11) NOT NULL DEFAULT 0  AFTER `iswash` , ADD COLUMN `max_age` INT(11) NOT NULL DEFAULT 0  AFTER `min_age` , ADD COLUMN `item_type` INT(11) NOT NULL DEFAULT 1 COMMENT '1：衣服 2：玩具 3：其他'  AFTER `max_age` , ADD COLUMN `sex` INT(11) NOT NULL DEFAULT 1 COMMENT '1:男 2:女'  AFTER `item_type` , ADD COLUMN `price` DECIMAL(10,2) NOT NULL DEFAULT '0.00'  AFTER `sex` ;
+ALTER TABLE `babyplan`.`pro_product_item` DROP COLUMN `sex` , DROP COLUMN `item_type` , DROP COLUMN `price` , DROP COLUMN `max_age` , DROP COLUMN `min_age` ;

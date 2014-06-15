@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">
+	<LinearLayout 
+		android:layout_width="fill_parent" 
+		android:layout_height="35.0dip"
+		android:orientation="horizontal" 
+		android:gravity="center_vertical">
+     	<Button 
+     		android:id="@+id/frame_btn_goods_all"
+     		style="@style/frame_button"
+         	android:text="@string/frame_title_goods_all"/>
+        <ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:background="@drawable/frame_button_cutline"/>
+     	<Button 
+     		android:id="@+id/frame_btn_goods_clothes"
+     		style="@style/frame_button"
+         	android:text="@string/frame_title_goods_clothes"/>
+	    <ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:background="@drawable/frame_button_cutline"/>
+     	<Button 
+     		android:id="@+id/frame_btn_goods_toys"
+     		style="@style/frame_button"
+         	android:text="@string/frame_title_goods_toys"/>
+     	<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:background="@drawable/frame_button_cutline"/>
+     	<Button 
+     		android:id="@+id/frame_btn_goods_others"
+     		style="@style/frame_button"
+         	android:text="@string/frame_title_goods_others"/>
+    </LinearLayout>
+    
+	<com.baijiayi.app.widget.PullToRefreshListView
+	  	android:id="@+id/frame_listview_goods"
+	    style="@style/widget_listview"/>
+	
+</LinearLayout>

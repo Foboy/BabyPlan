@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "BookList";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+    ResourceHelper.RegisterCss(this, "user.BookList.css");
+}
+
+<div class="right_block_title user_right_block grayblock">
+    <span class="title margin10 font-size16 black-font">我的书架</span>
+</div>
+<div class="goods_input_outer user_right_block whiteblock clearfix">
+<ul class="bookList">
+    <li class="clearfix font-size14">
+        <a href="#" target="_blank" class="fl img"><img src="../../images/3.jpg" /></a>
+        <div class="listContent fl gray-font">
+        <p class="font-size16"><b>姜虎良</b></p>
+        <p class="describe">这是我家宝贝从出生到一岁的成长历程，</p>
+        <div>
+           <label>最后编辑：</label><span class="dateTime">2012/10/13 10:31</span>
+        </div>
+        </div>
+        <div class="makeButton fl clearfix">
+            <a class="button-green  font-size18 fl" href="javascript:void(0);" title="制作纸质书">制作纸质书</a>
+            <a title="下载电子书 fl" href="javascript:void(0);" class="download">电子书</a>
+        </div>
+        <a href="#" class="delete"></a>
+    </li>
+    <li class="clearfix font-size14">
+        <a href="#" target="_blank" class="fl img"><img src="../../images/3.jpg" /></a>
+        <div class="listContent fl gray-font">
+        <p class="font-size16"><b>姜虎良</b></p>
+        <p class="describe">这是我家宝贝从出生到一岁的成长历程，</p>
+        <div>
+           <label>最后编辑：</label><span class="dateTime">2012/10/13 10:31</span>
+        </div>
+        </div>
+        <div class="makeButton fl clearfix">
+            <a class="button-green  font-size18 fl" href="javascript:void(0);" title="制作纸质书">制作纸质书</a>
+            <a title="下载电子书 fl" href="javascript:void(0);" class="download">电子书</a>
+        </div>
+    </li>
+    <li class="clearfix font-size14">
+        <a href="#" target="_blank" class="fl img"><img src="../../images/3.jpg" /></a>
+        <div class="listContent fl gray-font">
+        <p class="font-size16"><b>姜虎良</b></p>
+        <p class="describe">这是我家宝贝从出生到一岁的成长历程，</p>
+        <div>
+           <label>最后编辑：</label><span class="dateTime">2012/10/13 10:31</span>
+        </div>
+        </div>
+        <div class="makeButton fl clearfix">
+            <a class="button-green  font-size18 fl" href="javascript:void(0);" title="制作纸质书">制作纸质书</a>
+            <a title="下载电子书 fl" href="javascript:void(0);" class="download">电子书</a>
+        </div>
+    </li>
+    <li class="clearfix font-size14">
+        <a href="#" target="_blank" class="fl img"><img src="../../images/3.jpg" /></a>
+        <div class="listContent fl gray-font">
+        <p class="font-size16"><b>姜虎良</b></p>
+        <p class="describe">这是我家宝贝从出生到一岁的成长历程，</p>
+        <div>
+           <label>最后编辑：</label><span class="dateTime">2012/10/13 10:31</span>
+        </div>
+        </div>
+        <div class="makeButton fl clearfix">
+            <a class="button-green  font-size18 fl" href="javascript:void(0);" title="制作纸质书">制作纸质书</a>
+            <a title="下载电子书 fl" href="javascript:void(0);" class="download">电子书</a>
+        </div>
+    </li>
+            
+
+
+            
+
+            
+        </ul>
+</div>

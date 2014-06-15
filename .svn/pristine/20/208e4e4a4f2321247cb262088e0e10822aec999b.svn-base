@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+@model IEnumerable<BabyPlan.mvcApp.Model.ProductItemModel>
+<style type="text/css">
+    .bg_release{ background:url(/images/bg-discover.png) no-repeat  transparent; width:710px; height:150px;}
+    .latest_list_outer .latest_list_box{list-style-type: none;margin:0 10px;}
+    .latest_list_outer .latest_list_box li{width:140px;border:solid 1px #ccc;float:left;margin:8px 15px;}
+    .latest_list_outer .latest_list_box li .itembox{width:120px;margin:10px;position:relative;}
+    .latest_list_outer .latest_list_box li .itembox .price{height:20px;line-height:20px;padding:0 5px;background:#FF6666;color:#fff;position:absolute;display:block;}
+    .latest_list_outer .latest_list_box li img {display: block;}
+    .latest_list_outer .latest_list_box li p {color: #999;line-height: 16px;margin: 6px 0;}
+</style>
+<div class="user_right_block bg_release ">
+  
+</div>
+<div class="user_right_block whiteblock" style="margin:15px 0;">
+    <span class="blue-font font-size16 bold line-height40" style="margin:10px;">同城最新动态</span>
+    <div class="latest_list_outer user_right_block">
+        <ul class="latest_list_box">
+        @foreach (var item in Model)
+        { 
+            <li>
+                <div class="itembox">
+                    <a href="@Url.Action("Detail", "Trade")/@item.Pid?item=@item.Id" title="详细信息" target="_blank">
+                        <img src="@item.Pic.PicUrl" width="120" height="@item.Pic.ScaleHeight(120)">
+                    </a>
+                    <span class="price" style="top:@item.Pic.ScaleHeight(120,-20)px;right:0px;">￥@item.Price</span>
+                    <a href="@Url.Action("Detail", "Trade")/@item.Pid?item=@item.Id" title="详细信息" target="_blank">
+                        <p>@item.SubString(item.Description,10)</p>
+                    </a>
+                 </div>
+            </li>
+        }
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+

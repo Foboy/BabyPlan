@@ -1,0 +1,10 @@
+﻿/* File Created: 十一月 30, 2012 */
+  .love_content{ height:675px; background-color:#ffffff;}
+  .lovebg{width:100%; height:410px; background:#ffffff url(/images/loveHeart.jpg) no-repeat top center;}
+  .huodong{margin-top:10px;}
+  .huodong h1{ margin-left:10px; font-weight:500;}
+  .hd_lc{ margin:5px 15px;  height:200px; width:927px; border-bottom:1px solid #E1E3E6; border-top:1px solid #E1E3E6; border-left:1px solid #E1E3E6;}
+  .bz{ height:200px; width:308px; float:left;position:relative; border-right:1px solid #E1E3E6;}
+  .bz img{  margin-left:80px; margin-top:10px; }
+  .bz h3{ margin:0px 20px; font-size:14px; margin-top:10px;}
+  .bz_btn{ width:120px; margin-top:20px; margin-left:70px;}

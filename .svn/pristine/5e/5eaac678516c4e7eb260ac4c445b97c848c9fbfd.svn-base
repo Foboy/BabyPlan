@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta name="description" content="微博营销管理是基于国内互联网环境的社交媒体管理和营销工具，针对电子商务进行高效安全快速的微博运营。通过微博营销管理网站，品牌广告主、SME(电子商务，淘宝店，中小企业)可以轻松管理自己的微博各类信息，寻找有价值的客户粉丝，对微博营销实现有效监控，极大扩展潜在客户群和实现企业的运营目标。">
+    <meta name="keywords" content="微博营销,社交媒体管理,电子商务微博,Social Media Management,Social CRM">
+    <meta http-equiv="X-UA-Compatible" content="IE=9"> 
+    <title>微博营销管理</title>
+    <link type="text/css" href='@Url.Content("~/css/main.css")' rel="stylesheet"  />
+    <link type="text/css" href='@Url.Content("~/css/layout.css")' rel="stylesheet"  />
+    @Content.Script("jquery-1.5.1.min.js", Url)   
+    @RenderSection("Js_InHeader",false)
+</head> 
+<body class="body_tml sina body_bg" id="tbody_layout">
+    @Html.Partial("_header_after_login") 
+       <div class="container main-container clearfix"> 
+           <div id="main-aside">
+	            <ul class="aside-nav" id="aside-nav">
+		            <li><a title="控制面板" href='@Url.Action("dashboard", "cen")' id="dsh_lfnv"><i></i>控制面板</a></li>
+		            <li><a  title="我的微博" href='@Url.Action("timeline", "cen")'  id="tml_lfnv"><i></i><label id="span_wb_title"></label></a></li>
+		            <li><a title="发布管理" href="#" id="pub_lfnv"><i></i>发布管理<span></span></a>
+			            <dl class="sub-nav displaynone">
+				            <dd><a title="定时任务" href="#" id="prm_lfnv"><i></i>定时任务</a></dd>
+				            <dd><a title="素材精选" href="#" id="rmd_lfnv"><i></i>素材精选</a></dd>
+			            </dl>
+		            </li>
+		            <li><a title="消息管理" href="#" id="nbx_lfnv"><i></i>消息管理</a><a style="display:none" class="round5" id="inbox_count" href="#">0</a></li>		
+		            <li><a title="搜索" href="#" id="dsc_lfnv"><i></i>微博搜索</a></li>				
+		            <li><a title="客户管理" href="#" id="cus_lfnv"><i></i>客户管理<span></span></a>
+			            <dl class="sub-nav displaynone">
+				            <dd><a title="关系管理" href="#" id="rls_lfnv"><i></i>关系管理</a></dd>
+				            <dd><a title="客户推荐" href="#" id="scm_lfnv"><i></i>客户推荐</a></dd>
+				            <dd><a title="客户互动" href="#" id="cmt_lfnv"><i></i>客户互动</a></dd>
+			            </dl>
+		            </li>	
+		            <li><a title="数据分析" href="#" id="dat_lfnv"><i></i>数据分析<span></span></a>
+			            <dl class="sub-nav displaynone">
+				            <dd><a title="竞争对手" href="#" id="cpt_lfnv"><i></i>竞争对手</a></dd>
+				            <dd><a title="传播分析" href="#" id="wbm_lfnv"><i></i>传播分析</a></dd>
+				            <dd><a title="数据报告" href="#" id="drt_lfnv"><i></i>数据报告</a></dd>
+			            </dl>
+		            </li>				
+	            </ul>
+            </div>
+            <div id="main" class="clearfix">               
+                <div id="main-wraper">                
+                    @RenderBody() 
+                </div>
+            </div>
+        </div> 
+    @Html.Partial("_footer_after_login")
+</body>
+    @RenderSection("Js_InFoot", false)  
+    <script type="text/javascript">
+        $(function () {
+            //子菜单收展处理
+            $("#aside-nav li span").each(function () {
+                $(this).parent().bind("click", function () { checkMenuExpand($(this)) });
+            });
+
+            $("#aside-nav li>a").each(function () {
+                $(this).bind("click", function () {                    
+                    //设置选中菜单
+                    setSelmenu($(this).attr("id"));
+                 });
+            });
+        }); 
+
+        //检查所选的菜单是否打开
+        var checkMenuExpand = function (obj) {
+            //先关闭其他打开的子菜单
+            $(".sub-nav").each(function () {
+                if ($(this).hasClass("displayblock"))
+                    $(this).removeClass("displayblock").addClass("displaynone");
+            })
+            var sub_menu = $(obj).next();
+            if (sub_menu.hasClass("displaynone"))
+                sub_menu.removeClass("displaynone").addClass("displayblock");
+            else
+                sub_menu.removeClass("displayblock").addClass("displaynone");
+        }
+
+        var setSelmenu = function (menu_id) {
+            //将其他的菜单选项置为未选中状态
+            $("#aside-nav li a").each(function () {
+                if ($(this).hasClass("cur"))
+                    $(this).removeClass("cur");
+            });
+            $("#" + menu_id).addClass("cur");
+        }
+    </script>   
+</html>

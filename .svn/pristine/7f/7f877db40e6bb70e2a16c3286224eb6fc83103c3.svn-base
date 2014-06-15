@@ -1,0 +1,371 @@
+﻿/**
+ * @author yangchao
+ * @email:aaronyangchao@gmail.com
+ * @date: 2012/7/9 23:17:13
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Collections;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using BabyPlan.Common;
+using BabyPlan.Meta;
+using BabyPlan.DataStructure;
+
+
+namespace BabyPlan.DataAccess
+{
+    public class ProProductItemAccessor
+    {
+        private MySqlCommand cmdInsertProProductItem;
+        private MySqlCommand cmdDeleteProProductItem;
+        private MySqlCommand cmdUpdateProProductItem;
+        private MySqlCommand cmdLoadProProductItem;
+        private MySqlCommand cmdLoadAllProProductItem;
+        private MySqlCommand cmdGetProProductItemCount;
+        private MySqlCommand cmdGetProProductItem;
+
+        private ProProductItemAccessor()
+        {
+            #region cmdInsertProProductItem
+
+            cmdInsertProProductItem = new MySqlCommand("INSERT INTO pro_product_item(pro_item_id,min_age,max_age,price,item_info,pro_id,item_type,create_time,state,level,sex) values (@ProItemId,@MinAge,@MaxAge,@Price,@ItemInfo,@ProId,@ItemType,@CreateTime,@State,@Level,@Sex)");
+
+            cmdInsertProProductItem.Parameters.Add("@ProItemId", MySqlDbType.Int32);
+            cmdInsertProProductItem.Parameters.Add("@MinAge", MySqlDbType.Int32);
+            cmdInsertProProductItem.Parameters.Add("@MaxAge", MySqlDbType.Int32);
+            cmdInsertProProductItem.Parameters.Add("@Price", MySqlDbType.Decimal);
+            cmdInsertProProductItem.Parameters.Add("@ItemInfo", MySqlDbType.String);
+            cmdInsertProProductItem.Parameters.Add("@ProId", MySqlDbType.Int32);
+            cmdInsertProProductItem.Parameters.Add("@ItemType", MySqlDbType.Int32);
+            cmdInsertProProductItem.Parameters.Add("@CreateTime", MySqlDbType.DateTime);
+            cmdInsertProProductItem.Parameters.Add("@State", MySqlDbType.Int32);
+            cmdInsertProProductItem.Parameters.Add("@Level", MySqlDbType.Int32);
+            cmdInsertProProductItem.Parameters.Add("@Sex", MySqlDbType.Int32);
+            #endregion
+
+            #region cmdUpdateProProductItem
+
+            cmdUpdateProProductItem = new MySqlCommand(" update pro_product_item set pro_item_id = @ProItemId,min_age = @MinAge,max_age = @MaxAge,price = @Price,item_info = @ItemInfo,pro_id = @ProId,item_type = @ItemType,create_time = @CreateTime,state = @State,level = @Level,sex = @Sex where pro_item_id = @ProItemId");
+            cmdUpdateProProductItem.Parameters.Add("@ProItemId", MySqlDbType.Int32);
+            cmdUpdateProProductItem.Parameters.Add("@MinAge", MySqlDbType.Int32);
+            cmdUpdateProProductItem.Parameters.Add("@MaxAge", MySqlDbType.Int32);
+            cmdUpdateProProductItem.Parameters.Add("@Price", MySqlDbType.Decimal);
+            cmdUpdateProProductItem.Parameters.Add("@ItemInfo", MySqlDbType.String);
+            cmdUpdateProProductItem.Parameters.Add("@ProId", MySqlDbType.Int32);
+            cmdUpdateProProductItem.Parameters.Add("@ItemType", MySqlDbType.Int32);
+            cmdUpdateProProductItem.Parameters.Add("@CreateTime", MySqlDbType.DateTime);
+            cmdUpdateProProductItem.Parameters.Add("@State", MySqlDbType.Int32);
+            cmdUpdateProProductItem.Parameters.Add("@Level", MySqlDbType.Int32);
+            cmdUpdateProProductItem.Parameters.Add("@Sex", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdLoadProProductItem
+
+            cmdLoadProProductItem = new MySqlCommand(@"select 
+                                                pro_item_id,
+                                                min_age,
+                                                max_age,
+                                                price,
+                                                item_info,
+                                                pro_id,
+                                                item_type,
+                                                create_time,
+                                                pi.state,
+                                                level,
+                                                sex,
+                                                p.pic_url,
+                                                p.pic_height,
+                                                p.pic_width,
+                                                p.pic_id
+from
+    pro_product_item pi
+        left join
+     (select pp.* from res_pic pp where pp.obj_type = 1) p ON pi.pro_item_id = p.obj_id
+where (item_type = @bbType or @bbType = 0) and (sex = @Sex or @Sex = 0)  {0}
+order by pi.create_time desc limit @PageIndex,@PageSize");
+            cmdLoadProProductItem.Parameters.Add("@pageIndex", MySqlDbType.Int32);
+            cmdLoadProProductItem.Parameters.Add("@pageSize", MySqlDbType.Int32);
+            cmdLoadProProductItem.Parameters.Add("@Sex", MySqlDbType.Int32);
+            cmdLoadProProductItem.Parameters.Add("@bbType", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdGetProProductItemCount
+
+            cmdGetProProductItemCount = new MySqlCommand(@" select count(*)  from
+    pro_product_item pi
+        left join
+     (select pp.* from res_pic pp where pp.obj_type = 1) p ON pi.pro_item_id = p.obj_id
+where (item_type = @bbType or @bbType = 0) and (sex = @Sex or @Sex = 0)  {0}
+order by pi.create_time desc ");
+            cmdGetProProductItemCount.Parameters.Add("@Sex", MySqlDbType.Int32);
+            cmdGetProProductItemCount.Parameters.Add("@bbType", MySqlDbType.Int32);
+            #endregion
+
+            #region cmdLoadProProductItem
+
+            cmdLoadAllProProductItem = new MySqlCommand(@"select 
+                                                        pro_item_id,
+                                                        min_age,
+                                                        max_age,
+                                                        price,
+                                                        item_info,
+                                                        pro_id,
+                                                        item_type,
+                                                        create_time,
+                                                        pi.state,
+                                                        level,
+                                                        sex,
+                                                        p.pic_url,
+                                                p.pic_height,
+                                                p.pic_width,
+                                                p.pic_id
+                                                    from
+                                                        pro_product_item pi
+                                                            left join
+                                                         (select pp.* from res_pic pp where pp.obj_type = 1) p ON pi.pro_item_id = p.obj_id
+                                                    where pro_id = @pid");
+            cmdLoadAllProProductItem.Parameters.Add("@pid", MySqlDbType.Int32);
+            #endregion
+
+            #region cmdGetProProductItem
+
+            cmdGetProProductItem = new MySqlCommand(@" select pro_item_id,min_age,max_age,price,item_info,pro_id,item_type,create_time,pi.state,level,sex ,p.pic_url,
+                                                p.pic_height,
+                                                p.pic_width,
+                                                p.pic_id
+                                                    from
+                                                        pro_product_item pi
+                                                            left join
+                                                         (select pp.* from res_pic pp where pp.obj_type = 1) p ON pi.pro_item_id = p.obj_id
+                                                    where pro_item_id = @ProItemId");
+            cmdGetProProductItem.Parameters.Add("@ProItemId", MySqlDbType.Int32);
+
+            #endregion
+        }
+
+        /// <summary>
+        /// 添加数据
+        /// <param name="es">数据实体对象数组</param>
+        /// <returns></returns>
+        /// </summary>
+        public bool Insert(ProProductItem e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdInsertProProductItem = cmdInsertProProductItem.Clone() as MySqlCommand;
+            bool returnValue = false;
+            _cmdInsertProProductItem.Connection = oc;
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+                _cmdInsertProProductItem.Parameters["@MinAge"].Value = e.MinAge;
+                _cmdInsertProProductItem.Parameters["@MaxAge"].Value = e.MaxAge;
+                _cmdInsertProProductItem.Parameters["@Price"].Value = e.Price;
+                _cmdInsertProProductItem.Parameters["@ItemInfo"].Value = e.ItemInfo;
+                _cmdInsertProProductItem.Parameters["@ProId"].Value = e.ProId;
+                _cmdInsertProProductItem.Parameters["@ItemType"].Value = (int)e.ItemType;
+                _cmdInsertProProductItem.Parameters["@CreateTime"].Value = DateTime.Now;
+                _cmdInsertProProductItem.Parameters["@State"].Value = (int)e.State;
+                _cmdInsertProProductItem.Parameters["@Level"].Value = (int)e.Level;
+                _cmdInsertProProductItem.Parameters["@Sex"].Value = (int)e.Sex;
+
+                _cmdInsertProProductItem.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdInsertProProductItem.Dispose();
+                _cmdInsertProProductItem = null;
+            }
+        }
+
+        /// <summary>
+        /// 修改指定的数据
+        /// <param name="e">修改后的数据实体对象</param>
+        /// <para>数据对应的主键必须在实例中设置</para>
+        /// </summary>
+        public void Update(ProProductItem e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdUpdateProProductItem = cmdUpdateProProductItem.Clone() as MySqlCommand;
+            _cmdUpdateProProductItem.Connection = oc;
+
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                _cmdUpdateProProductItem.Parameters["@ProItemId"].Value = e.ProItemId;
+                _cmdUpdateProProductItem.Parameters["@MinAge"].Value = e.MinAge;
+                _cmdUpdateProProductItem.Parameters["@MaxAge"].Value = e.MaxAge;
+                _cmdUpdateProProductItem.Parameters["@Price"].Value = e.Price;
+                _cmdUpdateProProductItem.Parameters["@ItemInfo"].Value = e.ItemInfo;
+                _cmdUpdateProProductItem.Parameters["@ProId"].Value = e.ProId;
+                _cmdUpdateProProductItem.Parameters["@ItemType"].Value = (int)e.ItemType;
+                _cmdUpdateProProductItem.Parameters["@CreateTime"].Value = DateTime.Now;
+                _cmdUpdateProProductItem.Parameters["@State"].Value = (int)e.State;
+                _cmdUpdateProProductItem.Parameters["@Level"].Value = (int)e.Level;
+                _cmdUpdateProProductItem.Parameters["@Sex"].Value = (int)e.Sex;
+
+                _cmdUpdateProProductItem.ExecuteNonQuery();
+
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdUpdateProProductItem.Dispose();
+                _cmdUpdateProProductItem = null;
+                GC.Collect();
+            }
+        }
+
+        /// <summary>
+        /// 根据条件分页获取指定数据
+        /// <param name="pageIndex">当前页</param>
+        /// <para>索引从0开始</para>
+        /// <param name="pageSize">每页记录条数</param>
+        /// <para>记录数必须大于0</para>
+        /// </summary>
+        public PageEntity<ProProductItem> Search(Int32 MaxAge, ItemType bbType, SexType sex, int pageIndex, int pageSize)
+        {
+            PageEntity<ProProductItem> returnValue = new PageEntity<ProProductItem>();
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadProProductItem = cmdLoadProProductItem.Clone() as MySqlCommand;
+            MySqlCommand _cmdGetProProductItemCount = cmdGetProProductItemCount.Clone() as MySqlCommand;
+            _cmdLoadProProductItem.Connection = oc;
+            _cmdGetProProductItemCount.Connection = oc;
+
+            try
+            {
+                _cmdLoadProProductItem.Parameters["@PageIndex"].Value = pageIndex;
+                _cmdLoadProProductItem.Parameters["@PageSize"].Value = pageSize;
+                _cmdLoadProProductItem.Parameters["@ItemType"].Value = (int)bbType;
+                _cmdLoadProProductItem.Parameters["@Sex"].Value = (int)sex;
+                if (MaxAge > 0)
+                {
+                    _cmdLoadProProductItem.CommandText = string.Format(_cmdLoadProProductItem.CommandText, " and " + MaxAge + " >= min_age and " + MaxAge + "<= max_age ");
+                }
+
+                _cmdGetProProductItemCount.Parameters["@ItemType"].Value = (int)bbType;
+                _cmdGetProProductItemCount.Parameters["@Sex"].Value = (int)sex;
+                if (MaxAge > 0)
+                {
+                    _cmdGetProProductItemCount.CommandText = string.Format(_cmdLoadProProductItem.CommandText, " and " + MaxAge + " >= min_age and " + MaxAge + "<= max_age ");
+                }
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadProProductItem.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnValue.Items.Add(new ProProductItem().BuildSampleEntity(reader));
+                }
+                returnValue.RecordsCount = (int)_cmdGetProProductItemCount.ExecuteScalar();
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadProProductItem.Dispose();
+                _cmdLoadProProductItem = null;
+                _cmdGetProProductItemCount.Dispose();
+                _cmdGetProProductItemCount = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+
+        /// <summary>
+        /// 获取全部数据
+        /// </summary>
+        public List<ProProductItem> Search(int pid)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadAllProProductItem = cmdLoadAllProProductItem.Clone() as MySqlCommand;
+            _cmdLoadAllProProductItem.Connection = oc; List<ProProductItem> returnValue = new List<ProProductItem>();
+            try
+            {
+                _cmdLoadAllProProductItem.CommandText = string.Format(_cmdLoadAllProProductItem.CommandText, string.Empty);
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+                _cmdLoadAllProProductItem.Parameters["@pid"].Value = pid;
+                MySqlDataReader reader = _cmdLoadAllProProductItem.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnValue.Add(new ProProductItem().BuildSampleEntity(reader));
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadAllProProductItem.Dispose();
+                _cmdLoadAllProProductItem = null;
+                GC.Collect();
+            }
+            return returnValue;
+        }
+
+        /// <summary>
+        /// 获取指定记录
+        /// <param name="id">Id值</param>
+        /// </summary>
+        public ProProductItem Get(int ProItemId)
+        {
+            ProProductItem returnValue = null;
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdGetProProductItem = cmdGetProProductItem.Clone() as MySqlCommand;
+
+            _cmdGetProProductItem.Connection = oc;
+            try
+            {
+                _cmdGetProProductItem.Parameters["@ProItemId"].Value = ProItemId;
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdGetProProductItem.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    returnValue = new ProProductItem().BuildSampleEntity(reader);
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdGetProProductItem.Dispose();
+                _cmdGetProProductItem = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+        private static readonly ProProductItemAccessor instance = new ProProductItemAccessor();
+        public static ProProductItemAccessor Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+    }
+}

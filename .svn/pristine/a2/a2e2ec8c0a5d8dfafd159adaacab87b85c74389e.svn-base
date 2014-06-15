@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BabyPlan.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BabyPlan.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ReplyService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/BabyPlan.Meta" />
+  <xs:complexType name="PageEntityOfGenReplyeRTV06kj">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="PageEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/BabyPlan.Common" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="GenReply" Namespace="http://schemas.datacontract.org/2004/07/BabyPlan.Meta" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BabyPlan.Meta" name="_x003C_Items_x003E_k__BackingField" nillable="true" type="q1:ArrayOfGenReply" />
+      <xs:element name="_x003C_PageIndex_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_PageSize_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_RecordsCount_x003E_k__BackingField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PageEntityOfGenReplyeRTV06kj" nillable="true" type="tns:PageEntityOfGenReplyeRTV06kj" />
+</xs:schema>

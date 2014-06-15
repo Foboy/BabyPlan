@@ -1,0 +1,277 @@
+﻿/**
+ * @author yangchao
+ * @email:aaronyangchao@gmail.com
+ * @date: 2012/6/21 0:47:30
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Collections;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using BabyPlan.Common;
+using System.Collections;
+using BabyPlan.Meta;
+
+
+namespace BabyPlan.DataAccess
+{
+    public class GenBlessAccessor
+    {
+        private MySqlCommand cmdInsertGenBless;
+        private MySqlCommand cmdDeleteGenBless;
+        private MySqlCommand cmdUpdateGenBless;
+        private MySqlCommand cmdLoadGenBless;
+        private MySqlCommand cmdLoadAllGenBless;
+        private MySqlCommand cmdGetGenBlessCount;
+        private MySqlCommand cmdGetGenBless;
+
+        private GenBlessAccessor()
+        {
+            #region cmdInsertGenBless
+
+            cmdInsertGenBless = new MySqlCommand("INSERT INTO gen_bless(bid,content,create_time,create_id) values (@Bid,@Content,@CreateTime,@CreateId)");
+
+            cmdInsertGenBless.Parameters.Add("@Bid", MySqlDbType.Int32);
+            cmdInsertGenBless.Parameters.Add("@Content", MySqlDbType.String);
+            cmdInsertGenBless.Parameters.Add("@CreateTime", MySqlDbType.DateTime);
+            cmdInsertGenBless.Parameters.Add("@CreateId", MySqlDbType.Int32);
+            #endregion
+
+            #region cmdUpdateGenBless
+
+            cmdUpdateGenBless = new MySqlCommand(" update gen_bless set bid = @Bid,content = @Content,create_time = @CreateTime,create_id = @CreateId where bid = @Bid");
+            cmdUpdateGenBless.Parameters.Add("@Bid", MySqlDbType.Int32);
+            cmdUpdateGenBless.Parameters.Add("@Content", MySqlDbType.String);
+            cmdUpdateGenBless.Parameters.Add("@CreateTime", MySqlDbType.DateTime);
+            cmdUpdateGenBless.Parameters.Add("@CreateId", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdLoadGenBless
+
+            cmdLoadGenBless = new MySqlCommand(@" select bid,content,create_time,create_id from gen_bless limit @PageIndex,@PageSize");
+            cmdLoadGenBless.Parameters.Add("@pageIndex", MySqlDbType.Int32);
+            cmdLoadGenBless.Parameters.Add("@pageSize", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdGetGenBlessCount
+
+            cmdGetGenBlessCount = new MySqlCommand(" select count(*)  from gen_bless ");
+
+            #endregion
+
+            #region cmdLoadAllGenBless
+
+            cmdLoadAllGenBless = new MySqlCommand(" select bid,content,create_time,create_id from gen_bless");
+
+            #endregion
+
+            #region cmdGetGenBless
+
+            cmdGetGenBless = new MySqlCommand(" select bid,content,create_time,create_id from gen_bless where bid = @Bid");
+            cmdGetGenBless.Parameters.Add("@Bid", MySqlDbType.Int32);
+
+            #endregion
+        }
+
+        /// <summary>
+        /// 添加数据
+        /// <param name="es">数据实体对象数组</param>
+        /// <returns></returns>
+        /// </summary>
+        public bool Insert(GenBless e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdInsertGenBless = cmdInsertGenBless.Clone() as MySqlCommand;
+            bool returnValue = false;
+            _cmdInsertGenBless.Connection = oc;
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+                _cmdInsertGenBless.Parameters["@Bid"].Value = e.Bid;
+                _cmdInsertGenBless.Parameters["@Content"].Value = e.Content;
+                _cmdInsertGenBless.Parameters["@CreateTime"].Value = e.CreateTime;
+                _cmdInsertGenBless.Parameters["@CreateId"].Value = e.CreateId;
+
+                _cmdInsertGenBless.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdInsertGenBless.Dispose();
+                _cmdInsertGenBless = null;
+            }
+        }
+
+        /// <summary>
+        /// 修改指定的数据
+        /// <param name="e">修改后的数据实体对象</param>
+        /// <para>数据对应的主键必须在实例中设置</para>
+        /// </summary>
+        public void Update(GenBless e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdUpdateGenBless = cmdUpdateGenBless.Clone() as MySqlCommand;
+            _cmdUpdateGenBless.Connection = oc;
+
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                _cmdUpdateGenBless.Parameters["@Bid"].Value = e.Bid;
+                _cmdUpdateGenBless.Parameters["@Content"].Value = e.Content;
+                _cmdUpdateGenBless.Parameters["@CreateTime"].Value = e.CreateTime;
+                _cmdUpdateGenBless.Parameters["@CreateId"].Value = e.CreateId;
+
+                _cmdUpdateGenBless.ExecuteNonQuery();
+
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdUpdateGenBless.Dispose();
+                _cmdUpdateGenBless = null;
+                GC.Collect();
+            }
+        }
+
+        /// <summary>
+        /// 根据条件分页获取指定数据
+        /// <param name="pageIndex">当前页</param>
+        /// <para>索引从0开始</para>
+        /// <param name="pageSize">每页记录条数</param>
+        /// <para>记录数必须大于0</para>
+        /// </summary>
+        public PageEntity<GenBless> Search(Int32 Bid, String Content, DateTime CreateTime, Int32 CreateId, int pageIndex, int pageSize)
+        {
+            PageEntity<GenBless> returnValue = new PageEntity<GenBless>();
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadGenBless = cmdLoadGenBless.Clone() as MySqlCommand;
+            MySqlCommand _cmdGetGenBlessCount = cmdGetGenBlessCount.Clone() as MySqlCommand;
+            _cmdLoadGenBless.Connection = oc;
+            _cmdGetGenBlessCount.Connection = oc;
+
+            try
+            {
+                _cmdLoadGenBless.Parameters["@PageIndex"].Value = pageIndex;
+                _cmdLoadGenBless.Parameters["@PageSize"].Value = pageSize;
+                _cmdLoadGenBless.Parameters["@Bid"].Value = Bid;
+                _cmdLoadGenBless.Parameters["@Content"].Value = Content;
+                _cmdLoadGenBless.Parameters["@CreateTime"].Value = CreateTime;
+                _cmdLoadGenBless.Parameters["@CreateId"].Value = CreateId;
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadGenBless.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnValue.Items.Add(new GenBless().BuildSampleEntity(reader));
+                }
+                returnValue.RecordsCount = Convert.ToInt32(_cmdGetGenBlessCount.ExecuteScalar());
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadGenBless.Dispose();
+                _cmdLoadGenBless = null;
+                _cmdGetGenBlessCount.Dispose();
+                _cmdGetGenBlessCount = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+
+        /// <summary>
+        /// 获取全部数据
+        /// </summary>
+        public List<GenBless> Search()
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadAllGenBless = cmdLoadAllGenBless.Clone() as MySqlCommand;
+            _cmdLoadAllGenBless.Connection = oc; List<GenBless> returnValue = new List<GenBless>();
+            try
+            {
+                _cmdLoadAllGenBless.CommandText = string.Format(_cmdLoadAllGenBless.CommandText, string.Empty);
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadAllGenBless.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnValue.Add(new GenBless().BuildSampleEntity(reader));
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadAllGenBless.Dispose();
+                _cmdLoadAllGenBless = null;
+                GC.Collect();
+            }
+            return returnValue;
+        }
+
+        /// <summary>
+        /// 获取指定记录
+        /// <param name="id">Id值</param>
+        /// </summary>
+        public GenBless Get(int Bid)
+        {
+            GenBless returnValue = null;
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdGetGenBless = cmdGetGenBless.Clone() as MySqlCommand;
+
+            _cmdGetGenBless.Connection = oc;
+            try
+            {
+                _cmdGetGenBless.Parameters["@Bid"].Value = Bid;
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdGetGenBless.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    returnValue = new GenBless().BuildSampleEntity(reader);
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdGetGenBless.Dispose();
+                _cmdGetGenBless = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+        private static readonly GenBlessAccessor instance = new GenBlessAccessor();
+        public static GenBlessAccessor Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+    }
+}

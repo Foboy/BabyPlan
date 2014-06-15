@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1937/BabyPlan.WcfService/FileService.svc?xsd=xsd2" namespace="http://babyplan.com/services" />
+  <xs:element name="DeleteBBPic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="picId" type="xs:int" />
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBBPicResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://babyplan.com/services" minOccurs="0" name="DeleteBBPicResult" nillable="true" type="q1:RespResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadBBPic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fileByte" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="picHeight" type="xs:int" />
+        <xs:element minOccurs="0" name="picWidth" type="xs:int" />
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadBBPicResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://babyplan.com/services" minOccurs="0" name="UploadBBPicResult" nillable="true" type="q2:AdvancedResultOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadUserImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fileByte" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="picHeight" type="xs:int" />
+        <xs:element minOccurs="0" name="picWidth" type="xs:int" />
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadUserImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://babyplan.com/services" minOccurs="0" name="UploadUserImageResult" nillable="true" type="q3:AdvancedResultOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

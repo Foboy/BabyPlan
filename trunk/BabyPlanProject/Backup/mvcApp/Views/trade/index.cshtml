@@ -1,0 +1,224 @@
+﻿@model IEnumerable<BabyPlan.mvcApp.ViewModel.ProductModel>
+@{
+    ViewBag.Title = "百家衣-二手宝宝衣物";
+    Layout = "~/Views/Shared/_Layout_Trade.cshtml";
+    
+    var itemType = ViewBag.ItemType ?? ItemType.Ignore;
+    var itemSort = ViewBag.ItemSort ?? ItemSort.Ignore;
+    var sexType = ViewBag.SexType ?? SexType.Ignore;
+    var priceRange = ViewBag.PriceRange ?? PriceRange.Ignore;
+    var Age = ViewBag.Age ?? 0;
+    ResourceHelper.RegisterCss(this, "trade.index.css");
+}
+@section Js_InHeader{}
+
+@* <div class="goods_header mainblock">
+    <div class="sort fl">
+       <span class="gray-font">排序：</span>
+       <ul class="sort_ul fl">
+           <li>排序:</li>
+           <li>
+           @if (sexType != SexType.Man)
+           {
+           <a href="@Url.Action("List", "Trade", new { category = UrlRequestParameter.RequestParameter, sex = BabyPlan.DataStructure.SexType.Man, age = UrlRequestParameter.RequestParameter })">小公子</a>
+           }
+           else
+           { 
+           <a>小公子</a>
+           }
+           </li>
+           <li>
+           @if (sexType != SexType.Woman)
+           {
+           <a href="@Url.Action("List", "Trade", new { category = UrlRequestParameter.RequestParameter, sex = BabyPlan.DataStructure.SexType.Woman, age = UrlRequestParameter.RequestParameter })">小公主</a>
+           }
+           else
+           { 
+           <a>小公主</a>
+           }
+           </li>
+           <li>
+           @if (Age != 1)
+           {
+           <a href="@Url.Action("List", "Trade", new { category = UrlRequestParameter.RequestParameter, sex = UrlRequestParameter.RequestParameter, age = 1 })">0-1岁</a>
+           }
+           else
+           { 
+           <a>0-1岁</a>
+           }
+           </li>
+           <li>
+           @if (Age != 2)
+           {
+           <a href="@Url.Action("List", "Trade", new { category = UrlRequestParameter.RequestParameter, sex = UrlRequestParameter.RequestParameter, age = 2 })">2岁</a>
+           }
+           else
+           { 
+           <a>2岁</a>
+           }
+           </li>
+           <li>
+           @if (Age != 3)
+           {
+           <a href="@Url.Action("List", "Trade", new { category = UrlRequestParameter.RequestParameter, sex = UrlRequestParameter.RequestParameter, age = 3 })">3岁</a>
+           }
+           else
+           { 
+           <a>3岁</a>
+           }
+           </li>
+           <li>
+           @if (Age != 4)
+           {
+           <a href="@Url.Action("List", "Trade", new { category = UrlRequestParameter.RequestParameter, sex = UrlRequestParameter.RequestParameter, age = 4 })">4岁</a>
+           }
+           else
+           { 
+           <a>4岁</a>
+           }
+           </li>
+        </ul>
+    </div>*@
+
+<div class="goods_outer mainblock">
+    <ul id="goodsbox" class="goodsbox mainblock">
+    @if (Model != null && Model.Count() > 0)
+    {
+        foreach (var item in Model.Where(a=>a.Pics.Count>0))
+        {
+        <li>
+            <div class="itembox">
+                <a title="详细信息" href="@Url.Action("Detail", "Trade", new { category = UrlRequestParameter.RequestParameter,id=item.Id })" target="_blank">
+                    <img src="@item.Pics[0].PicUrl" width="208" height="@item.Pics[0].ScaleHeight(190)" />
+                </a>
+                <span style="top: @item.Pics[0].ScaleHeight(190,-20)px; right: 0px;" class="price">￥@item.Price</span>
+                <a title="详细信息" href="@Url.Action("Detail", "Trade", new { category = UrlRequestParameter.RequestParameter,id = item.Id })" target="_blank">
+                    <p>@item.Description</p>
+                </a>
+            </div>
+            <div class="comment">
+                <span class="fl blue-font">评论：(@item.ReplyNum)</span>
+                <span class="fr gray-font">@item.FriendlyDate</span>
+            </div>
+        </li>
+        }
+    }
+    </ul>
+    <div id="loader">
+    <div id="loaderCircle">
+    
+    </div>
+    </div>
+</div>
+<script type="text/html" id="goods_item_model">
+        <li>
+            <div class="itembox">
+                <a title="详细信息" href="{@@itemUrl}" target="_blank">
+                    <img src="{@@picUrl}" width="208" height="{$ScalePicHeight(@@width,@@height,190,0)}" />
+                </a>
+                <span style="top: {$ScalePicHeight(@@width,@@height,190,-20)}px; right: 0px;" class="price">￥{@@price}</span>
+                <a title="详细信息" href="{@@picUrl}" target="_blank">
+                    <p>{@@description}</p>
+                </a>
+            </div>
+            <div class="comment">
+                <span class="fl blue-font">评论：({@@comment})</span>
+                <span class="fr gray-font">{@@date}</span>
+            </div>
+        </li>
+</script>
+@section Js_InFoot{
+@Content.Script("cTemplate.js", Url)
+@Content.Script("cTemplate.method.js", Url)
+@Content.Script("wookmark/jquery.wookmark.min.js", Url)  
+ <script type="text/javascript">
+     $(document).ready(new function () {
+
+         var gtemplate = $("#goods_item_model").cTemplate();
+         var handler = null;
+         var page = 1;
+         var isLoading = false;
+         var apiURL = '@Url.Action("AjaxGetGoods", "Trade")';
+         var detailURL = '@Url.Action("Detail", "Trade", new { id = 1111 })';
+         var itemType = "@itemType";
+         var sexType = "@sexType";
+         var age = "@Age";
+         var itemSort = "@itemSort";
+         var priceRange = "@priceRange";
+
+
+
+         var options = {
+             autoResize: true,
+             container: $('#goodsbox'),
+             offset: 16,
+             itemWidth: 228
+         };
+
+         function onScroll(event) {
+             if (!isLoading) {
+                 var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
+                 if (closeToBottom) {
+                     loadData();
+                 }
+             }
+         };
+
+         function applyLayout() {
+             if (handler)
+                 handler.wookmarkClear();
+             handler = $('#goodsbox li');
+             handler.wookmark(options);
+         };
+
+         applyLayout();
+
+         function loadData() {
+             isLoading = true;
+             $('#loaderCircle').show();
+             time1 = new Date();
+             $.ajax({
+                 url: apiURL + "?rn=" + Math.random(),
+                 //dataType: 'jsonp',
+                 data: { page: page, age: age, itemType: itemType, sexType: sexType, itemSort: itemSort, priceRange: priceRange },
+                 success: onLoadData
+             });
+         };
+
+         function onLoadData(data) {
+             isLoading = false;
+             $('#loaderCircle').hide();
+             if (data.Error != 0) {
+                 alert(data.ErrorMessage);
+                 return;
+             }
+             data = data.Data;
+             page++;
+
+             var html = '';
+             var picHeight = 0;
+             var i = 0, length = data.length, item;
+             for (; i < length; i++) {
+                 item = data[i];
+                 html += gtemplate.DataBind({
+                     itemUrl: detailURL.replace("1111", item.Id),
+                     id: item.Id,
+                     picUrl: item.Pics[0].PicUrl,
+                     width: item.Pics[0].PicWidth,
+                     height: item.Pics[0].PicHeight,
+                     description: item.Description,
+                     comment: item.ReplyNum,
+                     date: item.FriendlyDate,
+                     price: item.Price
+                 });
+             }
+             $('#goodsbox').append(html);
+
+             applyLayout();
+         };
+         $(document).bind('scroll', onScroll);
+     });
+  </script>
+}
+
+

@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "爱心接力-百家衣(www.360baijiayi.com)";
+    ViewBag.Description = "百家衣(www.360baijiayi.com)是一个专注婴儿闲置衣物买卖的网站，在这里妈妈们可以在线买卖宝宝闲置的衣服、玩具。“百家衣”是婴儿服的一种，由一百个家庭收集到布片做成，故名“百家衣”";
+    ViewBag.KeyWords = "百家衣,买卖,旧衣服,二手,二手衣服,闲置,宝宝,婴儿,儿童,孩子,衣服,小孩衣服,婴儿衣服,寄售,玩具,同城置换,同城交易,四川二手,成都二手衣服";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ResourceHelper.RegisterCss(this, "loveheart.css");
+}
+
+@Html.Partial("_Header_Partial")
+
+<div class="mainblock love_content">
+  <div class="lovebg"></div>
+
+</div>
+
+@Html.Partial("_Footer_Partial")

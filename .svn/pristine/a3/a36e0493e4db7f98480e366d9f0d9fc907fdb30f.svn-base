@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "ViewPage1";
+    Layout = "~/Views/shared/_Layout.cshtml";
+}  
+@Html.Partial("_header_no_signform") 
+<div class="pMain body_bg"> 
+    <div class="container">  
+        <div id="pRegister">
+           <div class="roof"></div>     
+            <div class="room">
+                <div class="room-in-nor  clearfix">
+                   <form action='@Url.Action("do_reg", "a")' method="post" id="reg-form">
+                        <div class="reg-box">
+                            <p><label><span class="red-font">* </span>邮箱:</label><input id="reg-email" class="reg-input-wrap" type="text" value="" autocomplete="off" maxlength="50"><span class="error"></span></p>
+                            <p><label><span class="red-font">* </span>密码:</label><input id="reg-pwd" class="reg-input-wrap" type="password" value="" autocomplete="off" maxlength="50"><span class="error"></span></p>
+                            <p><button type="submit" class="submit">立即注册</button></p>
+                            <p><span class="red-font">* </span><input type="checkbox" id="chk_agreement" checked="checked"/><span class="small">阅读并同意</span><a href="#">微博营销平台服务条款</a><span class="error"></span></p>                                           
+                        </div>
+                    </form>
+                    <div class="login-box">
+                        <div class="has-account">
+                            <h4>已有微博营销平台帐号？</h4>
+                            <p><a href='@Url.Action("login","a")' class="submit">登录</a></p> 
+                        </div>
+                        <div class="dotline"></div>
+                        <ul>                         
+                            <li class="login-qq-link"><a title="腾讯微博登录" href='@Url.Action("qq_wb_login", "a")'>腾讯微博登录</a></li>
+                            <li class="login-sina-link"><a  title="微博帐号登录" href='@Url.Action("sina_login", "a")'>微博帐号登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>                     
+            <div class="floor"></div>
+        </div>
+    </div>
+</div> 
+@Html.Partial("_footer_after_login")
+<script type="text/javascript">
+    $('#reg-form').submit(function (event) {
+        event.preventDefault();
+        if (!/^[a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test($('#reg-email').val())) {
+            alert('请输入正确的Email');
+            $('#reg-email').focus();
+            return;
+        };
+        if (!$('#reg-pwd').val()) {
+            alert('请输入密码');
+            $('#reg-pwd').focus();
+            return;
+        };
+        var login_param = {
+            username: $('#reg-email').val(),
+            password: $('#reg-pwd').val()           
+            //$.md5($("#signin-pw").val())
+        };
+        $.ajax({
+            type: "POST",
+            dataType: "Json",
+            data: login_param,
+            url: '@Url.Action("do_reg", "a")',
+            success: function (ret_msg) {
+                if (ret_msg.Error == 0) {
+                    //平台账号注册第二步                              
+                    window.location.href = '@Url.Action("sel_social_user", "a")'
+                }
+                else                
+                   alert(ret_msg.RetMsg + ",错误代码：" + ret_msg.Error);      
+            }
+        });
+    });
+    </script>
+}

@@ -1,0 +1,57 @@
+for(var i = 0; i < 151; i++) { var scriptId = 'u' + i; window[scriptId] = document.getElementById(scriptId); }
+
+$axure.eventManager.pageLoad(
+function (e) {
+
+});
+gv_vAlignTable['u115'] = 'center';gv_vAlignTable['u122'] = 'top';u32.tabIndex = 0;
+
+u32.style.cursor = 'pointer';
+$axure.eventManager.click('u32', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u32'] = 'top';gv_vAlignTable['u7'] = 'center';gv_vAlignTable['u79'] = 'center';HookHover('u4', false);
+HookHover('u140', false);
+gv_vAlignTable['u135'] = 'top';gv_vAlignTable['u42'] = 'top';gv_vAlignTable['u101'] = 'center';gv_vAlignTable['u14'] = 'center';gv_vAlignTable['u27'] = 'center';HookHover('u138', false);
+gv_vAlignTable['u52'] = 'top';gv_vAlignTable['u20'] = 'center';gv_vAlignTable['u67'] = 'top';gv_vAlignTable['u65'] = 'center';gv_vAlignTable['u120'] = 'top';gv_vAlignTable['u110'] = 'top';HookHover('u6', false);
+gv_vAlignTable['u108'] = 'center';gv_vAlignTable['u141'] = 'center';gv_vAlignTable['u75'] = 'top';gv_vAlignTable['u133'] = 'center';gv_vAlignTable['u34'] = 'top';gv_vAlignTable['u68'] = 'top';gv_vAlignTable['u47'] = 'center';gv_vAlignTable['u72'] = 'center';gv_vAlignTable['u103'] = 'top';gv_vAlignTable['u99'] = 'center';gv_vAlignTable['u66'] = 'top';gv_vAlignTable['u57'] = 'top';gv_vAlignTable['u119'] = 'top';gv_vAlignTable['u16'] = 'center';gv_vAlignTable['u41'] = 'top';gv_vAlignTable['u149'] = 'top';gv_vAlignTable['u54'] = 'center';gv_vAlignTable['u118'] = 'top';gv_vAlignTable['u88'] = 'center';gv_vAlignTable['u38'] = 'center';gv_vAlignTable['u85'] = 'top';gv_vAlignTable['u51'] = 'top';u23.tabIndex = 0;
+
+u23.style.cursor = 'pointer';
+$axure.eventManager.click('u23', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u23'] = 'top';gv_vAlignTable['u144'] = 'top';gv_vAlignTable['u36'] = 'center';gv_vAlignTable['u95'] = 'top';gv_vAlignTable['u61'] = 'center';gv_vAlignTable['u74'] = 'center';gv_vAlignTable['u33'] = 'top';gv_vAlignTable['u92'] = 'center';gv_vAlignTable['u5'] = 'center';gv_vAlignTable['u127'] = 'center';gv_vAlignTable['u43'] = 'top';gv_vAlignTable['u56'] = 'center';gv_vAlignTable['u150'] = 'top';HookHover('u142', false);
+gv_vAlignTable['u106'] = 'center';gv_vAlignTable['u40'] = 'center';gv_vAlignTable['u139'] = 'center';gv_vAlignTable['u104'] = 'top';gv_vAlignTable['u121'] = 'top';document.getElementById('u19_img').tabIndex = 0;
+
+u19.style.cursor = 'pointer';
+$axure.eventManager.click('u19', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u109'] = 'top';gv_vAlignTable['u84'] = 'top';gv_vAlignTable['u50'] = 'top';gv_vAlignTable['u97'] = 'center';gv_vAlignTable['u63'] = 'center';gv_vAlignTable['u76'] = 'top';gv_vAlignTable['u134'] = 'top';gv_vAlignTable['u81'] = 'center';gv_vAlignTable['u94'] = 'top';gv_vAlignTable['u102'] = 'top';gv_vAlignTable['u9'] = 'center';gv_vAlignTable['u147'] = 'top';gv_vAlignTable['u131'] = 'center';gv_vAlignTable['u70'] = 'center';gv_vAlignTable['u24'] = 'top';gv_vAlignTable['u117'] = 'center';gv_vAlignTable['u113'] = 'center';gv_vAlignTable['u29'] = 'center';gv_vAlignTable['u129'] = 'center';gv_vAlignTable['u86'] = 'top';gv_vAlignTable['u58'] = 'top';gv_vAlignTable['u111'] = 'top';gv_vAlignTable['u31'] = 'center';gv_vAlignTable['u83'] = 'center';HookHover('u8', false);
+HookClick('u8', false);
+gv_vAlignTable['u3'] = 'center';gv_vAlignTable['u146'] = 'top';gv_vAlignTable['u49'] = 'center';gv_vAlignTable['u124'] = 'center';gv_vAlignTable['u1'] = 'center';gv_vAlignTable['u148'] = 'top';gv_vAlignTable['u93'] = 'top';gv_vAlignTable['u145'] = 'top';gv_vAlignTable['u12'] = 'center';gv_vAlignTable['u25'] = 'top';gv_vAlignTable['u59'] = 'top';gv_vAlignTable['u137'] = 'top';gv_vAlignTable['u90'] = 'center';gv_vAlignTable['u18'] = 'center';gv_vAlignTable['u45'] = 'center';gv_vAlignTable['u77'] = 'top';gv_vAlignTable['u22'] = 'center';gv_vAlignTable['u143'] = 'center';gv_vAlignTable['u136'] = 'top';document.getElementById('u28_img').tabIndex = 0;
+
+u28.style.cursor = 'pointer';
+$axure.eventManager.click('u28', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});

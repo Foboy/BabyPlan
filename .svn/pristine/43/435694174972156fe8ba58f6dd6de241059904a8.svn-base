@@ -1,0 +1,11 @@
+﻿/**
+* 账号处理
+**/
+
+//将已有的平台账号和社交账号绑定
+var bind_userwith_socialuser = function () {
+}
+
+//为社交账号创建平台账号
+var create_userfor_socialuser = function () {
+};

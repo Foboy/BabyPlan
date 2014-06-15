@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace BabyPlan.mvcApp.Model
+{
+    [Serializable]
+    public class PicModel : BaseModel
+    {
+        public int PicId { get; set; }
+
+        public string PicUrl { get; set; }
+
+        public int PicHeight { get; set; }
+
+        public int PicWidth { get; set; }
+
+        public int ScaleWidth(int height, int offset = 0)
+        {
+            return (int)Math.Floor((height == 0 ? 1 : height) / (double)PicHeight * PicWidth + offset);
+        }
+
+        public int ScaleHeight(int width, int offset = 0)
+        {
+            return (int)Math.Floor((width == 0 ? 1 : width) / (double)PicWidth * PicHeight + offset);
+        }
+    }
+}

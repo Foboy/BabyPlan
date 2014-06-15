@@ -1,0 +1,33 @@
+﻿    .head_outer{height:50px; background-color:#3FA7CB;}
+    .head_outer .logo_outer{height:50px;width:960px; margin:0 auto;}
+    .head_outer .logo_center{ float:left; width:91px; height:30px; margin:10px 0 0 20px;}
+    .head_outer .nav_outer{ margin-left:30px;}
+    .head_outer .nav_outer ul{width:400px; padding:0px; margin:0px; height:50px;}
+    .head_outer .nav_outer ul li{height:50px;line-height:50px;float:left; width:50px; margin-left:10px; width:90px; padding:0px; margin:0px;}
+    .head_outer .nav_outer ul li a{color:#fff;font-size:16px;height:50px;display:block; text-align:center;}
+    .head_outer .nav_outer ul li a:active,.head_outer .nav_outer ul li a:hover,.head_outer .nav_outer ul li a.selected{ color:#fff; height:50px; width:90px; background-color:#4eb2d4;}
+    .head_outer .logoutnav{ float:right; width:300px; height:50px;text-align:right;color:#fff;}
+    .head_outer .logoutnav a{ margin:0 5px; cursor:pointer; color:#fff;}
+    .age_tip{ margin-left:20px;}
+    .age_line{ line-height:25px;}
+    .user_panel_outer{margin:30px auto;}
+    .panel_left_outer{width:240px;}
+    .panel_left_outer .user_left_block{width:240px;}
+    .panel_left_outer .user_profile{height:128px;width:238px;}
+    .panel_left_outer .user_profile .head_pic{width:100px;height:100px;margin:10px;position:relative;overflow:hidden;border:solid 1px #ddd;}
+    .panel_left_outer .user_profile .head_pic .upload_head_bg{width:100px;height:20px;line-height:20px;top:100px;background:#333;position:absolute;}
+    .panel_left_outer .user_profile .profile{margin:10px 0;}
+    .panel_left_outer .user_link_out {margin:20px 0;}
+    .panel_left_outer .user_link_out .user_link{width:170px;height:48px;display:block;line-height:48px;padding-left:70px;position:relative;}
+    .panel_left_outer .user_link_out .user_link:hover{background-color:#2A8FC4;color:#fff;width:170px}
+    .panel_left_outer .user_link_out .user_link .count{width:18px;height:18px;display:block;margin:15px;line-height:18px;text-align:center;}
+    .panel_left_outer .user_with_outer{width:220px;padding:10px;}
+    .panel_left_outer .user_with_outer .heart{width:110px;height:100px;padding-left:110px;margin:5px 0;}
+    
+    .panel_right_outer{width:710px;}
+    .panel_right_outer .user_right_block{width:710px;}
+    
+    .panel_left_outer .user_link_out .user_link1{background:url(/images/list.png) 25px 15px no-repeat;}
+    .panel_left_outer .user_link_out .user_link2{background:url(/images/ywxg.png) 25px 15px no-repeat;}
+    .panel_left_outer .user_link_out .user_link3{background:url(/images/record.png) 25px 15px no-repeat;}
+    .panel_left_outer .user_with_outer .heart{background:url(/images/user_heart.png) 1px 1px no-repeat;}

@@ -1,0 +1,1120 @@
+<html>
+<head>
+    <title>usercentre</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="imagetoolbar" content="no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet">
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet">
+    <link href="usercentre_files/axurerp_pagespecificstyles.css" type="text/css" rel="stylesheet">
+<!--[if IE 6]>
+    <link href="usercentre_files/axurerp_pagespecificstyles_ie6.css" type="text/css" rel="stylesheet">
+<![endif]-->
+    <script src="data/sitemap.js"></script>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/axurerp_beforepagescript.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+<script src='usercentre_files/data.js'></script>
+</head>
+<body>
+<div id="main_container">
+
+<div id="u0" class="u0_container"   >
+<div id="u0_img" class="u0_normal detectCanvas"></div>
+<div id="u1" class="u1" style="visibility:hidden;"  >
+<div id="u1_rtf"></div>
+</div>
+</div>
+<div id="u2" class="u2_container"   >
+<div id="u2_img" >
+<img src="usercentre_files/u2_normal.jpg"  class="raw_image"></div>
+<div id="u3" class="u3" style="visibility:hidden;"  >
+<div id="u3_rtf"></div>
+</div>
+</div>
+<div id="u4" class="u4_container"   >
+<div id="u4_img" class="u4_normal detectCanvas"></div>
+<div id="u5" class="u5"  >
+<div id="u5_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">上传头像</span></p></div>
+</div>
+</div>
+<DIV id="u6" style="" data-label="个人中心内容">
+<DIV id="pd4u6" style="visibility:hidden;" data-label="账户设置">
+<div id="u7" class="u7_container"   >
+<div id="u7_img" class="u7_normal detectCanvas"></div>
+<div id="u8" class="u8" style="visibility:hidden;"  >
+<div id="u8_rtf"></div>
+</div>
+</div>
+<div id="u9" class="u9_container"   >
+<div id="u9_img" class="u9_normal detectCanvas"></div>
+<div id="u10" class="u10" style="visibility:hidden;"  >
+<div id="u10_rtf"></div>
+</div>
+</div>
+<div id="u11" class="u11"  >
+<div id="u11_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">我的宝贝清单</span></p></div>
+</div>
+<div id="u12" class="u12"  >
+<div id="u12_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">用户名</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">：</span></p></div>
+</div>
+<INPUT id="u13" type=text value="yuwojiusi" class="u13"     >
+
+<div id="u14" class="u14"  >
+<div id="u14_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF0000;">*</span></p></div>
+</div>
+<div id="u15" class="u15"  >
+<div id="u15_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">头像设置</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">：</span></p></div>
+</div>
+<div id="u16" class="u16_container"   >
+<div id="u16_img" class="u16_normal detectCanvas"></div>
+<div id="u17" class="u17" style="visibility:hidden;"  >
+<div id="u17_rtf"></div>
+</div>
+</div>
+<div id="u18" class="u18_container"   >
+<div id="u18_img" >
+<img src="usercentre_files/u2_normal.jpg"  class="raw_image"></div>
+<div id="u19" class="u19" style="visibility:hidden;"  >
+<div id="u19_rtf"></div>
+</div>
+</div>
+<div id="u20" class="u20_container"   >
+<div id="u20_img" class="u20_normal detectCanvas"></div>
+<div id="u21" class="u21"  >
+<div id="u21_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:14px;font-weight:bold;font-style:normal;text-decoration:none;color:#FFFFFF;">修改头像</span></p></div>
+</div>
+</div>
+<div id="u22" class="u22"  >
+<div id="u22_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">仅支持jpg、gif、png格式， 文件小于</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">2</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">M</span></p></div>
+</div>
+<div id="u23" class="u23"  >
+<div id="u23_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">当前密码</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">：</span></p></div>
+</div>
+<INPUT id="u24" type=text value="yuwojiusi" class="u24"     >
+
+<div id="u25" class="u25"  >
+<div id="u25_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF0000;">*</span></p></div>
+</div>
+<div id="u26" class="u26"  >
+<div id="u26_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">新密码：</span></p></div>
+</div>
+<INPUT id="u27" type=text value="yuwojiusi" class="u27"     >
+
+<div id="u28" class="u28"  >
+<div id="u28_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF0000;">*</span></p></div>
+</div>
+<div id="u29" class="u29"  >
+<div id="u29_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">确认</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">密码：</span></p></div>
+</div>
+<INPUT id="u30" type=text value="yuwojiusi" class="u30"     >
+
+<div id="u31" class="u31"  >
+<div id="u31_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF0000;">*</span></p></div>
+</div>
+<div id="u32" class="u32_container"   >
+<div id="u32_img" class="u32_normal detectCanvas"></div>
+<div id="u33" class="u33"  >
+<div id="u33_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">保 存</span></p></div>
+</div>
+</div>
+<div id="u34" class="u34"  >
+<div id="u34_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">&nbsp; &nbsp; &nbsp; </span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">性别</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">：</span></p></div>
+</div>
+<div id="u35" class="u35"  >
+<div id="u35_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF0000;">*</span></p></div>
+</div>
+<DIV id="u36container" style="position:absolute; left:139px; top:294px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u36">
+<div id="u37" class="u37"  >
+<div id="u37_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">男</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u36" name="u36" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u38container" style="position:absolute; left:215px; top:294px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u38">
+<div id="u39" class="u39"  >
+<div id="u39_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">女</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u38" name="u38" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+</DIV>
+<DIV id="pd3u6" style="visibility:hidden;" data-label="发布宝贝">
+<div id="u40" class="u40_container"   >
+<div id="u40_img" class="u40_normal detectCanvas"></div>
+<div id="u41" class="u41" style="visibility:hidden;"  >
+<div id="u41_rtf"></div>
+</div>
+</div>
+<div id="u42" class="u42_container"   >
+<div id="u42_img" class="u42_normal detectCanvas"></div>
+<div id="u43" class="u43" style="visibility:hidden;"  >
+<div id="u43_rtf"></div>
+</div>
+</div>
+<div id="u44" class="u44"  >
+<div id="u44_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">发布我的宝贝</span></p></div>
+</div>
+<div id="u45" class="u45"  >
+<div id="u45_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">宝贝</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">标题</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">：</span></p></div>
+</div>
+<INPUT id="u46" type=text value="" class="u46"     >
+
+<div id="u47" class="u47"  >
+<div id="u47_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">宝贝标题最多</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">输入30个字符</span></p></div>
+</div>
+<div id="u48" class="u48"  >
+<div id="u48_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF0000;">*</span></p></div>
+</div>
+<div id="u49" class="u49"  >
+<div id="u49_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">联系方式</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">：</span></p></div>
+</div>
+<INPUT id="u50" type=text value="QQ" class="u50"     >
+
+<div id="u51" class="u51"  >
+<div id="u51_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF0000;">*</span></p></div>
+</div>
+<div id="u52" class="u52"  >
+<div id="u52_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">宝贝描述</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">：</span></p></div>
+</div>
+<INPUT id="u53" type=text value="" class="u53"     >
+
+<div id="u54" class="u54"  >
+<div id="u54_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF0000;">*</span></p></div>
+</div>
+<div id="u55" class="u55"  >
+<div id="u55_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:italic;text-decoration:none;color:#999999;">500字</span></p></div>
+</div>
+<DIV id="u56" style="visibility:hidden;" data-label="宝贝">
+<DIV id="pd0u56" style="" data-label="状态1">
+<div id="u57" class="u57_container"   >
+<div id="u57_img" class="u57_normal detectCanvas"></div>
+<div id="u58" class="u58" style="visibility:hidden;"  >
+<div id="u58_rtf"></div>
+</div>
+</div>
+<div id="u59" class="u59_container"   >
+<div id="u59_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u60" class="u60" style="visibility:hidden;"  >
+<div id="u60_rtf"></div>
+</div>
+</div>
+<div id="u61" class="u61"  >
+<div id="u61_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">价钱：</span></p></div>
+</div>
+<INPUT id="u62" type=text value="" class="u62"     >
+
+<div id="u63" class="u63"  >
+<div id="u63_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#000000;">元</span></p></div>
+</div>
+<div id="u64" class="u64"  >
+<div id="u64_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">类型</span><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">：</span></p></div>
+</div>
+<DIV id="u65container" style="position:absolute; left:196px; top:59px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u65">
+<div id="u66" class="u66"  >
+<div id="u66_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">衣服</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u65" name="u65" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u67container" style="position:absolute; left:196px; top:88px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u67">
+<div id="u68" class="u68"  >
+<div id="u68_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">玩具</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u67" name="u67" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u69container" style="position:absolute; left:196px; top:117px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u69">
+<div id="u70" class="u70"  >
+<div id="u70_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">其他</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u69" name="u69" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<div id="u71" class="u71"  >
+<div id="u71_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF0000;">*</span></p></div>
+</div>
+<div id="u72" class="u72"  >
+<div id="u72_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF0000;">*</span></p></div>
+</div>
+<div id="u73" class="u73_container"   >
+<div id="u73_img" class="u73_normal detectCanvas"></div>
+<div id="u74" class="u74" style="visibility:hidden;"  >
+<div id="u74_rtf"></div>
+</div>
+</div>
+<div id="u75" class="u75_container"   >
+<div id="u75_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u76" class="u76" style="visibility:hidden;"  >
+<div id="u76_rtf"></div>
+</div>
+</div>
+<div id="u77" class="u77"  >
+<div id="u77_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">价钱：</span></p></div>
+</div>
+<INPUT id="u78" type=text value="" class="u78"     >
+
+<div id="u79" class="u79"  >
+<div id="u79_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">类型</span><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">：</span></p></div>
+</div>
+<DIV id="u80container" style="position:absolute; left:510px; top:59px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u80">
+<div id="u81" class="u81"  >
+<div id="u81_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">衣服</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u80" name="u80" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u82container" style="position:absolute; left:510px; top:88px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u82">
+<div id="u83" class="u83"  >
+<div id="u83_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">玩具</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u82" name="u82" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u84container" style="position:absolute; left:510px; top:117px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u84">
+<div id="u85" class="u85"  >
+<div id="u85_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">其他</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u84" name="u84" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<div id="u86" class="u86_container"   >
+<div id="u86_img" class="u86_normal detectCanvas"></div>
+<div id="u87" class="u87" style="visibility:hidden;"  >
+<div id="u87_rtf"></div>
+</div>
+</div>
+<div id="u88" class="u88_container"   >
+<div id="u88_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u89" class="u89" style="visibility:hidden;"  >
+<div id="u89_rtf"></div>
+</div>
+</div>
+<div id="u90" class="u90"  >
+<div id="u90_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">价钱：</span></p></div>
+</div>
+<INPUT id="u91" type=text value="" class="u91"     >
+
+<div id="u92" class="u92"  >
+<div id="u92_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">类型</span><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">：</span></p></div>
+</div>
+<DIV id="u93container" style="position:absolute; left:196px; top:199px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u93">
+<div id="u94" class="u94"  >
+<div id="u94_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">衣服</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u93" name="u93" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u95container" style="position:absolute; left:196px; top:228px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u95">
+<div id="u96" class="u96"  >
+<div id="u96_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">玩具</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u95" name="u95" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u97container" style="position:absolute; left:196px; top:257px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u97">
+<div id="u98" class="u98"  >
+<div id="u98_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">其他</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u97" name="u97" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<div id="u99" class="u99_container"   >
+<div id="u99_img" class="u99_normal detectCanvas"></div>
+<div id="u100" class="u100" style="visibility:hidden;"  >
+<div id="u100_rtf"></div>
+</div>
+</div>
+<div id="u101" class="u101_container"   >
+<div id="u101_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u102" class="u102" style="visibility:hidden;"  >
+<div id="u102_rtf"></div>
+</div>
+</div>
+<div id="u103" class="u103"  >
+<div id="u103_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">价钱：</span></p></div>
+</div>
+<INPUT id="u104" type=text value="" class="u104"     >
+
+<div id="u105" class="u105"  >
+<div id="u105_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">类型</span><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">：</span></p></div>
+</div>
+<DIV id="u106container" style="position:absolute; left:510px; top:205px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u106">
+<div id="u107" class="u107"  >
+<div id="u107_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">衣服</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u106" name="u106" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u108container" style="position:absolute; left:510px; top:234px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u108">
+<div id="u109" class="u109"  >
+<div id="u109_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">玩具</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u108" name="u108" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u110container" style="position:absolute; left:510px; top:263px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u110">
+<div id="u111" class="u111"  >
+<div id="u111_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">其他</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u110" name="u110" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<div id="u112" class="u112_container"   >
+<div id="u112_img" class="u112_normal detectCanvas"></div>
+<div id="u113" class="u113" style="visibility:hidden;"  >
+<div id="u113_rtf"></div>
+</div>
+</div>
+<div id="u114" class="u114_container"   >
+<div id="u114_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u115" class="u115" style="visibility:hidden;"  >
+<div id="u115_rtf"></div>
+</div>
+</div>
+<div id="u116" class="u116"  >
+<div id="u116_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">价钱：</span></p></div>
+</div>
+<INPUT id="u117" type=text value="" class="u117"     >
+
+<div id="u118" class="u118"  >
+<div id="u118_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">类型</span><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">：</span></p></div>
+</div>
+<DIV id="u119container" style="position:absolute; left:196px; top:345px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u119">
+<div id="u120" class="u120"  >
+<div id="u120_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">衣服</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u119" name="u119" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u121container" style="position:absolute; left:196px; top:374px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u121">
+<div id="u122" class="u122"  >
+<div id="u122_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">玩具</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u121" name="u121" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u123container" style="position:absolute; left:196px; top:403px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u123">
+<div id="u124" class="u124"  >
+<div id="u124_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">其他</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u123" name="u123" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<div id="u125" class="u125_container"   >
+<div id="u125_img" class="u125_normal detectCanvas"></div>
+<div id="u126" class="u126" style="visibility:hidden;"  >
+<div id="u126_rtf"></div>
+</div>
+</div>
+<div id="u127" class="u127_container"   >
+<div id="u127_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u128" class="u128" style="visibility:hidden;"  >
+<div id="u128_rtf"></div>
+</div>
+</div>
+<div id="u129" class="u129"  >
+<div id="u129_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">价钱：</span></p></div>
+</div>
+<INPUT id="u130" type=text value="" class="u130"     >
+
+<div id="u131" class="u131"  >
+<div id="u131_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">类型</span><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">：</span></p></div>
+</div>
+<DIV id="u132container" style="position:absolute; left:510px; top:351px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u132">
+<div id="u133" class="u133"  >
+<div id="u133_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">衣服</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u132" name="u132" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u134container" style="position:absolute; left:510px; top:380px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u134">
+<div id="u135" class="u135"  >
+<div id="u135_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">玩具</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u134" name="u134" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u136container" style="position:absolute; left:510px; top:409px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u136">
+<div id="u137" class="u137"  >
+<div id="u137_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">其他</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u136" name="u136" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<div id="u138" class="u138_container"   >
+<div id="u138_img" class="u138_normal detectCanvas"></div>
+<div id="u139" class="u139" style="visibility:hidden;"  >
+<div id="u139_rtf"></div>
+</div>
+</div>
+<div id="u140" class="u140_container"   >
+<div id="u140_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u141" class="u141" style="visibility:hidden;"  >
+<div id="u141_rtf"></div>
+</div>
+</div>
+<div id="u142" class="u142"  >
+<div id="u142_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">价钱：</span></p></div>
+</div>
+<INPUT id="u143" type=text value="" class="u143"     >
+
+<div id="u144" class="u144"  >
+<div id="u144_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">类型</span><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">：</span></p></div>
+</div>
+<DIV id="u145container" style="position:absolute; left:196px; top:495px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u145">
+<div id="u146" class="u146"  >
+<div id="u146_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">衣服</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u145" name="u145" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u147container" style="position:absolute; left:196px; top:524px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u147">
+<div id="u148" class="u148"  >
+<div id="u148_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">玩具</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u147" name="u147" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u149container" style="position:absolute; left:196px; top:553px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u149">
+<div id="u150" class="u150"  >
+<div id="u150_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">其他</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u149" name="u149" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<div id="u151" class="u151_container"   >
+<div id="u151_img" class="u151_normal detectCanvas"></div>
+<div id="u152" class="u152" style="visibility:hidden;"  >
+<div id="u152_rtf"></div>
+</div>
+</div>
+<div id="u153" class="u153_container"   >
+<div id="u153_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u154" class="u154" style="visibility:hidden;"  >
+<div id="u154_rtf"></div>
+</div>
+</div>
+<div id="u155" class="u155"  >
+<div id="u155_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">价钱：</span></p></div>
+</div>
+<INPUT id="u156" type=text value="" class="u156"     >
+
+<div id="u157" class="u157"  >
+<div id="u157_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">类型</span><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">：</span></p></div>
+</div>
+<DIV id="u158container" style="position:absolute; left:510px; top:498px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u158">
+<div id="u159" class="u159"  >
+<div id="u159_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">衣服</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u158" name="u158" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u160container" style="position:absolute; left:510px; top:527px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u160">
+<div id="u161" class="u161"  >
+<div id="u161_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">玩具</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u160" name="u160" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+<DIV id="u162container" style="position:absolute; left:510px; top:556px; width:100px; height:19px; ; ; ;" >
+<LABEL for="u162">
+<div id="u163" class="u163"  >
+<div id="u163_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">其他</span></p></div>
+</div>
+</LABEL>
+<INPUT id="u162" name="u162" style="position:absolute; left:-3px; top:-2px;" type="radio" value="radio"   >
+</DIV>
+</DIV>
+</DIV>
+<DIV id="u164" style="" data-label="上传宝贝">
+<DIV id="pd0u164" style="" data-label="状态1">
+<div id="u165" class="u165_container"   >
+<div id="u165_img" class="u165_normal detectCanvas"></div>
+<div id="u166" class="u166"  >
+<div id="u166_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:14px;font-weight:bold;font-style:normal;text-decoration:none;color:#FFFFFF;">上传宝贝</span></p></div>
+</div>
+</div>
+<div id="u167" class="u167"  >
+<div id="u167_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">您最多能上传</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">6</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">张图片</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">，如果超过</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">8</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">张，您可以在新开一个帖子</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">。</span></p></div>
+</div>
+</DIV>
+</DIV>
+<div id="u168" class="u168_container"   >
+<div id="u168_img" class="u168_normal detectCanvas"></div>
+<div id="u169" class="u169"  >
+<div id="u169_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">发 布</span></p></div>
+</div>
+</div>
+<INPUT id="u170" type=text value="手机号" class="u170"     >
+
+<div id="u171" class="u171"  >
+<div id="u171_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">或</span></p></div>
+</div>
+<div id="u172" class="u172"  >
+<div id="u172_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">最少留下其中一种联系方式，方便买家能及时联系到您，增加您出售宝贝的几率</span></p></div>
+</div>
+</DIV>
+<DIV id="pd2u6" style="visibility:hidden;" data-label="与我相关的">
+<div id="u173" class="u173_container"   >
+<div id="u173_img" class="u173_normal detectCanvas"></div>
+<div id="u174" class="u174" style="visibility:hidden;"  >
+<div id="u174_rtf"></div>
+</div>
+</div>
+<div id="u175" class="u175_container"   >
+<div id="u175_img" class="u175_normal detectCanvas"></div>
+<div id="u176" class="u176" style="visibility:hidden;"  >
+<div id="u176_rtf"></div>
+</div>
+</div>
+<div id="u177" class="u177"  >
+<div id="u177_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">与我相关</span></p></div>
+</div>
+<div id="u178" class="u178_container"   >
+<div id="u178_img" class="u178_normal detectCanvas"></div>
+<div id="u179" class="u179" style="visibility:hidden;"  >
+<div id="u179_rtf"></div>
+</div>
+</div>
+<div id="u180" class="u180"  >
+<div id="u180_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:72px;font-weight:normal;font-style:normal;text-decoration:none;color:#8CBF26;">2</span></p></div>
+</div>
+<div id="u181" class="u181_container"   >
+<div id="u181_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u182" class="u182" style="visibility:hidden;"  >
+<div id="u182_rtf"></div>
+</div>
+</div>
+<div id="u183" class="u183"  >
+<div id="u183_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">我家乖乖1岁时的衣服，8成新，想要的快来了，价格便宜！</span></p></div>
+</div>
+<div id="u184" class="u184"  >
+<div id="u184_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">发布时间：</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">2012-4-30</span></p></div>
+</div>
+<div id="u185" class="u185"  >
+<div id="u185_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">回复</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">：</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">(23)</span></p></div>
+</div>
+<div id="u186" class="u186_container"   >
+<div id="u186_img" class="u186_normal detectCanvas"></div>
+<div id="u187" class="u187" style="visibility:hidden;"  >
+<div id="u187_rtf"></div>
+</div>
+</div>
+<div id="u188" class="u188"  >
+<div id="u188_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:72px;font-weight:normal;font-style:normal;text-decoration:none;color:#8CBF26;">1</span></p></div>
+</div>
+<div id="u189" class="u189_container"   >
+<div id="u189_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u190" class="u190" style="visibility:hidden;"  >
+<div id="u190_rtf"></div>
+</div>
+</div>
+<div id="u191" class="u191"  >
+<div id="u191_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">我家乖乖1岁时的衣服，8成新，想要的快来了，价格便宜！</span></p></div>
+</div>
+<div id="u192" class="u192"  >
+<div id="u192_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">发布时间：</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">2012-4-30</span></p></div>
+</div>
+<div id="u193" class="u193"  >
+<div id="u193_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">回复</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">：</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">(23)</span></p></div>
+</div><div id="u194" class="u194" >
+<DIV id="u194_line" class="u194_line" ></DIV>
+</div>
+<div id="u195" class="u195"  >
+<div id="u195_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">老板，您的第一件宝贝是</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">几岁的小孩穿的？</span></p></div>
+</div>
+<div id="u196" class="u196"  >
+<div id="u196_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">老板，您的第一件宝贝是</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">几岁的小孩穿的？</span></p></div>
+</div>
+</DIV>
+<DIV id="pd1u6" style="visibility:hidden;" data-label="我发布的宝贝">
+<div id="u197" class="u197_container"   >
+<div id="u197_img" class="u197_normal detectCanvas"></div>
+<div id="u198" class="u198" style="visibility:hidden;"  >
+<div id="u198_rtf"></div>
+</div>
+</div>
+<div id="u199" class="u199_container"   >
+<div id="u199_img" class="u199_normal detectCanvas"></div>
+<div id="u200" class="u200" style="visibility:hidden;"  >
+<div id="u200_rtf"></div>
+</div>
+</div>
+<div id="u201" class="u201_container"   >
+<div id="u201_img" class="u201_normal detectCanvas"></div>
+<div id="u202" class="u202" style="visibility:hidden;"  >
+<div id="u202_rtf"></div>
+</div>
+</div>
+<div id="u203" class="u203_container"   >
+<div id="u203_img" class="u203_normal detectCanvas"></div>
+<div id="u204" class="u204"  >
+<div id="u204_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:14px;font-weight:bold;font-style:normal;text-decoration:none;color:#FFFFFF;">发布闲置物品</span></p></div>
+</div>
+</div>
+<div id="u205" class="u205"  >
+<div id="u205_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:72px;font-weight:normal;font-style:normal;text-decoration:none;color:#8CBF26;">2</span></p></div>
+</div>
+<div id="u206" class="u206_container"   >
+<div id="u206_img" class="u206_normal detectCanvas"></div>
+<div id="u207" class="u207" style="visibility:hidden;"  >
+<div id="u207_rtf"></div>
+</div>
+</div>
+<div id="u208" class="u208"  >
+<div id="u208_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:72px;font-weight:normal;font-style:normal;text-decoration:none;color:#8CBF26;">1</span></p></div>
+</div>
+<div id="u209" class="u209_container"   >
+<div id="u209_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u210" class="u210" style="visibility:hidden;"  >
+<div id="u210_rtf"></div>
+</div>
+</div>
+<div id="u211" class="u211"  >
+<div id="u211_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">我家乖乖1岁时的衣服，8成新，想要的快来了，价格便宜！</span></p></div>
+</div>
+<div id="u212" class="u212"  >
+<div id="u212_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">发布时间：</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">2012-4-30</span></p></div>
+</div>
+<div id="u213" class="u213"  >
+<div id="u213_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">描述：</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">这些宝贝都是我家崽儿1岁时穿的，都很新，放着可惜。价钱便宜，多买多送。如果您选中合适的请在网站给我留言，或者短信、QQ米</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">...</span></p></div>
+</div>
+<div id="u214" class="u214"  >
+<div id="u214_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">回复</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">：</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">(23)</span></p></div>
+</div>
+<div id="u215" class="u215_container"   >
+<div id="u215_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u216" class="u216" style="visibility:hidden;"  >
+<div id="u216_rtf"></div>
+</div>
+</div>
+<div id="u217" class="u217"  >
+<div id="u217_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">我家乖乖1岁时的衣服，8成新，想要的快来了，价格便宜！</span></p></div>
+</div>
+<div id="u218" class="u218"  >
+<div id="u218_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">发布时间：</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">2012-4-30</span></p></div>
+</div>
+<div id="u219" class="u219"  >
+<div id="u219_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">描述：</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">这些宝贝都是我家崽儿1岁时穿的，都很新，放着可惜。价钱便宜，多买多送。如果您选中合适的请在网站给我留言，或者短信、QQ米</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">...</span></p></div>
+</div>
+<div id="u220" class="u220"  >
+<div id="u220_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">回复</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">：</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#888888;">(23)</span></p></div>
+</div>
+<div id="u221" class="u221"  >
+<div id="u221_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">我的宝贝清单</span></p></div>
+</div><div id="u222" class="u222" >
+<DIV id="u222_line" class="u222_line" ></DIV>
+</div>
+<div id="u223" class="u223"  >
+<div id="u223_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#8CBF26;">编辑宝贝</span></p></div>
+</div>
+<div id="u224" class="u224"  >
+<div id="u224_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">|</span></p></div>
+</div>
+<div id="u225" class="u225"  >
+<div id="u225_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#8CBF26;">关闭该宝贝</span></p></div>
+</div>
+<div id="u226" class="u226"  >
+<div id="u226_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#8CBF26;">编辑宝贝</span></p></div>
+</div>
+<div id="u227" class="u227"  >
+<div id="u227_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">|</span></p></div>
+</div>
+<div id="u228" class="u228"  >
+<div id="u228_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#8CBF26;">关闭该宝贝</span></p></div>
+</div>
+</DIV>
+<DIV id="pd0u6" style="" data-label="个人中心首页">
+<div id="u229" class="u229_container"   >
+<div id="u229_img" class="u229_normal detectCanvas"></div>
+<div id="u230" class="u230"  >
+<div id="u230_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">挑战多久能怀孕</span></p></div>
+</div>
+</div>
+<div id="u231" class="u231_container"   >
+<div id="u231_img" class="u231_normal detectCanvas"></div>
+<div id="u232" class="u232"  >
+<div id="u232_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">最屌丝的奶爸</span></p></div>
+</div>
+</div>
+<div id="u233" class="u233_container"   >
+<div id="u233_img" class="u233_normal detectCanvas"></div>
+<div id="u234" class="u234"  >
+<div id="u234_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">最潮的小孩</span></p></div>
+</div>
+</div>
+<div id="u235" class="u235_container"   >
+<div id="u235_img" class="u235_normal detectCanvas"></div>
+<div id="u236" class="u236"  >
+<div id="u236_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">最辣的辣妈</span></p></div>
+</div>
+</div>
+<div id="u237" class="u237_container"   >
+<div id="u237_img" class="u237_normal detectCanvas"></div>
+<div id="u238" class="u238" style="visibility:hidden;"  >
+<div id="u238_rtf"></div>
+</div>
+</div>
+<div id="u239" class="u239"  >
+<div id="u239_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:bold;font-style:normal;text-decoration:none;color:#2A8FC4;">同城最新动态</span></p></div>
+</div>
+<div id="u240" class="u240_container"   >
+<div id="u240_img" class="u240_normal detectCanvas"></div>
+<div id="u241" class="u241" style="visibility:hidden;"  >
+<div id="u241_rtf"></div>
+</div>
+</div>
+<div id="u242" class="u242_container"   >
+<div id="u242_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u243" class="u243" style="visibility:hidden;"  >
+<div id="u243_rtf"></div>
+</div>
+</div>
+<div id="u244" class="u244_container"   >
+<div id="u244_img" class="u244_normal detectCanvas"></div>
+<div id="u245" class="u245"  >
+<div id="u245_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">￥</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">56.00</span></p></div>
+</div>
+</div>
+<div id="u246" class="u246"  >
+<div id="u246_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">我家乖乖1岁时的</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">衣...</span></p></div>
+</div>
+<div id="u247" class="u247_container"   >
+<div id="u247_img" class="u247_normal detectCanvas"></div>
+<div id="u248" class="u248" style="visibility:hidden;"  >
+<div id="u248_rtf"></div>
+</div>
+</div>
+<div id="u249" class="u249_container"   >
+<div id="u249_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u250" class="u250" style="visibility:hidden;"  >
+<div id="u250_rtf"></div>
+</div>
+</div>
+<div id="u251" class="u251_container"   >
+<div id="u251_img" class="u251_normal detectCanvas"></div>
+<div id="u252" class="u252"  >
+<div id="u252_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">￥</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">56.00</span></p></div>
+</div>
+</div>
+<div id="u253" class="u253"  >
+<div id="u253_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">我家乖乖1岁时的</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">衣...</span></p></div>
+</div>
+<div id="u254" class="u254_container"   >
+<div id="u254_img" class="u254_normal detectCanvas"></div>
+<div id="u255" class="u255" style="visibility:hidden;"  >
+<div id="u255_rtf"></div>
+</div>
+</div>
+<div id="u256" class="u256_container"   >
+<div id="u256_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u257" class="u257" style="visibility:hidden;"  >
+<div id="u257_rtf"></div>
+</div>
+</div>
+<div id="u258" class="u258_container"   >
+<div id="u258_img" class="u258_normal detectCanvas"></div>
+<div id="u259" class="u259"  >
+<div id="u259_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">￥</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">56.00</span></p></div>
+</div>
+</div>
+<div id="u260" class="u260"  >
+<div id="u260_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">我家乖乖1岁时的</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">衣...</span></p></div>
+</div>
+<div id="u261" class="u261_container"   >
+<div id="u261_img" class="u261_normal detectCanvas"></div>
+<div id="u262" class="u262" style="visibility:hidden;"  >
+<div id="u262_rtf"></div>
+</div>
+</div>
+<div id="u263" class="u263_container"   >
+<div id="u263_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u264" class="u264" style="visibility:hidden;"  >
+<div id="u264_rtf"></div>
+</div>
+</div>
+<div id="u265" class="u265_container"   >
+<div id="u265_img" class="u265_normal detectCanvas"></div>
+<div id="u266" class="u266"  >
+<div id="u266_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">￥</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">56.00</span></p></div>
+</div>
+</div>
+<div id="u267" class="u267"  >
+<div id="u267_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">我家乖乖1岁时的</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">衣...</span></p></div>
+</div>
+<div id="u268" class="u268_container"   >
+<div id="u268_img" class="u268_normal detectCanvas"></div>
+<div id="u269" class="u269" style="visibility:hidden;"  >
+<div id="u269_rtf"></div>
+</div>
+</div>
+<div id="u270" class="u270_container"   >
+<div id="u270_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u271" class="u271" style="visibility:hidden;"  >
+<div id="u271_rtf"></div>
+</div>
+</div>
+<div id="u272" class="u272_container"   >
+<div id="u272_img" class="u272_normal detectCanvas"></div>
+<div id="u273" class="u273"  >
+<div id="u273_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">￥</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">56.00</span></p></div>
+</div>
+</div>
+<div id="u274" class="u274"  >
+<div id="u274_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">我家乖乖1岁时的</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">衣...</span></p></div>
+</div>
+<div id="u275" class="u275_container"   >
+<div id="u275_img" class="u275_normal detectCanvas"></div>
+<div id="u276" class="u276" style="visibility:hidden;"  >
+<div id="u276_rtf"></div>
+</div>
+</div>
+<div id="u277" class="u277_container"   >
+<div id="u277_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u278" class="u278" style="visibility:hidden;"  >
+<div id="u278_rtf"></div>
+</div>
+</div>
+<div id="u279" class="u279_container"   >
+<div id="u279_img" class="u279_normal detectCanvas"></div>
+<div id="u280" class="u280"  >
+<div id="u280_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">￥</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">56.00</span></p></div>
+</div>
+</div>
+<div id="u281" class="u281"  >
+<div id="u281_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">我家乖乖1岁时的</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">衣...</span></p></div>
+</div>
+<div id="u282" class="u282_container"   >
+<div id="u282_img" class="u282_normal detectCanvas"></div>
+<div id="u283" class="u283" style="visibility:hidden;"  >
+<div id="u283_rtf"></div>
+</div>
+</div>
+<div id="u284" class="u284_container"   >
+<div id="u284_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u285" class="u285" style="visibility:hidden;"  >
+<div id="u285_rtf"></div>
+</div>
+</div>
+<div id="u286" class="u286_container"   >
+<div id="u286_img" class="u286_normal detectCanvas"></div>
+<div id="u287" class="u287"  >
+<div id="u287_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">￥</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">56.00</span></p></div>
+</div>
+</div>
+<div id="u288" class="u288"  >
+<div id="u288_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">我家乖乖1岁时的</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">衣...</span></p></div>
+</div>
+<div id="u289" class="u289_container"   >
+<div id="u289_img" class="u289_normal detectCanvas"></div>
+<div id="u290" class="u290" style="visibility:hidden;"  >
+<div id="u290_rtf"></div>
+</div>
+</div>
+<div id="u291" class="u291_container"   >
+<div id="u291_img" >
+<img src="usercentre_files/u59_normal.jpg"  class="raw_image"></div>
+<div id="u292" class="u292" style="visibility:hidden;"  >
+<div id="u292_rtf"></div>
+</div>
+</div>
+<div id="u293" class="u293_container"   >
+<div id="u293_img" class="u293_normal detectCanvas"></div>
+<div id="u294" class="u294"  >
+<div id="u294_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">￥</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">56.00</span></p></div>
+</div>
+</div>
+<div id="u295" class="u295"  >
+<div id="u295_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">我家乖乖1岁时的</span><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">衣...</span></p></div>
+</div>
+</DIV>
+</DIV>
+<div id="u296" class="u296_container"   >
+<div id="u296_img" class="u296_normal detectCanvas"></div>
+<div id="u297" class="u297" style="visibility:hidden;"  >
+<div id="u297_rtf"></div>
+</div>
+</div>
+<div id="u298" class="u298_container"   >
+<div id="u298_img" class="u298_normal detectCanvas"></div>
+<div id="u299" class="u299"  >
+<div id="u299_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">&nbsp; &nbsp; &nbsp; </span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">&nbsp;</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">&nbsp;</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">&nbsp; </span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">我的宝贝</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">清单</span></p></div>
+</div>
+</div>
+<div id="u300" class="u300_container"   >
+<div id="u300_img" class="u300_normal detectCanvas"></div>
+<div id="u301" class="u301" style="visibility:hidden;"  >
+<div id="u301_rtf"></div>
+</div>
+</div>
+<div id="u302" class="u302_container"   >
+<div id="u302_img" class="u302_normal detectCanvas"></div>
+<div id="u303" class="u303"  >
+<div id="u303_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">&nbsp; &nbsp; &nbsp; </span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">&nbsp;</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">&nbsp;</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">&nbsp; </span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">与我相关的</span></p></div>
+</div>
+</div>
+<div id="u304" class="u304_container"   >
+<div id="u304_img" class="u304_normal detectCanvas"></div>
+<div id="u305" class="u305" style="visibility:hidden;"  >
+<div id="u305_rtf"></div>
+</div>
+</div>
+<div id="u306" class="u306"  >
+<div id="u306_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">王晓</span></p></div>
+</div>
+<div id="u307" class="u307"  >
+<div id="u307_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">账户设置</span></p></div>
+</div>
+<div id="u308" class="u308_container"   >
+<div id="u308_img" class="u308_normal detectCanvas"></div>
+<div id="u309" class="u309" style="visibility:hidden;"  >
+<div id="u309_rtf"></div>
+</div>
+</div>
+<div id="u310" class="u310_container"   >
+<div id="u310_img" class="u310_normal detectCanvas"></div>
+<div id="u311" class="u311" style="visibility:hidden;"  >
+<div id="u311_rtf"></div>
+</div>
+</div>
+<div id="u312" class="u312"  >
+<div id="u312_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#8CBF26;">心愿</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#8CBF26;">单</span></p></div>
+</div>
+<div id="u313" class="u313"  >
+<div id="u313_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">让你</span><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#444444;">如愿以偿</span></p></div>
+</div>
+<div id="u314" class="u314"  >
+<div id="u314_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">在心愿单中填写您近期想购买的闲置用品、您想发起的挑战和投票</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">。</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">我们将</span><span style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">接近全力，如您所愿。</span></p></div>
+</div>
+<div id="u315" class="u315"  >
+<div id="u315_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:underline;color:#FF6666;">发布心愿单</span></p></div>
+</div>
+<div id="u316" class="u316_container"   >
+<div id="u316_img" class="u316_normal detectCanvas"></div>
+<div id="u317" class="u317"  >
+<div id="u317_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">9</span></p></div>
+</div>
+</div>
+<div id="u318" class="u318_container"   >
+<div id="u318_img" class="u318_normal detectCanvas"></div>
+<div id="u319" class="u319"  >
+<div id="u319_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">0</span></p></div>
+</div>
+</div><div id="u320" class="u320" >
+<DIV id="u320_line" class="u320_line" ></DIV>
+</div>
+<div id="u321" class="u321_container"   >
+<div id="u321_img" class="u321_normal detectCanvas"></div>
+<div id="u322" class="u322" style="visibility:hidden;"  >
+<div id="u322_rtf"></div>
+</div>
+</div>
+<div id="u323" class="u323_container"   >
+<div id="u323_img" class="u323_normal detectCanvas"></div>
+<div id="u324" class="u324"  >
+<div id="u324_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">首页</span></p></div>
+</div>
+</div>
+<div id="u325" class="u325"  >
+<div id="u325_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">Logo</span></p></div>
+</div>
+<div id="u326" class="u326_container"   >
+<div id="u326_img" class="u326_normal detectCanvas"></div>
+<div id="u327" class="u327" style="visibility:hidden;"  >
+<div id="u327_rtf"></div>
+</div>
+</div>
+<div id="u328" class="u328_container"   >
+<div id="u328_img" class="u328_normal detectCanvas"></div>
+<div id="u329" class="u329"  >
+<div id="u329_rtf"><p style="text-align:center;"><span style="font-family:微软雅黑;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">个人空间</span></p></div>
+</div>
+</div>
+<div id="u330" class="u330_container"   >
+<div id="u330_img" class="u330_normal detectCanvas"></div>
+<div id="u331" class="u331" style="visibility:hidden;"  >
+<div id="u331_rtf"></div>
+</div>
+</div>
+<DIV id="u332" style="" data-label="第一次登录提示">
+<DIV id="pd0u332" style="" data-label="状态1">
+<div id="u333" class="u333_container"   >
+<div id="u333_img" class="u333_normal detectCanvas"></div>
+<div id="u334" class="u334" style="visibility:hidden;"  >
+<div id="u334_rtf"></div>
+</div>
+</div>
+<div id="u335" class="u335_container"   >
+<div id="u335_img" class="u335_normal detectCanvas"></div>
+<div id="u336" class="u336" style="visibility:hidden;"  >
+<div id="u336_rtf"></div>
+</div>
+</div>
+<div id="u337" class="u337"  >
+<div id="u337_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">Hi</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">&nbsp;</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">&nbsp;</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#2A8FC4;">xxx</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">&nbsp;</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">&nbsp;</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">您好</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">！</span></p><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;"></span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">我们秉承</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">用户既是上帝的理念</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">，</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">希望</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">您填写下面的内容，只有一步哦</span><span style="font-family:微软雅黑;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#FF6666;">。</span></p></div>
+</div>
+<div id="u338" class="u338"  >
+<div id="u338_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">您的宝宝当前：</span></p></div>
+</div>
+<INPUT id="u339" type=text value="" class="u339"     >
+
+<div id="u340" class="u340"  >
+<div id="u340_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">岁</span></p></div>
+</div>
+<div id="u341" class="u341"  >
+<div id="u341_rtf"><p style="text-align:left;"><span style="font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#999999;">如果您准备要宝宝，可以填写 0 岁</span></p></div>
+</div>
+</DIV>
+</DIV>
+</div>
+<div class="preload"><img src="usercentre_files/bg.png" width="1" height="1"/><img src="usercentre_files/u0_normal.png" width="1" height="1"/><img src="usercentre_files/u2_normal.jpg" width="1" height="1"/><img src="usercentre_files/u4_normal.png" width="1" height="1"/><img src="usercentre_files/u7_normal.png" width="1" height="1"/><img src="usercentre_files/u9_normal.png" width="1" height="1"/><img src="usercentre_files/u16_normal.png" width="1" height="1"/><img src="usercentre_files/u20_normal.png" width="1" height="1"/><img src="usercentre_files/u32_normal.png" width="1" height="1"/><img src="usercentre_files/u42_normal.png" width="1" height="1"/><img src="usercentre_files/u57_normal.png" width="1" height="1"/><img src="usercentre_files/u59_normal.jpg" width="1" height="1"/><img src="usercentre_files/u175_normal.png" width="1" height="1"/><img src="usercentre_files/u178_normal.png" width="1" height="1"/><img src="usercentre_files/u194_line.png" width="1" height="1"/><img src="usercentre_files/u222_line.png" width="1" height="1"/><img src="usercentre_files/u229_normal.png" width="1" height="1"/><img src="usercentre_files/u231_normal.png" width="1" height="1"/><img src="usercentre_files/u235_normal.png" width="1" height="1"/><img src="usercentre_files/u237_normal.png" width="1" height="1"/><img src="usercentre_files/u240_normal.png" width="1" height="1"/><img src="usercentre_files/u244_normal.png" width="1" height="1"/><img src="usercentre_files/u296_normal.png" width="1" height="1"/><img src="usercentre_files/u298_mouseOver.png" width="1" height="1"/><img src="usercentre_files/u298_normal.png" width="1" height="1"/><img src="usercentre_files/u300_normal.png" width="1" height="1"/><img src="usercentre_files/u308_normal.png" width="1" height="1"/><img src="usercentre_files/u310_normal.png" width="1" height="1"/><img src="usercentre_files/u316_normal.png" width="1" height="1"/><img src="usercentre_files/u320_line.png" width="1" height="1"/><img src="usercentre_files/u321_normal.png" width="1" height="1"/><img src="usercentre_files/u326_normal.png" width="1" height="1"/><img src="usercentre_files/u330_normal.png" width="1" height="1"/><img src="usercentre_files/u333_normal.png" width="1" height="1"/><img src="usercentre_files/u335_normal.png" width="1" height="1"/></div>
+</body>
+<script src="resources/scripts/axurerp_pagescript.js"></script>
+<script src="usercentre_files/axurerp_pagespecificscript.js" charset="utf-8"></script>

@@ -1,0 +1,186 @@
+package com.baijiayi.app.bean;
+
+import java.io.IOException;
+
+
+import org.json.JSONObject;
+
+import com.baijiayi.app.AppException;
+
+public class PicModel extends Entity {
+	// JSON字段名
+
+	public final static String NODE_ID = "PicId";
+
+	public final static String NODE_BPICURL = "BPicUrl";
+
+	public final static String NODE_PICURL = "PicUrl";
+
+	public final static String NODE_SPICURL = "SPicUrl";
+
+	public final static String NODE_PICHEIGHT = "PicHeight";
+
+	public final static String NODE_PICWIDTH = "PicWidth";
+
+	public final static String NODE_DISWIDTH = "DisWidth";
+
+	public final static String NODE_DISHEIGHT = "DisHeight";
+
+	public final static String NODE_DISMARGIN = "DisMargin";
+
+	public final static String NODE_DISMARGINTOP = "DisMarginTop";
+
+	public final static String NODE_DISMARGINLEFT = "DisMarginLeft";
+
+	// 对象字段名
+
+	private int PicId;
+
+	private String BPicUrl;
+
+	private String PicUrl;
+
+	private String SPicUrl;
+
+	private int PicHeight;
+
+	private int PicWidth;
+
+	private int DisWidth;
+
+	private int DisHeight;
+
+	private String DisMargin;
+
+	private int DisMarginTop;
+
+	private int DisMarginLeft;
+
+	// get,set方法
+
+	public int getPicId() {
+		return PicId;
+	}
+
+	public void setPicId(int value) {
+		this.PicId = value;
+	}
+
+	public String getBPicUrl() {
+		return BPicUrl;
+	}
+
+	public void setBPicUrl(String value) {
+		this.BPicUrl = "http://www.360baijiayi.com"+value;
+	}
+
+	public String getPicUrl() {
+		return PicUrl;
+	}
+
+	public void setPicUrl(String value) {
+		this.PicUrl = "http://www.360baijiayi.com"+value;
+	}
+
+	public String getSPicUrl() {
+		return SPicUrl;
+	}
+
+	public void setSPicUrl(String value) {
+		this.SPicUrl = "http://www.360baijiayi.com"+value.replace("/sm", "/s");
+	}
+
+	public int getPicHeight() {
+		return PicHeight;
+	}
+
+	public void setPicHeight(int value) {
+		this.PicHeight = value;
+	}
+
+	public int getPicWidth() {
+		return PicWidth;
+	}
+
+	public void setPicWidth(int value) {
+		this.PicWidth = value;
+	}
+
+	public int getDisWidth() {
+		return DisWidth;
+	}
+
+	public void setDisWidth(int value) {
+		this.DisWidth = value;
+	}
+
+	public int getDisHeight() {
+		return DisHeight;
+	}
+
+	public void setDisHeight(int value) {
+		this.DisHeight = value;
+	}
+
+	public String getDisMargin() {
+		return DisMargin;
+	}
+
+	public void setDisMargin(String value) {
+		this.DisMargin = value;
+	}
+
+	public int getDisMarginTop() {
+		return DisMarginTop;
+	}
+
+	public void setDisMarginTop(int value) {
+		this.DisMarginTop = value;
+	}
+
+	public int getDisMarginLeft() {
+		return DisMarginLeft;
+	}
+
+	public void setDisMarginLeft(int value) {
+		this.DisMarginLeft = value;
+	}
+
+	public static PicModel parse(JSONObject itemJSON) throws IOException,
+			AppException {
+		PicModel item = null;
+		try {
+			if (itemJSON != null) {
+				item = new PicModel();
+				// 解析JSON
+
+				item.id = itemJSON.optInt(NODE_ID);
+
+				item.setBPicUrl(itemJSON.optString(NODE_BPICURL));
+
+				item.setPicUrl(itemJSON.optString(NODE_PICURL));
+
+				item.setSPicUrl(itemJSON.optString(NODE_SPICURL));
+
+				item.setPicHeight(itemJSON.optInt(NODE_PICHEIGHT));
+
+				item.setPicWidth(itemJSON.optInt(NODE_PICWIDTH));
+
+				item.setDisWidth(itemJSON.optInt(NODE_DISWIDTH));
+
+				item.setDisHeight(itemJSON.optInt(NODE_DISHEIGHT));
+
+				item.setDisMargin(itemJSON.optString(NODE_DISMARGIN));
+
+				item.setDisMarginTop(itemJSON.optInt(NODE_DISMARGINTOP));
+
+				item.setDisMarginLeft(itemJSON.optInt(NODE_DISMARGINLEFT));
+
+			}
+
+		} catch (Exception e) {
+			throw AppException.xml(e);
+		}
+		return item;
+	}
+}

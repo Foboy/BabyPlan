@@ -1,0 +1,47 @@
+﻿/*
+ * 创建者: yangchao   创建时间:2011-10-11
+ * 文件描述:缓存数据存储器
+ * 修改历史:
+ * 2011-10-11 author  description
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace BabyPlan.Cache
+{
+    /// <summary>
+    /// 缓存数据存储器
+    /// </summary>
+    public interface ICacheDepository :IEnumerable<KeyValuePair<string, object>>
+    {
+        /// <summary>
+        /// 存储数据
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="value">数据</param>
+        void Add(string key, object value);
+        /// <summary>
+        /// 是否包含某个键
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <returns></returns>
+        bool Contains(string key);
+        /// <summary>
+        /// 移除数据
+        /// </summary>
+        /// <param name="key">键</param>
+        void Remove(string key);
+        /// <summary>
+        /// 获取数据
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <returns></returns>
+        object Get(string key);
+        /// <summary>
+        /// 清除数据
+        /// </summary>
+        void Clear();
+    }
+}

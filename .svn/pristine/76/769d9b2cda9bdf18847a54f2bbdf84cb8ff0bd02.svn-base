@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout_Nested.cshtml";
+}
+<div class="mainblock">
+    <span class="font-size20 gray-font line-height40">错误提示</span>
+    <div class="mainblock whiteblock">
+        很抱歉，您所访问的页面发生了错误！
+        <br />
+         错误代码：@ViewBag.ErrorMessage
+    </div>
+</div>
+
+

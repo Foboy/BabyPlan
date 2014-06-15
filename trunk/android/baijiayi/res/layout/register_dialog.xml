@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/logindialog_space" 
+  	android:layout_width="fill_parent"
+  	android:layout_height="fill_parent"
+  	android:orientation="vertical"
+  	android:background="@color/white">
+    <include layout="@layout/frame_main_header" />
+
+    <ScrollView
+        android:id="@+id/login_scrollview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <ViewSwitcher
+            android:id="@+id/logindialog_view_switcher"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingBottom="20.0dip"
+                android:paddingTop="10.0dip" >
+
+                <TableLayout
+                    android:id="@+id/login_user_table"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginRight="15.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:id="@+id/login_uly"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8.0dip"
+                            android:layout_marginTop="10.0dip"
+                            android:text="@string/register_dialog_account"
+                            android:textColor="#ff000000"
+                            android:textSize="@dimen/text_size_16"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
+                        <AutoCompleteTextView
+                            android:id="@+id/register_account"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/login_dialog_account_hint"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            style="@style/goods_pub_editbox"/>
+                    </LinearLayout>
+
+<View style="@style/detail_cut_line" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7.0dip" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8.0dip"
+                            android:text="@string/register_dialog_password"
+                            android:textColor="#ff000000"
+                            android:textSize="@dimen/text_size_16"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
+                        <EditText
+                            android:id="@+id/register_password"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/login_dialog_password_hint"
+                            android:maxLines="1"
+                            android:password="true"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            style="@style/goods_pub_editbox" />
+                    </LinearLayout>
+
+<View style="@style/detail_cut_line" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7.0dip" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8.0dip"
+                            android:text="@string/register_confirm_password"
+                            android:textColor="#ff000000"
+                            android:textSize="@dimen/text_size_16"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
+                        <EditText
+                            android:id="@+id/register_password_confirm"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/register_dialog_password_hint"
+                            android:maxLines="1"
+                            android:password="true"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            style="@style/goods_pub_editbox" />
+                    </LinearLayout>
+
+<View style="@style/detail_cut_line" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7.0dip" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8.0dip"
+                            android:layout_marginTop="15.0dip"
+                            android:text="@string/register_dialog_sex"
+                            android:textColor="#ff000000"
+                            android:textSize="@dimen/text_size_16"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/register_sex_radiogroup"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8.0dip"
+                            android:layout_marginRight="8.0dip"
+                            android:background="@null"
+                            android:orientation="horizontal"
+                            android:textSize="@dimen/text_size_16" >
+
+                            <RadioButton
+                                android:id="@+id/register_sex_boy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:text="男"
+                                android:textColor="#ff000000" />
+
+                            <RadioButton
+                                android:id="@+id/register_sex_girl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="女"
+                                android:textColor="#ff000000" />
+                        </RadioGroup>
+                    </LinearLayout>
+                </TableLayout>
+
+                <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/login_user_table"
+                    android:layout_alignRight="@+id/login_user_table"
+                    android:layout_below="@+id/login_user_table"
+                    android:orientation="vertical"
+                    android:stretchColumns="0,2" >
+                    <TableRow 
+	                    android:gravity="center_horizontal"
+	                    android:layout_width="wrap_content" 
+	                    android:layout_height="wrap_content" 
+	                    android:layout_marginTop="5.0dip">
+                        <CheckBox 
+	                        android:id="@+id/login_checkbox_rememberMe" 
+	                        android:layout_width="wrap_content" 
+	                        android:layout_height="wrap_content" 
+	                        android:layout_gravity="left|center" 
+	                        android:button="@drawable/login_checkbox_selector"
+	                        android:paddingLeft="30dip"
+	                        android:textColor="@color/black"
+	                        android:textSize="@dimen/text_size_13"
+	                        android:text="@string/login_dialog_rememberMe"
+	                        android:checked="true"
+	                        android:visibility="gone"/>
+                    </TableRow>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="5.0dip" >
+                        <Button 
+	                        android:id="@+id/register_btn_register" 
+	                        android:layout_width="120dip" 
+	                        android:layout_height="45dip" 
+	                        android:textSize="@dimen/text_size_20"
+	                        android:text="@string/register_dialog_login" 
+	                        android:background="@drawable/login_btn_selector" />
+                        <Button 
+	                        android:id="@+id/login_btn_login" 
+	                        android:layout_width="120dip" 
+	                        android:layout_height="45dip" 
+	                        android:layout_marginLeft="5dip"
+	                        android:textSize="@dimen/text_size_20"
+	                        android:text="@string/login_dialog_login" 
+	                        android:background="@drawable/login_btn_selector" />
+
+                    </LinearLayout>
+                </TableLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/login_loading"
+                android:layout_width="135.0dip"
+                android:layout_height="135.0dip"
+                android:layout_gravity="center"
+                android:background="@anim/login_loading" />
+        </ViewSwitcher>
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/login_close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/login_scrollview"
+        android:layout_alignTop="@+id/login_scrollview"
+        android:background="@drawable/login_close_button"
+        android:visibility="gone"
+         />
+
+</LinearLayout>

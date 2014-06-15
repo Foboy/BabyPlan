@@ -1,0 +1,7 @@
+﻿  .main_content{ width:100%; margin-bottom:20px; overflow:hidden;}
+  .main_bg{width:100%; height:160px;background:url(/images/jx.png) no-repeat;  }
+  
+  .last_title{ margin-bottom:10px;}
+  .banner{min-width:960px; width:auto!important; width:960px; height:410px; margin:-15px 0 10px 0;}
+  .banner a{display:inline-block; width:960px; height:410px;}
+  .banner2{width:100%; height:410px; background:#c7ecff url(/images/banner2.jpg) no-repeat top center;}

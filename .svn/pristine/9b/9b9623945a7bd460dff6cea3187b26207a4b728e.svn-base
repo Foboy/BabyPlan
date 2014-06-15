@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Goods";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+@model IList<BabyPlan.mvcApp.Model.ProductModel>
+@section Js_InHeader{
+<style type="text/css">
+    .right_block_title{height:50px;}
+    .right-block_content{ min-height:400px;}
+    .right_block_title .title{}
+    .goods_item_outer{margin:0;}
+    .goods_item_outer .dot_line{width:680px;height:0;border-top:dotted 1px #666;margin:0 15px;}
+    .goods_item_outer .goods_item{width:680px;height:104px;margin:20px 15px;display:inline-block;}
+    .goods_item_outer .goods_item .goods_no{font-size:72px;line-height:102px;width:60px;}
+    .goods_item_outer .goods_item .goods_info{width:470px;height:102px;}
+    .goods_item_outer .goods_item .goods_pic{width:102px;height:102px;background:#666;}
+</style>
+}
+<div class="right_block_title user_right_block grayblock">
+    <span class="title margin10 font-size16 fl black-font">我的宝贝清单</span>
+    <a href="@Url.Action("AddGoods", "User")" class="margin10 button-blue fr">发布闲置物品</a>
+    <div class="clear"></div>
+</div>
+<div class="user_right_block whiteblock right-block_content">
+    <div class="goods_item_outer">
+    @for (int i = 0, c = Model.Count(); i < c; i++)
+    {
+        var item = Model[i];
+        var seq = c - i;
+        <div class="goods_item">
+            <div class="goods_no green-font fl">@seq</div>
+            <div class="goods_info fl">
+                <p class="black-font font-size16 line-height40">@item.Title</p>
+                <p class="ash-font"><span class="blue-font">描述：</span>
+                @item.SubString(item.Description, 60)
+                </p>
+                <div class="line-height40">
+                    <div class="fl ash-font">
+                        <span class="blue-font">发布时间：</span>@item.DateFormat(item.CreateTime, "yyyy-MM-dd") &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="blue-font">回复：</span>(@item.CommentsNum)
+                    </div>
+                    <div class="fr ash-font">
+                        <a href="@Url.Action("AddGoods", "User", new { id=@item.Id})" class="green-font">编辑宝贝</a>&nbsp;|
+                        <a href="#" class="green-font">关闭该宝贝</a>
+                    </div>
+                </div>
+            </div>
+            <div class="goods_pic fr">
+                @if (item.Items != null && item.Items.Count > 0)
+                { 
+                <img alt="" name="pic" src="@item.Items[0].Pic.PicUrl" style="width:@item.Items[0].Pic.DisplayWidth(102, 102)px;height:@item.Items[0].Pic.DisplayHeight(102, 102)px;margin:@item.Items[0].Pic.DisplayMargin(102, 102)" />
+                }
+            </div>
+        </div>
+                if (i < c - 1)
+                { 
+        <div class="dot_line"></div>
+                }
+    }
+    @if (Model.Count == 0)
+    { 
+        <span>您还没有添加任何宝贝，麻烦添加宝贝。你添加的不是商品是快乐！</span>
+    }
+    </div>
+</div>
+

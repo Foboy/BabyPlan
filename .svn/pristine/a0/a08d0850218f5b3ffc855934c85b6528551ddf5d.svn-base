@@ -1,0 +1,70 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
+using BabyPlan.Meta;
+using BabyPlan.WcfService;
+using BabyPlan.Common;
+using BabyPlan.mvcApp.Model;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class BaseController : Controller
+    {
+        #region token
+        private string currentToken;
+        public string CurrentToken {
+            get {
+                if (currentToken != null)
+                    return currentToken;
+                if (FormsAuthentication.CookiesSupported)
+                {
+                    if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
+                    {
+                        try
+                        {
+                            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(
+                              Request.Cookies[FormsAuthentication.FormsCookieName].Value);
+                            currentToken = ticket.UserData;
+                        }
+                        catch (Exception e)
+                        {
+                            // 票据解密失败
+                        }
+                    }
+                }
+                else
+                {
+                      //客户端不支持Cookie
+                }
+                return currentToken ?? Guid.NewGuid().ToString();
+            }
+        }
+        #endregion
+
+        #region adUser
+        private AdUser currentUser;
+        public AdUser CurrentUser
+        {
+            get
+            {
+                if (CurrentToken == null)
+                    return null;
+                if (currentUser != null)
+                    return currentUser;
+                UserServiceClient client = new UserServiceClient();
+                AdvancedResult<AdUser> user = client.GetUserInfo(CurrentToken);
+                currentUser = user.Data;
+                return currentUser;
+            }
+        }
+        #endregion
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            ViewBag.LoginUser = new UserModel().Bind(CurrentUser);
+            base.OnActionExecuting(filterContext);
+        }
+    }
+}

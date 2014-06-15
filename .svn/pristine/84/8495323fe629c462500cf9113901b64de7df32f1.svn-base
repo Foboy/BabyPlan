@@ -1,0 +1,87 @@
+for(var i = 0; i < 36; i++) { var scriptId = 'u' + i; window[scriptId] = document.getElementById(scriptId); }
+
+$axure.eventManager.pageLoad(
+function (e) {
+
+});
+u31.tabIndex = 0;
+
+u31.style.cursor = 'pointer';
+$axure.eventManager.click('u31', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('mama.html'), "");
+
+}
+});
+gv_vAlignTable['u31'] = 'top';gv_vAlignTable['u17'] = 'center';gv_vAlignTable['u28'] = 'center';gv_vAlignTable['u8'] = 'top';gv_vAlignTable['u30'] = 'center';gv_vAlignTable['u21'] = 'center';document.getElementById('u6_img').tabIndex = 0;
+HookHover('u6', false);
+HookClick('u6', false);
+
+u6.style.cursor = 'pointer';
+$axure.eventManager.click('u6', function(e) {
+
+if (true) {
+
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('妈妈帮.html');
+
+}
+});
+u32.tabIndex = 0;
+
+u32.style.cursor = 'pointer';
+$axure.eventManager.click('u32', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u32'] = 'top';gv_vAlignTable['u15'] = 'top';gv_vAlignTable['u14'] = 'center';HookHover('u4', false);
+gv_vAlignTable['u1'] = 'center';gv_vAlignTable['u26'] = 'top';gv_vAlignTable['u10'] = 'center';gv_vAlignTable['u11'] = 'top';gv_vAlignTable['u3'] = 'center';gv_vAlignTable['u35'] = 'center';document.getElementById('u27_img').tabIndex = 0;
+
+u27.style.cursor = 'pointer';
+$axure.eventManager.click('u27', function(e) {
+
+if (true) {
+
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('mama.html');
+
+}
+});
+gv_vAlignTable['u7'] = 'center';gv_vAlignTable['u24'] = 'center';u25.tabIndex = 0;
+
+u25.style.cursor = 'pointer';
+$axure.eventManager.click('u25', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('mama.html'), "");
+
+}
+});
+gv_vAlignTable['u25'] = 'top';HookHover('u2', false);
+gv_vAlignTable['u19'] = 'center';gv_vAlignTable['u5'] = 'center';u22.tabIndex = 0;
+
+u22.style.cursor = 'pointer';
+$axure.eventManager.click('u22', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u22'] = 'top';gv_vAlignTable['u33'] = 'top';document.getElementById('u34_img').tabIndex = 0;
+
+u34.style.cursor = 'pointer';
+$axure.eventManager.click('u34', function(e) {
+
+if (true) {
+
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('mama.html');
+
+}
+});

@@ -1,0 +1,17 @@
+﻿@using System.Web.Mvc;
+@helper Script(string scriptName,UrlHelper url)
+{
+    <script src="@url.Content("~/JsLib/" + scriptName)" type="text/javascript"></script>
+}
+@helper Script(string scriptName,string path,UrlHelper url)
+{
+    <script src="@url.Content(path.EndsWith("/")?path : (path+ "/") + scriptName)" type="text/javascript"></script>
+}
+@helper Css(string cssName, UrlHelper url)
+{
+    <link rel="stylesheet" type="text/css" href="@url.Content("~/css/" + cssName)" media="screen" />
+}
+@helper Css(string cssName, string path, UrlHelper url)
+{
+    <link rel="stylesheet" type="text/css" href="@url.Content(path.EndsWith("/") ? path : (path + "/") + cssName)" media="screen" />
+}

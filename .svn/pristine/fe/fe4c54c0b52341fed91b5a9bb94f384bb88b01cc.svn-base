@@ -1,0 +1,163 @@
+for(var i = 0; i < 100; i++) { var scriptId = 'u' + i; window[scriptId] = document.getElementById(scriptId); }
+
+$axure.eventManager.pageLoad(
+function (e) {
+
+});
+gv_vAlignTable['u21'] = 'center';document.getElementById('u16_img').tabIndex = 0;
+
+u16.style.cursor = 'pointer';
+$axure.eventManager.click('u16', function(e) {
+
+if (true) {
+
+	SetPanelVisibility('u13','hidden','none',500);
+
+}
+});
+gv_vAlignTable['u46'] = 'center';gv_vAlignTable['u76'] = 'center';gv_vAlignTable['u31'] = 'top';document.getElementById('u77_img').tabIndex = 0;
+
+u77.style.cursor = 'pointer';
+$axure.eventManager.click('u77', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u93'] = 'top';gv_vAlignTable['u38'] = 'center';gv_vAlignTable['u62'] = 'center';document.getElementById('u53_img').tabIndex = 0;
+
+u53.style.cursor = 'pointer';
+$axure.eventManager.click('u53', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u87'] = 'center';gv_vAlignTable['u1'] = 'center';HookHover('u4', false);
+gv_vAlignTable['u7'] = 'center';gv_vAlignTable['u66'] = 'center';HookHover('u8', false);
+HookClick('u8', false);
+gv_vAlignTable['u60'] = 'center';gv_vAlignTable['u89'] = 'center';gv_vAlignTable['u17'] = 'center';gv_vAlignTable['u64'] = 'center';gv_vAlignTable['u19'] = 'top';document.getElementById('u49_img').tabIndex = 0;
+
+u49.style.cursor = 'pointer';
+$axure.eventManager.click('u49', function(e) {
+
+if (true) {
+
+	SetPanelVisibility('u85','','none',500);
+
+}
+});
+document.getElementById('u81_img').tabIndex = 0;
+
+u81.style.cursor = 'pointer';
+$axure.eventManager.click('u81', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u97'] = 'center';u11.tabIndex = 0;
+
+u11.style.cursor = 'pointer';
+$axure.eventManager.click('u11', function(e) {
+
+if (true) {
+
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('register.html');
+
+}
+});
+gv_vAlignTable['u11'] = 'top';document.getElementById('u41_img').tabIndex = 0;
+
+u41.style.cursor = 'pointer';
+$axure.eventManager.click('u41', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+document.getElementById('u71_img').tabIndex = 0;
+
+u71.style.cursor = 'pointer';
+$axure.eventManager.click('u71', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u15'] = 'center';document.getElementById('u45_img').tabIndex = 0;
+
+u45.style.cursor = 'pointer';
+$axure.eventManager.click('u45', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u58'] = 'center';gv_vAlignTable['u92'] = 'top';gv_vAlignTable['u95'] = 'center';gv_vAlignTable['u22'] = 'top';gv_vAlignTable['u52'] = 'center';gv_vAlignTable['u3'] = 'center';document.getElementById('u47_img').tabIndex = 0;
+
+u47.style.cursor = 'pointer';
+$axure.eventManager.click('u47', function(e) {
+
+if (true) {
+
+	SetPanelVisibility('u85','','none',500);
+
+}
+});
+gv_vAlignTable['u68'] = 'center';gv_vAlignTable['u90'] = 'top';gv_vAlignTable['u84'] = 'center';gv_vAlignTable['u50'] = 'center';gv_vAlignTable['u28'] = 'top';gv_vAlignTable['u24'] = 'center';gv_vAlignTable['u54'] = 'center';gv_vAlignTable['u99'] = 'top';gv_vAlignTable['u78'] = 'center';HookHover('u6', false);
+gv_vAlignTable['u91'] = 'top';gv_vAlignTable['u35'] = 'top';gv_vAlignTable['u26'] = 'top';document.getElementById('u65_img').tabIndex = 0;
+
+u65.style.cursor = 'pointer';
+$axure.eventManager.click('u65', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u56'] = 'center';gv_vAlignTable['u82'] = 'center';gv_vAlignTable['u5'] = 'center';gv_vAlignTable['u12'] = 'top';gv_vAlignTable['u9'] = 'center';gv_vAlignTable['u42'] = 'center';gv_vAlignTable['u33'] = 'center';gv_vAlignTable['u72'] = 'center';gv_vAlignTable['u18'] = 'top';gv_vAlignTable['u48'] = 'center';document.getElementById('u88_img').tabIndex = 0;
+
+u88.style.cursor = 'pointer';
+$axure.eventManager.click('u88', function(e) {
+
+if (true) {
+
+}
+});
+u10.tabIndex = 0;
+
+u10.style.cursor = 'pointer';
+$axure.eventManager.click('u10', function(e) {
+
+if (true) {
+
+	SetPanelVisibility('u13','','none',500);
+
+}
+});
+gv_vAlignTable['u10'] = 'top';gv_vAlignTable['u40'] = 'center';gv_vAlignTable['u70'] = 'center';gv_vAlignTable['u44'] = 'center';gv_vAlignTable['u74'] = 'center';gv_vAlignTable['u29'] = 'top';document.getElementById('u59_img').tabIndex = 0;
+
+u59.style.cursor = 'pointer';
+$axure.eventManager.click('u59', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u98'] = 'top';gv_vAlignTable['u80'] = 'center';

@@ -1,0 +1,3 @@
+﻿/* File Created: 十一月 30, 2012 */
+  .love_content{ height:600px; background-color:#f85349;}
+  .lovebg{width:100%; height:410px; background:#f85349 url(/images/loveHeart.jpg) no-repeat top center;position:absolute;left:0;top:0;}

@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "关于我们-百家衣(www.360baijiayi.com)";
+    ViewBag.Description = "百家衣(www.360baijiayi.com)是一个专注婴儿闲置衣物买卖的网站，在这里妈妈们可以在线买卖宝宝闲置的衣服、玩具。“百家衣”是婴儿服的一种，由一百个家庭收集到布片做成，故名“百家衣”";
+    ViewBag.KeyWords = "百家衣,买卖,旧衣服,二手,二手衣服,闲置,宝宝,婴儿,儿童,孩子,衣服,小孩衣服,婴儿衣服,寄售,玩具,同城置换,同城交易,四川二手,成都二手衣服";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+  .about_content{ height:400px; background-color:#fff;}
+  .about_left{ width:700px; font-size:14px;}
+  .about_img{ margin:40px 40px 10px 40px; width:200px; height:50px;}
+  .about_left p{margin:20px 20px 0px 50px; line-height:1.6;}
+  .about_right{ width:180px; padding:40px 40px 10px 40px;}
+  .about_right p{ margin-top:20px;}
+</style>
+
+@Html.Partial("_Header_Partial")
+
+<div class="mainblock about_content">
+  <div class="fl about_left">
+    <div class="about_img">
+       <img src="/images/about.png" title="关于我们" />
+    </div>
+    <p class="gray-font">百家衣，宝宝会长大，衣服不会长大。</p>
+    <p class="gray-font">百家衣(www.360baijiayi.com)是一个专注婴儿闲置衣物买卖的网站，在这里妈妈们可以在线买卖宝宝闲置的衣服、玩具。“百家衣”是用从百家纳来的各种彩色布条拼接成衣服让小孩穿，这样小孩就不会生病遭灾。把“百家衣”告诉身边的妈妈们,让我们一起关注孩子的健康!</p>
+    <p class="gray-font">使命：和年轻的准妈妈一起关注孩子的健康</p> 
+    <p class="gray-font">我们希望将我们的快乐和更多的人去分享，所以有了做一个网站的想法。一群有着共同兴趣和爱好的人走到了一起。我们会尽力帮助妈妈们呵护着宝宝成长，给更多的父母带去幸福和快乐！ </p>
+  </div>
+  <div class="fr about_right">
+   <h4 class="green-font">联系我们</h4>
+   <p class="gray-font">地址：四川省成都市犀浦西区花园</p>
+   <p class="gray-font">邮箱：<a>baijiayi@360baijiayi.com</a></p>
+   <p class="gray-font">QQ：81855946</p>
+   <p class="gray-font">合作电话：13880639761</p>
+  </div>
+</div>
+
+@Html.Partial("_Footer_Partial")

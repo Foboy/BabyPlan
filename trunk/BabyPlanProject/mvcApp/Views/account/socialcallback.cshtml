@@ -1,0 +1,64 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>正在跳转...</title>
+        @Content.Css("main.css", Url)
+        @Content.Script("jquery-1.5.1.min.js", Url)
+        @Content.Css("fancybox/jquery.fancybox-1.3.4.css", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)  
+        @Content.Script("fancybox/jquery.fancybox-1.3.4.js", Url)
+        @Content.Script("fancybox.msgbox.js", Url)
+        <script type="text/javascript">
+        $(document).ready(function(){
+            if (window.parent && window.parent!=window.self) {
+                if (typeof window.parent.OauthWindowCallback == 'function') {
+                    window.parent.OauthWindowCallback(@Html.Raw(ViewBag.LoginResponse));
+                }
+            }
+            else {
+                OauthWindowCallback(@Html.Raw(ViewBag.LoginResponse));
+            }
+            function OauthWindowCallback(response) {
+                if (response.Logined) {
+                    if (response.Binded) {
+                        $.showMsg("欢迎回来 " + response.Name + " ！", "success",
+                {
+                    onClosed: function () {
+                        var queryString = function (key) {
+                            return (document.location.search.match(new RegExp("(?:^\\?|&)" + key + "=(.*?)(?=&|$)")) || ['', null])[1];
+                        }
+                        var returnUrl = queryString("ReturnUrl");
+                        if (returnUrl) {
+                            returnUrl = decodeURIComponent(returnUrl)
+                            window.location = returnUrl;
+                            return;
+                        }
+                        else
+                            window.location = '@Url.Action("Index","User")';
+                            return;
+                    }
+                });
+                    }
+                    else {
+                        window.location = '@Url.Action("SocialBind","Account")';
+                        return;
+                    }
+                }
+                else {
+                    $.showMsg("登陆失败！" + (response.Message || ""), "error",{onClosed: function () {window.location = '@Url.Action("Login","Account")';return;}});
+                }
+            }
+            });
+        </script>
+    </head>
+    <body>
+        <div style="width:100px;height:30px;margin:100px auto;">
+                正在跳转...
+        </div>
+
+    </body>
+</html>

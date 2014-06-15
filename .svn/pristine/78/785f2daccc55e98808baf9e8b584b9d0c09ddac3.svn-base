@@ -1,0 +1,8 @@
+﻿var sitemap = 
+
+(function() {
+    var _ = function() { var r={},a=arguments; for(var i=0; i<a.length; i+=2) r[a[i]]=a[i+1]; return r; }
+    var _creator = function() { return _(b,[_(c,d,e,f,g,h),_(c,i,e,f,g,j),_(c,k,e,f,g,l),_(c,m,e,f,g,n),_(c,o,e,f,g,p),_(c,q,e,f,g,r),_(c,s,e,f,g,t),_(c,u,e,f,g,v)]);}; 
+var b="rootNodes",c="pageName",d="主页",e="type",f="Wireframe",g="url",h="主页.html",i="宝贝列表",j="宝贝列表.html",k="宝贝内容页",l="宝贝内容页.html",m="发布宝贝",n="发布宝贝.html",o="设置",p="设置.html",q="登录",r="登录.html",s="账号设置",t="账号设置.html",u="注册",v="注册.html";
+return _creator();
+})();

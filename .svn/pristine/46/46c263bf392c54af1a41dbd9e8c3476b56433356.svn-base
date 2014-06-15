@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace BabyPlan.mvcApp.Model
+{
+    [Serializable]
+    public class ProductItemModel : BaseModel
+    {
+        public int? Pid { get; set; }
+
+        public int? Id { get; set; }
+
+        public Double Price { get; set; }
+
+        public Double Age { get; set; }
+
+        public int Sex { get; set; }
+
+        public int ItemType { get; set; }
+
+        public string Description { get; set; }
+
+        public PicModel Pic { get; set; }
+    }
+}

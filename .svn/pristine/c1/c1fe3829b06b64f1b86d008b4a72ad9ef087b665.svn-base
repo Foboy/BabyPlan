@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "关于我们-百家衣(www.360baijiayi.com)";
+    ViewBag.Description = "百家衣(www.360baijiayi.com)是一个专注婴儿闲置衣物买卖的网站，在这里妈妈们可以在线买卖宝宝闲置的衣服、玩具。“百家衣”是婴儿服的一种，由一百个家庭收集到布片做成，故名“百家衣”";
+    ViewBag.KeyWords = "百家衣,买卖,旧衣服,二手,二手衣服,闲置,宝宝,婴儿,儿童,孩子,衣服,小孩衣服,婴儿衣服,寄售,玩具,同城置换,同城交易,四川二手,成都二手衣服";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ResourceHelper.RegisterCss(this, "home.infomap.css");
+}
+@Html.Partial("_Header_Partial")
+
+
+<div class="wrapper">
+ <div class="mapholder" id="dituContent"></div>
+ <div class="mapInfocon"  id="results"></div>
+ <input id="Button1" type="button" onclick="next();" value="下一页" />
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+<script type="text/javascript">
+   var map;
+   var pageindex = 0;
+   var local;
+    //创建和初始化地图函数：
+    function initMap() {
+        createMap(); //创建地图
+        setMapEvent(); //设置地图事件
+        addMapControl(); //向地图添加控件
+    }
+
+    //创建地图函数：
+    function createMap() {
+         map = new BMap.Map("dituContent"); //在百度地图容器中创建一个地图
+
+        map.centerAndZoom(new BMap.Point(104.067923, 30.679943), 13);
+
+        var myCity = new BMap.LocalCity();
+        myCity.get(myFun);
+
+        var myKeys = ["幼儿园"];
+        local = new BMap.LocalSearch(map, {
+            renderOptions: { map: map, panel: "results" }
+        });
+        local.setPageCapacity(500);
+        local.searchInBounds(myKeys, map.getBounds());
+        local.setSearchCompleteCallback(SearchResult);
+    }
+    function SearchResult(result) {
+//        var test = result.getPoi(14);
+//        alert(test.title);
+       pageindex =  result.getPageIndex();
+    }
+    function next() {
+        local.gotoPage(pageindex + 1);
+    }
+    function myFun(result) {
+        var cityName = result.name;
+        map.setCenter(cityName);
+//        alert(cityName);
+    }
+    //地图事件设置函数：
+    function setMapEvent() {
+        map.enableDragging(); //启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom(); //启用地图滚轮放大缩小
+        map.enableDoubleClickZoom(); //启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard(); //启用键盘上下左右键移动地图
+    }
+
+    //地图控件添加函数：
+    function addMapControl() {
+    }
+
+
+    initMap(); //创建和初始化地图
+  
+</script>
+
+
+
+     

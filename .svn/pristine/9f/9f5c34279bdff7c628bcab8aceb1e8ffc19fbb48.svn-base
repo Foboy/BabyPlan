@@ -1,0 +1,402 @@
+﻿@{
+    ViewBag.Title = "AddGoods";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+    ResourceHelper.RegisterCss(this, "user.addgoods.css");
+}
+@model BabyPlan.mvcApp.ViewModel.ProductModel
+@section Js_InHeader{}
+
+<style type="text/css">
+ input.error{border:solid 2px #ff0000;}
+ textarea.error{border:solid 2px #ff0000;}
+</style>
+
+<div class="right_block_title user_right_block grayblock">
+    <span class="title margin10 font-size16 black-font">发布我的宝贝</span>
+</div>
+<div class="goods_input_outer user_right_block whiteblock clearfix">
+    <form id="goodsform" action="" method="post">
+    @*<dl class="goods_input_item">
+        <dt class="font-size16 black-font">宝贝标题：&nbsp;&nbsp;</dt>
+        <dd>
+            <input type="text" class="input_box" validate="{required:true,minlength:3}" id="gtitle" name="gtitle" style="width:460px;" data-bind="value:product_title" maxlength="30" />
+            <input type="hidden" id="h_goods_id" name="h_goods_id" data-bind="value:product_id" />
+            <br />
+            <span class="gray-font" rel="tip">&nbsp;&nbsp;宝贝标题最少不低于3个字符最多输入30个字符</span>
+        </dd>
+    </dl>
+
+
+    <dl class="goods_input_item">
+        <dt class="font-size16 black-font">联系方式：&nbsp;&nbsp;</dt>
+        <dd>
+            <input type="text" class="input_box" name="gqq" id="gqq" validate="{qq:true,qqOrMobile:'#gmobile'}" style="width:200px;" data-bind="value:product_qq"
+             onfocus="if(this.value=='QQ')this.value='';"
+             onblur="if(this.value=='')this.value='QQ';"
+              />
+            <span class="font-size16 black-font" style="text-align:center;padding:0 16px;">或</span>
+            <input type="text" class="input_box" id="gmobile" name="gphone" validate="{mobile:true,mobileOrQq:'#gqq'}" style="width:200px;"  data-bind="value:product_phone"
+             onfocus="if(this.value=='手机号')this.value='';"
+             onblur="if(this.value=='')this.value='手机号';"
+              />
+            <br />
+            <span class="gray-font" rel="tip">&nbsp;&nbsp;最少留下其中一种联系方式，方便买家能及时联系到您，增加您出售宝贝的几率</span>
+        </dd>
+    </dl>
+    <dl class="goods_input_item">
+        <dt class="font-size16 black-font">宝贝描述：&nbsp;&nbsp;</dt>
+        <dd>
+            <textarea class="input_box" name="gdescription" validate="{required:true,minlength:6,maxlength:300}" style="width:460px;height:100px;" data-bind="value:product_des"></textarea>
+            <br />
+            <span class="gray-font" rel="tip">&nbsp;&nbsp;宝贝描述最少不低于6个字符最多输入300个字符</span>
+        </dd>
+    </dl>*@
+
+    @*发布宝贝元素*@
+     <p class="add_p">
+        <label class="fl">宝贝标题：</label>
+        <input type="text" validate="{required:true,minlength:3}" id="gtitle" name="gtitle" style="width:420px;" data-bind="value:product_title" maxlength="30" class="input_box"  />
+        <input type="hidden" id="h_goods_id" name="h_goods_id" data-bind="value:product_id" />
+        <span class="tip gray-font add_tip">宝贝标题最少不低于3个字符最多输入30个字符</span>
+     </p>
+     <p class="add_p">
+        <label class="fl">宝贝类型：</label>
+        <span class="add_span"><input type="radio" name="babytype" value="1" data-bind="checked:product_type" />衣服/裤子/鞋子</span>
+        <span class="add_span"><input type="radio" name="babytype"  value="2" data-bind="checked:product_type" />玩具</span>
+        <span class="add_span"><input type="radio" name="babytype"  value="3" data-bind="checked:product_type" />其他</span>
+     </p>
+     <p class="add_p" id="add_age">
+        <label class="fl">适合年龄：</label>
+        <input type="text"  style="width:320px;" validate="{required:true,number:true}" class="input_box" data-bind="value:product_age"/>&nbsp;岁
+     </p> 
+     <p class="add_p" id="add_sex">
+        <label class="fl">性别：</label>
+        <span class="add_span"><input type="radio" name="sex" data-bind="checked:product_sex"   value="1" />男</span>
+        <span class="add_span"><input type="radio" name="sex" data-bind="checked:product_sex" value="2"  />女</span>
+     </p> 
+     <p class="add_p" id="add_pri">
+        <label class="fl">宝贝价格：</label>
+        <input type="text"  style="width:320px;"  validate="{required:true,number:true,messages:{required:'请输入宝贝价格！'}}" data-bind="value:product_price" class="input_box"   />&nbsp;元
+     </p>         
+     <p class="add_p">
+        <label class="fl">联系方式：</label>
+         <input type="text" class="input_box" name="gqq" id="gqq" style="width:200px;" data-bind="value:product_qq"
+             onfocus="if(this.value=='QQ')this.value='';"onblur="if(this.value=='')this.value='QQ';"/>&nbsp 或 &nbsp 
+         <input type="text" class="input_box" id="gmobile" name="gphone"  style="width:200px;" data-bind="value:product_phone"
+             onfocus="if(this.value=='手机号')this.value='';"onblur="if(this.value=='')this.value='手机号';" />
+         <span class="tip gray-font add_tip" rel="tip">最少留下其中一种联系方式，方便买家能及时联系到您，增加您出售宝贝的几率</span>
+     </p> 
+     <p class="add_p">
+        <label class="fl">宝贝描述：</label>
+        <textarea class="input_box" name="gdescription" validate="{required:true,minlength:6,maxlength:300}" style="width:420px;height:100px;" data-bind="value:product_des"></textarea>
+        <span class="tip gray-font add_tip" rel="tip">宝贝描述最少不低于6个字符最多输入300个字符</span>
+     </p> 
+
+
+    <div class="goods_box_outer" id="goods_box_outer">
+        <div data-bind="template: { name: 'item-template',foreach:pics }"></div>
+        <div class="clear"></div>
+    </div>
+    <input type="hidden" data-bind="value:del_pic_id" />
+    <dl class="goods_input_item" id="item_pic_uploader">
+        <dt>&nbsp;</dt>
+        <dd>
+            <div class="add_btn_box fl">
+                <div id="addGoodsItemBtn" class="button-blue bb_upload_btn">添加宝贝图片</div>
+            </div>
+            <span class="gray-font fl line-height40">您最多能上传6张图片，如果超过6张，您可以在新开一个帖子。</span>
+        </dd>
+    </dl>
+    <p class="apply_info gray-font"><input type="checkbox" checked="checked" data-bind="checked: product_isWash" />承诺<label class="blue-font"> "发布的衣物均经过清洗"</label></p>
+     
+    <a href="javascript:void(0);" id="submit_btn" class="button-green submit_btn font-size18">
+    @if (@Model.Id > 0)
+    {
+        <text>提交</text>
+    }
+    else
+    {
+        <text>发布</text>
+    }
+    </a>
+    </form>
+</div>
+<script type="text/html" id="item-template">
+        <div class="goods_box_item">
+            <input type="hidden" value="0" data-bind="value:pic_id" />
+            <div class="goods_pic">
+                <div class="upload_box" data-bind="attr:{idx:$index}">
+                    <img data-bind="attr:{src:item_pic},style:{width:pic_width,height:pic_height,margin:pic_margin}" />
+                </div>
+            </div>
+            <div><a href="javascript:;" data-bind="click:$parent.removeItem">删除</a><div>
+        </div>
+</script>
+
+@section Js_InFoot{
+    @Content.Script("cLoading.js", Url)
+    @Content.Script("cUpload.js", Url)
+    @Content.Script("json2.js", Url)
+    @Content.Css("fancybox/jquery.fancybox-1.3.4.css",  Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)  
+    @Content.Script("fancybox/jquery.fancybox-1.3.4.js",Url)
+    @Content.Script("fancybox.msgbox.js", Url)
+    @Content.Script("knockout-2.1.0.js", Url)
+    @Content.Script("jquery-validation-1.9.0/jquery.validate.js", Url)
+    @Content.Script("jquery-validation-1.9.0/lib/jquery.metadata.js", Url)
+    @Content.Script("cSwfUpload/cSwfUpload.js", Url)
+<script type="text/javascript">
+    var productJson = @Html.Raw(ViewBag.Product);
+</script>
+<script type="text/javascript">
+    $("input[name=babytype]").change(function () {
+        var val = $('input:radio[name="babytype"]:checked').val();
+        if (val == "2" || val == "3") {
+            $("#add_age,#add_sex").slideUp("slow");
+        } else {
+            $("#add_age,#add_sex").slideDown("slow");
+        }
+    })
+
+    $.metadata.setType("attr", "validate");
+    jQuery.validator.addMethod("qqOrMobile", function (value, element, param) {
+        var pass = /^[1-9][0-9]{3,10}$/.test(value);
+        if (!pass) {
+            return /^1[0-9]{10}$/.test($(param).val());
+        }
+        return pass;
+    }, "请输入您的QQ号或者手机号码!");
+    jQuery.validator.addMethod("mobileOrQq", function (value, element, param) {
+        var pass = /^1[0-9]{10}$/.test(value);
+        if (!pass) {
+            return /^[1-9][0-9]{3,10}$/.test($(param).val());
+        }
+        return pass;
+    }, "请输入您的QQ号或者手机号码!");
+    jQuery.validator.addMethod("qq", function (value, element, param) {
+        var pass = /^[1-9][0-9]{3,10}$/.test(value);
+        if (!pass && value != "QQ") {
+            return false;
+        }
+        else {
+            return true;
+        }
+        return pass;
+    }, "请输入正确的QQ号码!");
+    jQuery.validator.addMethod("mobile", function (value, element, param) {
+        var pass = /^1[0-9]{10}$/.test(value);
+        if (!pass && value != "手机号") {
+            return false;
+        }
+        else {
+            return true;
+        }
+        return pass;
+    }, "请输入正确的手机号码!");
+
+    jQuery.extend(jQuery.validator.messages, {
+        required: "",
+        maxlength: jQuery.validator.format("请输入一个长度最多是 {0} 的字符串"),
+        minlength: jQuery.validator.format("请输入一个长度最少是 {0} 的字符串"),
+        max: jQuery.validator.format("请输入一个最大为 {0} 的值"),
+        min: jQuery.validator.format("请输入一个最小为 {0} 的值")
+    });
+
+    ko.extenders.numeric = function (target, limit) {
+        var bb = this;
+        var result = ko.computed({
+            read: target,
+            write: function (newValue) {
+                var current = target();
+                if (newValue == null)
+                    return;
+                var roundingMultiplier = Math.pow(10, limit.precision),
+                newValueAsNum = isNaN(newValue) ? 0 : parseFloat(+newValue),
+                //小数位
+                valueToWrite = Math.round(newValueAsNum * roundingMultiplier) / roundingMultiplier;
+                //大小限定
+                valueToWrite = valueToWrite < limit.min ? limit.min : valueToWrite;
+                valueToWrite = valueToWrite > limit.max ? limit.max : valueToWrite;
+
+                if (valueToWrite !== current) {
+                    target(valueToWrite);
+                } else {
+                    if (newValue !== current) {
+                        target.notifySubscribers(valueToWrite);
+                    }
+                }
+            }
+        });
+
+        result(target());
+
+        return result;
+    };
+            
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var uploader = '@Url.Action("Uploader", "Upload")?type=g';
+
+        var ageLimit = { numeric: { precision: 0, min: 0, max: 4} };
+        var priceLimit = { numeric: { precision: 2, min: 0, max: 9999} };
+
+        var itemsViewModel = {
+            isvalid: ko.observable(false),
+            product_title: ko.observable(),
+            product_id: ko.observable(0),
+            product_age: ko.observable(),
+            product_sex: ko.observable(1),
+            product_type: ko.observable(1),
+            product_price: ko.observable(),
+            product_qq: ko.observable(),
+            product_phone: ko.observable(),
+            product_des: ko.observable(),
+            pics: ko.observableArray([]),
+            del_pic_id: ko.observable(0),
+            product_isWash: ko.observable(true),
+            removeItem: function () {
+                itemsViewModel.del_pic_id(itemsViewModel.del_pic_id() + "," + this.pic_id());
+                itemsViewModel.pics.remove(this);
+            }
+        };
+        ko.applyBindings(itemsViewModel);
+        if (typeof productJson === "object" && productJson.Id >0) {
+            itemsViewModel.product_id(productJson.Id);
+            itemsViewModel.product_title(productJson.Title);
+            itemsViewModel.product_sex(productJson.Sex);
+            itemsViewModel.product_age(productJson.Age);
+            itemsViewModel.product_type(productJson.ItemType);
+            itemsViewModel.product_price(productJson.Price);
+            itemsViewModel.product_qq(productJson.QQ || "QQ");
+            itemsViewModel.product_phone(productJson.Phone || "手机号");
+            itemsViewModel.product_des(productJson.Description);
+            itemsViewModel.product_isWash(productJson.IsWash);
+            if (productJson.Pics && productJson.Pics.length) {
+                for (var i = 0; i < productJson.Pics.length; i++) {
+                    var item = productJson.Pics[i];
+                    itemsViewModel.pics.push(
+                        {
+                            pic_id: ko.observable(item.PicId),
+                            item_pic: ko.observable(item.PicUrl),
+                            pic_width: ko.observable(item.DisWidth + "px"),
+                            pic_height: ko.observable(item.DisHeight + "px"),
+                            pic_margin: ko.observable(item.DisMargin)
+                        }
+                    );
+                }
+            }
+        }
+
+        var cUploadInit = function () {
+            $("div.upload_box").cSwfUpload({
+                size: { width: 126, height: 126 },
+                zWidth: 470,
+                url: uploader,
+                beforeUpload: function () { return true; },
+                uploaded: function (response) {
+                    if (!response.Saved) {
+                        $.showMsg(response.Msg, "error");
+                    }
+                    else {
+                        var idx = $(this).attr("idx");
+                        var item = response;
+                        var gitem = itemsViewModel.pics()[idx];
+                        pic_id: ko.observable(item.Pic.PicId),
+                        gitem.item_pic(item.Pic.PicUrl);
+                        gitem.pic_width(item.Pic.DisWidth + "px");
+                        gitem.pic_height(item.Pic.DisHeight + "px");
+                        gitem.pic_margin(item.Pic.DisMargin);
+                    }
+                }
+            });
+        };
+        $("#addGoodsItemBtn").cSwfUpload({
+            size: { width: 126, height: 126 },
+            zWidth: 470,
+            url: uploader,
+            beforeUpload: function () { return true; },
+            uploaded: function (response) {
+                if (!response.Saved) {
+                    $.showMsg(response.Msg, "error");
+                }
+                else {
+                    var curNo = itemsViewModel.pics().length;
+                    if (curNo == 5) {
+                        $("#item_pic_uploader").hide();
+                    }
+                    else if (curNo > 5) {
+                        $.showMsg("您最多能上传6张图片，如果超过6张，您可以在新开一个帖子!", "warn");
+                        $("#item_pic_uploader").hide();
+                        return;
+                    }
+                    var item = response;
+                    var gitem = {
+                        pic_id: ko.observable(item.Pic.PicId),
+                        item_pic: ko.observable(item.Pic.PicUrl),
+                        pic_width: ko.observable(item.Pic.DisWidth + "px"),
+                        pic_height: ko.observable(item.Pic.DisHeight + "px"),
+                        pic_margin: ko.observable(item.Pic.DisMargin),
+                    };
+                    itemsViewModel.pics.push(gitem);
+                    cUploadInit();
+                }
+            }
+        });
+        cUploadInit();
+
+
+        $("#submit_btn").bind("click", function () {
+            var validator = $("#goodsform").validate({ errorElement: "", errorClass: "error" });
+            var valid = validator.checkForm();
+            if (!valid && validator.errorList.length > 0) {
+                //$.showMsg(validator.errorList[0].message, "error");
+                validator.showErrors();
+                $(validator.errorList[0].element).focus();
+                return;
+            }
+
+            var goods = {
+                Id: itemsViewModel.product_id(),
+                Title: itemsViewModel.product_title(),
+                Type: itemsViewModel.product_type(),
+                Age: itemsViewModel.product_age(),
+                Sex: itemsViewModel.product_sex(),
+                Price:itemsViewModel.product_price(),
+                QQ: itemsViewModel.product_qq() == "QQ" ? null : itemsViewModel.product_qq(),
+                Phone: itemsViewModel.product_phone() == "手机号" ? null : itemsViewModel.product_phone(),
+                Description: itemsViewModel.product_des(),
+                IsWash: itemsViewModel.product_isWash(),
+                Pics: new Array()
+            };
+
+
+            for (var i = 0, c = itemsViewModel.pics().length; i < c; i++) {
+                var item = itemsViewModel.pics()[i];
+                goods.Pics.push({
+                    PicId: item.pic_id()
+                });
+            }
+            if (goods.Pics.length == 0) {
+                $.showMsg("必须至少上传一张图片!", "error");
+                return false;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AjaxAddGoods", "User")',
+                data: { goods: JSON.stringify(goods), del_items: itemsViewModel.del_pic_id() }
+            }).done(function (response) {
+                if (response.Error == 0) {
+                    $.showMsg(response.ExMessage || "保存成功！", "success");
+                    setTimeout(function () {
+                        window.location = '@Url.Action("Goods","User")';
+                    }, 2000);
+                } else {
+                    $.showMsg(response.ExMessage, "error");
+                }
+            });
+        });
+    });
+</script>
+}

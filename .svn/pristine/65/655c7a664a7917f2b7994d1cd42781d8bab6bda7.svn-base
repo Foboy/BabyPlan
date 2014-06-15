@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Nested.cshtml";
+    var itemType = ItemType.Ignore;
+    Enum.TryParse<ItemType>(string.Format("{0}", ViewBag.ItemType ?? ItemType.Ignore), out itemType);
+    ResourceHelper.RegisterCss(this, "trade.css");
+}
+@section Js_InHeader{
+    @Content.Script("jquery.form.js",Url)
+    @RenderSection("Js_InHeader", false)
+}
+<div class="bannerlh"><a href="@Url.Action("Index", "loveheart")" title="点击进入活动页面"></a></div>
+<div class="trade_top_bar mainblock whiteblock">
+    <div class="category fl">
+        <ul>
+            <li>
+                <a  href="@Url.Action("List", "Trade", new { category = ItemType.Ignore })" title="全部">全部</a>
+            </li>
+            <li class="sp gray-font">●</li>
+            <li>
+                @if (itemType == ItemType.Clothes)
+                {
+                <span title="宝宝的衣服">宝宝的衣服</span>
+                }
+                else
+                { 
+                <a  href="@Url.Action("List", "Trade", new { category=ItemType.Clothes})" title="宝宝的衣服">宝宝的衣服</a>
+                }
+            </li>
+            <li class="sp gray-font">●</li>
+            <li>
+                @if (itemType == ItemType.Toys)
+                {
+                <span title="宝宝的玩具">宝宝的玩具</span>
+                }
+                else
+                { 
+                <a  href="@Url.Action("List", "Trade", new { category = ItemType.Toys})" title="宝宝的玩具">宝宝的玩具</a>
+                }
+            </li>
+            <li class="sp gray-font">●</li>
+            <li>
+                @if (itemType == ItemType.Others)
+                {
+                <span title="其他">其他</span>
+                }
+                else
+                { 
+                <a  href="@Url.Action("List", "Trade", new { category = ItemType.Others })" title="其他">其他</a>
+                }
+            </li>
+        </ul>
+    </div>
+    <div class="post fr">
+        <a href="#bless_box" id="bless_link" class="postbtn button-green fr">心愿贴</a>
+        <a href="@Url.Action("AddGoods", "User")" class="postbtn button-blue fr" title="发布闲置物品">发布闲置物品</a>
+    </div>
+</div>
+@RenderBody()
+@Html.Partial("_Bless_Partial")
+@section Js_InFoot{
+    @RenderSection("Js_InFoot", false)
+}

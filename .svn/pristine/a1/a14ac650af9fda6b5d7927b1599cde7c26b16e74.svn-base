@@ -1,0 +1,120 @@
+* html .u0_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="user_files/u0_normal.png");
+}
+
+* html .u9_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="user_files/u9_normal.png");
+}
+
+* html .u15_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u15_normal.png");
+}
+
+* html .u17_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u17_normal.png");
+}
+
+* html .u29_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u29_normal.png");
+}
+
+* html .u32_line {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u32_line.png");
+}
+
+* html .u33_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u33_normal.png");
+}
+
+* html .u35_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u39_line {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u39_line.png");
+}
+
+* html .u42_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u48_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u54_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u60_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u66_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u72_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u78_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u84_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u90_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u97_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u97_normal.png");
+}
+
+* html .u99_line {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u99_line.png");
+}
+
+* html .u100_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u106_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u112_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+
+* html .u118_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="challenge_files/u35_normal.png");
+}
+

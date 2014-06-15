@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+  .main_content{ width:100%; margin-bottom:30px; overflow:hidden;}
+  .main_bg{ background:url(images/jx.png) no-repeat;width:100%; height:160px; }
+</style>
+
+@Html.Partial("_Header_Partial")
+
+<div class="mainblock">
+  <div class="main_content"><img src="../../images/s1.jpg" title="百家衣" /></div>
+  @*<div class="main_content main_bg"></div>*@
+  <div class="main_content"><h1 style=" text-align:center;">8月震撼上线，尽请期待</h1></div>
+</div>
+
+
+@Html.Partial("_Footer_Partial")
+

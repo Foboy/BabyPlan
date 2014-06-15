@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout_Nested.cshtml";
+}
+
+<style type="text/css">
+    .wish_outer{}
+    .wish_outer .post_wish{width:140px;height:30px;margin:10px;}
+    .mama_hot_outer{margin-top:30px;}
+    .mama_hot_outer .hot_item{width:452px;padding:10px;}
+    .mama_hot_outer .hot_item .head_pic{width:162px;height:240px;background:#999;}
+    .mama_hot_outer .hot_item .vote{margin:0 15px;width:250px;}
+    .mama_hot_outer .hot_item .vote .slogan{margin:10px 0;}
+    .mama_hot_outer .hot_item .vote .votebtn{width:142px;height:30px;margin:16px auto; padding:0;}
+</style>
+<div class="wish_outer mainblock whiteblock">
+    <span class="blue-font label18 line-height50 fl block">&nbsp;&nbsp;下面这些投票和挑战都弱爆了，快来心愿中填写超吊的投票和挑战。</span>
+    <a href="@Url.Action("Challenge", "Game")" class="post_wish button-green text-center fl label14" title="发布心愿贴">发布心愿贴</a>
+    <div class="clear"></div>
+</div>
+<div class="mama_hot_outer mainblock">
+    <div class="hot_item whiteblock fl">
+        <div class="head_pic fl"></div>
+        <div class="vote fl">
+            <span class="green-font font-size20 line-height30">那么潮的辣妈你扶得住吗？</span>
+            <p class="slogan gray-font font-size14">注重外表只是其一，想要修炼为一代
+“潮人辣妈”还需要“秘籍”。快来看看哪种辣妈的装扮，你最喜欢，最想拥有。</p>
+            <p class="gray-font font-size14 text-center"><span class="pink-font font-size28">4563</span>&nbsp;&nbsp;人投票</p>
+            <a href="@Url.Action("Vote","Game")" class="votebtn button-pink font-size14 text-center">立即去投票</a>
+        </div>
+    </div>
+    <div class="hot_item whiteblock fr">
+        <div class="head_pic fl"></div>
+        <div class="vote fl">
+            <span class="green-font font-size20 line-height30">那么潮的辣妈你扶得住吗？</span>
+            <p class="slogan gray-font font-size14">注重外表只是其一，想要修炼为一代
+“潮人辣妈”还需要“秘籍”。快来看看哪种辣妈的装扮，你最喜欢，最想拥有。</p>
+            <p class="gray-font font-size14 text-center"><span class="pink-font font-size28">4563</span>&nbsp;&nbsp;人投票</p>
+            <a href="@Url.Action("Vote","Game")" class="votebtn button-pink font-size14 text-center">立即去投票</a>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using BabyPlan.Meta;
+
+namespace BabyPlan.mvcApp.Model
+{
+    [Serializable]
+    public class UserModel
+    {
+        public string Name { get; set; }
+        public string Account { get; set; }
+
+        public UserModel Bind(AdUser user)
+        {
+            if (user != null)
+            {
+                this.Account = user.UserAccount;
+                this.Name = user.UserAccount;
+            }
+            return this;
+        }
+    }
+}

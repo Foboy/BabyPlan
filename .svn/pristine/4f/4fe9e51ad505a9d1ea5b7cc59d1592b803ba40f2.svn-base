@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Trade.cshtml";
+    var Product = ViewBag.Product as ProductModel;
+    var Interests = ViewBag.Interests as IList<ProductItemModel>;
+    Product = Product ?? new ProductModel();
+    ViewBag.Title = Product.Title;
+    var ProductJson = BabyPlan.Common.JsonHelper.Serialize(new { Title = Product.Title, Description = Product.Description });
+    string SharePic = "";
+}
+
+
+<div class="mainblock whiteblock detailblock">
+
+</div>
+
+
+
+
+     

@@ -1,0 +1,939 @@
+body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../宝贝列表_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:120px;
+    top:20px;
+    width:386px;
+    height:786px;
+}
+
+#u0_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:386px;
+    height:786px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:385px;
+    width:382px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../宝贝列表_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:153px;
+    top:124px;
+    width:320px;
+    height:66px;
+}
+
+#u2_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:66px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:25px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../宝贝列表_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:153px;
+    top:124px;
+    width:320px;
+    height:26px;
+}
+
+#u4_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:320px;
+    height:26px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:5px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_normal {
+    background-image: url('../宝贝列表_files/u6_normal.png');
+}
+
+.u6_container {
+    position:absolute;
+    left:327px;
+    top:126px;
+    width:21px;
+    height:21px;
+}
+
+#u6_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:21px;
+    height:21px;
+}
+
+.u7 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:17px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8_normal {
+    background-image: url('../宝贝列表_files/u8_normal.png');
+}
+
+.u8_container {
+    position:absolute;
+    left:352px;
+    top:126px;
+    width:22px;
+    height:21px;
+}
+
+#u8_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:22px;
+    height:21px;
+}
+
+.u9 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:18px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u10_normal {
+    background-image: url('../宝贝列表_files/u10_normal.png');
+}
+
+.u10_container {
+    position:absolute;
+    left:377px;
+    top:128px;
+    width:21px;
+    height:16px;
+}
+
+#u10_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:21px;
+    height:16px;
+}
+
+.u11 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:17px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u12 {
+    position:absolute;
+    left:407px;
+    top:126px;
+    width:60px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u13 {
+    position:absolute;
+    left:267px;
+    top:157px;
+    width:122px;
+    height:28px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u14_normal {
+    background-image: url('../宝贝列表_files/u14_normal.png');
+}
+
+.u14_container {
+    position:absolute;
+    left:153px;
+    top:190px;
+    width:320px;
+    height:420px;
+}
+
+#u14_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:426px;
+}
+
+.u15 {
+    position:absolute;
+    left:2px;
+    top:202px;
+    width:316px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u16_normal {
+    background-image: url('../宝贝列表_files/u16_normal.png');
+}
+
+.u16_container {
+    position:absolute;
+    left:154px;
+    top:191px;
+    width:318px;
+    height:40px;
+}
+
+#u16_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:324px;
+    height:46px;
+}
+
+.u17 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:314px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u18 {
+    position:absolute;
+    left:171px;
+    top:203px;
+    width:50px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u19 {
+    position:absolute;
+    left:251px;
+    top:203px;
+    width:50px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u20 {
+    position:absolute;
+    left:332px;
+    top:203px;
+    width:50px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u21 {
+    position:absolute;
+    left:412px;
+    top:203px;
+    width:50px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u22_line {
+    background-image: url('../宝贝列表_files/u22_line.png');
+}
+
+.u22_line {
+    position:absolute;
+    left:4px;
+    top:0px;
+    width:3px;
+    height:40px;
+}
+
+.u22 {
+    position:absolute;
+    left:221px;
+    top:191px;
+    width:10px;
+    height:40px;
+    
+}
+
+.u23_line {
+    background-image: url('../宝贝列表_files/u23_line.png');
+}
+
+.u23_line {
+    position:absolute;
+    left:4px;
+    top:0px;
+    width:3px;
+    height:40px;
+}
+
+.u23 {
+    position:absolute;
+    left:301px;
+    top:191px;
+    width:10px;
+    height:40px;
+    
+}
+
+.u24_line {
+    background-image: url('../宝贝列表_files/u24_line.png');
+}
+
+.u24_line {
+    position:absolute;
+    left:4px;
+    top:0px;
+    width:3px;
+    height:40px;
+}
+
+.u24 {
+    position:absolute;
+    left:388px;
+    top:191px;
+    width:10px;
+    height:40px;
+    
+}
+
+.u25_line {
+    background-image: url('../宝贝列表_files/u25_line.png');
+}
+
+.u25_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:320px;
+    height:3px;
+}
+
+.u25 {
+    position:absolute;
+    left:152px;
+    top:303px;
+    width:320px;
+    height:10px;
+    
+}
+
+.u26_container {
+    position:absolute;
+    left:165px;
+    top:238px;
+    width:60px;
+    height:60px;
+}
+
+#u26_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:60px;
+    height:60px;
+}
+
+.u27 {
+    position:absolute;
+    left:2px;
+    top:22px;
+    width:56px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u28 {
+    position:absolute;
+    left:234px;
+    top:238px;
+    width:215px;
+    height:22px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u29 {
+    position:absolute;
+    left:234px;
+    top:262px;
+    width:150px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u30 {
+    position:absolute;
+    left:235px;
+    top:283px;
+    width:70px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u31 {
+    position:absolute;
+    left:429px;
+    top:270px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u32_line {
+    background-image: url('../宝贝列表_files/u32_line.png');
+}
+
+.u32_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:320px;
+    height:3px;
+}
+
+.u32 {
+    position:absolute;
+    left:152px;
+    top:381px;
+    width:320px;
+    height:10px;
+    
+}
+
+.u33_container {
+    position:absolute;
+    left:165px;
+    top:316px;
+    width:60px;
+    height:60px;
+}
+
+#u33_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:60px;
+    height:60px;
+}
+
+.u34 {
+    position:absolute;
+    left:2px;
+    top:22px;
+    width:56px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u35 {
+    position:absolute;
+    left:234px;
+    top:316px;
+    width:215px;
+    height:22px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u36 {
+    position:absolute;
+    left:234px;
+    top:340px;
+    width:150px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u37 {
+    position:absolute;
+    left:235px;
+    top:361px;
+    width:70px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u38 {
+    position:absolute;
+    left:429px;
+    top:348px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u39_line {
+    background-image: url('../宝贝列表_files/u39_line.png');
+}
+
+.u39_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:320px;
+    height:3px;
+}
+
+.u39 {
+    position:absolute;
+    left:152px;
+    top:460px;
+    width:320px;
+    height:10px;
+    
+}
+
+.u40_container {
+    position:absolute;
+    left:165px;
+    top:395px;
+    width:60px;
+    height:60px;
+}
+
+#u40_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:60px;
+    height:60px;
+}
+
+.u41 {
+    position:absolute;
+    left:2px;
+    top:22px;
+    width:56px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u42 {
+    position:absolute;
+    left:234px;
+    top:395px;
+    width:215px;
+    height:22px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u43 {
+    position:absolute;
+    left:234px;
+    top:419px;
+    width:150px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u44 {
+    position:absolute;
+    left:235px;
+    top:440px;
+    width:70px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u45 {
+    position:absolute;
+    left:429px;
+    top:427px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u46_line {
+    background-image: url('../宝贝列表_files/u46_line.png');
+}
+
+.u46_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:320px;
+    height:3px;
+}
+
+.u46 {
+    position:absolute;
+    left:152px;
+    top:538px;
+    width:320px;
+    height:10px;
+    
+}
+
+.u47_container {
+    position:absolute;
+    left:165px;
+    top:473px;
+    width:60px;
+    height:60px;
+}
+
+#u47_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:60px;
+    height:60px;
+}
+
+.u48 {
+    position:absolute;
+    left:2px;
+    top:22px;
+    width:56px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u49 {
+    position:absolute;
+    left:234px;
+    top:473px;
+    width:215px;
+    height:22px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u50 {
+    position:absolute;
+    left:234px;
+    top:497px;
+    width:150px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u51 {
+    position:absolute;
+    left:235px;
+    top:518px;
+    width:70px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u52 {
+    position:absolute;
+    left:429px;
+    top:505px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u53_normal {
+    background-image: url('../宝贝列表_files/u53_normal.png');
+}
+
+.u53_container {
+    position:absolute;
+    left:389px;
+    top:155px;
+    width:78px;
+    height:30px;
+}
+
+#u53_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:84px;
+    height:36px;
+}
+
+.u54 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:74px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u55_normal {
+    background-image: url('../宝贝列表_files/u55_normal.png');
+}
+
+.u55_container {
+    position:absolute;
+    left:161px;
+    top:157px;
+    width:24px;
+    height:24px;
+}
+
+#u55_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:24px;
+    height:24px;
+}
+
+.u56 {
+    position:absolute;
+    left:2px;
+    top:4px;
+    width:20px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

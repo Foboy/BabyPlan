@@ -1,0 +1,25 @@
+.bookName{width:960px; margin-top:20px;}
+.bookName label{font-size:16px; width:140px; display:inline-block; float:left; margin-top:10px;}
+.bookName .input_box{width:250px; float:left;}
+.bookStep dl dt{background:#2a8fc5; height:50px; line-height:50px; font-size:20px; color:#FFFFFF; cursor:pointer; border:1px solid #DEDEDE; margin-top:20px;}
+.bookStep dl dt span{margin-left:10px;}
+.bookStep dl dt.none{border-bottom:0; background:#F5F5F5; color:#666666;}
+.bookStep dl dt b{background:url(../images/circle.png) no-repeat; display:inline-block; width:35px; height:35px; line-height:35px;text-align:center; margin:0 10px;}
+.bookStep dl dd{border:1px solid #DEDEDE; border-top:0; background:#F5F5F5; width:960px; padding-bottom:20px;}
+.pageSize div{background:#FFFFFF; padding:10px; width:200px; margin:10px 50px 0 55px; float:left;}
+.pageSize div p{border:1px solid #000000; height:240px; font-size:46px; text-align:center; line-height:240px;}
+.formworkL,.formworkR{background:url(../images/arrows.png) no-repeat; width:16px; height:26px; margin-top:80px;}
+.formworkL{background-position:-2px 0; margin-left:45px;}
+.formworkR{background-position:-30px 0;}
+.formworkM ul{margin:20px 0 0 0;}
+.formworkM ul li{float:left; text-align:center; width:110px; height:134px; padding:8px; background:#FFFFFF; margin:0 20px; cursor:pointer;}
+.formworkM ul li:hover{background:#2a8fc5;}
+.update{border-bottom:1px dashed #DEDEDE; padding:20px 0;}
+.update a{width:120px; height:30px; line-height:30px; font-size:14px; margin-left:34px; display:inline-block; }
+.imgShow{margin:20px 0 0 32px;}
+.imgShow img,.textDes{float:left; border:1px solid #DEDEDE; background:#FFFFFF;}
+.imgShow img{padding:3px;  margin-right:10px;}
+.textDes{width:260px; height:86px; padding:5px;}
+.textDes h2{font-weight:normal; font-size:12px; margin-bottom:5px;}
+.textDes p{line-height:16px;}
+.makeBook {height: 60px;line-height: 60px;margin: 20px auto 50px;width: 180px;}

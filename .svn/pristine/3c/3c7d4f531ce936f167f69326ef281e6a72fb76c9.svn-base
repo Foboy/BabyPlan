@@ -1,0 +1,174 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+using BabyPlan.Common;
+using BabyPlan.DataAccess;
+using BabyPlan.Meta;
+using System.ServiceModel.Activation;
+using BabyPlan.Common.Cache;
+using BabyPlan.Meta.Enum;
+using BabyPlan.DataStructure;
+
+namespace BabyPlan.WcfService
+{
+    public class UserServiceImp:IUserService
+    {
+        public RespResult Register(string account, string pwd)
+        {
+            RespResult result = new RespResult();
+            
+            AdUser user = new AdUser();
+            user.UserAccount = account;
+            user.Pwd = pwd;
+
+            try
+            {
+                UserAccessor.Instance.Insert(user);
+                result.Error = AppError.ERROR_SUCCESS;
+                result.ExMessage = "注册成功";
+            }
+            catch { }
+
+            return result;
+        }
+        //public string CheckAccout(string account)
+        //{
+        //    AdUser user = null;
+        //    user = UserAccessor.Instance.Get(0, account.Trim(), string.Empty, (int)StateType.All);
+
+        //    ResponseResult result = new ResponseResult();
+        //    if (user != null)
+        //    {
+        //        result.ErrorCode = 0;
+        //        result.Msg = "账号已存在";
+        //    }
+        //    return JsonHelper.Serialize(result);
+        //}
+        //public string CheckLogin(string token)
+        //{
+        //    ResponseResult result = new ResponseResult();
+        //    if (CacheManagerFactory.GetMemoryManager().Contains(token))
+        //    {
+        //        result.ErrorCode = 1;
+        //        result.Msg = "已登录";
+        //    }
+        //    else
+        //    {
+        //        result.ErrorCode = 0;
+        //        result.Msg = "未登录";
+        //    }
+        //    return JsonHelper.Serialize(result);
+        //}
+        //public string Login(string account, string pwd)
+        //{
+        //    AdUser user = null;
+        //    user = UserAccessor.Instance.Get(0, account.Trim(), pwd.Trim(), (int)StateType.Active);
+
+        //    ResponseResult result = new ResponseResult();
+        //    if (user != null)
+        //    {
+        //        result.ErrorCode = 1;
+        //        result.Msg = "登陆成功";
+        //        result.Data = SecurityHelper.GetToken(user.AdUserId.ToString());
+        //    }
+        //    else
+        //    {
+        //        result.ErrorCode = 0;
+        //        result.Msg = "登陆失败";
+        //    }
+        //    return JsonHelper.Serialize(result);
+        //}
+        //public string LoginOut(string token)
+        //{
+        //    ResponseResult result = new ResponseResult();
+        //    if (CacheManagerFactory.GetMemoryManager().Contains(token))
+        //    {
+        //        CacheManagerFactory.GetMemoryManager().Remove(token);
+        //    }
+
+        //    result.ErrorCode = 1;
+        //    result.Msg = "退出登录";
+        //    return JsonHelper.Serialize(result);
+        //}
+        //public string UpdateBabyAge(int bbage, string token)
+        //{
+        //    ResponseResult result = new ResponseResult();
+        //    if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+        //    {
+        //        result.ErrorCode = 0;
+        //        result.Msg = "用户账户过期或者未登录";
+        //    }
+        //    else
+        //    {
+        //        int userid = Convert.ToInt32(CacheManagerFactory.GetMemoryManager().Get(token));
+        //        AdUser user = UserAccessor.Instance.Get(userid, string.Empty, string.Empty, (int)StateType.All);
+        //        user.BabyBirthday = DateTime.Now.AddYears(0 - bbage);
+        //        UserAccessor.Instance.Update(user);
+        //        result.ErrorCode = 1;
+        //        result.Msg = "修改成功";
+        //    }
+        //    return JsonHelper.Serialize(result);
+        //}
+        //public string GetUserInfo(string token)
+        //{
+        //    ResponseResult result = new ResponseResult();
+        //    if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+        //    {
+        //        result.ErrorCode = 0;
+        //        result.Msg = "用户账户过期或者未登录";
+        //    }
+        //    else
+        //    {
+        //        int userid = Convert.ToInt32(CacheManagerFactory.GetMemoryManager().Get(token));
+        //        AdUser user = UserAccessor.Instance.Get(userid, string.Empty, string.Empty, (int)StateType.All);
+        //        result.ErrorCode = 1;
+        //        result.Msg = "成功获取用户信息";
+        //        result.Data = user;
+        //    }
+        //    return JsonHelper.Serialize(result);
+        //} 
+
+        public AdvancedResult<bool> CheckAccout(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdvancedResult<bool> CheckLogin(string token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdvancedResult<bool> GetUserInfo(string token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public RespResult Login(string account, string pwd)
+        {
+            throw new NotImplementedException();
+        }
+
+        public RespResult Logout(string token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public RespResult UpdateBabyAge(int bbage, string token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public RespResult IsBindSocialUser(SocialUser socialUser)
+        {
+            throw new NotImplementedException();
+        }
+
+        public RespResult BindSocialUser(string userName, string password, SocialUser socialUser)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

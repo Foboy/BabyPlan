@@ -1,0 +1,204 @@
+﻿<?xml version="1.0"?> 
+<configuration>
+  <configSections>    
+    <sectionGroup name="SinaSectionGroup">
+      <section name="SinaSection" type="System.Configuration.NameValueSectionHandler"/>
+    </sectionGroup>
+    <sectionGroup name="QQSectionGroup">
+      <section name="QzoneSection" type="System.Configuration.NameValueSectionHandler" />
+    </sectionGroup>
+    <!--<sectionGroup name="QQSectionGroup">
+      <section name="QQSection" type="System.Configuration.NameValueSectionHandler"/>
+    </sectionGroup>-->
+    <sectionGroup name="NetEaseSectionGroup">
+      <section name="NetEaseSection" type="System.Configuration.NameValueSectionHandler"/>
+    </sectionGroup>
+    <sectionGroup name="SohuSectionGroup">
+      <section name="SohuSection" type="System.Configuration.NameValueSectionHandler"/>
+    </sectionGroup>
+  </configSections>
+  <SinaSectionGroup>
+    <SinaSection>
+      <add key="AppKey" value="1926866113"/>
+      <add key="AppSecret" value="c8936fb1e419fbe5eddce405fd448329"/>
+      <add key="CallBackURI" value="http://babyplan.gotoip4.com/account/social_callback/1"/>
+    </SinaSection>
+  </SinaSectionGroup>
+  <QQSectionGroup>
+    <QzoneSection>
+      <add key="AppKey" value="100286964" />
+      <add key="AppSecret" value="479e584158f91b7a79d0d4c39a823bf3" />
+      <add key="CallBackURI" value="http://babyplan.gotoip4.com/account/social_callback/2" />
+      <add key="AuthorizeURL" value="https://graph.qq.com/oauth2.0/authorize" />
+    </QzoneSection>
+  </QQSectionGroup>
+  <!--<QQSectionGroup>
+    <QQSection>
+      <add key="AppKey" value="100286964"/>
+      <add key="AppSecret" value="479e584158f91b7a79d0d4c39a823bf3"/>
+      <add key="CallBackURI" value="http://babyplan.gotoip4.com/a/check_social_user?type=2"/>
+    </QQSection>
+  </QQSectionGroup>-->
+  <NetEaseSectionGroup>
+    <NetEaseSection>
+      <add key="AppKey" value="UsVknY6aEkD4U84Y"/>
+      <add key="AppSecret" value="rfKgXrU0SAlD3CGvI860T2Eq4T1Zoui2"/>
+      <add key="CallBackURI" value="http://www.iytong.com/test1/a/check_user?type=4"/>
+      <add key="RequestType" value="GET"/>
+      <add key="OAuthType" value="QueryString"/>
+    </NetEaseSection>
+  </NetEaseSectionGroup>
+  <SohuSectionGroup>
+    <SohuSection>
+      <add key="AppKey" value="pH9Ox2HW98WHNP3yXnTr"/>
+      <add key="AppSecret" value="k4ykAPjouT6(Paz6!p1P91MJr-^)YSEK4MG*bbCL"/>
+      <add key="CallBackURI" value="http://www.iytong.com/test1/a/check_user?type=8"/>
+      <add key="RequestType" value="GET"/>
+      <add key="OAuthType" value="QueryString"/>
+    </SohuSection>
+  </SohuSectionGroup>
+  <appSettings>
+    <add key="webpages:Version" value="1.0.0.0"/>
+    <add key="ClientValidationEnabled" value="true"/>
+    <add key="UnobtrusiveJavaScriptEnabled" value="true"/>
+  </appSettings>
+    
+  <system.web>
+    <compilation debug="true" targetFramework="4.0">
+      <assemblies>
+        <add assembly="System.Web.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+      </assemblies>
+    </compilation>
+
+    <authentication mode="Forms">
+      <forms loginUrl="~/Account/Login"></forms>
+    </authentication>
+    
+    <pages>
+      <namespaces>
+        <add namespace="System.Web.Helpers" />
+        <add namespace="System.Web.Mvc" />
+        <add namespace="System.Web.Mvc.Ajax" />
+        <add namespace="System.Web.Mvc.Html" />
+        <add namespace="System.Web.Routing" />
+        <add namespace="System.Web.WebPages"/>
+      </namespaces>
+    </pages>
+  </system.web>
+
+  <system.web>
+    <customErrors mode="On">
+    </customErrors>
+  </system.web>
+
+  <system.webServer>
+    <validation validateIntegratedModeConfiguration="false"/>
+    <modules runAllManagedModulesForAllRequests="false"/>
+  </system.webServer>
+
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-2.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <system.serviceModel>
+    <bindings>
+      <basicHttpBinding>
+        <binding name="BasicHttpBinding_IFileService" closeTimeout="00:01:00"
+          openTimeout="00:01:00" receiveTimeout="00:10:00" sendTimeout="00:01:00"
+          allowCookies="false" bypassProxyOnLocal="false" hostNameComparisonMode="StrongWildcard"
+          maxBufferSize="65536" maxBufferPoolSize="524288" maxReceivedMessageSize="65536"
+          messageEncoding="Text" textEncoding="utf-8" transferMode="Buffered"
+          useDefaultWebProxy="true">
+          <readerQuotas maxDepth="32" maxStringContentLength="8192" maxArrayLength="16384"
+            maxBytesPerRead="4096" maxNameTableCharCount="16384" />
+          <security mode="None">
+            <transport clientCredentialType="None" proxyCredentialType="None"
+              realm="" />
+            <message clientCredentialType="UserName" algorithmSuite="Default" />
+          </security>
+        </binding>
+        <binding name="BasicHttpBinding_IProductService" closeTimeout="00:01:00"
+          openTimeout="00:01:00" receiveTimeout="00:10:00" sendTimeout="00:01:00"
+          allowCookies="false" bypassProxyOnLocal="false" hostNameComparisonMode="StrongWildcard"
+          maxBufferSize="65536" maxBufferPoolSize="524288" maxReceivedMessageSize="65536"
+          messageEncoding="Text" textEncoding="utf-8" transferMode="Buffered"
+          useDefaultWebProxy="true">
+          <readerQuotas maxDepth="32" maxStringContentLength="8192" maxArrayLength="16384"
+            maxBytesPerRead="4096" maxNameTableCharCount="16384" />
+          <security mode="None">
+            <transport clientCredentialType="None" proxyCredentialType="None"
+              realm="" />
+            <message clientCredentialType="UserName" algorithmSuite="Default" />
+          </security>
+        </binding>
+        <binding name="BasicHttpBinding_IReplyService" closeTimeout="00:01:00"
+          openTimeout="00:01:00" receiveTimeout="00:10:00" sendTimeout="00:01:00"
+          allowCookies="false" bypassProxyOnLocal="false" hostNameComparisonMode="StrongWildcard"
+          maxBufferSize="65536" maxBufferPoolSize="524288" maxReceivedMessageSize="65536"
+          messageEncoding="Text" textEncoding="utf-8" transferMode="Buffered"
+          useDefaultWebProxy="true">
+          <readerQuotas maxDepth="32" maxStringContentLength="8192" maxArrayLength="16384"
+            maxBytesPerRead="4096" maxNameTableCharCount="16384" />
+          <security mode="None">
+            <transport clientCredentialType="None" proxyCredentialType="None"
+              realm="" />
+            <message clientCredentialType="UserName" algorithmSuite="Default" />
+          </security>
+        </binding>
+        <binding name="BasicHttpBinding_IUserService" closeTimeout="00:01:00"
+          openTimeout="00:01:00" receiveTimeout="00:10:00" sendTimeout="00:01:00"
+          allowCookies="false" bypassProxyOnLocal="false" hostNameComparisonMode="StrongWildcard"
+          maxBufferSize="65536" maxBufferPoolSize="524288" maxReceivedMessageSize="65536"
+          messageEncoding="Text" textEncoding="utf-8" transferMode="Buffered"
+          useDefaultWebProxy="true">
+          <readerQuotas maxDepth="32" maxStringContentLength="8192" maxArrayLength="16384"
+            maxBytesPerRead="4096" maxNameTableCharCount="16384" />
+          <security mode="None">
+            <transport clientCredentialType="None" proxyCredentialType="None"
+              realm="" />
+            <message clientCredentialType="UserName" algorithmSuite="Default" />
+          </security>
+        </binding>
+        <binding name="BasicHttpBinding_IVoteService" closeTimeout="00:01:00"
+          openTimeout="00:01:00" receiveTimeout="00:10:00" sendTimeout="00:01:00"
+          allowCookies="false" bypassProxyOnLocal="false" hostNameComparisonMode="StrongWildcard"
+          maxBufferSize="65536" maxBufferPoolSize="524288" maxReceivedMessageSize="65536"
+          messageEncoding="Text" textEncoding="utf-8" transferMode="Buffered"
+          useDefaultWebProxy="true">
+          <readerQuotas maxDepth="32" maxStringContentLength="8192" maxArrayLength="16384"
+            maxBytesPerRead="4096" maxNameTableCharCount="16384" />
+          <security mode="None">
+            <transport clientCredentialType="None" proxyCredentialType="None"
+              realm="" />
+            <message clientCredentialType="UserName" algorithmSuite="Default" />
+          </security>
+        </binding>
+      </basicHttpBinding>
+    </bindings>
+    <client>
+      <endpoint address="http://localhost:1937/BabyPlan.WcfService/FileService.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IFileService"
+        contract="FileService.IFileService" name="BasicHttpBinding_IFileService" />
+      <endpoint address="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IProductService"
+        contract="ProductService.IProductService" name="BasicHttpBinding_IProductService" />
+      <endpoint address="http://aaronpc:1937/BabyPlan.WcfService/ReplyService.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IReplyService"
+        contract="ReplyService.IReplyService" name="BasicHttpBinding_IReplyService" />
+      <endpoint address="http://aaronpc:1937/BabyPlan.WcfService/VoteService.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IVoteService"
+        contract="VoteService.IVoteService" name="BasicHttpBinding_IVoteService" />
+      <endpoint address="http://localhost:1937/BabyPlan.WcfService/UserService.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IUserService"
+        contract="UserService.IUserService" name="BasicHttpBinding_IUserService" />
+    </client>
+  </system.serviceModel>
+</configuration>

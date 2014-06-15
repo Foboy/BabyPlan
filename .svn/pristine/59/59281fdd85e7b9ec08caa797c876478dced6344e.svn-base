@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+        @Content.Css("jquery.fancybox-1.3.4.css", "fancybox", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)  
+        @Content.Script("jquery.fancybox-1.3.4.js", "fancybox", Url)    
+        @Content.Script("fancybox.msgbox.js", Url)
+        <div style="display:none"> 
+        <div class="bless_box" id="bless_box" style="width:380px;height:160px;padding:20px 40px;">
+            <p class="pink-font font-size20">
+                在这里写下您的心愿吧。
+            </p>
+            <form action="@Url.Action("Bless", "Reply")" id="blessform" method="post">
+                <dl class="font-size16 black-font line-height40" style="margin:10px auto;">
+                    <dd>
+                        <textarea class="input_box" name="blessContent" id="blessContent" style="width:360px;height:60px;" ></textarea>
+                        <span class="tip gray-font">请输入4-50个字符的心愿内容！</span>
+                    </dd>
+                </dl>
+                <div class="clear"></div>
+                <input type="submit" value="确定" class="button-green" style="border:none;width:100px;margin:0 auto;" />
+            </form>
+        </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var options = {
+                    dataType: 'json',
+                    beforeSubmit: beforeSubmit,
+                    success: submitSuccess
+                };
+                $("#blessform").ajaxForm(options);
+                var link = $("a#bless_link");
+                link.fancybox();
+
+                function beforeSubmit() {
+                    var blessInput = $("#blessContent");
+                    var bless = $.trim(blessInput.val());
+                    if (!bless || bless.length < 6 || bless.length > 130) {
+                        blessInput.css("border", "solid 2px #f00");
+                        blessInput.next("span").attr("class", "tip red-font");
+                        blessInput.focus();
+                        return false;
+                    }
+                    else {
+                        blessInput.next("span").attr("class", "tip gray-font");
+                        blessInput.css("border", "solid 2px #fff");
+                        return true;
+                    }
+
+                }
+                function submitSuccess(response) {
+                    if (response.Error == 0) {
+                        $.fancybox.close();
+                        $.showMsg("保存成功！", "success");
+                    }
+                    else {
+                        $.showMsg(response.ExMessage || response.ErrorMessage, "error");
+                    }
+                }
+            });
+        </script>

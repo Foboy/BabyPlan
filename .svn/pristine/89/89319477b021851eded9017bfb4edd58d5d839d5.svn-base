@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ReplyService.svc?xsd=xsd2" namespace="http://babyplan.com/services" />
+  <xs:element name="Bless">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BlessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://babyplan.com/services" minOccurs="0" name="BlessResult" nillable="true" type="q1:RespResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBBPostReplyNum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="bbPostID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBBPostReplyNumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://babyplan.com/services" minOccurs="0" name="GetBBPostReplyNumResult" nillable="true" type="q2:AdvancedResultOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReplyNum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReplyNumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://babyplan.com/services" minOccurs="0" name="GetReplyNumResult" nillable="true" type="q3:AdvancedResultOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoadReplyListByBBPostID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="bbPostID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoadReplyListByBBPostIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://babyplan.com/services" minOccurs="0" name="LoadReplyListByBBPostIDResult" nillable="true" type="q4:AdvancedResultOfPageEntityOfGenReplyeRTV06kjUZ4giwPb" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoadReplyList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoadReplyListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://babyplan.com/services" minOccurs="0" name="LoadReplyListResult" nillable="true" type="q5:AdvancedResultOfPageEntityOfGenReplyeRTV06kjUZ4giwPb" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReplyBBPost">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="bbPostID" type="xs:int" />
+        <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReplyBBPostResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://babyplan.com/services" minOccurs="0" name="ReplyBBPostResult" nillable="true" type="q6:RespResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

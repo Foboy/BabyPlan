@@ -1,0 +1,9 @@
+.publicBook{position:relative;}
+.turnPage{position:absolute; width:1044px; top:50%; left:-42px; z-index:1;}
+.prev a,.next a{background:#2a8fc5; display:inline-block; width:22px; height:60px; line-height:60px; text-align:center; color:#FFFFFF;}
+.prev a.disble{background:#c4c4c4;cursor: not-allowed;}
+.pages div{height:697px; width:480px;box-shadow:0 0 6px #CCCCCC;}
+.pages .page{background:#FFFFFF;}
+.pages .Snone{box-shadow:none;}
+.pages .Fcover{position:relative; width:480px; height:697px; background:url(../images/frontCover.jpg) no-repeat center center;}
+.pages .Fcover b{position:absolute; bottom:170px; left:16px; color:#2a8fc5; font-size:38px}

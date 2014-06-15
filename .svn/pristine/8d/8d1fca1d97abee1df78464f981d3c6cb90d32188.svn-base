@@ -1,0 +1,6 @@
+﻿  .main_content{ width:100%; margin-bottom:20px; overflow:hidden;}
+  .main_s1{ background:url(/images/s1_01.jpg) no-repeat; width:960px; height:197px;}
+  .main_s2{ background:url(/images/s1_02.jpg) no-repeat; width:960px; height:213px;}
+  .main_bg{width:100%; height:160px;background:url(/images/jx.png) no-repeat;  }
+  
+  .last_title{ margin-bottom:10px;}

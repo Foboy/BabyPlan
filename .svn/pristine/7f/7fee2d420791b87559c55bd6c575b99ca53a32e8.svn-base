@@ -1,0 +1,364 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc; 
+using System.Web.SessionState;
+using System.Web.Helpers;
+using System.Text;
+using BabyPlan.DataStructure;
+using SocialServices.Sina.oAuth;
+using BabyPlan.oAuth;
+using QWeiboSDK;
+using BabyPlan.mvcApp.Infras;
+using BabyPlan.WcfService;
+using BabyPlan.Common;
+using BabyPlan.Meta;
+
+
+namespace WepApp.Controllers
+{
+    public class aController : BaseController
+    {
+        #region 变量定义
+        //登录方式(Session)Key
+        private string sKey_LoginFlag = "isLogin";
+
+        //用户名(Session)Key
+        private string sKey_User_Name = "UserName"; 
+
+        //登陆类型
+        private string sKey_Login_Type = "loginType";
+
+        //QQ微博登录后记录其oAuth信息(Session)Key
+        private string sKey_oAuthKey = "oAuthKey"; 
+
+        #endregion
+
+        #region 公用函数定义
+
+        private void oAuth_Sina()
+        {
+            ISinaoAuth oAuthService = new SinaOAuthService();
+            string requestTokenUrl = oAuthService.GetAuthorizeUri();
+            Response.Redirect(requestTokenUrl, true);
+        }
+
+        private void oAuth_TQQ()
+        {
+            IQoAuth oAuthService = new QoAuthService();
+            OauthKey oAuthKey = null;
+            string requestTokenUrl = oAuthService.GetRequestTokenURL(out oAuthKey);
+
+            //用于获取access_token
+            Session[sKey_oAuthKey] = oAuthKey; 
+            Response.Redirect(requestTokenUrl, true);
+        }
+
+        /// <summary>
+        /// 创建新的平台账号
+        /// </summary>
+        /// <returns></returns>
+        private RespResult create_account(string userName, string password)
+        {
+            IUserService userService = new UserService();
+            RespResult result = new RespResult();
+            try
+            {
+                result = userService.Register(userName, password); 
+            }
+            catch { }
+
+            return result;
+        }
+
+        #endregion
+
+        
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        #region 找回密码 
+        public ActionResult forgot()
+        {
+            return View("~/Views/account/forgot.cshtml");
+        }
+
+        /// <summary>
+        /// 找回密码
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult dofindpwd()
+        {
+            string mail =Request["email"];
+            //BusinessCore.UserService userService = new UserService(); 
+            //string password = string.Empty;
+            AppError error = AppError.ERROR_FAILED;
+                 //= userService.FindPassword(mail,out password);
+            //if(error == AppError.ERROR_SUCCESS)
+            //{                
+            //    StringBuilder sb_find_pwd = new StringBuilder();
+            //    sb_find_pwd.Append("亲爱的微博营销管理用户:<br/><br/>");
+            //    sb_find_pwd.Append("我们已经收到您找回密码的请求，您在微博营销管理平台的账号和密码分别如下:<br/><br/>");
+            //    sb_find_pwd.Append("<p/>");
+            //    sb_find_pwd.Append("用户名:"+mail+"<br/>");
+            //    sb_find_pwd.Append("密码:"+password+"<br/>");
+            //    sb_find_pwd.Append("<p/>");
+            //    sb_find_pwd.Append("<p/>");
+            //    sb_find_pwd.Append("备注:这封邮件是系统自动发送，请勿回复。<br/>");
+            //    sb_find_pwd.Append("谢谢<br/>");
+            //    sb_find_pwd.Append("微博营销管理平台<br/>");
+            //    WebMail.Send(mail, "微博营销管理平台密码找回", sb_find_pwd.ToString(), null, null, null, true, null);
+
+            //    error = AppError.ERROR_PWD_GET_SUCCESS;
+            //}
+
+            ResponseObj<string> response = new ResponseObj<string>();
+            response.Error = error;
+
+            return this.Json(response, JsonRequestBehavior.AllowGet);           
+            
+        }
+
+        #endregion
+
+        #region 处理登录
+        /// <summary>
+        /// 平台账号登陆界面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult login()
+        {
+            return View("~/Views/account/login.cshtml");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult dologin()
+        {           
+            //获取前端参数(用户名&密码)
+            string username = Request["username"];
+            string password = Request["password"];
+
+            IUserService userService = new UserService();
+            RespResult response = userService.Login(username, password);
+            if (response.Error == AppError.ERROR_SUCCESS)
+            {
+                //页面成功session保存
+                Session[sKey_LoginFlag] = true;
+                Session[sKey_User_Name] = username;
+            }
+            return this.Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        /// <summary>
+        /// 新浪微博账号登陆
+        /// </summary>
+        public void sina_login()
+        {  
+            oAuth_Sina();
+        } 
+
+        /// <summary>
+        ///腾讯微博账号登陆 
+        /// </summary>
+        public void qq_wb_login()
+        {          
+            oAuth_TQQ();           
+        }
+
+        /// <summary>
+        /// 绑定社交账号后的回调函数，使用场景
+        /// 1.直接采用社交账号登陆
+        /// 2.平台账号登陆后->绑定新的社交账号
+        /// </summary>
+        public void check_social_user()
+        {
+            //判断登陆的社交账户类型(默认为新浪微博账号)
+            String req_type = (String.IsNullOrEmpty(Request["type"])) ? "1" : Request["type"];
+            SocialUserTypeEnum socialUserTypeEnum = (SocialUserTypeEnum)Enum.Parse(typeof(SocialUserTypeEnum), req_type);
+
+            //初始化社交账户结构体
+            SocialUser socialUser = new SocialUser();
+            socialUser.SocialUserType = socialUserTypeEnum;
+
+            #region 获取社交账号的access_token及security_key
+            switch (socialUserTypeEnum)
+            {
+                case SocialUserTypeEnum.Sina:
+                    ISinaoAuth sina_oAuthService = new SinaOAuthService();
+                    string _code = Request["code"];
+                    string access_code = string.Empty;
+                    string sina_uid = string.Empty;
+                    bool _isOk = sina_oAuthService.GetAccessToken(_code, out access_code, out sina_uid);
+                    socialUser.AccessToken = access_code;
+                    socialUser.Uid = sina_uid;
+                    break;
+                case SocialUserTypeEnum.QQ:
+                    IQoAuth oAuthService = new QoAuthService();
+                    //解析返回认证2返回的结果
+                    OauthKey oAuthKey = (OauthKey)Session[sKey_oAuthKey];
+                    oAuthKey.callbackUrl = null;
+                    QTokenHelper.ParseToken(2, Request.Url.AbsoluteUri, ref oAuthKey);
+                    //返回
+                    bool isOk = oAuthService.GetAccessToken(ref oAuthKey);
+                    if (isOk)
+                    {
+                        socialUser.AccessToken = oAuthKey.tokenKey;
+                        socialUser.AccessTokenSecret = oAuthKey.tokenSecret;
+                        socialUser.Uid = oAuthKey.user_name;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            //供个人中心使用
+            Session["access_token"] = socialUser.AccessToken;
+            Session["access_token_secret"] = socialUser.AccessTokenSecret;
+            Session["uid"] = socialUser.Uid;
+            Session["social_user_type"] = socialUser.SocialUserType;
+            #endregion
+
+            //用户业务逻辑服务
+            IUserService userService = new UserService();
+            RespResult result = new RespResult();
+
+            //下一个处理行为
+            string NextAction = Url.Action("index", "cen");
+
+            #region 社交账号登陆
+          
+
+            //社交账号登陆
+            if (Session[sKey_Login_Type].ToString() == LoginType.FromQQ.ToString()
+                || Session[sKey_Login_Type].ToString() == LoginType.FromSina.ToString())
+            {
+                //检查社交账号是否和平台账号绑定
+                result = userService.IsBindSocialUser(socialUser);
+
+                if (result.Error == AppError.ERROR_SUCCESS)
+                {
+                    //跳转到个人中心
+                    Response.Redirect(NextAction, true);
+                }
+                else
+                {
+                    //跳转到帐号绑定
+                    NextAction = Url.Action("checkbind", "a");
+                    Response.Redirect(NextAction, true);
+                }
+            }
+            #endregion  
+
+        }
+        #endregion
+
+        #region 注册新平台账号
+        public ActionResult reg()
+        {
+            return View("~/Views/account/reg.cshtml");
+        }
+        /// <summary>
+        /// 处理新注册信息
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult do_reg()
+        { 
+            string username = Request["username"];
+            string password = Request["password"];
+
+            RespResult result = new RespResult();
+
+            //参数有效性判定
+            if (!String.IsNullOrEmpty(username)
+                && !String.IsNullOrEmpty(password)) 
+            {
+                result = create_account(username, password);
+            }
+            else  //无效的参数
+                result.Error = AppError.ERROR_INVALID_PARAMETER;
+
+            if (result.Error == AppError.ERROR_SUCCESS)
+            {
+                Session[sKey_LoginFlag] = true;
+                Session[sKey_User_Name] = username;
+            }
+            return this.Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion 
+
+        #region 绑定平台账号
+
+        /// <summary>
+        /// 为社交账号创建平台账户
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult create_systemuser()
+        {
+            return View("~/Views/account/create_systemuser.cshtml");
+        }
+
+        /// <summary>
+        /// 检查社交账户是否绑定
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult checkbind()
+        {
+            return View("~/Views/account/bind_systemuser.cshtml");
+        }
+
+        /// <summary>
+        /// 绑定系统账号
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult bind_system_user()
+        {
+            string username = Request["username"];
+            string password = Request["password"];
+            string access_token = Request["access_token"];
+            string access_token_secret = Request["access_token_secret"];
+            string social_user_type = Request["social_user_type"];
+            string uid = Request["uid"];
+            string bind_type =Request["bind_type"];
+
+
+            SocialUser socialuser = new SocialUser();
+            socialuser.AccessToken = access_token;
+            socialuser.AccessTokenSecret = access_token_secret;
+            socialuser.Uid = uid;
+            socialuser.SocialUserType = (SocialUserTypeEnum)Enum.Parse(typeof(SocialUserTypeEnum), social_user_type); 
+           
+            IUserService userService = new UserService();
+            RespResult result = new RespResult();
+
+            if (bind_type == "new") //新创建账号
+            {
+                //创建新的平台账号
+                result = create_account(username, password);
+            }
+
+            if (result.Error == AppError.ERROR_SUCCESS)
+            {
+                //绑定平台账号
+                result = userService.BindSocialUser(username, password, socialuser);
+            }
+
+            //绑定成功 保存登陆会话信息
+            if (result.Error == AppError.ERROR_SUCCESS)
+            {
+                Session[sKey_User_Name] = username;
+            } 
+            return this.Json(result, JsonRequestBehavior.AllowGet);
+        }
+        #endregion 
+
+    }
+}

@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+} 
+<!--页面头部-->
+<div id="header-outter" class="index_header_outer relative">
+   <div id="header">
+        <h1><a href='@Url.Action("index","home")' class="white-font">BabyPlan<sup>Beta</sup></a><span>母婴用品交换平台</span></h1>
+       <div class="login">
+            <div id="header-login-wrapper"> 
+               <form action='@Url.Action("dologin", "a")' method="post" id="signin-form">
+                <input type="text" id="signin-email"   name="signin-email">               
+                <input type="password" id="signin-pw" name="signin-pw">
+                <button type="submit" style="display:block; float:left;" class="login_button">登录</button>
+                <ul class="fl" >
+                    <li><a href='@Url.Action("sina_login", "a")' class="white-font t5 sina_icon">微博账号登录</a></li>
+                    <li><a href='@Url.Action("qq_wb_login", "a")' class="white-font t6 qq_icon">腾讯微博登录</a></li>
+                </ul>         
+                <p class="t1 white-font">邮箱:</p>
+                <p class="t2 white-font">密码:</p>
+                <p class="t3 white-font"><a href='@Url.Action("forgot","a")' class="white-font">忘记密码?</a></p>
+                <p class="t4 white-font"><a href='@Url.Action("reg","a")' class="white-font">快速注册账号</a></p>
+                </form>
+            </div>
+        </div>          
+       </div> 
+ </div>

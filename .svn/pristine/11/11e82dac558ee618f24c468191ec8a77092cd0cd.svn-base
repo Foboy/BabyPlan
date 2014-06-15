@@ -1,0 +1,34 @@
+﻿@{
+    Layout = null;
+}
+<div class="oauth_login">
+    <span>使用合作账号登录</span>
+    <ul class="oautn_login_list">
+        <li>
+            <a href="@Url.Action("QQ_Login", "Account")" class="iframe" rel="oauth_link">
+                <img src="http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_3.png" alt="腾讯QQ账号登陆">
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Sina_Login", "Account")" class="iframe" rel="oauth_link">
+                <img src="http://img.t.sinajs.cn/t4/appstyle/open/images/website/loginbtn/loginbtn_03.png" alt="新浪微博账号登陆">
+            </a>
+        </li>
+    </ul>
+</div>
+@Content.Css("jquery.fancybox-1.3.4.css", "fancybox", Url,BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)  
+@Content.Script("jquery.fancybox-1.3.4.js", "fancybox", Url)
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("a[rel='oauth_link']").fancybox({
+            hideOnContentClick: true,
+            centerOnScroll: false,
+            padding: 0,
+            width: 760,
+            height: 440
+        });
+    });
+    function CloseOauthWindow() {
+        $.fancybox.close();
+    }
+</script>

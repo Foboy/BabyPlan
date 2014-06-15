@@ -1,0 +1,327 @@
+﻿/**
+ * @author yangchao
+ * @email:aaronyangchao@gmail.com
+ * @date: 2012/7/15 22:35:44
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Collections;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using BabyPlan.Common;
+using BabyPlan.DataStructure;
+using BabyPlan.Meta;
+
+
+namespace BabyPlan.DataAccess
+{
+    public class SocialUserAccessor
+    {
+        private MySqlCommand cmdInsertSocialUser;
+        private MySqlCommand cmdDeleteSocialUser;
+        private MySqlCommand cmdUpdateSocialUser;
+        private MySqlCommand cmdLoadSocialUser;
+        private MySqlCommand cmdLoadAllSocialUser;
+        private MySqlCommand cmdGetSocialUserCount;
+        private MySqlCommand cmdGetSocialUser;
+
+        private SocialUserAccessor()
+        {
+            #region cmdInsertSocialUser
+
+            cmdInsertSocialUser = new MySqlCommand("INSERT INTO social_user(social_user_type,access_token,access_token_secret,uid,user_id) values (@SocialUserType,@AccessToken,@AccessTokenSecret,@Uid,@UserId)");
+
+            cmdInsertSocialUser.Parameters.Add("@SocialUserType", MySqlDbType.Int32);
+            cmdInsertSocialUser.Parameters.Add("@AccessToken", MySqlDbType.String);
+            cmdInsertSocialUser.Parameters.Add("@AccessTokenSecret", MySqlDbType.String);
+            cmdInsertSocialUser.Parameters.Add("@Uid", MySqlDbType.String);
+            cmdInsertSocialUser.Parameters.Add("@UserId", MySqlDbType.Int32);
+            #endregion
+
+            #region cmdUpdateSocialUser
+
+            cmdUpdateSocialUser = new MySqlCommand(" update social_user set social_user_type = @SocialUserType,access_token = @AccessToken,access_token_secret = @AccessTokenSecret,uid = @Uid,user_id = @UserId,social_user_id = @SocialUserId where social_user_id = @SocialUserId");
+            cmdUpdateSocialUser.Parameters.Add("@SocialUserType", MySqlDbType.Int32);
+            cmdUpdateSocialUser.Parameters.Add("@AccessToken", MySqlDbType.String);
+            cmdUpdateSocialUser.Parameters.Add("@AccessTokenSecret", MySqlDbType.String);
+            cmdUpdateSocialUser.Parameters.Add("@Uid", MySqlDbType.String);
+            cmdUpdateSocialUser.Parameters.Add("@UserId", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdDeleteSocialUser
+
+            cmdDeleteSocialUser = new MySqlCommand(" delete from social_user where   social_user_type = @SocialUserType and uid = @Uid and user_id = @UserId");
+            cmdDeleteSocialUser.Parameters.Add("@SocialUserType", MySqlDbType.Int32);
+            cmdDeleteSocialUser.Parameters.Add("@Uid", MySqlDbType.String);
+            cmdDeleteSocialUser.Parameters.Add("@UserId", MySqlDbType.Int32);
+            #endregion
+
+            #region cmdLoadSocialUser
+
+            cmdLoadSocialUser = new MySqlCommand(@" select social_user_type,access_token,access_token_secret,uid,user_id,social_user_id from social_user limit @PageIndex,@PageSize");
+            cmdLoadSocialUser.Parameters.Add("@pageIndex", MySqlDbType.Int32);
+            cmdLoadSocialUser.Parameters.Add("@pageSize", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdGetSocialUserCount
+
+            cmdGetSocialUserCount = new MySqlCommand(" select count(*)  from social_user ");
+
+            #endregion
+
+            #region cmdLoadAllSocialUser
+
+            cmdLoadAllSocialUser = new MySqlCommand(" select social_user_type,access_token,access_token_secret,uid,user_id,social_user_id from social_user");
+
+            #endregion
+
+            #region cmdGetSocialUser
+
+            cmdGetSocialUser = new MySqlCommand(" select social_user_type,access_token,access_token_secret,uid,user_id,social_user_id from social_user where (@uid='' or uid = @uid)  and (@sutype=0 or social_user_type = @sutype)");
+            cmdGetSocialUser.Parameters.Add("@uid", MySqlDbType.String);
+            cmdGetSocialUser.Parameters.Add("@sutype", MySqlDbType.Int32);
+
+            #endregion
+        }
+
+        /// <summary>
+        /// 添加数据
+        /// <param name="es">数据实体对象数组</param>
+        /// <returns></returns>
+        /// </summary>
+        public bool Insert(SocialUser e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdInsertSocialUser = cmdInsertSocialUser.Clone() as MySqlCommand;
+            bool returnValue = false;
+            _cmdInsertSocialUser.Connection = oc;
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+                _cmdInsertSocialUser.Parameters["@SocialUserType"].Value = e.SocialUserType;
+                _cmdInsertSocialUser.Parameters["@AccessToken"].Value = e.AccessToken;
+                _cmdInsertSocialUser.Parameters["@AccessTokenSecret"].Value = e.AccessTokenSecret;
+                _cmdInsertSocialUser.Parameters["@Uid"].Value = e.Uid;
+                _cmdInsertSocialUser.Parameters["@UserId"].Value = e.UserId;
+
+                _cmdInsertSocialUser.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdInsertSocialUser.Dispose();
+                _cmdInsertSocialUser = null;
+            }
+        }
+
+        /// <summary>
+        /// 删除数据
+        /// <param name="es">数据实体对象数组</param>
+        /// <returns></returns>
+        /// </summary>
+        public bool Delete(SocialUser e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdDeleteSocialUser = cmdDeleteSocialUser.Clone() as MySqlCommand;
+            bool returnValue = false;
+            _cmdDeleteSocialUser.Connection = oc;
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+                _cmdDeleteSocialUser.Parameters["@SocialUserType"].Value = e.SocialUserType;
+                _cmdDeleteSocialUser.Parameters["@Uid"].Value = e.Uid;
+                _cmdDeleteSocialUser.Parameters["@UserId"].Value = e.UserId;
+
+
+                _cmdDeleteSocialUser.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdDeleteSocialUser.Dispose();
+                _cmdDeleteSocialUser = null;
+            }
+        }
+
+        /// <summary>
+        /// 修改指定的数据
+        /// <param name="e">修改后的数据实体对象</param>
+        /// <para>数据对应的主键必须在实例中设置</para>
+        /// </summary>
+        public void Update(SocialUser e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdUpdateSocialUser = cmdUpdateSocialUser.Clone() as MySqlCommand;
+            _cmdUpdateSocialUser.Connection = oc;
+
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                _cmdUpdateSocialUser.Parameters["@SocialUserType"].Value = e.SocialUserType;
+                _cmdUpdateSocialUser.Parameters["@AccessToken"].Value = e.AccessToken;
+                _cmdUpdateSocialUser.Parameters["@AccessTokenSecret"].Value = e.AccessTokenSecret;
+                _cmdUpdateSocialUser.Parameters["@Uid"].Value = e.Uid;
+                _cmdUpdateSocialUser.Parameters["@UserId"].Value = e.UserId;
+
+                _cmdUpdateSocialUser.ExecuteNonQuery();
+
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdUpdateSocialUser.Dispose();
+                _cmdUpdateSocialUser = null;
+                GC.Collect();
+            }
+        }
+
+        /// <summary>
+        /// 根据条件分页获取指定数据
+        /// <param name="pageIndex">当前页</param>
+        /// <para>索引从0开始</para>
+        /// <param name="pageSize">每页记录条数</param>
+        /// <para>记录数必须大于0</para>
+        /// </summary>
+        public PageEntity<SocialUser> Search(Int32 SocialUserType, String AccessToken, String AccessTokenSecret, String Uid, Int32 UserId, Int32 SocialUserId, int pageIndex, int pageSize)
+        {
+            PageEntity<SocialUser> returnValue = new PageEntity<SocialUser>();
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadSocialUser = cmdLoadSocialUser.Clone() as MySqlCommand;
+            MySqlCommand _cmdGetSocialUserCount = cmdGetSocialUserCount.Clone() as MySqlCommand;
+            _cmdLoadSocialUser.Connection = oc;
+            _cmdGetSocialUserCount.Connection = oc;
+
+            try
+            {
+                _cmdLoadSocialUser.Parameters["@PageIndex"].Value = pageIndex;
+                _cmdLoadSocialUser.Parameters["@PageSize"].Value = pageSize;
+                _cmdLoadSocialUser.Parameters["@SocialUserType"].Value = SocialUserType;
+                _cmdLoadSocialUser.Parameters["@AccessToken"].Value = AccessToken;
+                _cmdLoadSocialUser.Parameters["@AccessTokenSecret"].Value = AccessTokenSecret;
+                _cmdLoadSocialUser.Parameters["@Uid"].Value = Uid;
+                _cmdLoadSocialUser.Parameters["@UserId"].Value = UserId;
+                _cmdLoadSocialUser.Parameters["@SocialUserId"].Value = SocialUserId;
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadSocialUser.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnValue.Items.Add(new SocialUser().BuildSampleEntity(reader));
+                }
+                returnValue.RecordsCount = (int)_cmdGetSocialUserCount.ExecuteScalar();
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadSocialUser.Dispose();
+                _cmdLoadSocialUser = null;
+                _cmdGetSocialUserCount.Dispose();
+                _cmdGetSocialUserCount = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+
+        /// <summary>
+        /// 获取全部数据
+        /// </summary>
+        public List<SocialUser> Search()
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadAllSocialUser = cmdLoadAllSocialUser.Clone() as MySqlCommand;
+            _cmdLoadAllSocialUser.Connection = oc; List<SocialUser> returnValue = new List<SocialUser>();
+            try
+            {
+                _cmdLoadAllSocialUser.CommandText = string.Format(_cmdLoadAllSocialUser.CommandText, string.Empty);
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadAllSocialUser.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnValue.Add(new SocialUser().BuildSampleEntity(reader));
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadAllSocialUser.Dispose();
+                _cmdLoadAllSocialUser = null;
+                GC.Collect();
+            }
+            return returnValue;
+        }
+
+        /// <summary>
+        /// 获取指定记录
+        /// <param name="id">Id值</param>
+        /// </summary>
+        public SocialUser Get(string uid,SocialUserTypeEnum sutype)
+        {
+            SocialUser returnValue = null;
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdGetSocialUser = cmdGetSocialUser.Clone() as MySqlCommand;
+
+            _cmdGetSocialUser.Connection = oc;
+            try
+            {
+                _cmdGetSocialUser.Parameters["@uid"].Value = uid;
+                _cmdGetSocialUser.Parameters["@sutype"].Value = sutype;
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdGetSocialUser.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    returnValue = new SocialUser().BuildSampleEntity(reader);
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdGetSocialUser.Dispose();
+                _cmdGetSocialUser = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+        private static readonly SocialUserAccessor instance = new SocialUserAccessor();
+        public static SocialUserAccessor Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+    }
+}

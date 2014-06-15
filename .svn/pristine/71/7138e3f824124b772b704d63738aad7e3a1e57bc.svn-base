@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using BabyPlan.Meta;
+using BabyPlan.WcfService;
+using BabyPlan.Common;
+using BabyPlan.DataStructure;
+
+namespace BabyPlan.mvcApp.Model
+{
+    public class ReplayModel : BaseModel
+    {
+        public int Pid { get; set; }
+
+        public string Content { get; set; }
+
+        public DateTime CreateTime { get; set; }
+
+        public string CreateTimeString { get; set; }
+
+        public string DateLikeYesterday
+        {
+            get
+            {
+                return DateToYesterday(CreateTime, "yyyy-MM-dd");
+            }
+        }
+
+        public ProductModel Product { get; set; }
+
+        public UserModel Author { get; set; }
+
+        public ReplayModel Bind(GenReply item,BindOption bindOptions)
+        {
+            this.Content = item.Content;
+            this.CreateTime = item.CreateTime;
+
+            if (ContainEnumType<ReplayBindType>(bindOptions.ReplayBindType, ReplayBindType.Author))
+            {
+                UserServiceClient client = new UserServiceClient();
+                AdvancedResult<AdUser> userRes = client.GetUserInfoByID(item.CreateId);
+                if (userRes.Error == DataStructure.AppError.ERROR_SUCCESS && userRes.Data != null)
+                {
+                    this.Author = new UserModel().Bind(userRes.Data, bindOptions);
+                }
+            }
+
+            if (ContainEnumType<ReplayBindType>(bindOptions.ReplayBindType, ReplayBindType.Product))
+            {
+                ProductServiceClient client = new ProductServiceClient();
+                AdvancedResult<ProProduct> product = client.GetBBInfo(item.ObjId);
+                if (product.Error == AppError.ERROR_SUCCESS)
+                {
+                    this.Product = new ProductModel().Bind(product.Data, bindOptions);
+                }
+            }
+            return this;
+        }
+
+        public static IList<ReplayModel> BindList(IList<GenReply> items, BindOption bindOptions)
+        {
+            IList<ReplayModel> models = new List<ReplayModel>();
+            if (bindOptions.ReplyBindNum < 0)
+                return models;
+            if (items != null)
+            {
+                for (int i = 0, c = items.Count(); i < c; i++)
+                {
+                    models.Add(new ReplayModel().Bind(items[i], bindOptions));
+                    if (i + 1 == bindOptions.ReplyBindNum)
+                        break;
+                }
+            }
+            return models;
+        }
+    }
+
+
+}

@@ -1,0 +1,27 @@
+﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace BabyPlan.Cache
+{
+    /// <summary>
+    /// 基于内存的缓存管理器
+    /// </summary>
+    /// <remarks>
+    /// 请使用单例模式创建此类的实例
+    /// </remarks>
+    public class MemoryCacheManager : CacheManagerBase
+    {
+        public MemoryCacheManager() 
+        {
+            base.CacheDepository = new MemoryCacheDepository();
+            base.AutomaticRemoveDueCacheItem();
+        }
+        public override int CheckTimeSpanMinutes
+        {
+            get { return 10; }
+        }
+    }
+}

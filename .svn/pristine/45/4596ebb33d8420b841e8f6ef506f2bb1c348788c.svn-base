@@ -1,0 +1,88 @@
+﻿/**
+ * @author yangchao
+ * @email:aaronyangchao@gmail.com
+ * @date: 2012/6/26 1:21:53
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+
+namespace BabyPlan.Meta
+{
+    [Serializable]
+    public class ProProduct
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public Int32 Pid
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String Title
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String BbInfo
+        { get; set; }
+
+        /// <summary>
+        /// 1：启用 2：禁用
+        /// </summary>
+        public Int32 State
+        { get; set; }
+
+        /// <summary>
+        /// 1：普通 2：VIP
+        /// </summary>
+        public Int32 Level
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime CreatTime
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Int32 CreateId
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Int32 ViewNum
+        { get; set; }
+
+        /// <summary>
+        /// 宝贝列表
+        /// </summary>
+        public List<ProProductItem> BBList
+        { get; set; }
+
+        /// <summary>
+        /// 从读取器向完整实例对象赋值
+        /// </summary>/// <param name="reader">数据读取器</param>
+        /// <returns>返回本对象实例</returns>
+        public ProProduct BuildSampleEntity(IDataReader reader)
+        {
+            this.Pid = Convert.ToInt32(reader["pid"]);
+            this.Title = Convert.ToString(reader["title"]);
+            this.BbInfo = Convert.ToString(reader["bb_info"]);
+            this.State = Convert.ToInt32(reader["state"]);
+            this.Level = Convert.ToInt32(reader["level"]);
+            this.CreatTime = Convert.ToDateTime(reader["creat_time"]);
+            this.CreateId = Convert.ToInt32(reader["create_id"]);
+            this.ViewNum = Convert.ToInt32(reader["view_num"]);
+            return this;
+        }
+    }
+}

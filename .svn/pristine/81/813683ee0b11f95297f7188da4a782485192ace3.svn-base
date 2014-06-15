@@ -1,0 +1,396 @@
+﻿@{
+    ViewBag.Title = "detail";
+    Layout = "~/Views/Shared/_Layout_Trade.cshtml";
+    var Product = ViewBag.Product as BabyPlan.mvcApp.Model.ProductModel;
+    var Interests = ViewBag.Interests as IList<BabyPlan.mvcApp.Model.ProductItemModel>;
+}
+@model BabyPlan.mvcApp.Model.UserModel
+@section Js_InHeader{
+    @Content.Script("jquery.form.js",Url)
+        @Content.Script("cImageLoader.js",Url)
+<style type="text/css">
+    .detailblock{margin-top:10px;}
+    .goods_title{width:920px;margin:0 auto;line-height:68px;}
+    .goods_detail{width:920px;border-top:solid 1px #E1E1E1;margin:0 auto;padding-top:24px;}
+    .left_block{width:564px;}
+    .left_block .left_content{width:564px;}
+    .left_block .pic_outer{height:470px;}
+    .left_block .pic_outer .pic_box{width:470px;height:470px;position:relative;border:solid 1px #999;}
+    .left_block .pic_outer .pic_box .pic_seq{font-size:48px;line-height:48px;position:absolute;top:-24px;z-index:1;}
+    .left_block .pic_outer .pic_box .price_bg{width:470px;height:50px;position:absolute;top:420px;z-index:1;filter:alpha(opacity=40);opacity:0.4;background:#000;}
+    .left_block .pic_outer .pic_box .price_box{width:470px;height:50px;line-height:50px;text-align:center;position:absolute;top:420px;z-index:2;}
+    .left_block .pic_outer .pic_list_outer{width:86px;height:470px;border:solid 1px #999;}
+    .left_block .pic_outer .pic_list_outer .pic_list_box{width:86px;height:470px;overflow:hidden;}
+    .left_block .pic_outer .pic_list_outer .pic_list_box > ul{}
+    .left_block .pic_outer .pic_list_outer .pic_list_box > ul > li{width:70px;height:70px;margin:5px;}
+    .left_block .pic_outer .pic_list_outer .pic_list_box > ul > li.act{border:solid 2px #2A8FC4;margin:5px 3px;}
+    
+    .left_block .share{margin-top:10px;margin-bottom:10px;text-align:right;}
+    .left_block .discription{}
+    .left_block .discription .mark{font-size:72px;line-height:72px;float:left;display:block;width:30px; margin-left:5px;}
+    .left_block .discription p{padding:15px 10px;width:544px;line-height:20px;}
+    .margin_title{ margin-bottom:10px;}
+    .left_block .comments_header{height:40px;border-bottom:solid 3px #FF6666; margin-top:10px;}
+    .left_block .comments_header span{margin-top:14px;}
+    .left_block .comments_header a{margin-top:5px;}
+    .left_block .comments_outer{}
+    .left_block .comments_outer .comment_item{margin:10px auto;display:inline-block;}
+    .left_block .comments_outer .comment_item .head_pic{width:50px;height:50px;}
+    .left_block .comments_outer .comment_item .content{width:500px;min-height:50px;line-height:20px;padding:5px; position:relative; overflow:hidden; margin:0px;}
+    .left_block .comments_outer .comment_item .cmt_info{ height:18px; line-height:18px;}
+    .left_block .comments_outer .comment_item .cmt_content{word-wrap:break-word; color:#666;}
+    .left_block .paging{border-bottom:dotted 1px #999;padding:10px 0;}
+    .left_block .comment_outer{width:560px;height:110px;border:solid 1px #999;}
+    .left_block .comment_outer .comment_shade{line-height:110px;}
+    .left_block .comment_outer .comment_input{width:560px;height:108px;border:none;display:none;}
+    .left_block .comment_submit{margin:10px auto;width:84px;padding:0 0;text-align:center;}
+    .right_block{width:312px; position:relative;}
+    .right_block .right_content{width:312px;}
+    .right_block .seller_head{display:inline-block;}
+    .right_block .seller_head .head_pic{border:solid 1px #E1E1E1;width:102px;height:102px;}
+    .right_block .seller_head .info{width:200px;}
+    .right_block .seller_counting{margin:20px auto;display:inline-block;}
+    .right_block .seller_counting a{line-height:52px;padding:0 38px;font-size:16px;font-weight:normal;}
+    .right_block .seller_contact{line-height:20px;padding:10px;width:292px;}
+    .call_margin{ margin:10px 0 10px 80px;}
+    .call_qq{ background:url(/images/qq_num.png) no-repeat scroll 0 0 transparent; float:left;height: 16px;margin: 4px 16px 0 0;overflow: hidden;vertical-align: middle;width: 16px;}
+    .call_mobile{ background:url(/images/mobile.png) no-repeat scroll 0 0 transparent;float: left;height: 16px;margin: 4px 16px 0 0;overflow: hidden;vertical-align: middle;width: 16px;}
+    .call_p{ margin:10px 0 10px 50px;}
+    .call_kd{ margin:10px 0 0 20px;}
+    .call_a{ margin-left:20px;}
+    .call_a:hover{ text-decoration:underline;}
+    .right_block .seller_contact .contact_item dt{width:104px;}
+    .right_block .seller_distance{margin:20px auto;padding:20px 0;}
+    .right_block .recommend{ margin:20px 0px; overflow:hidden;}
+    .right_block .recommend dd{border:solid 1px #999;width:134px;height:134px;margin:5px 0 10px 0;}
+    .right_block .recommend dd img{}
+    .right_block .express{padding:10px;width:292px;}
+    .
+</style>
+}
+
+<div class="mainblock whiteblock detailblock">
+    <div class="goods_title">
+        <h1>@Product.Title</h1>
+    </div>
+    <div class="goods_detail"> 
+        <div class="left_block fl">
+            <div class="pic_outer left_content">
+                <div class="fl pic_box">
+                    <span class="pic_seq pink-font" id="pic_seq">1</span>
+                    <div class="price_bg">
+                    </div>
+                    <div class="price_box white-font font-size20" id="pro_price"></div>
+                    <img id="big_pic" />
+                </div>
+                <div class="fr pic_list_outer">
+                    <div class="pic_list_box" id="pic_list_box">
+                        <ul>
+                        @{
+                            if (Product.Items != null)
+                            {
+                                for (int i = 0, c = Product.Items.Count; i < c; i++)
+                                {
+                                    var item = Product.Items[i];
+                                    item.Pic.DisplaySeting(70, 70);
+                            <li>
+                                <img alt="1" src="@item.Pic.PicUrl" style="width:@item.Pic.DisWidth.ToString()px;height:@item.Pic.DisHeight.ToString()px;margin:@item.Pic.DisMargin"></img>
+                            </li>
+                                }
+                            }
+                         }
+                        </ul>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                    var proitems = [];
+        @{
+            int itemId = 0;
+            int.TryParse(Request.QueryString["item"],out itemId);
+            int actIndex = 0;
+            if (Product.Items != null)
+            {
+                for (int i = 0, c = Product.Items.Count; i < c; i++)
+                {
+                    var item = Product.Items[i];
+                    if(itemId == item.Id)
+                    {
+                        actIndex = i;
+                     }
+                    <text>
+                        proitems.push({
+                            img:'@item.Pic.PicUrl',
+                            price:@item.Price
+                        });
+                    </text>
+                }
+            }
+
+        }
+
+                        var box = $("#pic_list_box");
+                        var items = $("#pic_list_box li");
+                        var boxHeight = box.height();
+                        var itemHeight = 80;
+                        var showItemCount = Math.floor(boxHeight / itemHeight);
+                        var halfItemCount = showItemCount / 2;
+                        var topStep = Math.floor(halfItemCount);
+                        var bottomStep = Math.ceil(halfItemCount);
+                        var count = items.length;
+                        var hideCount = 0;
+                        var index = @actIndex;
+                        var lock = false;
+
+                        var hideCount = function (idx) {
+                            var minHide = idx - topStep;
+                            if (index - hideCount >= bottomStep) {
+                                minHide = idx - bottomStep;
+                            }
+                            return minHide;
+                        }
+
+                        var actItem = function (idx, elt) {
+                            $(items[index]).removeClass("act");
+                            $(elt).addClass("act");
+                            $("#pic_seq").html(idx + 1);
+                            index = idx;
+                        }
+
+                        items.each(function (idx, elt) {
+                            $(this).bind("click", function () {
+                                if (lock)
+                                    return;
+                                actItem(idx, $(this));
+                                $("#big_pic").attr("src",proitems[idx].img);
+                                $("#pro_price").html("￥"+proitems[idx].price);
+                                $("#big_pic").cImageLoader({width:470,height:470});
+                                lock = true;
+                                box.animate({ scrollTop: hideCount(idx) * itemHeight }, 100, function () { lock = false; });
+                            });
+                        });
+                        if(index>=items.length)
+                            index = 0;
+                        $(items[index]).click();
+                    });
+                </script>
+            </div>
+            <div class="share left_content">
+                @Html.Partial("_Share_Partial")
+            </div>
+            <div class="discription left_content">
+                <h3 class="label16 title-font margin_title">听听老板怎么描述的：</h3>
+                <div class="discription-outer left_content grayblock">
+                    <span class="mark blue-font">”</span>
+                    <p class="title-font">
+                        @Product.Description
+                    </p>
+                </div>
+            </div>
+            <div class="comments_header left_content">
+                <span class="label16 fl title-font">回复（<span name="replyNum">@Product.ReplyNum</span>）</span>
+                <a href="javascript:void(0)" class="button-green fr" title="咨询老板" id="comment_link">咨询老板</a>
+            </div>
+            <div class="comments_outer left_content" id="comments_box">
+
+            </div>
+            <div class="paging left_content text-right" id="comments_paging">
+@*                <span class="black-font">1</span>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <span class="gray-font">…</span>
+                <a href="#">8</a>
+                <a href="#">下一页</a>*@
+            </div>
+            <form id="replay_form" action="@Url.Action("AjaxReplay", "Trade", new { id = @Product.Id })" method="post">
+            <div class="comment_outer left_content">
+                @if (Request.IsAuthenticated)
+                {
+                <div class="comment_shade text-center blue-font" id="logined_comment">
+                    有疑问，就给老板留言吧
+                </div>
+                }
+                else
+                {
+                <div class="comment_shade text-center" id="unlogin_comment">
+                    请 <a href="@Url.Action("Login","Account")?ReturnUrl=@Url.Encode(Request.Url.AbsoluteUri)">登录</a> 或 <a href="@Url.Action("Register", "Account")?ReturnUrl=@Url.Encode(Request.Url.AbsoluteUri)">注册</a> 后在发表回复
+                </div>
+                }
+                <textarea class="comment_input" id="comment_input" name="comment_input"></textarea>
+
+            </div>
+            <input type="submit" id="replay_submit" class="comment_submit button-green" value="发表回复" />
+            </form>
+        </div>
+        <div class="right_block fr">
+            <div class="seller_head right_content">
+                <div class="head_pic fl">
+                @if (Product.Author.HeadPic != null)
+                {
+                    Product.Author.HeadPic.DisplaySeting(100, 100);
+                <img name='pic' src="@Product.Author.HeadPic.PicUrl" style="width:@Product.Author.HeadPic.DisWidth.ToString()px;height;@Product.Author.HeadPic.DisHeight.ToString()px;margin:@Product.Author.HeadPic.DisMargin;" />
+                }
+                </div>
+                <div class="info fr">
+                    <p class="blue-font label14">@Product.Author.Name</p>
+                    <p class="gray-font">共发布 &nbsp;(<strong class="pink-font">@Product.Author.PostGoodsNum</strong>)&nbsp;帖子</p>
+                </div>
+            </div>
+            <div class="seller_counting right_content">
+                <a class="button-pink fl" title="浏览">浏览(@Product.ViewNum)</a>
+                <a class="button-blue fr" title="回复">回复(<span name="replyNum">@Product.ReplyNum</span>)</a>
+            </div>
+            <div class="seller_contact right_content grayblock">
+                <p class="font-size14  title-font">施主，看中了就call我</p>
+                <p class="font-size18 green-font call_p font-weight6"><i class="call_qq"></i>@Product.QQ</p>
+                <p class="font-size18 green-font call_p font-weight6"><i class="call_mobile"></i>@Product.Phone</p>
+
+            </div>
+            @*<div class="seller_distance right_content grayblock text-center">
+                <span class="label18 green-font line-height30">该宝贝距离您大约  3.6km</span>
+                <br />
+                <a href="#" class="blue-font underline">点击查看地图</a>
+                <span class="block-font">，方便您选择最近的路线和他交易</span>
+            </div>*@
+            <dl class="recommend right_content">
+                <dt><h3 class="font-size18 title-font">您可能感兴趣的宝贝</h3></dt>
+                @{
+                    if (Interests != null)
+                    {
+                        var floatValue = "fl";
+                        foreach (var item in Interests)
+                        {
+                            item.Pic.DisplaySeting(130, 130, 2);
+                            <dd class="@floatValue"><a href="#"><img alt="1" src="@item.Pic.PicUrl" style="width:@item.Pic.DisWidth.ToString()px;height:@item.Pic.DisHeight.ToString()px;margin:@item.Pic.DisMargin"></img></a> </dd>
+                            floatValue = floatValue == "fl" ? "fr" : "fl";
+                        }
+                    }
+                    }
+            </dl>
+            <div class="seller_contact right_content grayblock">
+                <p class="label16 title-font">如果选择你们同城快递，下面的内容也许能能给您一点点帮助</p>
+                <p class="blue-font font-size14 call_kd">
+                  <a class="call_a" href="http://www.ckd8.com/NetWork.asp?Action=go" target="_blank">成都申通快递</a>
+                  <a class="call_a" href="http://www.chakd.com/d.php?id=25&areacode=028" target="_blank">成都圆通快递</a>
+                </p>
+                 <p class="blue-font font-size14 call_kd">
+                  <a class="call_a" href="http://www.express-sf.cn/sfadd/sichuan.html" target="_blank">成都顺风快递</a>
+                  <a class="call_a" href="http://www.zto.cn/SiteInfo/city.aspx?province=%CB%C4%B4%A8%CA%A1&city=%B3%C9%B6%BC" target="_blank">成都中通快递</a>
+                </p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div style="display:none">
+<textarea id="comment_item_model" cols="0" rows="0">
+    <!--
+                <div class="comment_item left_content">
+                    <div class="head_pic fl">
+                        <img alt="{@@Author.Name}" src="{@@Author.HeadPic.PicUrl}" style="width:{@@Author.HeadPic.DisWidth}px;height:{@@Author.HeadPic.DisHeight}px;margin:{@@Author.HeadPic.DisMargin};" />
+                    </div>
+                    <div class="content grayblock fr">
+                        <div class="cmt_info clearfix"><span class="fl blue-font">{@@Author.Name}</span><span class="fr gray-font">今天 13::14</span></div>
+                        <p class="cmt_content clearfix">
+                            {@@Content}
+                        </p>
+                        <div class="text-right"><a href="#">引用回复</a></div>
+                    </div>
+                </div>
+    -->
+</textarea>
+</div>
+@section Js_InFoot{
+@Content.Script("cTemplate.js", Url)
+@Content.Script("cTemplate.method.js", Url)
+            <script type="text/javascript">
+                var commentModel = $("#comment_item_model").cTemplate();
+                function LoadComments(pageIndex) {
+                        var bindData = function(data)
+                        {
+                            $("#comments_box").empty();
+                            $("#comments_paging").empty();
+                            $("#comments_paging").html(data.paging);
+                            $("[name='replyNum']").html(data.count);
+                            data = data.data;
+                            var html = "";
+                            var i = 0, length = data.length, item;
+                            for (; i < length; i++) {
+                                item = data[i];
+                                html += commentModel.DataBind(item);
+                            }
+                            $('#comments_box').append(html);
+                        }
+                        $.ajax({
+                            url: "@Url.Action("GetReplys", "Trade", new { id = Product.Id })",
+                            data: { page: pageIndex },
+                            success: bindData
+                        });
+                }
+                LoadComments(0);
+
+                $(document).ready(function () {
+                    $("#comment_link").bind("click",function(){
+                    
+                    });
+
+                    $("#logined_comment").bind("click", function () {
+                        $(this).hide();
+                        $("#comment_input").show().focus();
+                    });
+                    $("#comment_input").bind("blur", function () {
+                        if ($.trim($(this).val()).length == 0) {
+                            $(this).hide();
+                            $("#logined_comment").show();
+                        }
+                    });
+
+                    var options = {
+                        dataType: 'json',
+                        beforeSubmit: beforeSubmit,
+                        success: submitSuccess
+                    };
+                    $("#replay_form").ajaxForm(options);
+
+                    function beforeSubmit() {
+                        var replayChk = ReplayChk();
+                        if (!replayChk.pass) {
+                            replayChk.elt.focus();
+                            return false;
+                        }
+                        $("#replay_submit").val("提交中...").attr("disabled", "false");
+                        return true;
+                    }
+
+                    function submitSuccess(response) {
+                        $("#replay_submit").val("发表回复").attr("disabled", "");
+                        if (response.Error == 0) {
+                            if (response.ExMessage && response.ExMessage.length > 0)
+                                alert(response.ExMessage);
+                            else{
+                                alert("发表成功！");
+                                $("#comment_input").val("");
+                                LoadComments(0);
+                            }
+                        } else {
+                            alert(response.ExMessage);
+                        }
+                    }
+
+                    function ReplayChk() {
+                        var me = $("#comment_input");
+                        var val = me.val();
+                        if (val.length >= 10 && val.length <= 300) {
+                            me.css("border", "solid 2px #fff");
+                            return { pass: true, elt: me };
+                        }
+                        else {
+                            me.css("border", "solid 2px #f00");
+                            return { pass: false, elt: me };
+                        }
+                    }
+
+                 });
+
+            </script>
+}

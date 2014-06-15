@@ -1,0 +1,266 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+using BabyPlan.Common;
+using BabyPlan.DataAccess;
+using BabyPlan.Meta;
+using BabyPlan.DataStructure;
+using BabyPlan.Cache;
+
+namespace BabyPlan.WcfService
+{
+    // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码、svc 和配置文件中的类名“ProductService”。
+    public class ProductServiceClient : IProductService
+    {
+        public void Close()
+        { }
+        //发布宝贝帖子
+        public AdvancedResult<int> publishBBPost(string title, string qq, string mobile, string bbinfo, string token)
+        {
+            AdvancedResult<int> result = new AdvancedResult<int>();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.Error = AppError.ERROR_PERSON_NOT_LOGIN;
+            }
+            else
+            {
+                int userid = Convert.ToInt32(CacheManagerFactory.GetMemoryManager().Contains(token));
+
+                if (!string.IsNullOrEmpty(qq) || !string.IsNullOrEmpty(mobile))
+                {
+                    AdUser user = UserAccessor.Instance.Get(userid, string.Empty, string.Empty, StateType.Active);
+                    if (!string.IsNullOrEmpty(qq))
+                    {
+                        user.Qq = qq;
+                    }
+                    if (!string.IsNullOrEmpty(mobile))
+                    {
+                        user.Mobile = mobile;
+                    }
+                    UserAccessor.Instance.Update(user);
+                }
+
+                ProProduct pro = new ProProduct();
+                pro.Title = title.Trim();
+                pro.BbInfo = bbinfo.Trim();
+
+                pro.CreateId = userid;
+                pro.CreateTime = DateTime.Now;
+                pro.Level = 1;
+
+
+               result.Data = ProProductAccessor.Instance.Insert(pro);
+                result.Error = AppError.ERROR_SUCCESS;
+            }
+            return result;
+        }
+
+        //获取宝贝帖子信息(包含宝贝信息)
+        public AdvancedResult<ProProduct> GetBBInfo(int bbPostID)
+        {
+            AdvancedResult<ProProduct> result = new AdvancedResult<ProProduct>();
+
+            List<ProProductItem> bblist = new List<ProProductItem>();
+            bblist = ProProductItemAccessor.Instance.Search(bbPostID);
+
+            ProProduct pro = new ProProduct();
+            pro =  ProProductAccessor.Instance.Get(bbPostID);
+            pro.BBList = bblist;
+            result.Data = pro;
+            result.Error = AppError.ERROR_SUCCESS;
+            return result;
+        }
+
+        //编辑宝贝帖子信息
+        public RespResult EditBBPostInfo(int bbPostID, string title, string qq, string mobile, string bbinfo, string token)
+        {
+            RespResult result = new RespResult();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.Error = AppError.ERROR_PERSON_NOT_LOGIN;
+            }
+            else
+            {
+                int userid = Convert.ToInt32(CacheManagerFactory.GetMemoryManager().Contains(token));
+
+                if (!string.IsNullOrEmpty(qq) || !string.IsNullOrEmpty(mobile))
+                {
+                    AdUser user = UserAccessor.Instance.Get(userid, string.Empty, string.Empty, StateType.Active);
+                    if (!string.IsNullOrEmpty(qq))
+                    {
+                        user.Qq = qq;
+                    }
+                    if (!string.IsNullOrEmpty(mobile))
+                    {
+                        user.Mobile = mobile;
+                    }
+                    UserAccessor.Instance.Update(user);
+                }
+
+                ProProduct pro = new ProProduct();
+                pro = ProProductAccessor.Instance.Get(bbPostID);
+                pro.Title = title.Trim();
+                pro.BbInfo = bbinfo;
+                ProProductAccessor.Instance.Update(pro);
+                result.Error = AppError.ERROR_SUCCESS;
+                
+            }
+            return result;
+        }
+
+
+        //获取我发布的宝贝列表
+        public AdvancedResult<PageEntity<ProProduct>> SearchBBPostList(string token, int pageIndex, int pageSize)
+        {
+            AdvancedResult<PageEntity<ProProduct>> result = new AdvancedResult<PageEntity<ProProduct>>();
+            PageEntity<ProProduct> plist = new PageEntity<ProProduct>();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.Error = AppError.ERROR_PERSON_NOT_LOGIN;
+            }
+            else
+            {
+                int userid=Convert.ToInt32(CacheManagerFactory.GetMemoryManager().Get(token));
+                plist = ProProductAccessor.Instance.Search(StateType.Ignore, LevelType.Ignore, userid,pageIndex,pageSize);
+                result.Data = plist;
+                result.Error = AppError.ERROR_SUCCESS;
+            }
+            return result;
+        }
+
+        //关闭宝贝
+        public RespResult CloseBBPost(int bbID, string token)
+        {
+            RespResult result = new RespResult();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.Error = AppError.ERROR_PERSON_NOT_LOGIN;
+            }
+            else
+            {
+                ProProduct pro = new ProProduct();
+                pro = ProProductAccessor.Instance.Get(bbID);
+
+                pro.State = 2;
+                ProProductAccessor.Instance.Update(pro);
+                result.Error = AppError.ERROR_SUCCESS;
+                
+            }
+            return result;
+        }
+        //启用宝贝
+        public RespResult OpenBBPost(int bbID, string token)
+        {
+            RespResult result = new RespResult();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.Error = AppError.ERROR_PERSON_NOT_LOGIN;
+            }
+            else
+            {
+                ProProduct pro = new ProProduct();
+                pro = ProProductAccessor.Instance.Get(bbID);
+
+                pro.State = 1;
+                ProProductAccessor.Instance.Update(pro);
+                result.Error = AppError.ERROR_SUCCESS;
+
+            }
+            return result;
+        }
+
+        //获取所有宝贝列表
+        public AdvancedResult<PageEntity<ProProductItem>> LoadBBList(ItemType bbType, SexType sex, int age, int pageSize, int pageIndex)
+        {
+            AdvancedResult<PageEntity<ProProductItem>> result = new AdvancedResult<PageEntity<ProProductItem>>();
+            PageEntity<ProProductItem> bblist = new PageEntity<ProProductItem>();
+            bblist = ProProductItemAccessor.Instance.Search(age, bbType, sex, pageIndex, pageSize);
+            result.Data = bblist;
+            result.Error = AppError.ERROR_SUCCESS;
+            return result;
+        }
+
+        //获取感兴趣宝贝
+        public AdvancedResult<List<ProProductItem>> LoadInterestingBB(string token)
+        {
+            AdvancedResult<List<ProProductItem>> result = new AdvancedResult<List<ProProductItem>>();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.Error = AppError.ERROR_PERSON_NOT_LOGIN;
+            }
+            else
+            {
+                int userid = Convert.ToInt32(CacheManagerFactory.GetMemoryManager().Contains(token));
+                AdUser user = UserAccessor.Instance.Get(userid, string.Empty, string.Empty, StateType.Active);
+                TimeSpan ts=DateTime.Now-user.BabyBirthday;
+
+                int bbage = ts.Days / 365;
+                PageEntity<ProProductItem> bblist = new PageEntity<ProProductItem>();
+                bblist = ProProductItemAccessor.Instance.Search(bbage, ItemType.Ignore, SexType.Ignore, 0, 8);
+                result.Data = bblist.Items;
+                result.Error = AppError.ERROR_SUCCESS;
+            }
+            return result;
+        }
+        //设置感兴趣宝贝
+
+        //获取单个宝贝浏览数
+        public AdvancedResult<int> GetBBViewNum(int bbID)
+        {
+            AdvancedResult<int> result = new AdvancedResult<int>();
+
+            ProProduct pro = new ProProduct();
+            pro = ProProductAccessor.Instance.Get(bbID);
+            result.Data = pro.ViewNum;
+            result.Error = AppError.ERROR_SUCCESS;
+            
+            return result;
+        }
+        //设置单个宝贝浏览数
+        public RespResult SetBBPostViewNum(int bbID)
+        {
+            RespResult result = new RespResult();
+
+            ProProduct pro = new ProProduct();
+            pro = ProProductAccessor.Instance.Get(bbID);
+
+            pro.ViewNum = pro.ViewNum + 1;
+            ProProductAccessor.Instance.Update(pro);
+            result.Error = AppError.ERROR_SUCCESS;
+
+            return result;
+        }
+
+        public RespResult publicBBItem(int pid, double price, int age, ItemType bbType, SexType sex,int picid, string token)
+        {
+            RespResult result = new RespResult();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.Error = AppError.ERROR_PERSON_NOT_LOGIN;
+            }
+            else
+            {
+                ProProductItem obj = new ProProductItem();
+                obj.ProId = pid;
+                obj.Price = price;
+                obj.MinAge = (age - 1) < 0 ? 0 : (age - 1);
+                obj.MaxAge = age + 1;
+                obj.ItemType = bbType;
+                obj.Sex = sex;
+                int bbid = ProProductItemAccessor.Instance.Insert(obj);
+
+                ResPic pic = ResPicAccessor.Instance.Get(picid);
+                pic.ObjId = bbid;
+                ResPicAccessor.Instance.Update(pic);
+
+                result.Error = AppError.ERROR_SUCCESS;
+            }
+            return result;
+        }
+
+
+    }
+}

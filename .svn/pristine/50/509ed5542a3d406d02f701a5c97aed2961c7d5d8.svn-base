@@ -1,0 +1,306 @@
+﻿/**
+ * @author yangchao
+ * @email:aaronyangchao@gmail.com
+ * @date: 2012/6/26 1:22:49
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Collections;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using BabyPlan.Common;
+using System.Collections;
+using BabyPlan.Meta;
+using BabyPlan.DataStructure;
+
+
+namespace BabyPlan.DataAccess
+{
+    public class ProProductAccessor
+    {
+        private MySqlCommand cmdInsertProProduct;
+        private MySqlCommand cmdDeleteProProduct;
+        private MySqlCommand cmdUpdateProProduct;
+        private MySqlCommand cmdLoadProProduct;
+        private MySqlCommand cmdLoadAllProProduct;
+        private MySqlCommand cmdGetProProductCount;
+        private MySqlCommand cmdGetProProduct;
+
+        private ProProductAccessor()
+        {
+            #region cmdInsertProProduct
+
+            cmdInsertProProduct = new MySqlCommand("INSERT INTO pro_product(pid,title,bb_info,state,level,create_time,create_id,view_num) values (@Pid,@Title,@BbInfo,@State,@Level,@CreateTime,@CreateId,@ViewNum)");
+
+            cmdInsertProProduct.Parameters.Add("@Pid", MySqlDbType.Int32);
+            cmdInsertProProduct.Parameters.Add("@Title", MySqlDbType.String);
+            cmdInsertProProduct.Parameters.Add("@BbInfo", MySqlDbType.String);
+            cmdInsertProProduct.Parameters.Add("@State", MySqlDbType.Int32);
+            cmdInsertProProduct.Parameters.Add("@Level", MySqlDbType.Int32);
+            cmdInsertProProduct.Parameters.Add("@CreateTime", MySqlDbType.DateTime);
+            cmdInsertProProduct.Parameters.Add("@CreateId", MySqlDbType.Int32);
+            cmdInsertProProduct.Parameters.Add("@ViewNum", MySqlDbType.Int32);
+            #endregion
+
+            #region cmdUpdateProProduct
+
+            cmdUpdateProProduct = new MySqlCommand(" update pro_product set title = @Title,bb_info = @BbInfo,state = @State,level = @Level,create_time = @CreateTime,create_id = @CreateId,view_num = @ViewNum where pid = @Pid");
+            cmdUpdateProProduct.Parameters.Add("@Pid", MySqlDbType.Int32);
+            cmdUpdateProProduct.Parameters.Add("@Title", MySqlDbType.String);
+            cmdUpdateProProduct.Parameters.Add("@BbInfo", MySqlDbType.String);
+            cmdUpdateProProduct.Parameters.Add("@State", MySqlDbType.Int32);
+            cmdUpdateProProduct.Parameters.Add("@Level", MySqlDbType.Int32);
+            cmdUpdateProProduct.Parameters.Add("@CreateTime", MySqlDbType.DateTime);
+            cmdUpdateProProduct.Parameters.Add("@CreateId", MySqlDbType.Int32);
+            cmdUpdateProProduct.Parameters.Add("@ViewNum", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdLoadProProduct
+
+            cmdLoadProProduct = new MySqlCommand(@" select pid,title,bb_info,state,level,create_time,create_id,view_num from pro_product where  (@State = 0 or state = @State) and (@Level = 0 or level = @Level) and (@CreateId = 0 or create_id = @CreateId) order by create_time desc  limit @PageIndex,@PageSize");
+          
+            cmdLoadProProduct.Parameters.Add("@State", MySqlDbType.Int32);
+            cmdLoadProProduct.Parameters.Add("@Level", MySqlDbType.Int32);
+            cmdLoadProProduct.Parameters.Add("@CreateId", MySqlDbType.Int32);
+            cmdLoadProProduct.Parameters.Add("@pageIndex", MySqlDbType.Int32);
+            cmdLoadProProduct.Parameters.Add("@pageSize", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdGetProProductCount
+
+            cmdGetProProductCount = new MySqlCommand(" select count(*)  from pro_product where (@State = 0 or state = @State) and (@Level = 0 or level = @Level) and (@CreateId = 0 or create_id = @CreateId)   ");
+            cmdGetProProductCount.Parameters.Add("@State", MySqlDbType.Int32);
+            cmdGetProProductCount.Parameters.Add("@Level", MySqlDbType.Int32);
+            cmdGetProProductCount.Parameters.Add("@CreateId", MySqlDbType.Int32);
+            #endregion
+
+            #region cmdLoadAllProProduct
+
+            cmdLoadAllProProduct = new MySqlCommand(" select pid,title,bb_info,state,level,create_time,create_id,view_num from pro_product");
+
+            #endregion
+
+            #region cmdGetProProduct
+
+            cmdGetProProduct = new MySqlCommand(" select pid,title,bb_info,state,level,create_time,create_id,view_num from pro_product where pid = @Pid");
+            cmdGetProProduct.Parameters.Add("@Pid", MySqlDbType.Int32);
+
+            #endregion
+        }
+
+        /// <summary>
+        /// 添加数据
+        /// <param name="es">数据实体对象数组</param>
+        /// <returns></returns>
+        /// </summary>
+        public int Insert(ProProduct e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdInsertProProduct = cmdInsertProProduct.Clone() as MySqlCommand;
+            int returnValue = 0;
+            _cmdInsertProProduct.Connection = oc;
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+                _cmdInsertProProduct.Parameters["@Pid"].Value = e.Pid;
+                _cmdInsertProProduct.Parameters["@Title"].Value = e.Title;
+                _cmdInsertProProduct.Parameters["@BbInfo"].Value = e.BbInfo;
+                _cmdInsertProProduct.Parameters["@State"].Value = e.State;
+                _cmdInsertProProduct.Parameters["@Level"].Value = e.Level;
+                _cmdInsertProProduct.Parameters["@CreateTime"].Value = e.CreateTime;
+                _cmdInsertProProduct.Parameters["@CreateId"].Value = e.CreateId;
+                _cmdInsertProProduct.Parameters["@ViewNum"].Value = e.ViewNum;
+
+                _cmdInsertProProduct.ExecuteNonQuery();
+                returnValue = (int)_cmdInsertProProduct.LastInsertedId;
+                return returnValue;
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdInsertProProduct.Dispose();
+                _cmdInsertProProduct = null;
+            }
+        }
+
+        /// <summary>
+        /// 修改指定的数据
+        /// <param name="e">修改后的数据实体对象</param>
+        /// <para>数据对应的主键必须在实例中设置</para>
+        /// </summary>
+        public void Update(ProProduct e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdUpdateProProduct = cmdUpdateProProduct.Clone() as MySqlCommand;
+            _cmdUpdateProProduct.Connection = oc;
+
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                _cmdUpdateProProduct.Parameters["@Pid"].Value = e.Pid;
+                _cmdUpdateProProduct.Parameters["@Title"].Value = e.Title;
+                _cmdUpdateProProduct.Parameters["@BbInfo"].Value = e.BbInfo;
+                _cmdUpdateProProduct.Parameters["@State"].Value = e.State;
+                _cmdUpdateProProduct.Parameters["@Level"].Value = e.Level;
+                _cmdUpdateProProduct.Parameters["@CreateTime"].Value = e.CreateTime;
+                _cmdUpdateProProduct.Parameters["@CreateId"].Value = e.CreateId;
+                _cmdUpdateProProduct.Parameters["@ViewNum"].Value = e.ViewNum;
+
+                _cmdUpdateProProduct.ExecuteNonQuery();
+
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdUpdateProProduct.Dispose();
+                _cmdUpdateProProduct = null;
+                GC.Collect();
+            }
+        }
+
+        /// <summary>
+        /// 根据条件分页获取指定数据
+        /// <param name="pageIndex">当前页</param>
+        /// <para>索引从0开始</para>
+        /// <param name="pageSize">每页记录条数</param>
+        /// <para>记录数必须大于0</para>
+        /// </summary>
+        public PageEntity<ProProduct> Search(StateType State, LevelType Level, Int32 CreateId, int pageIndex, int pageSize)
+        {
+            PageEntity<ProProduct> returnValue = new PageEntity<ProProduct>();
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadProProduct = cmdLoadProProduct.Clone() as MySqlCommand;
+            MySqlCommand _cmdGetProProductCount = cmdGetProProductCount.Clone() as MySqlCommand;
+            _cmdLoadProProduct.Connection = oc;
+            _cmdGetProProductCount.Connection = oc;
+
+            try
+            {
+                _cmdLoadProProduct.Parameters["@PageIndex"].Value = pageIndex;
+                _cmdLoadProProduct.Parameters["@PageSize"].Value = pageSize;
+                _cmdLoadProProduct.Parameters["@State"].Value = (int)State;
+                _cmdLoadProProduct.Parameters["@Level"].Value = (int)Level;
+                _cmdLoadProProduct.Parameters["@CreateId"].Value = CreateId;
+
+                _cmdGetProProductCount.Parameters["@State"].Value = (int)State;
+                _cmdGetProProductCount.Parameters["@Level"].Value = (int)Level;
+                _cmdGetProProductCount.Parameters["@CreateId"].Value = CreateId;
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadProProduct.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnValue.Items.Add(new ProProduct().BuildSampleEntity(reader));
+                }
+                reader.Close();
+                returnValue.RecordsCount = Convert.ToInt32(_cmdGetProProductCount.ExecuteScalar());
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadProProduct.Dispose();
+                _cmdLoadProProduct = null;
+                _cmdGetProProductCount.Dispose();
+                _cmdGetProProductCount = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+
+        /// <summary>
+        /// 获取全部数据
+        /// </summary>
+        public List<ProProduct> Search()
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadAllProProduct = cmdLoadAllProProduct.Clone() as MySqlCommand;
+            _cmdLoadAllProProduct.Connection = oc; List<ProProduct> returnValue = new List<ProProduct>();
+            try
+            {
+                _cmdLoadAllProProduct.CommandText = string.Format(_cmdLoadAllProProduct.CommandText, string.Empty);
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadAllProProduct.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnValue.Add(new ProProduct().BuildSampleEntity(reader));
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadAllProProduct.Dispose();
+                _cmdLoadAllProProduct = null;
+                GC.Collect();
+            }
+            return returnValue;
+        }
+
+        /// <summary>
+        /// 获取指定记录
+        /// <param name="id">Id值</param>
+        /// </summary>
+        public ProProduct Get(int Pid)
+        {
+            ProProduct returnValue = null;
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdGetProProduct = cmdGetProProduct.Clone() as MySqlCommand;
+
+            _cmdGetProProduct.Connection = oc;
+            try
+            {
+                _cmdGetProProduct.Parameters["@Pid"].Value = Pid;
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdGetProProduct.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    returnValue = new ProProduct().BuildSampleEntity(reader);
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdGetProProduct.Dispose();
+                _cmdGetProProduct = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+        private static readonly ProProductAccessor instance = new ProProductAccessor();
+        public static ProProductAccessor Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+    }
+}

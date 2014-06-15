@@ -1,0 +1,246 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using BabyPlan.Common;
+using BabyPlan.Meta;
+using BabyPlan.WcfService;
+using BabyPlan.mvcApp.Model;
+using BabyPlan.DataStructure;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    [Authorize]
+    public class UserController : BaseController
+    {
+        //
+        // GET: /User/
+        public ActionResult Index()
+        {
+
+            ProductServiceClient client = new ProductServiceClient();
+            AdvancedResult<List<ProProductItem>> response = client.LoadInterestingBB(CurrentToken);
+
+            List<ProductItemModel> items = new List<ProductItemModel>();
+
+            if (response.Error == DataStructure.AppError.ERROR_SUCCESS)
+            {
+                BindOption bindOptions = BindOption.DefalutBindOption;
+                bindOptions.ProductItemBindType = bindOptions.ProductItemBindType | ProductItemBindType.Product;
+                bindOptions.ProductBindType = bindOptions.ProductBindType | ProductBindType.ReplayNum;
+                bindOptions.ProductItemsBindNum = 0;
+
+                response.Data = response.Data ?? new List<ProProductItem>();
+                foreach (var p in response.Data)
+                {
+                    items.Add(new ProductItemModel().Bind(p, bindOptions));
+                }
+            }
+            return View("~/Views/User/Index.cshtml", items);
+        }
+
+        public ActionResult Goods(int? id)
+        {
+            ProductServiceClient client = new ProductServiceClient();
+
+            int page = id ?? 0;
+
+            AdvancedResult<PageEntity<ProProduct>> products = client.SearchBBPostList(CurrentToken, page, 6);
+            List<ProductModel> items = new List<ProductModel>();
+
+            BindOption bindOptions = BindOption.DefalutBindOption;
+            bindOptions.ProductBindType = bindOptions.ProductBindType | ProductBindType.ReplayNum | ProductBindType.Items;
+            bindOptions.ProductItemsBindNum = 1;
+
+            if (products.Error == DataStructure.AppError.ERROR_SUCCESS)
+            {
+                products.Data.Items = products.Data.Items ?? new List<ProProduct>();
+                ViewBag.Paging = BabyPlan.Common.HtmlFormatHelper.GeneratePagingHtml(page, 6, products.Data.RecordsCount, Url.Action("Goods", "User") + "/{0}");
+                foreach(var p in products.Data.Items)
+                {
+                    items.Add(new ProductModel().Bind(p, bindOptions));
+                }
+            }
+            return View("~/Views/User/Goods.cshtml", items);
+        }
+
+        public ActionResult AddGoods(int? id)
+        {
+            int pid = id ?? 0;
+            ProductModel model = new ProductModel();
+            model.QQ = "QQ";
+            model.Phone = "手机号";
+
+            BindOption bindOptions = BindOption.DefalutBindOption;
+            bindOptions.ProductItemsBindNum = 0;
+            bindOptions.ProductBindType = ProductBindType.Author | ProductBindType.Items;
+
+            if (pid > 0)
+            {
+                ProductServiceClient client = new ProductServiceClient();
+                AdvancedResult<ProProduct> product = client.GetBBInfo(pid);
+                if (product.Error == DataStructure.AppError.ERROR_SUCCESS)
+                {
+                    model.Bind(product.Data, bindOptions);
+                }
+            }
+            return View("~/Views/User/AddGoods.cshtml", model);
+        }
+
+        public JsonResult AjaxAddGoods()
+        {
+            string goods = Request["goods"];
+            RespResult response = new RespResult();
+            if (string.IsNullOrEmpty(goods))
+            {
+                response.Error = DataStructure.AppError.ERROR_INVALID_PARAMETER;
+                response.ErrorMessage = "数据丢失！";
+            }
+            else
+            {
+                try
+                {
+                    ProductModel product = JsonHelper.Deserialize<ProductModel>(goods);
+                    if (product == null)
+                    {
+                        response.Error = DataStructure.AppError.ERROR_INVALID_PARAMETER;
+                        response.ErrorMessage = "无效数据！";
+                    }
+                    else
+                    {
+                        ProductServiceClient client = new ProductServiceClient();
+                        AdvancedResult<int> productResponse;
+                        if (product.Id > 0)
+                        {
+                            RespResult result = client.EditBBPostInfo(product.Id, product.Title, product.QQ, product.Phone, product.Description, CurrentToken);
+                            productResponse = new AdvancedResult<int>();
+                            productResponse.Data = product.Id;
+                            productResponse.Error = result.Error;
+                            productResponse.ErrorMessage = result.ErrorMessage;
+                            productResponse.ExMessage = result.ExMessage;
+                        }
+                        else
+                        {
+                            productResponse = client.publishBBPost(product.Title, product.QQ, product.Phone, product.Description, CurrentToken);
+                        }
+
+                        if (productResponse.Error == DataStructure.AppError.ERROR_SUCCESS)
+                        {
+                            foreach (var pitem in product.Items)
+                            {
+                                if (pitem.Id > 0)
+                                {
+                                    client.EditeBBItem(pitem.Id, pitem.Price, pitem.Age, pitem.ItemType, pitem.Sex, pitem.PicId, CurrentToken);
+                                }
+                                else
+                                {
+                                    client.publicBBItem(productResponse.Data, pitem.Price, pitem.Age, pitem.ItemType, pitem.Sex, pitem.PicId, CurrentToken);
+                                }
+                            }
+                        }
+                        client.Close();
+                        client = null;
+                    }
+                    response.Error = DataStructure.AppError.ERROR_SUCCESS;
+                }
+                catch (Exception ex)
+                {
+                    response.ExMessage = "保存失败！" + ex.Message;
+                    response.Error = DataStructure.AppError.ERROR_FAILED;
+                }
+            }
+            return Json(response);
+        }
+
+        public JsonResult BindBabyAge()
+        {
+            int babyAge;
+            RespResult result = new RespResult();
+            if (int.TryParse(Request["babyage"], out babyAge))
+            {
+                UserServiceClient client = new UserServiceClient();
+                result = client.UpdateBabyAge(babyAge, CurrentToken);
+            }
+            else
+            {
+                result.Error = DataStructure.AppError.ERROR_FAILED;
+                result.ExMessage = "无效的年龄！";
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Profile()
+        {
+            return View("~/Views/User/Profile.cshtml");
+        }
+
+        public JsonResult AjaxProfile()
+        {
+            string oldpassword = Request["u_old_password"];
+            string newpassword = Request["u_new_password"];
+            SexType sex = SexType.Ignore;
+            Enum.TryParse<SexType>(Request["u_sex"], out sex);
+
+            AdvancedResult<string> response = new AdvancedResult<string>();
+
+            if (string.IsNullOrEmpty(oldpassword))
+            {
+                response.Error = AppError.ERROR_FAILED;
+                response.ExMessage = "原密码不能为空！";
+                return Json(response);
+            }
+            if (string.IsNullOrEmpty(newpassword) || newpassword.Length < 6 || newpassword.Length > 18)
+            {
+                response.Error = AppError.ERROR_FAILED;
+                response.ExMessage = "新密码长度不合法！";
+                return Json(response);
+            }
+            UserServiceClient client = new UserServiceClient();
+            AdvancedResult<AdUser> userResponse = client.GetUserInfo(CurrentToken);
+            if (userResponse.Error == AppError.ERROR_SUCCESS)
+            {
+                if (!userResponse.Data.Pwd.Equals(oldpassword))
+                {
+                    response.Error = AppError.ERROR_FAILED;
+                    response.ExMessage = "原密码错误！";
+                }
+                else
+                {
+                    userResponse.Data.Pwd = newpassword;
+                    userResponse.Data.Sex = sex;
+                    var  saveresponse = client.EditeUserInfo(userResponse.Data, CurrentToken);
+                    response.Error = saveresponse.Error;
+                    response.ErrorMessage = saveresponse.ErrorMessage;
+                    response.ExMessage = saveresponse.ExMessage;
+                }
+            }
+            return Json(response);
+        }
+
+        public ActionResult Info()
+        {
+            ReplyServiceClient client = new ReplyServiceClient();
+            AdvancedResult<PageEntity<GenReply>> replys = client.LoadMyBBReplyList(CurrentToken, 0, 10);
+            IList<ReplayModel> models = new List<ReplayModel>();
+            if (replys.Error == AppError.ERROR_SUCCESS)
+            {
+                BindOption bindOptions = BindOption.DefalutBindOption;
+                bindOptions.ReplyBindNum = 0;
+                bindOptions.ProductBindType = bindOptions.ProductBindType | ProductBindType.ReplayNum;
+                bindOptions.ReplayBindType = ReplayBindType.Author | ReplayBindType.Product;
+
+                models = ReplayModel.BindList(replys.Data.Items, bindOptions);
+            }
+            foreach (ReplayModel r in models)
+            {
+                if (r.Author != null && r.Author.HeadPic != null)
+                {
+                    r.Author.HeadPic.DisplaySeting(50, 50);
+                }
+            }
+            return View("~/Views/User/Info.cshtml", models);
+        }
+
+    }
+}

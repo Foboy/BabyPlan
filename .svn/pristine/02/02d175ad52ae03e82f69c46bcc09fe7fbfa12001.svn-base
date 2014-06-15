@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
+using BabyPlan.DataStructure;
+using System.Text;
+
+namespace BabyPlan.mvcApp.UrlRoutes
+{
+    /// <summary>
+    /// 宝贝详情路由规则解析，重写
+    /// </summary>
+    public class TradeDetailRoute : RouteBase
+    {
+        public override RouteData GetRouteData(HttpContextBase httpContext)
+        {
+            return null;
+        }
+
+        public override VirtualPathData GetVirtualPath(RequestContext requestContext, RouteValueDictionary values)
+        {
+            return null;
+        }
+    }
+}

@@ -1,0 +1,83 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.IO;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class UploadController : Controller
+    {
+        //
+        // GET: /Upload/
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult Uploader(string type,string sessionId)
+        {
+            HttpPostedFileBase file = Request.Files["Filedata"];
+            string uploadPath = Server.MapPath("~/UploadFiles/");
+
+            UploadFileItem uploadItem = new UploadFileItem();
+
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    uploadItem.Saved = false;
+            //    uploadItem.Msg = "登录后方可上传文件!";
+            //}
+            //else 
+                if (file != null)
+            {
+                uploadItem.FileMuid = Guid.NewGuid().ToString().Replace("-", "");
+
+                uploadItem.Extention = file.FileName.Substring(file.FileName.LastIndexOf('.')).ToLower();
+
+                string saveName = uploadItem.FileMuid + uploadItem.Extention;
+                string savePath = Path.Combine(uploadPath, saveName);
+
+                uploadItem.UploadDate = DateTime.Now;
+                uploadItem.FileName = file.FileName;
+                uploadItem.FileType = type;
+                uploadItem.Author = User.Identity.Name;
+                uploadItem.SaveName = saveName;
+                uploadItem.Url = Url.Content("~/UploadFiles/" + saveName);
+                
+                if (!Directory.Exists(uploadPath))
+                {
+                    Directory.CreateDirectory(uploadPath);
+                }
+                file.SaveAs(savePath);
+
+                uploadItem.Saved = true;
+            }
+            else
+            {
+                uploadItem.Saved = false;
+                uploadItem.Msg = "上传文件为空!";
+            }
+            return Json(uploadItem);
+        }
+
+        public class UploadFileItem
+        {
+            public string FileMuid { get; set; }
+            public int SaveId { get; set; }
+            public string SaveName { get; set; }
+            public string Extention { get; set; }
+            public string Url { get; set; }
+            public string Author { get; set; }
+            public string FileName { get; set; }
+            public string FileType { get; set; }
+            public DateTime UploadDate { get; set; }
+            public bool Saved { get; set; }
+            public string Msg { get; set; }
+
+        }
+
+    }
+}

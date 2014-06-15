@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "宝宝会长大，衣服不会长大。百家衣(www.360baijiayi.com)";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ResourceHelper.RegisterCss(this, "home.index.css");
+}
+@section Js_InHeader{
+    @Content.Script("jquery-1.5.1.min.js", Url)
+}
+@Html.Partial("_Header_Partial")
+<div class="banner" id="bannerBox">
+	<div class="banner1" id="banner1"><a href="@Url.Action("List","Trade")"></a></div>
+    <div class="banner2" id="banner2"><a href="@Url.Action("Index", "BabyBook")"></a></div>
+    <div class="loveheart" id="loveheart"><a href="@Url.Action("Index", "loveheart")"></a></div>
+    <div class="banner3" id="banner3"><a href="http://www.360baijiayi.com/apps/baijiayi.apk"></a></div>
+    <div class="btnSw">
+        <span class="cur" id="bannerbtn1"></span>
+        <span id="bannerbtn2"></span>
+        <span id="loveheartbtn"></span>
+        <span id="bannerbtn3"></span>
+    </div>
+</div>
+
+<div class="mainblock block_comment">  
+@*  <h4 class="blue-font last_title">即将发布以下内容，尽请期待</h4>
+  <div class="main_content main_bg"></div>*@
+  <div class="block_con">
+    <h2 class="blue-font">百家衣</h2>
+    <p>吃百家饭&nbsp;穿百家衣</p>
+    <img src="../../images/clothes.png" />
+  </div>
+   <div class="block_con">
+    <h2 class="blue-font">成长录</h2>
+    <p>把孩子的生活，装成册</p>
+    <img src="../../images/photo.png" />    
+  </div>
+   <div class="block_con">
+    <h2 class="blue-font">包养我们</h2>
+    <p>和年轻的妈妈一起关注孩子的健康</p>
+    <img src="../../images/heart.png" />
+  </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var lock = false;
+        var hasLock = false;
+        var index = 0;
+        var banners = [];
+        banners.push({ banner: $("#banner1"), btn: $("#bannerbtn1") });
+        banners.push({ banner: $("#banner2"), btn: $("#bannerbtn2") });
+        banners.push({ banner: $("#loveheart"), btn: $("#loveheartbtn") });
+        banners.push({ banner: $("#banner3"), btn: $("#bannerbtn3") });
+        var show = function () {
+            lock = true;
+            for (var i = 0; i < banners.length; i++) {
+                var banner = banners[i];
+                if (i == index) {
+                    banner.btn.addClass("cur");
+                    banner.banner.fadeIn(1000, function () { lock = false; });
+                }
+                else {
+                    banner.btn.removeClass("cur");
+                    banner.banner.fadeOut(1000);
+                }
+            }
+        };
+        var turn = function () {
+            if (lock) {
+                hasLock = true;
+                return;
+            }
+            if (hasLock) {
+                hasLock = false;
+                return;
+            }
+            if (++index >= banners.length)
+                index = 0;
+            show();
+        };
+
+        for (var i = 0; i < banners.length; i++) {
+            var banner = banners[i];
+            var idx = i;
+            banner.btn.attr("idx", idx);
+            banner.btn.click(function () {
+                if (lock)
+                    return;
+                index = $(this).attr("idx");
+                show();
+                hasLock = true;
+            });
+        }
+        $("#bannerBox").mouseover(function () { hasLock = true; }).mouseout(function () { hasLock = false; });
+        setInterval(function () { turn(); }, 4000);
+    });
+</script>
+@Html.Partial("_Footer_Partial")
+

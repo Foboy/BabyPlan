@@ -1,0 +1,166 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+using BabyPlan.Common;
+using BabyPlan.Common.Cache;
+using BabyPlan.DataAccess;
+using BabyPlan.Meta;
+
+namespace BabyPlan.WcfService
+{
+    // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码、svc 和配置文件中的类名“ProductService”。
+    public class ProductService : IProductService
+    {
+        //发布宝贝
+        public string publishBB(string title, string qq, string mobile, string bbinfo, string token)
+        {
+            ResponseResult result = new ResponseResult();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.ErrorCode = 0;
+                result.Msg = "用户账户过期或者未登录";
+            }
+            else
+            {
+                ProProduct pro = new ProProduct();
+                pro.Title = title.Trim();
+                pro.BbInfo = bbinfo.Trim();
+
+                int userid= Convert.ToInt32(CacheManagerFactory.GetMemoryManager().Contains(token));
+                pro.CreateId = userid;
+                pro.CreatTime = DateTime.Now;
+                pro.Level = 1;
+
+
+                //ProProductAccessor.Instance.Insert
+                result.ErrorCode = 0;
+                result.Msg = "this is server";
+            }
+            return JsonHelper.Serialize(result);
+        }
+
+        //获取单个宝贝信息
+        public string GetBBInfo(int bbID)
+        {
+            ResponseResult result = new ResponseResult();
+            result.ErrorCode = 0;
+            result.Msg = "this is server";
+            return JsonHelper.Serialize(result);
+        }
+
+        //编辑单个宝贝信息
+        public string EditBBInfo(string title, string qq, string mobile, string bbinfo, string token)
+        {
+            ResponseResult result = new ResponseResult();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.ErrorCode = 0;
+                result.Msg = "用户账户过期或者未登录";
+            }
+            else
+            {
+                result.ErrorCode = 0;
+                result.Msg = "this is server";
+            }
+            return JsonHelper.Serialize(result);
+        }
+
+        //获取用户宝贝清单数量
+        public string GetBBNum(string token)
+        {
+            ResponseResult result = new ResponseResult();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.ErrorCode = 0;
+                result.Msg = "用户账户过期或者未登录";
+            }
+            else
+            {
+                result.ErrorCode = 0;
+                result.Msg = "this is server";
+            }
+            return JsonHelper.Serialize(result);
+        }
+
+        //获取我发布的宝贝列表
+        public string GetBBList(string token)
+        {
+            ResponseResult result = new ResponseResult();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.ErrorCode = 0;
+                result.Msg = "用户账户过期或者未登录";
+            }
+            else
+            {
+                result.ErrorCode = 0;
+                result.Msg = "this is server";
+            }
+            return JsonHelper.Serialize(result);
+        }
+
+        //关闭宝贝
+        public string CloseBB(int bbID, string token)
+        {
+            ResponseResult result = new ResponseResult();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.ErrorCode = 0;
+                result.Msg = "用户账户过期或者未登录";
+            }
+            else
+            {
+                result.ErrorCode = 0;
+                result.Msg = "this is server";
+            }
+            return JsonHelper.Serialize(result);
+        }
+
+        //获取所有宝贝列表
+        public string LoadBBList(int type)
+        {
+            ResponseResult result = new ResponseResult();
+            result.ErrorCode = 0;
+            result.Msg = "this is server";
+            return JsonHelper.Serialize(result);
+        }
+
+        //获取感兴趣宝贝
+        public string LoadInterestingBB(string token)
+        {
+            ResponseResult result = new ResponseResult();
+            if (!CacheManagerFactory.GetMemoryManager().Contains(token))
+            {
+                result.ErrorCode = 0;
+                result.Msg = "用户账户过期或者未登录";
+            }
+            else
+            {
+                result.ErrorCode = 0;
+                result.Msg = "this is server";
+            }
+            return JsonHelper.Serialize(result);
+        }
+        //设置感兴趣宝贝
+
+        //获取单个宝贝浏览数
+        public string GetBBViewNum(int bbID)
+        {
+            ResponseResult result = new ResponseResult();
+            result.ErrorCode = 0;
+            result.Msg = "this is server";
+            return JsonHelper.Serialize(result);
+        }
+        //设置单个宝贝浏览数
+        public string SetBBViewNum(int bbID)
+        {
+            ResponseResult result = new ResponseResult();
+            result.ErrorCode = 0;
+            result.Msg = "this is server";
+            return JsonHelper.Serialize(result);
+        }
+    }
+}

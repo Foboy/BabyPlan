@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class GameController : Controller
+    {
+        //
+        // GET: /Game/
+
+        public ActionResult Index()
+        {
+            return View("~/Views/game/index.cshtml");
+        }
+
+        public ActionResult Vote()
+        {
+            return View("~/Views/game/vote.cshtml");
+        }
+
+        public ActionResult Challenge()
+        {
+            return View("~/Views/game/challenge.cshtml");
+        }
+    }
+}

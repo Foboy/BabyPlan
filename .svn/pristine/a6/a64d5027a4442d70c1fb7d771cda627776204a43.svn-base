@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using BabyPlan.Common;
+using BabyPlan.DataStructure;
+using BabyPlan.WcfService;
+using BabyPlan.Meta;
+using BabyPlan.mvcApp.Model;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class ReplyController : BaseController
+    {
+        public JsonResult Bless()
+        {
+            string wish = Request["blessContent"];
+            RespResult result;
+            if (string.IsNullOrEmpty(wish) || wish.Length > 200)
+            {
+                result = new RespResult();
+                result.Error = AppError.ERROR_FAILED;
+                result.ExMessage = "心愿内容不合法！";
+            }
+            else
+            {
+                ReplyServiceClient client = new ReplyServiceClient();
+                result = client.Bless(wish);
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetBlessReplys(int bid)
+        {
+            int pageIndex = 0;
+            int pageSize = 10;
+            int.TryParse(Request["page"], out pageIndex);
+            ReplyServiceClient client = new ReplyServiceClient();
+            AdvancedResult<PageEntity<GenReply>> response = client.LoadReplyListByBlessID(bid, pageIndex, pageSize);
+            IList<ReplyModel> models = new List<ReplyModel>();
+            string paging = string.Empty;
+            int count = 0;
+            if (response.Error == AppError.ERROR_SUCCESS)
+            {
+                count = response.Data.RecordsCount;
+                paging = HtmlFormatHelper.GeneratePagingHtml(response.Data.PageIndex, response.Data.PageSize, response.Data.RecordsCount, "javascript:void(LoadComments({0}))", "下一页", "上一页", null, null, null);
+
+                BindOption bindOptions = BindOption.DefalutBindOption;
+                bindOptions.ReplyBindNum = 0;
+                bindOptions.RefReplyNum = 1;
+                bindOptions.ReplayBindType = ReplyBindType.Author | ReplyBindType.RefReply;
+
+
+                models = ReplyModel.BindList(response.Data.Items, bindOptions);
+            }
+            foreach (ReplyModel r in models)
+            {
+                if (r.Author != null && r.Author.HeadPic != null)
+                {
+                    r.Author.HeadPic.DisplaySeting(50, 50);
+                }
+            }
+            return Json(new { data = models, paging = paging, count = count }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult AjaxReplyBless(int bid)
+        {
+            string content = Request["comment_input"];
+            int ref_id = 0;
+            int.TryParse(Request["ref_id"], out ref_id);
+            RespResult response = new RespResult();
+
+            if (string.IsNullOrEmpty(content) || content.Length < 2 || content.Length > 300)
+            {
+                response.Error = AppError.ERROR_FAILED;
+                response.ExMessage = "回复内容长度不合法！";
+                return Json(response);
+            }
+
+            ReplyServiceClient client = new ReplyServiceClient();
+            response = client.ReplyBless(bid, ref_id, content, CurrentToken);
+            return Json(response);
+        }
+
+    }
+}

@@ -1,0 +1,10 @@
+﻿    .right_block_title{height:50px;}
+    .right-block_content{ height:auto!important; height:400px;  min-height:400px; }
+    .right_block_title .title{}
+    .info_item_outer{margin:0;}
+    .prompt_info{ text-align:center; vertical-align:middle; height:400px; line-height:400px;}
+    .info_item_outer .dot_line{width:680px;height:0;border-top:dotted 1px #666;margin:0 15px;}
+    .info_item_outer .info_item{width:680px;height:104px;margin:20px 15px;display:inline-block;}
+    .info_item_outer .info_item .info_no{font-size:72px;line-height:102px;width:60px;}
+    .info_item_outer .info_item .info_content{width:470px;height:102px;}
+    .info_item_outer .info_item .goods_pic{width:102px;height:102px;}

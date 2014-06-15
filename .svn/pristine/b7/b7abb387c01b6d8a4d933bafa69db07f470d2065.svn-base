@@ -1,0 +1,25 @@
+﻿    .trade_top_bar{height:130px; border:1px solid #E1E3E6;}
+    .trade_top_bar .category{width:600px; position:relative; z-index:2;}
+    .sortList li{color:#333333; cursor:pointer; padding:55px 25px 0 25px; width:40px; text-align:center; float:left; border-right:1px solid #E1E3E6;border-bottom:1px solid #E1E3E6;}
+    .sortList li.sortNo1,.sortList li.sortNo2,.sortList li.sortNo1_cur,.sortList li.sortNo2_cur{ background:url(/images/icon/sortIcon.png) no-repeat; color:#333333;}
+    .sortList li.sortNo1:hover,.sortList li.sortNo2:hover{color:#2a8fc4;}
+    .sortList li.sortNo1_cur,.sortList li.sortNo2_cur{color:#2a8fc4; border-bottom:1px solid #FFFFFF;}
+    .sortList li.sortNo1{ background-position:-40px 10px;}
+    .sortList li.sortNo2{ background-position:-40px -65px;}
+    .sortList li.sortNo1:hover,.sortList li.sortNo1_cur{background-position:25px 10px;}
+    .sortList li.sortNo2:hover,.sortList li.sortNo2_cur{background-position:25px -65px;}
+    .sortShow{border-top:1px solid #E1E3E6; position:relative;z-index:1; height:30px;margin-top:-1px; padding:15px 0; }
+    .sortShow ul li{ float:left; padding:5px 15px; height:18px; color:#FFFFFF; background:#ff6666; margin-left:15px; font-weight:600; cursor:pointer;}
+    .sortShow ul li a{color:#FFFFFF;}
+    .sortShow ul li.cur{background:#8cbf26;}
+    .newGoods{padding-left:20px; margin:10px 0 20px -20px; width:980px;}
+    .introBox{border:1px solid #E1E3E6; width:223px; height:120px; float:left; margin-right:20px; background:#FFFFFF;}
+ /* .trade_top_bar .category ul{margin:0 10px;}
+    .trade_top_bar .category ul li{float:left;}
+    .trade_top_bar .category ul li.sp{margin:0 5px;}
+    .trade_top_bar .category ul li a{padding:5px;}
+    .trade_top_bar .category ul li a:hover{background:#2A8FC4;color:#fff;}*/
+    .trade_top_bar .post .postbtn{margin:20px 10px 0 0;}
+    .arrowRight{display:block;line-height:30px; padding-right:20px; background:url(/images/icon/arrowRight.png) no-repeat right center;}
+    /*.bannerlh{ height:100px;background:url(/images/bannerlh.jpg) no-repeat top center;margin-bottom:10px;}
+    .bannerlh a{width:960px;height:100px;display:block;margin:0 auto;}*/

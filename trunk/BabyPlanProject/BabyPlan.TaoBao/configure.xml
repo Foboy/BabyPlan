@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<appConfig>
+  <appkey>
+    21154810
+  </appkey>
+  <secret>1ae0703a3e5c59a13ae38474fabd0d93</secret>
+  <channelUrl>appkey的ChannelUrl</channelUrl>
+</appConfig>

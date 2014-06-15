@@ -1,0 +1,88 @@
+for(var i = 0; i < 60; i++) { var scriptId = 'u' + i; window[scriptId] = document.getElementById(scriptId); }
+
+$axure.eventManager.pageLoad(
+function (e) {
+
+});
+gv_vAlignTable['u31'] = 'top';document.getElementById('u16_img').tabIndex = 0;
+
+u16.style.cursor = 'pointer';
+$axure.eventManager.click('u16', function(e) {
+
+if (true) {
+
+	SetPanelVisibility('u13','hidden','none',500);
+
+}
+});
+gv_vAlignTable['u17'] = 'center';gv_vAlignTable['u28'] = 'top';gv_vAlignTable['u29'] = 'top';HookHover('u8', false);
+HookClick('u8', false);
+gv_vAlignTable['u21'] = 'center';HookHover('u6', false);
+gv_vAlignTable['u57'] = 'top';gv_vAlignTable['u59'] = 'center';gv_vAlignTable['u15'] = 'center';gv_vAlignTable['u38'] = 'center';gv_vAlignTable['u43'] = 'center';gv_vAlignTable['u1'] = 'center';gv_vAlignTable['u26'] = 'top';gv_vAlignTable['u41'] = 'center';u10.tabIndex = 0;
+
+u10.style.cursor = 'pointer';
+$axure.eventManager.click('u10', function(e) {
+
+if (true) {
+
+	SetPanelVisibility('u13','','none',500);
+
+}
+});
+gv_vAlignTable['u10'] = 'top';u11.tabIndex = 0;
+
+u11.style.cursor = 'pointer';
+$axure.eventManager.click('u11', function(e) {
+
+if (true) {
+
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('register.html');
+
+}
+});
+gv_vAlignTable['u11'] = 'top';gv_vAlignTable['u3'] = 'center';gv_vAlignTable['u12'] = 'top';gv_vAlignTable['u39'] = 'top';gv_vAlignTable['u9'] = 'center';gv_vAlignTable['u35'] = 'top';gv_vAlignTable['u7'] = 'center';gv_vAlignTable['u24'] = 'center';HookHover('u4', false);
+u46.tabIndex = 0;
+
+u46.style.cursor = 'pointer';
+$axure.eventManager.click('u46', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u46'] = 'top';u56.tabIndex = 0;
+
+u56.style.cursor = 'pointer';
+$axure.eventManager.click('u56', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u56'] = 'top';gv_vAlignTable['u54'] = 'center';gv_vAlignTable['u18'] = 'top';gv_vAlignTable['u19'] = 'top';u55.tabIndex = 0;
+
+u55.style.cursor = 'pointer';
+$axure.eventManager.click('u55', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u55'] = 'top';gv_vAlignTable['u5'] = 'center';gv_vAlignTable['u48'] = 'center';gv_vAlignTable['u22'] = 'top';u49.tabIndex = 0;
+
+u49.style.cursor = 'pointer';
+$axure.eventManager.click('u49', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('localtrade_content.html'), "");
+
+}
+});
+gv_vAlignTable['u49'] = 'top';gv_vAlignTable['u50'] = 'top';gv_vAlignTable['u45'] = 'center';gv_vAlignTable['u52'] = 'center';gv_vAlignTable['u33'] = 'center';

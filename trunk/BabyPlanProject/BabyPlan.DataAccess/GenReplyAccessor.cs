@@ -1,0 +1,416 @@
+﻿/**
+ * @author yangchao
+ * @email:aaronyangchao@gmail.com
+ * @date: 2012/7/17 23:44:45
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Collections;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using BabyPlan.Common;
+using System.Collections;
+using BabyPlan.Meta;
+using BabyPlan.DataStructure;
+
+
+namespace BabyPlan.DataAccess
+{
+    public class GenReplyAccessor
+    {
+        private MySqlCommand cmdInsertGenReply;
+        private MySqlCommand cmdDeleteGenReply;
+        private MySqlCommand cmdUpdateGenReply;
+        private MySqlCommand cmdLoadGenReply;
+        private MySqlCommand cmdLoadAllGenReply;
+        private MySqlCommand cmdGetGenReplyCount;
+        private MySqlCommand cmdGetGenReply;
+
+        private GenReplyAccessor()
+        {
+            #region cmdInsertGenReply
+
+            cmdInsertGenReply = new MySqlCommand("INSERT INTO gen_reply(obj_id,obj_type,content,create_id,ref_user_id,ref_reply_id) values (@ObjId,@ObjType,@Content,@CreateId,@RefUserId,@RefReplyId)");
+
+            cmdInsertGenReply.Parameters.Add("@ObjId", MySqlDbType.Int32);
+            cmdInsertGenReply.Parameters.Add("@ObjType", MySqlDbType.Int32);
+            cmdInsertGenReply.Parameters.Add("@Content", MySqlDbType.String);
+            cmdInsertGenReply.Parameters.Add("@CreateId", MySqlDbType.Int32);
+            cmdInsertGenReply.Parameters.Add("@RefUserId", MySqlDbType.Int32);
+            cmdInsertGenReply.Parameters.Add("@RefReplyId", MySqlDbType.Int32);
+            #endregion
+
+            #region cmdUpdateGenReply
+
+            cmdUpdateGenReply = new MySqlCommand(" update gen_reply set obj_id = @ObjId,obj_type = @ObjType,content = @Content,create_id = @CreateId,state = @State,ref_user_id = @RefUserId,ref_reply_id = @RefReplyId where rid = @Rid");
+            cmdUpdateGenReply.Parameters.Add("@Rid", MySqlDbType.Int32);
+            cmdUpdateGenReply.Parameters.Add("@ObjId", MySqlDbType.Int32);
+            cmdUpdateGenReply.Parameters.Add("@ObjType", MySqlDbType.Int32);
+            cmdUpdateGenReply.Parameters.Add("@Content", MySqlDbType.String);
+            cmdUpdateGenReply.Parameters.Add("@CreateId", MySqlDbType.Int32);
+            cmdUpdateGenReply.Parameters.Add("@State", MySqlDbType.Int32);
+            cmdUpdateGenReply.Parameters.Add("@RefUserId", MySqlDbType.Int32);
+            cmdUpdateGenReply.Parameters.Add("@RefReplyId", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdDeleteGenReply
+
+            cmdDeleteGenReply = new MySqlCommand(" delete from gen_reply where rid = @Rid");
+            cmdDeleteGenReply.Parameters.Add("@Rid", MySqlDbType.Int32);
+            #endregion
+
+            #region cmdLoadGenReply
+
+            cmdLoadGenReply = new MySqlCommand(@" select rid,obj_id,obj_type,content,create_id,state,create_time,ref_user_id,ref_reply_id from gen_reply
+                                  where (@ObjId =0  or obj_id = @ObjId) and
+                (@ObjType =0  or obj_type = @ObjType) and
+                (@CreateId =0  or create_id = @CreateId) and
+                (@State =0  or state = @State) and
+                (@RefUserId =0  or ref_user_id = @RefUserId)
+and       (@RefReplyId =0  or ref_reply_id = @RefReplyId)
+order by create_time desc limit @PageIndex,@PageSize");
+            cmdLoadGenReply.Parameters.Add("@pageIndex", MySqlDbType.Int32);
+            cmdLoadGenReply.Parameters.Add("@pageSize", MySqlDbType.Int32);
+            cmdLoadGenReply.Parameters.Add("@ObjId", MySqlDbType.Int32);
+            cmdLoadGenReply.Parameters.Add("@ObjType", MySqlDbType.Int32);
+            cmdLoadGenReply.Parameters.Add("@CreateId", MySqlDbType.Int32);
+            cmdLoadGenReply.Parameters.Add("@State", MySqlDbType.Int32);
+            cmdLoadGenReply.Parameters.Add("@RefUserId", MySqlDbType.Int32);
+            cmdLoadGenReply.Parameters.Add("@RefReplyId", MySqlDbType.Int32);
+
+            #endregion
+
+            #region cmdGetGenReplyCount 配合分页
+
+            cmdGetGenReplyCount = new MySqlCommand(@" select count(*)  from gen_reply
+            where (@ObjId =0  or obj_id = @ObjId) and
+                (@ObjType =0  or obj_type = @ObjType) and
+                (@CreateId =0  or create_id = @CreateId) and
+                (@State =0  or state = @State) and
+                (@RefUserId =0  or ref_user_id = @RefUserId)
+and       (@RefReplyId =0  or ref_reply_id = @RefReplyId)
+            ");
+            cmdGetGenReplyCount.Parameters.Add("@ObjId", MySqlDbType.Int32);
+            cmdGetGenReplyCount.Parameters.Add("@ObjType", MySqlDbType.Int32);
+            cmdGetGenReplyCount.Parameters.Add("@CreateId", MySqlDbType.Int32);
+            cmdGetGenReplyCount.Parameters.Add("@State", MySqlDbType.Int32);
+            cmdGetGenReplyCount.Parameters.Add("@RefUserId", MySqlDbType.Int32);
+            cmdGetGenReplyCount.Parameters.Add("@RefReplyId", MySqlDbType.Int32);
+
+            #endregion
+
+
+
+            #region cmdLoadAllGenReply
+
+            cmdLoadAllGenReply = new MySqlCommand(@"select 
+    r.*, u.user_account
+from
+    gen_reply r,
+    ad_user u
+where
+    r.create_id = u.ad_user_id
+order by r.create_time desc");
+
+            #endregion
+
+            #region cmdGetGenReply
+
+            cmdGetGenReply = new MySqlCommand(" select rid,obj_id,obj_type,content,create_id,state,create_time,ref_user_id,ref_reply_id from gen_reply where rid = @Rid");
+            cmdGetGenReply.Parameters.Add("@Rid", MySqlDbType.Int32);
+
+            #endregion
+        }
+
+        /// <summary>
+        /// 添加数据
+        /// <param name="es">数据实体对象数组</param>
+        /// <returns></returns>
+        /// </summary>
+        public bool Insert(GenReply e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdInsertGenReply = cmdInsertGenReply.Clone() as MySqlCommand;
+            bool returnValue = false;
+            _cmdInsertGenReply.Connection = oc;
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+                _cmdInsertGenReply.Parameters["@ObjId"].Value = e.ObjId;
+                _cmdInsertGenReply.Parameters["@ObjType"].Value = e.ObjType;
+                _cmdInsertGenReply.Parameters["@Content"].Value = e.Content;
+                _cmdInsertGenReply.Parameters["@CreateId"].Value = e.CreateId;
+                _cmdInsertGenReply.Parameters["@RefUserId"].Value = e.RefUserId;
+                _cmdInsertGenReply.Parameters["@RefReplyId"].Value = e.RefReplyId;
+
+                _cmdInsertGenReply.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdInsertGenReply.Dispose();
+                _cmdInsertGenReply = null;
+            }
+        }
+
+        /// <summary>
+        /// 删除数据
+        /// <param name="es">数据实体对象数组</param>
+        /// <returns></returns>
+        /// </summary>
+        public bool Delete(GenReply e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdDeleteGenReply = cmdDeleteGenReply.Clone() as MySqlCommand;
+            bool returnValue = false;
+            _cmdDeleteGenReply.Connection = oc;
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+                _cmdDeleteGenReply.Parameters["@Rid"].Value = e.Rid;
+
+
+                _cmdDeleteGenReply.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdDeleteGenReply.Dispose();
+                _cmdDeleteGenReply = null;
+            }
+        }
+
+        /// <summary>
+        /// 修改指定的数据
+        /// <param name="e">修改后的数据实体对象</param>
+        /// <para>数据对应的主键必须在实例中设置</para>
+        /// </summary>
+        public void Update(GenReply e)
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdUpdateGenReply = cmdUpdateGenReply.Clone() as MySqlCommand;
+            _cmdUpdateGenReply.Connection = oc;
+
+            try
+            {
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                _cmdUpdateGenReply.Parameters["@Rid"].Value = e.Rid;
+                _cmdUpdateGenReply.Parameters["@ObjId"].Value = e.ObjId;
+                _cmdUpdateGenReply.Parameters["@ObjType"].Value = e.ObjType;
+                _cmdUpdateGenReply.Parameters["@Content"].Value = e.Content;
+                _cmdUpdateGenReply.Parameters["@CreateId"].Value = e.CreateId;
+                _cmdUpdateGenReply.Parameters["@State"].Value = e.State;
+                _cmdUpdateGenReply.Parameters["@RefUserId"].Value = e.RefUserId;
+                _cmdUpdateGenReply.Parameters["@RefReplyId"].Value = e.RefReplyId;
+
+                _cmdUpdateGenReply.ExecuteNonQuery();
+
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdUpdateGenReply.Dispose();
+                _cmdUpdateGenReply = null;
+                GC.Collect();
+            }
+        }
+
+        /// <summary>
+        /// 根据条件分页获取指定数据
+        /// <param name="pageIndex">当前页</param>
+        /// <para>索引从0开始</para>
+        /// <param name="pageSize">每页记录条数</param>
+        /// <para>记录数必须大于0</para>
+        /// </summary>
+        public PageEntity<GenReply> Search(int ObjId,ReplyType ObjType,  Int32 CreateId, StateType State, Int32 RefUserId,Int32 RefReplyId, int pageIndex, int pageSize)
+        {
+            PageEntity<GenReply> returnValue = new PageEntity<GenReply>();
+            List<GenReply> rlist = new List<GenReply>();
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadGenReply = cmdLoadGenReply.Clone() as MySqlCommand;
+            MySqlCommand _cmdGetGenReplyCount = cmdGetGenReplyCount.Clone() as MySqlCommand;
+            _cmdLoadGenReply.Connection = oc;
+            _cmdGetGenReplyCount.Connection = oc;
+
+            try
+            {
+                _cmdLoadGenReply.Parameters["@PageIndex"].Value = pageIndex * pageSize; 
+                _cmdLoadGenReply.Parameters["@PageSize"].Value = (pageIndex + 1) * pageSize;
+                _cmdLoadGenReply.Parameters["@ObjId"].Value = DBConvert.ToDBValue(ObjId);
+                _cmdLoadGenReply.Parameters["@ObjType"].Value = DBConvert.ToDBValue((int)ObjType);
+                _cmdLoadGenReply.Parameters["@CreateId"].Value = DBConvert.ToDBValue(CreateId);
+                _cmdLoadGenReply.Parameters["@State"].Value = DBConvert.ToDBValue((int)State);
+                _cmdLoadGenReply.Parameters["@RefUserId"].Value = DBConvert.ToDBValue(RefUserId);
+                _cmdLoadGenReply.Parameters["@RefReplyId"].Value = DBConvert.ToDBValue(RefReplyId);
+
+                _cmdGetGenReplyCount.Parameters["@ObjId"].Value = DBConvert.ToDBValue(ObjId);
+                _cmdGetGenReplyCount.Parameters["@ObjType"].Value = DBConvert.ToDBValue((int)ObjType);
+                _cmdGetGenReplyCount.Parameters["@CreateId"].Value = DBConvert.ToDBValue(CreateId);
+                _cmdGetGenReplyCount.Parameters["@State"].Value = DBConvert.ToDBValue((int)State);
+                _cmdGetGenReplyCount.Parameters["@RefUserId"].Value = DBConvert.ToDBValue(RefUserId);
+                _cmdGetGenReplyCount.Parameters["@RefReplyId"].Value = DBConvert.ToDBValue(RefReplyId);
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadGenReply.ExecuteReader();
+                while (reader.Read())
+                {
+                   rlist.Add(new GenReply().BuildSampleEntity(reader));
+                }
+                returnValue.Items = rlist;
+                reader.Close();
+                returnValue.PageIndex = pageIndex;
+                returnValue.PageSize = pageSize;
+                returnValue.RecordsCount = Convert.ToInt32(_cmdGetGenReplyCount.ExecuteScalar());
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadGenReply.Dispose();
+                _cmdLoadGenReply = null;
+                _cmdGetGenReplyCount.Dispose();
+                _cmdGetGenReplyCount = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+
+        /// <summary>
+        /// 获取全部数据
+        /// </summary>
+        public List<GenReply> Search()
+        {
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdLoadAllGenReply = cmdLoadAllGenReply.Clone() as MySqlCommand;
+            _cmdLoadAllGenReply.Connection = oc; List<GenReply> returnValue = new List<GenReply>();
+            try
+            {
+                _cmdLoadAllGenReply.CommandText = string.Format(_cmdLoadAllGenReply.CommandText, string.Empty);
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdLoadAllGenReply.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnValue.Add(new GenReply().BuildAllEntity(reader));
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdLoadAllGenReply.Dispose();
+                _cmdLoadAllGenReply = null;
+                GC.Collect();
+            }
+            return returnValue;
+        }
+
+        /// <summary>
+        /// 获取关于用户自己的回复数
+        /// <param name="refUserId">用户ID</param>
+        /// </summary>
+        public int GetBBReplyCount(Int32 ObjId, ReplyType ObjType, Int32 CreateId, StateType State, Int32 RefUserId, Int32 RefReplyId)
+        {
+            int returnValue = 0;
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdGetGenReplyCount = cmdGetGenReplyCount.Clone() as MySqlCommand;
+
+            _cmdGetGenReplyCount.Connection = oc;
+            try
+            {
+                _cmdGetGenReplyCount.Parameters["@ObjId"].Value = DBConvert.ToDBValue(ObjId);
+                _cmdGetGenReplyCount.Parameters["@ObjType"].Value = DBConvert.ToDBValue((int)ObjType);
+                _cmdGetGenReplyCount.Parameters["@CreateId"].Value = DBConvert.ToDBValue(CreateId);
+                _cmdGetGenReplyCount.Parameters["@State"].Value = DBConvert.ToDBValue((int)State);
+                _cmdGetGenReplyCount.Parameters["@RefUserId"].Value = DBConvert.ToDBValue(RefUserId);
+                _cmdGetGenReplyCount.Parameters["@RefReplyId"].Value = DBConvert.ToDBValue(RefReplyId);
+
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                returnValue = Convert.ToInt32(_cmdGetGenReplyCount.ExecuteScalar());
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdGetGenReplyCount.Dispose();
+                _cmdGetGenReplyCount = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+
+        /// <summary>
+        /// 获取指定记录
+        /// <param name="id">Id值</param>
+        /// </summary>
+        public GenReply Get(int Rid)
+        {
+            GenReply returnValue = null;
+            MySqlConnection oc = ConnectManager.Create();
+            MySqlCommand _cmdGetGenReply = cmdGetGenReply.Clone() as MySqlCommand;
+
+            _cmdGetGenReply.Connection = oc;
+            try
+            {
+                _cmdGetGenReply.Parameters["@Rid"].Value = Rid;
+
+                if (oc.State == ConnectionState.Closed)
+                    oc.Open();
+
+                MySqlDataReader reader = _cmdGetGenReply.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    returnValue = new GenReply().BuildSampleEntity(reader);
+                }
+            }
+            finally
+            {
+                oc.Close();
+                oc.Dispose();
+                oc = null;
+                _cmdGetGenReply.Dispose();
+                _cmdGetGenReply = null;
+                GC.Collect();
+            }
+            return returnValue;
+
+        }
+        private static readonly GenReplyAccessor instance = new GenReplyAccessor();
+        public static GenReplyAccessor Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+    }
+}

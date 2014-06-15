@@ -1,0 +1,127 @@
+﻿/**
+ * @author yangchao
+ * @email:aaronyangchao@gmail.com
+ * @date: 2012/6/21 0:44:48
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+
+namespace BabyPlan.Meta
+{
+    [Serializable]
+    public class AdUser
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public Int32 AdUserId
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String UserAccount
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String Pwd
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime BabyBirthday
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String HeadImgUrl
+        { get; set; }
+        public int PicHeight
+        { get; set; }
+        public int PicWidth
+        { get; set; }
+        public int PicId
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String SinaAccesstoken
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String SinaUid
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String QqTokenkey
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String QqTokensecret
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Int32 Sex
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String Qq
+        { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String Mobile
+        { get; set; }
+
+        /// <summary>
+        /// 1:启用 2：禁用
+        /// </summary>
+        public Int32 State
+        { get; set; } 
+
+
+        /// <summary>
+        /// 从读取器向完整实例对象赋值
+        /// </summary>/// <param name="reader">数据读取器</param>
+        /// <returns>返回本对象实例</returns>
+        public AdUser BuildSampleEntity(IDataReader reader)
+        {
+            this.AdUserId = Convert.ToInt32(reader["ad_user_id"]);
+            this.UserAccount = Convert.ToString(reader["user_account"]);
+            this.Pwd = Convert.ToString(reader["pwd"]);
+            this.BabyBirthday = Convert.ToDateTime(reader["baby_birthday"]);
+            //this.HeadImgUrl = Convert.ToString(reader["head_img_url"]);
+            this.SinaAccesstoken = Convert.ToString(reader["sina_accesstoken"]);
+            this.SinaUid = Convert.ToString(reader["sina_uid"]);
+            this.QqTokenkey = Convert.ToString(reader["qq_tokenkey"]);
+            this.QqTokensecret = Convert.ToString(reader["qq_tokensecret"]);
+            this.Sex = Convert.ToInt32(reader["sex"]);
+            this.Qq = Convert.ToString(reader["qq"]);
+            this.Mobile = Convert.ToString(reader["mobile"]);
+            this.State = Convert.ToInt32(reader["state"]);
+            this.PicHeight = Convert.ToInt32(reader["pic_height"]);
+            this.PicWidth = Convert.ToInt32(reader["pic_width"]);
+            this.PicId = Convert.ToInt32(reader["pic_id"]);
+            return this;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+<div class="oauth_login">
+    <span>使用合作账号登录</span>
+    <ul class="oautn_login_list">
+        <li>
+            <a href="@Url.Action("QQ_Login", "Account")" class="iframe" rel="oauth_link" title="使用腾讯QQ账号登陆">
+                <img src="http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_3.png" alt="腾讯QQ账号登陆">
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Sina_Login", "Account")" class="iframe" rel="oauth_link" title="使用新浪微博账号登陆">
+                <img src="http://img.t.sinajs.cn/t4/appstyle/open/images/website/loginbtn/loginbtn_03.png" alt="新浪微博账号登陆">
+            </a>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var links = $("a[rel='oauth_link']");
+        var titles = [];
+        for (var i = 0; i < links.length; i++) {
+            titles.push($(links[i]).attr("title"));
+        }
+        var onComplete = function (currentArray, currentIndex, currentOpts) {
+            $("#fancybox-left").attr("title", currentIndex - 1 >= 0 ? titles[currentIndex - 1] : titles[titles.length - 1]);
+            $("#fancybox-right").attr("title", currentIndex + 1 < titles.length ? titles[currentIndex + 1] : titles[0]);
+        }
+        $("a[rel='oauth_link']").fancybox({
+            hideOnContentClick: true,
+            centerOnScroll: false,
+            autoScale: false,
+            titleShow: false,
+            onComplete: onComplete,
+            padding: 0,
+            width: 760,
+            height: 440
+        });
+    });
+    function CloseOauthWindow() {
+        $.fancybox.close();
+    }
+    function OauthWindowCallback(response) {
+        if (response.Logined) {
+            if (response.Binded) {
+                $.showMsg("欢迎回来 " + response.Name + " ！", "success",
+                { closeTimeout: 30000,
+                    onClosed: function () {
+                        var queryString = function (key) {
+                            return (document.location.search.match(new RegExp("(?:^\\?|&)" + key + "=(.*?)(?=&|$)")) || ['', null])[1];
+                        }
+                    var returnUrl = queryString("ReturnUrl");
+                    if (returnUrl) {
+                        returnUrl = decodeURIComponent(returnUrl)
+                        window.location = returnUrl;
+                        return;
+                    }
+                    else
+                        window.location = '@Url.Action("Index","User")';
+                        return;
+                } });
+            }
+            else {
+                window.location = '@Url.Action("SocialBind","Account")';
+                return;
+            }
+        }
+        else {
+            $.showMsg("登陆失败！" + (response.Message || ""), "error");
+        }
+    }
+</script>

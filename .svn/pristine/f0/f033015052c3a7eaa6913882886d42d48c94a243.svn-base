@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white">
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/goods_pub_header" />
+
+    <LinearLayout
+        android:id="@+id/tweet_pub_message"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:id="@+id/tweet_pub_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/review_bg_blue"
+            android:padding="5.0dip" >
+
+            <ProgressBar style="@style/loading_small" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dip"
+                android:text="宝贝后台发布中···"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/tweet_pub_form"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#E1E3E6"
+                android:paddingBottom="10dip"
+                android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        >
+
+                        <ImageView
+                            android:id="@+id/goods_pub_photo_btn"
+                            android:clickable="true"
+                            android:layout_width="50dip"
+                            android:layout_height="wrap_content"
+                            android:background="#E1E3E6"
+                            android:src="@drawable/widget_bar_photo" />
+
+                        <TextView
+                            android:id="@+id/goods_pub_photo_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="添加宝贝图片"
+                            android:paddingTop="10dip"
+                            android:clickable="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14" />
+                    </LinearLayout>
+
+				<HorizontalScrollView 
+				    android:id="@+id/pub_photos_container"
+				    android:layout_height="wrap_content" 
+				    android:layout_width="fill_parent"
+				    android:layout_gravity="center_horizontal"
+				    android:scrollbars="none"> 
+				    	<com.baijiayi.app.widget.PubPhotoListLayout
+				    		android:id="@+id/pub_photos_Layout"
+				    		android:layout_width="wrap_content"
+				    		android:layout_height="wrap_content"
+				    	/>
+				    	
+				</HorizontalScrollView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17.0dip" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8.0dip"
+                    android:text="标题："
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/goods_pub_title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入宝贝标题"
+                    android:maxLines="1"
+                    android:maxLength="30"
+                    android:singleLine="true"
+                    style="@style/goods_pub_editbox"/>
+            </LinearLayout>
+                <View style="@style/detail_cut_line" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7.0dip" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8.0dip"
+                    android:text="手机："
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/goods_pub_phone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="12"
+                    android:selectAllOnFocus="true"
+                    android:hint="请输入手机号码"
+                    android:inputType="phone"
+                    style="@style/goods_pub_editbox">
+                </EditText>
+            </LinearLayout>
+                <View style="@style/detail_cut_line" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7.0dip" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8.0dip"
+                    android:text="  QQ："
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/goods_pub_qq"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:selectAllOnFocus="true"
+                    android:hint="请输入QQ号码"
+                    android:inputType="number"
+                    style="@style/goods_pub_editbox">
+                </EditText>
+            </LinearLayout>
+                <View style="@style/detail_cut_line" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7.0dip" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8.0dip"
+                    android:text="价钱："
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/goods_pub_price"
+                    android:layout_width="180dip"
+                    android:layout_height="wrap_content"
+                    android:ems="6"
+                    android:selectAllOnFocus="true"
+                    android:hint="请输入宝贝价钱"
+                    android:inputType="numberDecimal"
+                    style="@style/goods_pub_editbox">
+                </EditText>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold" />
+            </LinearLayout>
+                <View style="@style/detail_cut_line" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7.0dip" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8.0dip"
+                    android:layout_marginTop="12.0dip"
+                    android:text="类型："
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/goods_pub_type_radiogroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/goods_pub_type_clothes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="衣服/裤子/鞋子"
+                    	android:textColor="#ff000000"
+                    	android:textSize="@dimen/text_size_12"/>
+
+                    <RadioButton
+                        android:id="@+id/goods_pub_type_toys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="玩具"
+                        android:textColor="#ff000000"
+                    	android:textSize="@dimen/text_size_12" />
+
+                    <RadioButton
+                        android:id="@+id/goods_pub_type_others"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="其他"
+                        android:textColor="#ff000000"
+                    	android:textSize="@dimen/text_size_12" />
+                </RadioGroup>
+
+            </LinearLayout>
+                <View style="@style/detail_cut_line" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7.0dip" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8.0dip"
+                    android:text="年龄："
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/goods_pub_age"
+                    android:layout_width="180dip"
+                    android:layout_height="wrap_content"
+                    android:ems="1"
+                    android:selectAllOnFocus="true"
+                    android:hint="请输入适合年龄"
+                    android:inputType="number"
+                    style="@style/goods_pub_editbox" >
+                    
+                </EditText>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="岁"
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold" />
+            </LinearLayout>
+                <View style="@style/detail_cut_line" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7.0dip" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8.0dip"
+                    android:layout_marginTop="12.0dip"
+                    android:text="性别："
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/goods_pub_sex_radiogroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/goods_pub_sex_boy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="男"
+                    	android:textColor="#ff000000"
+                    	android:textSize="@dimen/text_size_12"/>
+
+                    <RadioButton
+                        android:id="@+id/goods_pub_sex_girl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="女"
+                        android:textColor="#ff000000"
+                    	android:textSize="@dimen/text_size_12" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+                <View style="@style/detail_cut_line" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7.0dip" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8.0dip"
+                    android:text="描述："
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/goods_pub_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web|email|phone"
+                    android:maxLength="140"
+                    android:hint="请输入宝贝描述" 
+                    style="@style/goods_pub_editbox"/>
+            </LinearLayout>
+                <View style="@style/detail_cut_line" />
+            <CheckBox
+                    android:id="@+id/goods_pub_iswash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold" />
+                        <Button 
+	                        android:id="@+id/tweet_pub_publish"
+	                        android:layout_width="120dip" 
+	                        android:layout_height="40dip" 
+	                        android:layout_marginBottom="20dip"
+	                        android:textSize="@dimen/text_size_16"
+	                        android:textColor="#ffffff"
+	                        android:text="发布宝贝" 
+                    		android:layout_gravity="center_horizontal"
+	                        android:background="@drawable/login_btn_selector" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>
+</ScrollView>

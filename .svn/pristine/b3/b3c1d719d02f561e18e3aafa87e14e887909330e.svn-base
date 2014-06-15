@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "AddGoods";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+@section Js_InHeader{
+<style type="text/css">
+    .right_block_title{height:50px;}
+    .right_block_title .title{line-height:50px;}
+    .goods_input_outer{display:inline-block;padding:20px 0;}
+    .goods_input_item{width:620px;margin:10px 40px;display:inline-block;}
+    .goods_input_item > dt{float:left;width:100px;line-height:30px;}
+    .goods_input_item > dd{float:left;}
+    .goods_input_item .add_btn_box{width:140px;height:40px;}
+    .goods_input_item .add_btn_box .button-blue{padding:0;}
+    
+    .goods_box_outer{width:620px;margin:10px auto;}
+    .goods_box_outer .goods_box_item{width:620px;height:130px;display:inline-block;position:relative;}
+    .goods_box_outer .goods_box_item .goods_no{font-size:72px;line-height:130px;width:60px;}
+    .goods_box_outer .goods_box_item .goods_pic{width:126px;height:126px;border:solid 1px #2A8FC4;margin:2px;float:left;}
+    .goods_box_outer .goods_box_item .upload_box{width:126px;height:126px;}
+    .goods_box_outer .goods_box_item .goods_info{width:360px;height:126px;margin:2px 10px;}
+    .goods_box_outer .goods_box_item .goods_info > dl{display:inline-block;height:30px;width:360px;}
+    .goods_box_outer .goods_box_item .goods_info > dl > dt{float:left;}
+    .goods_box_outer .goods_box_item .goods_info > dl > dd{float:left;}
+    .bb_upload_btn{padding:0;width:100px;}
+    
+    .submit_btn{padding:0;width:120px;height:40px;line-height:40px;margin:10px auto; font-weight:normal;}
+
+</style>
+}
+
+<div class="right_block_title user_right_block grayblock">
+    <span class="title margin10 font-size16 black-font">账户设置</span>
+</div>
+<div class="goods_input_outer user_right_block whiteblock">
+    <dl class="goods_input_item">
+        <dt class="font-size16 black-font">头像设置：&nbsp;&nbsp;<span class="white-font" name="errortag">*</span></dt>
+        <dd>
+            <dl>
+                <dt class="fl">
+                    <div class="head_box" id="head_box">
+                    </div>
+                </dt>
+                <dd class="fl">
+                    <a href="#" class="button-blue">修改头像</a>
+                    <span class="gray-font">仅支持jpg、gif、png格式， 文件小于2M</span>
+                </dd>
+            </dl>
+        </dd>
+    </dl>
+    <dl class="goods_input_item">
+        <dt class="font-size16 black-font">宝贝描述：&nbsp;&nbsp;<span class="red-font" name="errortag">*</span></dt>
+        <dd>
+            <textarea class="input_box fl" name="gdescription" id="gdescription" style="width:460px;height:100px;" ></textarea>
+        </dd>
+    </dl>
+    <a href="javascript:void(0);" id="submit_btn" class="button-green submit_btn font-size18">保 存</a>
+</div>

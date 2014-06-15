@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "vote";
+    Layout = "~/Views/Shared/_Layout_Nested.cshtml";
+}
+<style type="text/css">
+    .vote_title{line-height:56px;}
+    .vote_title span{margin:0 10px;}
+    .vote_list_outer .vote_list{list-style-type: none;position: relative;}
+    .vote_list_outer .vote_list .itembox{width:190px;padding:10px;border:solid 1px #999;}
+    .vote_list_outer .vote_list .itembox .votebtn{margin:10px auto 0 auto;width:76px;height:30px;padding:0;}
+    .vote_result{width:240px;height:200px;padding:20px 10px;}
+</style>
+<div class="vote_title mainblock whiteblock">
+    <span class="font-size18 blue-font fl">亲爱的同学们，勇敢的投出你的那一票吧，看看你属于哪一种类型的辣妈。</span>
+    <span class="font-size18 pink-font fr">每天每人限投3次</span>
+    <div class="clear"></div>
+</div>
+<div class="vote_list_outer mainblock whiteblock">
+    <ul id="vote_list" class="vote_list mainblock">
+    </ul>
+    <div id="loader">
+    <div id="loaderCircle"></div>
+    </div>
+</div>
+<div class="hide">
+    <div id="vote_result" class="vote_result blueblock">
+        <p class="white-font font-size20 line-height40 text-center">
+            <span id="same_vote_per">26</span>%的人和你一样的选择
+            <br />
+            <span class="white-font font-size20 line-height40">你属于</span>
+            <br />
+            <span class="pink-font font-size30 text-center line-height80" id="vote_category">屌丝型辣妈</span>
+        </p>
+        <span class="white-font">立即分享到：</span>
+    </div>
+    <a id="vote_result_link" href="#vote_result"></a>
+</div>
+@Content.Script("wookmark/jquery.wookmark.min.js", Url)  
+ <script type="text/javascript">
+     var handler = null;
+     var page = 1;
+     var isLoading = false;
+     var apiURL = 'http://www.wookmark.com/api/json/recent';
+     var postURL = '@Url.Action("Detail", "Trade")/';
+
+     var options = {
+         autoResize: true,
+         container: $('#vote_list'),
+         offset: 20,
+         itemWidth: 220
+     };
+
+     function onScroll(event) {
+         if (!isLoading) {
+             var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
+             if (closeToBottom) {
+                 loadData();
+             }
+         }
+     };
+
+     function applyLayout() {
+         if (handler)
+             handler.wookmarkClear();
+         handler = $('#vote_list li');
+         handler.wookmark(options);
+     };
+
+     function loadData() {
+         isLoading = true;
+         $('#loaderCircle').show();
+
+         $.ajax({
+             url: apiURL,
+             dataType: 'jsonp',
+             data: { page: page },
+             success: onLoadData
+         });
+     };
+
+     function onLoadData(data) {
+         isLoading = false;
+         $('#loaderCircle').hide();
+
+         page++;
+
+         var html = '';
+         var picHeight = 0;
+         var i = 0, length = data.length, image;
+         for (; i < length; i++) {
+             image = data[i];
+             html += '<li>';
+             html += '<div class="itembox">';
+             picHeight = Math.round(image.height / image.width * 190);
+             html += '<a href="' + postURL + 10 + '" title="详细信息" target="_blank">';
+             html += '<img src="' + image.preview + '" width="190" height="' + picHeight + '">';
+             html += "</a>";
+             html += '<a href="javascript:void(voteSubmit(' + 10 + '))" title="投票" class="votebtn button-blue text-center">投票</a>';
+             html += '</div>';
+             html += '</li>';
+         }
+
+         $('#vote_list').append(html);
+
+         applyLayout();
+     };
+
+     $(document).ready(new function () {
+         $(document).bind('scroll', onScroll);
+
+         loadData();
+     });
+  </script>
+  @Content.Css("fancybox/jquery.fancybox-1.3.4.css", Url, BabyPlan.mvcApp.Infras.SourceRootEnums.JsLib)  
+  @Content.Script("fancybox/jquery.fancybox-1.3.4.js", Url)
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $("#vote_result_link").fancybox({
+              hideOnContentClick: true,
+              centerOnScroll: false,
+              padding: 0
+          });
+      });
+      function voteSubmit(id) {
+          $("#vote_result_link").click();
+      }
+  </script>
+
+

@@ -1,0 +1,7 @@
+﻿@{
+    Layout = null;
+}
+<style type="text/css">
+    .footer{height:60px;}
+</style>
+<div class="footer mainblock"></div>

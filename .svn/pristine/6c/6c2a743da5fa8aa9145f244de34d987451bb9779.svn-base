@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace BabyPlan.Common.Cache
+{
+    public static class ICacheManagerExtend
+    {
+
+        /// <summary>
+        /// 获取缓存中值
+        /// <para>如果缓存中包含key，则直接返回结果</para>
+        /// <para>如果缓存中不包含key，则将func执行结果加入缓存，并返回结果</para>
+        /// </summary>
+        /// <typeparam name="T">返回类型</typeparam>        
+        /// <param name="key">缓存key.</param>
+        /// <param name="func">方法委托，方法返回类型必需和T相同.</param>
+        /// <param name="timeSpan">缓存的时间间隔，默认30分钟.</param>
+        /// <returns></returns>
+        public static T Get<T>(this ICacheManager cacheManager, string key, Func<T> func) {            
+            return cacheManager.Get<T>(key, func, TimeSpan.FromMinutes(30));
+        }
+
+        /// <summary>
+        /// 获取缓存中值
+        /// <para>如果缓存中包含key，则直接返回结果</para>
+        /// <para>如果缓存中不包含key，则将func执行结果加入缓存，并返回结果</para>
+        /// </summary>
+        /// <typeparam name="T">返回类型</typeparam>        
+        /// <param name="key">缓存key.</param>
+        /// <param name="func">方法委托，方法返回类型必需和T相同.</param>
+        /// <param name="timeSpan">缓存的时间间隔，默认30分钟.</param>
+        /// <returns></returns>
+        public static T Get<T>(this ICacheManager cacheManager, string key, Func<T> func,TimeSpan timeSpan) {
+            if (cacheManager.Contains(key) == false) {
+                cacheManager.Add(key, func.Invoke() , timeSpan);
+            }
+            return cacheManager.Get<T>(key);
+        }
+    }
+}

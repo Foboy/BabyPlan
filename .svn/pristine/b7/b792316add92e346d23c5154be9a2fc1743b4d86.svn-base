@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+    var ReplyList = Model as IList<BabyPlan.mvcApp.Model.ReplyModel>;
+    ResourceHelper.RegisterCss(this, "user.info.css");
+}
+@section Js_InHeader{
+@*<style type="text/css">
+    .right_block_title{height:50px;}
+    .right-block_content{ height:auto!important; height:400px;  min-height:400px; }
+    .right_block_title .title{}
+    .info_item_outer{margin:0;}
+    .prompt_info{ text-align:center; vertical-align:middle; height:400px; line-height:400px;}
+    .info_item_outer .dot_line{width:680px;height:0;border-top:dotted 1px #666;margin:0 15px;}
+    .info_item_outer .info_item{width:680px;height:104px;margin:20px 15px;display:inline-block;}
+    .info_item_outer .info_item .info_no{font-size:72px;line-height:102px;width:60px;}
+    .info_item_outer .info_item .info_content{width:470px;height:102px;}
+    .info_item_outer .info_item .goods_pic{width:102px;height:102px;}
+</style>*@
+}
+<div class="right_block_title user_right_block grayblock">
+    <span class="title margin10 font-size16 fl black-font">与我相关</span>
+</div>
+<div class="user_right_block whiteblock right-block_content">
+    <div class="info_item_outer">
+    @for (int i = 0, c = ReplyList.Count(); i < c; i++)
+    {
+        var item = ReplyList[i];
+        var seq = c - i;
+        BabyPlan.mvcApp.Model.ProductItemModel subItem;
+        if (item.Product.Items != null && item.Product.Items.Count > 0)
+        {
+            subItem = item.Product.Items[0];
+        }
+        else
+        {
+            subItem = new BabyPlan.mvcApp.Model.ProductItemModel();
+        }
+        <div class="info_item">
+            <div class="info_no green-font fl">@seq</div>
+            <div class="info_content fl">
+                <p class="black-font font-size16 line-height40">
+                    <a href="@Url.Action("Detail", "Trade", new { pid = item.Product.Id, id = subItem.Id })" target="_blank">@item.Product.Title</a>
+                </p>
+                <p class="ash-font">
+                @item.Content
+                </p>
+                <div class="line-height40">
+                    <div class="fl ash-font">
+                        <span class="blue-font">发布时间：</span>@item.DateFormat(item.CreateTime, "yyyy-MM-dd") &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="blue-font">回复：</span>(@item.Product.ReplyNum)
+                    </div>
+                    <div class="fr ash-font">
+                    </div>
+                </div>
+            </div>
+            <div class="goods_pic fr">
+                @if (subItem.Pic != null)
+                {
+                    subItem.Pic.DisplaySeting(100, 100, 1);
+                <img alt="" name="pic" src="@subItem.Pic.PicUrl" style="width:@(subItem.Pic.DisWidth)px;height:@(subItem.Pic.DisHeight)px;margin:@subItem.Pic.DisMargin" />
+                }
+            </div>
+        </div>
+                if (i < c - 1)
+                { 
+        <div class="dot_line"></div>
+                }
+    }
+    @if (ReplyList.Count == 0)
+    { 
+        <div class="prompt_info clearfix font-size16 gray-font">没有关于您的回复！</div>
+    }
+    </div>
+</div>
+

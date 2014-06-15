@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using QWeiboSDK;
+using System.Web;
+
+namespace BabyPlan.oAuth
+{
+    public class QoAuthService : IQoAuth
+    {
+        public string GetRequestTokenURL(out OauthKey _oAuthKey)
+        { 
+            //1.获取未授权的 Request Token             
+            List<Parameter> parameters = new List<Parameter>();
+            OauthKey oauthKey = new OauthKey();
+            oauthKey.customKey = QQOAuthConfig.AppKey;
+            oauthKey.customSecret = QQOAuthConfig.AppSecret;
+            oauthKey.callbackUrl = QQOAuthConfig.CallBackURI;
+            
+            QWeiboRequest request = new QWeiboRequest();
+            //获取未经认证的Request token字符串,经解析后供后续认证使用
+            string unAuthReqTokenStr = request.SyncRequest(OauthKey.urlRequesToken, "GET", oauthKey, parameters, null);
+
+            //解析步骤1结果
+            bool isParseOk = QTokenHelper.ParseToken(1, unAuthReqTokenStr, ref oauthKey);
+
+            _oAuthKey = oauthKey;
+
+            //2.获取Request token的URL,便于前端使用该URL(如采用：1.Response.Redirect 或者System.Diagnostics.Process.Start(Url))
+            string RequestToken_URL = OauthKey.urlUserAuthrize + "?oauth_token=" + oauthKey.tokenKey;
+            return RequestToken_URL;
+        }
+
+        public bool GetAccessToken(ref OauthKey oauthKey)
+        {            
+            QWeiboRequest request = new QWeiboRequest();
+            List<Parameter> parameters = new List<Parameter>();
+
+            //解析Access Token返回的结果
+            bool isOk = false;
+            isOk = QTokenHelper.ParseToken(3, request.SyncRequest(OauthKey.urlAccessToken, "GET", oauthKey, parameters, null), ref oauthKey);
+            return isOk; 
+        } 
+    }
+}

@@ -1,0 +1,200 @@
+package com.baijiayi.app.bean;
+
+import java.io.IOException;
+import java.util.Date;
+
+
+import org.json.JSONObject;
+
+import com.baijiayi.app.AppException;
+
+public class GoodsModel extends Entity {
+	// JSON字段名
+
+	public final static String NODE_ID = "Id";
+
+	public final static String NODE_TITLE = "Title";
+
+	public final static String NODE_QQ = "QQ";
+
+	public final static String NODE_PHONE = "Phone";
+
+	public final static String NODE_DESCRIPTION = "Description";
+
+	public final static String NODE_ISWASH = "IsWash";
+
+	public final static String NODE_CREATETIME = "CreateTime";
+
+	public final static String NODE_STATE = "State";
+
+	public final static String NODE_REPLYNUM = "ReplyNum";
+
+	public final static String NODE_VIEWNUM = "ViewNum";
+	
+	public final static String SUB_NODE_AUTHOR = "Author";
+	
+	public final static String SUB_NODE_PIC = "Pic";
+
+	// 对象字段名
+
+	private String Title;
+
+	private String QQ;
+
+	private String Phone;
+
+	private String Description;
+
+	private boolean IsWash;
+
+	private Date CreateTime;
+
+	private int State;
+
+	private int ReplyNum;
+
+	private int ViewNum;
+	
+	private UserModel Author;
+	
+	public UserModel getAuthor() {
+		return Author;
+	}
+
+	public void setAuthor(UserModel value) {
+		this.Author = value;
+	}
+	
+	private PicModel Pic;
+	
+	public PicModel getPic() {
+		return Pic;
+	}
+
+	public void setPic(PicModel value) {
+		this.Pic = value;
+	}
+
+	// get,set方法
+
+	public String getTitle() {
+		return Title;
+	}
+
+	public void setTitle(String value) {
+		this.Title = value;
+	}
+
+	public String getQQ() {
+		return QQ;
+	}
+
+	public void setQQ(String value) {
+		this.QQ = value;
+	}
+
+	public String getPhone() {
+		return Phone;
+	}
+
+	public void setPhone(String value) {
+		this.Phone = value;
+	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String value) {
+		this.Description = value;
+	}
+
+	public boolean getIsWash() {
+		return IsWash;
+	}
+
+	public void setIsWash(boolean value) {
+		this.IsWash = value;
+	}
+
+	public Date getCreateTime() {
+		return CreateTime;
+	}
+
+	public void setCreateTime(String value) {
+		value = value.replace("/Date(", "");
+		value = value.replace(")/", "");
+		this.CreateTime = new Date(Long.parseLong(value));
+	}
+
+	public int getState() {
+		return State;
+	}
+
+	public void setState(int value) {
+		this.State = value;
+	}
+
+	public int getReplyNum() {
+		return ReplyNum;
+	}
+
+	public void setReplyNum(int value) {
+		this.ReplyNum = value;
+	}
+
+	public int getViewNum() {
+		return ViewNum;
+	}
+
+	public void setViewNum(int value) {
+		this.ViewNum = value;
+	}
+
+	public static GoodsModel parse(JSONObject itemJSON) throws IOException,
+			AppException {
+		GoodsModel item = null;
+		try {
+			if (itemJSON != null) {
+				item = new GoodsModel();
+				// 解析JSON
+
+				item.id =itemJSON.optInt(NODE_ID,0);
+
+				item.setTitle(itemJSON.optString(NODE_TITLE));
+
+				item.setQQ(itemJSON.optString(NODE_QQ));
+
+				item.setPhone(itemJSON.optString(NODE_PHONE));
+
+				item.setDescription(itemJSON.optString(NODE_DESCRIPTION));
+
+				item.setIsWash(itemJSON.optBoolean(NODE_ISWASH));
+
+				item.setCreateTime(itemJSON.optString(NODE_CREATETIME));
+
+				item.setState(itemJSON.optInt(NODE_STATE));
+
+				item.setReplyNum(itemJSON.optInt(NODE_REPLYNUM));
+
+				item.setViewNum(itemJSON.optInt(NODE_VIEWNUM));
+
+				JSONObject authorJSON = itemJSON.optJSONObject(SUB_NODE_AUTHOR);
+				if(authorJSON!=null)
+				{
+					item.setAuthor(UserModel.parse(authorJSON));
+				}
+				
+				JSONObject picJSON = itemJSON.optJSONObject(SUB_NODE_PIC);
+				if(picJSON!=null)
+				{
+					item.setPic(PicModel.parse(picJSON));
+				}
+			}
+
+		} catch (Exception e) {
+			throw AppException.xml(e);
+		}
+		return item;
+	}
+}

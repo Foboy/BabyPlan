@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ProductService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?xsd=xsd2" namespace="http://babyplan.com/services" />
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/BabyPlan.DataStructure" />
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/BabyPlan.Meta" />
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/BabyPlan.Common" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IProductService_CloseBBPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:CloseBBPost" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_CloseBBPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CloseBBPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_OpenBBPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:OpenBBPost" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_OpenBBPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OpenBBPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_EditBBPostInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditBBPostInfo" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_EditBBPostInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditBBPostInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_GetBBInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBBInfo" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_GetBBInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBBInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_SearchBBPostList_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchBBPostList" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_SearchBBPostList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchBBPostListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_SetBBPostViewNum_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetBBPostViewNum" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_SetBBPostViewNum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetBBPostViewNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_GetBBViewNum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBBViewNum" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_GetBBViewNum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBBViewNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_LoadBBList_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadBBList" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_LoadBBList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadBBListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_LoadInterestingBB_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadInterestingBB" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_LoadInterestingBB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadInterestingBBResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_publishBBPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:publishBBPost" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_publishBBPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:publishBBPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_publicBBItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:publicBBItem" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_publicBBItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:publicBBItemResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IProductService">
+    <wsdl:operation name="CloseBBPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/CloseBBPost" message="tns:IProductService_CloseBBPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/CloseBBPostResponse" message="tns:IProductService_CloseBBPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OpenBBPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/OpenBBPost" message="tns:IProductService_OpenBBPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/OpenBBPostResponse" message="tns:IProductService_OpenBBPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditBBPostInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/EditBBPostInfo" message="tns:IProductService_EditBBPostInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/EditBBPostInfoResponse" message="tns:IProductService_EditBBPostInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBBInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetBBInfo" message="tns:IProductService_GetBBInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/GetBBInfoResponse" message="tns:IProductService_GetBBInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchBBPostList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/SearchBBPostList" message="tns:IProductService_SearchBBPostList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/SearchBBPostListResponse" message="tns:IProductService_SearchBBPostList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetBBPostViewNum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/SetBBPostViewNum" message="tns:IProductService_SetBBPostViewNum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/SetBBPostViewNumResponse" message="tns:IProductService_SetBBPostViewNum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBBViewNum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetBBViewNum" message="tns:IProductService_GetBBViewNum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/GetBBViewNumResponse" message="tns:IProductService_GetBBViewNum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadBBList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/LoadBBList" message="tns:IProductService_LoadBBList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/LoadBBListResponse" message="tns:IProductService_LoadBBList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadInterestingBB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/LoadInterestingBB" message="tns:IProductService_LoadInterestingBB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/LoadInterestingBBResponse" message="tns:IProductService_LoadInterestingBB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="publishBBPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/publishBBPost" message="tns:IProductService_publishBBPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/publishBBPostResponse" message="tns:IProductService_publishBBPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="publicBBItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/publicBBItem" message="tns:IProductService_publicBBItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/publicBBItemResponse" message="tns:IProductService_publicBBItem_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IProductService" type="tns:IProductService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CloseBBPost">
+      <soap:operation soapAction="http://tempuri.org/IProductService/CloseBBPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenBBPost">
+      <soap:operation soapAction="http://tempuri.org/IProductService/OpenBBPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditBBPostInfo">
+      <soap:operation soapAction="http://tempuri.org/IProductService/EditBBPostInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBBInfo">
+      <soap:operation soapAction="http://tempuri.org/IProductService/GetBBInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBBPostList">
+      <soap:operation soapAction="http://tempuri.org/IProductService/SearchBBPostList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBBPostViewNum">
+      <soap:operation soapAction="http://tempuri.org/IProductService/SetBBPostViewNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBBViewNum">
+      <soap:operation soapAction="http://tempuri.org/IProductService/GetBBViewNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadBBList">
+      <soap:operation soapAction="http://tempuri.org/IProductService/LoadBBList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadInterestingBB">
+      <soap:operation soapAction="http://tempuri.org/IProductService/LoadInterestingBB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="publishBBPost">
+      <soap:operation soapAction="http://tempuri.org/IProductService/publishBBPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="publicBBItem">
+      <soap:operation soapAction="http://tempuri.org/IProductService/publicBBItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductService">
+    <wsdl:port name="BasicHttpBinding_IProductService" binding="tns:BasicHttpBinding_IProductService">
+      <soap:address location="http://aaronpc:1937/BabyPlan.WcfService/ProductService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

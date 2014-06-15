@@ -1,0 +1,20 @@
+﻿$(document).ready(function () {
+    //首页动画效果
+    function c() {
+        if (document.documentElement.clientHeight > document.body.offsetHeight) {
+            d.css({ "padding-bottom": "50px" });
+            e.css({ position: "fixed", bottom: "0" })
+        }
+        else {
+            d.css({ "padding-bottom": 0 });
+            e.css({ position: "" })
+        }
+    }
+    $("#banner").before('<div id="nav">').cycle({ fx: "fade", timeout: 5E3, pager: "#nav", pagerEvent: "mouseover click", pauseOnPagerHover: true });
+    var b = $("#nav"), f = $("#banner"), g = f.children().length, a = 0;
+    for (a = 0; a < g; a++)
+        b.children().eq(a).wrap("<div />").parent().addClass(f.children("img").eq(a).attr("data-class"));
+    var d = $("#main"), e = $("#footer"); b = $(window);
+    c();
+    b.resize(function () { c() })
+}); 

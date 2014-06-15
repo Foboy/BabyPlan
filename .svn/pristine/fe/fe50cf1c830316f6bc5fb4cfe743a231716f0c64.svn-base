@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using BabyPlan.Common;
+using BabyPlan.Model.Product;
+using BabyPlan.WcfService;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    [Authorize]
+    public class UserController : BaseController
+    {
+        //
+        // GET: /User/
+        public ActionResult Index()
+        {
+            return View("~/Views/User/Index.cshtml");
+        }
+
+        public ActionResult Goods()
+        {
+            return View("~/Views/User/Goods.cshtml");
+        }
+
+        public ActionResult AddGoods()
+        {
+            return View("~/Views/User/AddGoods.cshtml");
+        }
+
+        public JsonResult AjaxAddGoods()
+        {
+            string goods = Request["goods"];
+            RespResult response = new RespResult();
+            if (string.IsNullOrEmpty(goods))
+            {
+                response.Error = DataStructure.AppError.ERROR_INVALID_PARAMETER;
+                response.ErrorMessage = "数据丢失！";
+            }
+            else
+            {
+                Product product = JsonHelper.Deserialize<Product>(goods);
+                if (product == null)
+                {
+                    response.Error = DataStructure.AppError.ERROR_INVALID_PARAMETER;
+                    response.ErrorMessage = "无效数据！";
+                }
+                else
+                {
+                    IProductService productService = new ProductService();
+                    response = productService.publishBBPost(product.Title, product.QQ, product.Phone, product.Description, CurrentToken);
+
+                }
+            }
+            return Json("post"+goods);
+        }
+
+    }
+}

@@ -1,0 +1,19 @@
+﻿    .header{min-width:960px; width:auto!important; width:960px; height:70px;background-color:#F7F7F7; position:relative; margin-bottom:15px; border-bottom:5px solid  #8CBF26;}
+    .header960{ margin: 0 auto;width: 960px; overflow:hidden;}
+    .header960 .logo{position:relative; float:left; width:250px; height:110px;}
+    .header960 .nav_outter{width:450px;float:left;}
+    .header960 .nav_outter .nav{position:relative; float:left; width:450px; margin-left:30px;}
+    .nav ul{margin:20px 0 0 0;padding:0px; list-style:none outside; height:50px;}
+    .nav ul li{float:left; margin-left:40px; display:inline;}
+    .nav ul li a{font-size:18px;  color:#2A8FC4; text-decoration:none;}
+    .nav ul li a.active,.nav ul li a:hover,nav ul li a.selected{color:#2A8FC4;}
+    .header960 .header_sign{float:right; position:relative; width:200px; height:70px;}
+    .header960 .sign{color:#888888; margin-top:10px; margin-left:30px; float:right;}
+    .header960 .sign a{ margin:0 5px; cursor:pointer; color:#888;}
+    .header960 .sign a:hover{color:#2A8FC4;}
+    .attention a{ cursor:pointer; display:block; float:left; height: 36px;width: 36px; margin:0px 10px;}
+    .attention{background:url(/images/inhere.png) no-repeat scroll 0 0 transparent; height:50px; padding:30px 0 0 67px; margin-top:5px;} 
+    .attention .sina{ background:url(/images/sina_g.png) no-repeat  transparent;}
+    .attention .qq{ background:url(/images/qq_g.png) no-repeat transparent;}
+    .attention .sina:hover{background:url(/images/sina.png) no-repeat  transparent;}
+    .attention .qq:hover{ background:url(/images/qq.png) no-repeat  transparent;}

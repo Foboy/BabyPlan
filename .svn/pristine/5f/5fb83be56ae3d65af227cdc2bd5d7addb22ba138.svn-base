@@ -1,0 +1,84 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+using BabyPlan.Common;
+using BabyPlan.DataStructure;
+using System.ServiceModel.Web;
+using System.ComponentModel;
+using BabyPlan.Meta;
+
+
+namespace BabyPlan.WcfService
+{
+    // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码和配置文件中的接口名“IUserService”。
+    [ServiceContract]
+    public interface IUserService
+    {
+         [OperationContract]
+        [Description("用户名检测")]
+        AdvancedResult<bool> CheckAccout(string userName);
+
+         [OperationContract]
+        [Description("是否登陆")]
+        AdvancedResult<bool> CheckLogin(string token);
+         [OperationContract]
+        [Description("获取用户信息")]
+        AdvancedResult<AdUser> GetUserInfo(string token);
+         /// <summary>
+         /// 编辑用户信息
+         /// </summary>
+         /// <param name="user">修改用户名，性别，密码，地址，qq，手机</param>
+         /// <param name="token"></param>
+         /// <returns></returns>
+         [OperationContract]
+         [Description("编辑用户信息")]
+         RespResult EditeUserInfo(AdUser user,string token);
+         [OperationContract]
+        [Description("登陆")]
+        AdvancedResult<string> Login(string account, string pwd);
+         [OperationContract]
+        [Description("登出")]
+        RespResult Logout(string token);
+         [OperationContract]
+        [Description("注册")]
+        AdvancedResult<string> Register(string account, string pwd);
+         [OperationContract]
+        [Description("更新婴儿年龄")]
+        RespResult UpdateBabyAge(int bbage, string token);
+
+        /// <summary>
+        /// 检测社交帐号是否与平台帐号绑定
+        /// </summary>
+        /// <param name="socialUser"></param>
+        /// <returns></returns>
+         [OperationContract]
+        [Description("是否与社交帐号绑定")]
+         AdvancedResult<string> IsBindSocialUser(SocialUser socialUser);
+
+        /// <summary>
+        /// 绑定社交帐号和平台帐号
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <param name="socialUser"></param>
+        /// <returns></returns>
+         [OperationContract]
+        [Description("社交帐号与平台帐号绑定")]
+        AdvancedResult<string> BindSocialUser(string userName, string password, SocialUser socialUser);
+
+        /// <summary>
+        /// 绑定社交帐号和平台帐号
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <param name="socialUser"></param>
+        /// <returns></returns>
+         [OperationContract]
+        [Description("登录后，社交帐号与平台帐号绑定")]
+        AdvancedResult<string> BindSocialUserAfterLogin(string token, SocialUser socialUser);
+
+    }
+}

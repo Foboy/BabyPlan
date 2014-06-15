@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using BabyPlan.Common;
+using BabyPlan.DataStructure;
+using BabyPlan.WcfService;
+
+namespace BabyPlan.mvcApp.Controllers
+{
+    public class ReplyController : BaseController
+    {
+        public JsonResult Bless()
+        {
+            string wish = Request["blessContent"];
+            RespResult result;
+            if (string.IsNullOrEmpty(wish) || wish.Length > 200)
+            {
+                result = new RespResult();
+                result.Error = AppError.ERROR_FAILED;
+                result.ExMessage = "心愿内容不合法！";
+            }
+            else
+            {
+                ReplyServiceClient client = new ReplyServiceClient();
+                result = client.Bless(wish);
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+    }
+}

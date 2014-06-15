@@ -1,0 +1,220 @@
+* html .u2_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="user_files/u2_normal.png");
+}
+
+* html .u14_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="user_files/u14_normal.png");
+}
+
+* html .u16_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="user_files/u16_normal.png");
+}
+
+* html .u20_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="user_files/u20_normal.png");
+}
+
+* html .u23_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="user_files/u23_normal.png");
+}
+
+* html .u25_line {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="user_files/u25_line.png");
+}
+
+* html .u32_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="user_files/u20_normal.png");
+}
+
+* html .u37_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u37_normal.png");
+}
+
+* html .u39_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u39_normal.png");
+}
+
+* html .u41_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u41_normal.png");
+}
+
+* html .u43_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u43_normal.png");
+}
+
+* html .u47_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u47_normal.png");
+}
+
+* html .u52_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u52_normal.png");
+}
+
+* html .u56_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u47_normal.png");
+}
+
+* html .u61_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u43_normal.png");
+}
+
+* html .u65_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u47_normal.png");
+}
+
+* html .u70_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u43_normal.png");
+}
+
+* html .u74_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u47_normal.png");
+}
+
+* html .u79_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u52_normal.png");
+}
+
+* html .u86_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u43_normal.png");
+}
+
+* html .u90_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u47_normal.png");
+}
+
+* html .u95_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u43_normal.png");
+}
+
+* html .u99_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u47_normal.png");
+}
+
+* html .u104_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u43_normal.png");
+}
+
+* html .u108_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u47_normal.png");
+}
+
+* html .u113_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u43_normal.png");
+}
+
+* html .u117_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u47_normal.png");
+}
+
+* html .u122_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u43_normal.png");
+}
+
+* html .u126_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u47_normal.png");
+}
+
+* html .u131_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u52_normal.png");
+}
+
+* html .u138_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u43_normal.png");
+}
+
+* html .u142_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u47_normal.png");
+}
+
+* html .u149_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u149_normal.png");
+}
+
+* html .u151_line {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u151_line.png");
+}
+
+* html .u152_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u152_normal.png");
+}
+
+* html .u154_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u154_normal.png");
+}
+
+* html .u156_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u156_normal.png");
+}
+
+* html .u158_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u158_normal.png");
+}
+
+* html .u164_mouseOver {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u164_mouseOver.png");
+}
+
+* html .u164_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u164_normal.png");
+}
+
+* html .u166_mouseOver {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u166_mouseOver.png");
+}
+
+* html .u166_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u166_normal.png");
+}
+
+* html .u168_mouseOver {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u168_mouseOver.png");
+}
+
+* html .u168_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="localtrade_index_files/u168_normal.png");
+}
+

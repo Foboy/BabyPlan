@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "ViewPage1";
+    Layout = "~/Views/shared/_Layout.cshtml";
+}  
+@Html.Partial("_header_no_signform")
+<div class="pMain body_bg"> 
+    <div class="container">  
+        <div id="pRegister">
+           <div class="roof"></div>     
+            <div class="room">
+                <div class="room-in-nor  clearfix">   
+                <div class="yahei text-center">请输入微博营销平台登录邮箱，我们会将密码发送至邮箱</div>
+                <div class="login-3rd-box text-center ">
+                   <form action='@Url.Action("dofindpwd", "a")' method="post" id="find-pwd-form">
+                        <p><label class="font14px">邮箱:</label><input name="email" id="email" type="text" class="reg-input-wrap"/></p>  
+				        <p class="login-3rd-box"><input class="submit" value="找回密码" type="submit"/></p> 
+                    </form>
+                    <div class="text-left login-3rd-box dj-tips-box displaynone" id="find_pwd_note"></div>
+                    
+                </div>
+            </div>   
+            </div>                  
+            <div class="floor"></div>
+        </div>
+    </div> 
+</div> 
+@Html.Partial("_footer_after_login")
+<script type="text/javascript">
+    $('#find-pwd-form').submit(function (event) {
+        event.preventDefault();
+        if (!/^[a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test($('#email').val())) {
+            alert('请输入正确的Email');
+            $('#email').focus();
+            return;
+        };
+
+        var login_param = {
+            email: $('#email').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            dataType: "Json",
+            data: login_param,
+            url: '@Url.Action("dofindpwd", "a")',
+            success: function (ret_msg) {
+            if (ret_msg.Error == 8) {
+                //成功找回密码
+                $("#find_pwd_note").removeClass("displaynone").html(ret_msg.RetMsg+"请查收");
+            }
+            else
+                alert(ret_msg.RetMsg)
+            }
+        });
+    });
+    </script>
+}

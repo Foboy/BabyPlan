@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="VoteService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/VoteService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://aaronpc:1937/BabyPlan.WcfService/VoteService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IVoteService_AddVoteResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddVoteResult" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_AddVoteResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddVoteResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_AddVoteType_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddVoteType" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_AddVoteType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddVoteTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_EditVoteResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditVoteResult" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_EditVoteResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditVoteResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_GetCurrentVoteNum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentVoteNum" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_GetCurrentVoteNum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentVoteNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_GetVoteNum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoteNum" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_GetVoteNum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoteNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_LoadVoteList_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadVoteList" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_LoadVoteList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadVoteListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_LoadVoteTypeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadVoteTypeList" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_LoadVoteTypeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadVoteTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_Vote_InputMessage">
+    <wsdl:part name="parameters" element="tns:Vote" />
+  </wsdl:message>
+  <wsdl:message name="IVoteService_Vote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VoteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IVoteService">
+    <wsdl:operation name="AddVoteResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoteService/AddVoteResult" message="tns:IVoteService_AddVoteResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoteService/AddVoteResultResponse" message="tns:IVoteService_AddVoteResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddVoteType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoteService/AddVoteType" message="tns:IVoteService_AddVoteType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoteService/AddVoteTypeResponse" message="tns:IVoteService_AddVoteType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditVoteResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoteService/EditVoteResult" message="tns:IVoteService_EditVoteResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoteService/EditVoteResultResponse" message="tns:IVoteService_EditVoteResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentVoteNum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoteService/GetCurrentVoteNum" message="tns:IVoteService_GetCurrentVoteNum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoteService/GetCurrentVoteNumResponse" message="tns:IVoteService_GetCurrentVoteNum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoteNum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoteService/GetVoteNum" message="tns:IVoteService_GetVoteNum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoteService/GetVoteNumResponse" message="tns:IVoteService_GetVoteNum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadVoteList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoteService/LoadVoteList" message="tns:IVoteService_LoadVoteList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoteService/LoadVoteListResponse" message="tns:IVoteService_LoadVoteList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadVoteTypeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoteService/LoadVoteTypeList" message="tns:IVoteService_LoadVoteTypeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoteService/LoadVoteTypeListResponse" message="tns:IVoteService_LoadVoteTypeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Vote">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoteService/Vote" message="tns:IVoteService_Vote_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoteService/VoteResponse" message="tns:IVoteService_Vote_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IVoteService" type="tns:IVoteService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddVoteResult">
+      <soap:operation soapAction="http://tempuri.org/IVoteService/AddVoteResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddVoteType">
+      <soap:operation soapAction="http://tempuri.org/IVoteService/AddVoteType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditVoteResult">
+      <soap:operation soapAction="http://tempuri.org/IVoteService/EditVoteResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentVoteNum">
+      <soap:operation soapAction="http://tempuri.org/IVoteService/GetCurrentVoteNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVoteNum">
+      <soap:operation soapAction="http://tempuri.org/IVoteService/GetVoteNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadVoteList">
+      <soap:operation soapAction="http://tempuri.org/IVoteService/LoadVoteList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadVoteTypeList">
+      <soap:operation soapAction="http://tempuri.org/IVoteService/LoadVoteTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Vote">
+      <soap:operation soapAction="http://tempuri.org/IVoteService/Vote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VoteService">
+    <wsdl:port name="BasicHttpBinding_IVoteService" binding="tns:BasicHttpBinding_IVoteService">
+      <soap:address location="http://aaronpc:1937/BabyPlan.WcfService/VoteService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
